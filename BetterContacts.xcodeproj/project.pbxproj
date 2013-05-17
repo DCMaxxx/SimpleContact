@@ -14,6 +14,7 @@
 		9C359196173823C700764635 /* BCModalTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C359195173823C700764635 /* BCModalTableViewDelegate.m */; };
 		9C35919917382B8900764635 /* BCModalListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C35919817382B8900764635 /* BCModalListView.m */; };
 		9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* BCContactList.m */; };
+		9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */; };
 		9C7233D5173A660700C2F633 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D4173A660700C2F633 /* 57x57.png */; };
 		9C7233D7173A660B00C2F633 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D6173A660B00C2F633 /* 114x114.png */; };
 		9C7233F1173AB6B100C2F633 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233E0173AB6B100C2F633 /* Default-568h@2x.png */; };
@@ -44,11 +45,9 @@
 		9CA6B9DE16BAD16D006EAF8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6B9DD16BAD16D006EAF8D /* main.m */; };
 		9CA6B9E216BAD16D006EAF8D /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6B9E116BAD16D006EAF8D /* BCAppDelegate.m */; };
 		9CA6B9EB16BAD16D006EAF8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6B9E916BAD16D006EAF8D /* MainStoryboard.storyboard */; };
-		9CA6B9EE16BAD16D006EAF8D /* BCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA6B9ED16BAD16D006EAF8D /* BCViewController.m */; };
 		9CA6B9F616BAD884006EAF8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F416BAD884006EAF8D /* AddressBook.framework */; };
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
-		9CA8A8F716BD6AE90053C1C5 /* BCContactsTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8A8F616BD6AE90053C1C5 /* BCContactsTableViewDelegate.m */; };
 		9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */; };
 		9CD30CBF173BAA8800A73606 /* no-mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBD173BAA8800A73606 /* no-mail.png */; };
 		9CD30CC0173BAA8800A73606 /* no-sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBE173BAA8800A73606 /* no-sms.png */; };
@@ -69,6 +68,8 @@
 		9C35919817382B8900764635 /* BCModalListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalListView.m; sourceTree = "<group>"; };
 		9C5DB56216EE57DF00300925 /* BCContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactList.h; sourceTree = "<group>"; };
 		9C5DB56316EE57DF00300925 /* BCContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactList.m; sourceTree = "<group>"; };
+		9C6F605F174564EF002753D7 /* BCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactsTableViewController.h; sourceTree = "<group>"; };
+		9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactsTableViewController.m; sourceTree = "<group>"; };
 		9C7233D4173A660700C2F633 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57x57.png; sourceTree = "<group>"; };
 		9C7233D6173A660B00C2F633 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114.png; sourceTree = "<group>"; };
 		9C7233E0173AB6B100C2F633 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "images/Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -105,13 +106,9 @@
 		9CA6B9E016BAD16D006EAF8D /* BCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
 		9CA6B9E116BAD16D006EAF8D /* BCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCAppDelegate.m; sourceTree = "<group>"; };
 		9CA6B9EA16BAD16D006EAF8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		9CA6B9EC16BAD16D006EAF8D /* BCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCViewController.h; sourceTree = "<group>"; };
-		9CA6B9ED16BAD16D006EAF8D /* BCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCViewController.m; sourceTree = "<group>"; };
 		9CA6B9F416BAD884006EAF8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9CA8A8F516BD6AE90053C1C5 /* BCContactsTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactsTableViewDelegate.h; sourceTree = "<group>"; };
-		9CA8A8F616BD6AE90053C1C5 /* BCContactsTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactsTableViewDelegate.m; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* BCContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactCell.m; sourceTree = "<group>"; };
 		9CD30CBD173BAA8800A73606 /* no-mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-mail.png"; path = "images/no-mail.png"; sourceTree = "<group>"; };
@@ -153,6 +150,17 @@
 				9C088B5A17392128003B7644 /* BCImageLabelCell.m */,
 			);
 			name = PhoneNumberModal;
+			sourceTree = "<group>";
+		};
+		9C6F605E174562BA002753D7 /* Main view */ = {
+			isa = PBXGroup;
+			children = (
+				9C6F605F174564EF002753D7 /* BCContactsTableViewController.h */,
+				9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */,
+				9CC67F5816BBD6B100F1A9BA /* BCContactCell.h */,
+				9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */,
+			);
+			name = "Main view";
 			sourceTree = "<group>";
 		};
 		9CA6B9C516BAD16D006EAF8D = {
@@ -214,8 +222,7 @@
 			children = (
 				9CA6B9E016BAD16D006EAF8D /* BCAppDelegate.h */,
 				9CA6B9E116BAD16D006EAF8D /* BCAppDelegate.m */,
-				9CA6B9EC16BAD16D006EAF8D /* BCViewController.h */,
-				9CA6B9ED16BAD16D006EAF8D /* BCViewController.m */,
+				9C6F605E174562BA002753D7 /* Main view */,
 				9CC67F5716BBD69A00F1A9BA /* Contact List */,
 				9C3591931738237B00764635 /* PhoneNumberModal */,
 			);
@@ -274,14 +281,10 @@
 		9CC67F5716BBD69A00F1A9BA /* Contact List */ = {
 			isa = PBXGroup;
 			children = (
-				9CA8A8F516BD6AE90053C1C5 /* BCContactsTableViewDelegate.h */,
-				9CA8A8F616BD6AE90053C1C5 /* BCContactsTableViewDelegate.m */,
 				9C14627D16BC1DFF0008EB0F /* BCContact.h */,
 				9C14627E16BC1DFF0008EB0F /* BCContact.m */,
 				9C5DB56216EE57DF00300925 /* BCContactList.h */,
 				9C5DB56316EE57DF00300925 /* BCContactList.m */,
-				9CC67F5816BBD6B100F1A9BA /* BCContactCell.h */,
-				9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */,
 			);
 			name = "Contact List";
 			sourceTree = "<group>";
@@ -375,10 +378,8 @@
 			files = (
 				9CA6B9DE16BAD16D006EAF8D /* main.m in Sources */,
 				9CA6B9E216BAD16D006EAF8D /* BCAppDelegate.m in Sources */,
-				9CA6B9EE16BAD16D006EAF8D /* BCViewController.m in Sources */,
 				9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */,
 				9C14627F16BC1DFF0008EB0F /* BCContact.m in Sources */,
-				9CA8A8F716BD6AE90053C1C5 /* BCContactsTableViewDelegate.m in Sources */,
 				9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */,
 				9C359196173823C700764635 /* BCModalTableViewDelegate.m in Sources */,
 				9C35919917382B8900764635 /* BCModalListView.m in Sources */,
@@ -387,6 +388,7 @@
 				9C723408173AB6FF00C2F633 /* RMPhoneFormat.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,
 				9CD30CC3173BB5D800A73606 /* BCModalTableViewMailDelegate.m in Sources */,
+				9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

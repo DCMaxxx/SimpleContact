@@ -6,13 +6,27 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
+
 #import "BCAppDelegate.h"
 
 @implementation BCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) { });
+    else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Address Book"
+                                                        message:@"You refused access to your address book. If you don't fix this in Settings/Confidentiality, the app will be a bit less useful."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
     return YES;
 }
 							

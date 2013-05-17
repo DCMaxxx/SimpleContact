@@ -51,6 +51,7 @@ static NSString * plistFileName = @"favorites.plist";
         if (writePlist)
             [_favPlist writeToFile:plistFile atomically:YES];
     }
+    NSLog(@"Nombre de contacts (1) : %d", [_contacts count]);
     return self;
 }
 
