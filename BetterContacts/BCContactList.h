@@ -9,16 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "BCContact.h"
 
-@interface BCContactList : NSObject {
-    ABAddressBookRef _addressBook;
-
-    NSMutableArray * _contacts;
-
-    NSMutableDictionary *_favPlist;
-}
+@interface BCContactList : NSObject
 
 - (BCContact *)contactAtIndex:(NSUInteger)index;
 - (NSUInteger)numberOfContacts;
-- (BOOL)changeFavForContactAtIndex:(NSUInteger)index;
+- (void)changeFavForContactAtIndex:(NSUInteger)index;
 
 @end

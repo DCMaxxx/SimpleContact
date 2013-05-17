@@ -42,7 +42,7 @@
 - (void)myInitWithType:(eModalTypeView)type andContact:(BCContact *)contact {
     [[self view] setStyle];
     [[self view] setType:type];
-    [[self view] setContactPic:[contact getPicture]];
+    [[self view] setContactPic:[contact picture]];
     _delegate = [self getDelegateFromType:type WithContact:contact];
     [_delegate performSelector:@selector(setController:) withObject:self];
     [[[self view] tableView] setDelegate:_delegate];

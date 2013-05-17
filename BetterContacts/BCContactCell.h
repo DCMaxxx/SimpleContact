@@ -10,35 +10,31 @@
 
 @class BCContact;
 
-
 @interface BCContactCell : UITableViewCell
 
-// default view
-@property (weak, nonatomic) IBOutlet UIView *defaultView;
+@property (weak, nonatomic) UITableViewController * viewController;
+
+// Main view
+@property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactSmallNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteImageDefault;
-@property (weak, nonatomic) IBOutlet UIView *boxView;
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
 
-// swiping view
-@property (weak, nonatomic) IBOutlet UIView *swipingView;
+// Left view
+@property (weak, nonatomic) IBOutlet UIView *leftView;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneImage;
 @property (weak, nonatomic) IBOutlet UIImageView *mailImage;
 @property (weak, nonatomic) IBOutlet UIImageView *textImage;
 
-// right swiping view
-@property (weak, nonatomic) IBOutlet UIView *rightSwipingView;
+// Right view
+@property (weak, nonatomic) IBOutlet UIView *rightView;
 @property (weak, nonatomic) IBOutlet UIImageView *deleteImage;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteSelectorImage;
 
-- (void)imgs;
 
-- (void)setPictureAndNameInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
-- (void)setPhoneInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
-- (void)setMailInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
-- (void)setTextInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
-- (void)setFavoriteInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
-- (void)setDeleteInfosWithContact:(BCContact *)contact andReceiver:(id)receiver;
+- (void)setMainViewInformationsWithContact:(BCContact *)contact;
+- (void)setLeftViewInformationsWithContact:(BCContact *)contact;
+- (void)setRightViewInformationsWithContact:(BCContact *)contact;
 
 @end

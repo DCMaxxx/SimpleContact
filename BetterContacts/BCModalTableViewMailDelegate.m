@@ -29,7 +29,7 @@
     NSInteger indexOfMail = [indexPath indexAtPosition:1];
     
     BCImageLabelCell * cell = [tableView dequeueReusableCellWithIdentifier:@"TwoLabelsCell"];
-    NSDictionary *mail = [[_contact getMailAddresses] objectAtIndex:indexOfMail];
+    NSDictionary *mail = [[_contact mailAddresses] objectAtIndex:indexOfMail];
     NSString *label = [mail objectForKey:@"label"];
     [[cell leftImage] setImage:[_controller getImageFromLabel:label]];
     
@@ -39,7 +39,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_contact getNumberOfMailAddresses];
+    return [_contact numberOfTextAddresses];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

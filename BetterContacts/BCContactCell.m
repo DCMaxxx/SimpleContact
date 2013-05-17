@@ -17,6 +17,18 @@ static UIImage * textImg[2] = {nil, nil};
 
 @implementation BCContactCell
 
+@synthesize viewController = _viewController;
+@synthesize contactPicture = _contactPicture;
+@synthesize contactNameLabel = _contactNameLabel;
+@synthesize contactSmallNameLabel = _contactSmallNameLabel;
+@synthesize phoneImage = _phoneImage;
+@synthesize mailImage = _mailImage;
+@synthesize textImage = _textImage;
+@synthesize deleteImage = _deleteImage;
+@synthesize favoriteSelectorImage = _favoriteSelectorImage;
+
+
+#pragma mark - Init
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         if (!favoriteImg[0]) {
@@ -31,77 +43,53 @@ static UIImage * textImg[2] = {nil, nil};
         }
     }
     return self;
-    
 }
 
--(void)imgs {
-}
 
-- (void)setPictureAndNameInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    CALayer * boxLayer = [[self boxView] layer];
-    if (![boxLayer borderWidth]) {
-        [boxLayer setBorderWidth:1.0f];
-        [boxLayer setBorderColor:[[UIColor blackColor] CGColor]];
-    }
-    
+#pragma mark - Setting views informations
+- (void)setMainViewInformationsWithContact:(BCContact *)contact {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
-    [[self contactNameLabel] setText:[contact getFirstName]];
-    [[self contactSmallNameLabel] setText:[contact getLastName]];
+    [_contactNameLabel setText:[contact firstName]];
+    [_contactSmallNameLabel setText:[contact lastName]];
     
-    UIImageView * contactPicture = [self contactPicture];
-    [contactPicture setImage:[contact getPicture]];
-    [[self favoriteImageDefault] setImage:favoriteImg[[contact favorite]]];
+    [_contactPicture setImage:[contact picture]];
 
+    [_favoriteImage setImage:favoriteImg[[contact favorite]]];
 }
 
-- (void)setPhoneInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    [[self phoneImage] setImage:phoneImg[[contact getNumberOfPhoneNumbers] > 0]];
-    if ([contact getNumberOfPhoneNumbers] && ![[[self phoneImage] gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnPhone = [[UITapGestureRecognizer alloc] initWithTarget:receiver action:@selector(tappedOnPhone:)];
-        [[self phoneImage] addGestureRecognizer:tapOnPhone];
-    } else if (![contact getNumberOfPhoneNumbers]) {
-        if ([[[self phoneImage] gestureRecognizers] count])
-            [[self phoneImage] removeGestureRecognizer:[[[self phoneImage] gestureRecognizers] objectAtIndex:0]];
+- (void)setLeftViewInformationsWithContact:(BCContact *)contact {
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers] imageToReplace:_phoneImage selectorToCall:@selector(tappedOnPhone:) andImages:phoneImg];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses] imageToReplace:_mailImage selectorToCall:@selector(tappedOnMail:) andImages:mailImg];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses] imageToReplace:_textImage selectorToCall:@selector(tappedOnText:) andImages:textImg];
+}
+
+- (void)setRightViewInformationsWithContact:(BCContact *)contact {
+    [_favoriteSelectorImage setImage:favoriteImg[[contact favorite]]];
+    if (![[_favoriteSelectorImage gestureRecognizers] count]) {
+        UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:@selector(tappedOnFavorite:)];
+        [_favoriteSelectorImage addGestureRecognizer:gr];
+    }
+
+    if (![[_deleteImage gestureRecognizers] count]) {
+        UITapGestureRecognizer * tapOnDelete = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:@selector(tappedOnDelete:)];
+        [_deleteImage addGestureRecognizer:tapOnDelete];
     }
 }
 
-- (void)setMailInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    [[self mailImage] setImage:mailImg[[contact getNumberOfMailAddresses] > 0]];
-    if ([contact getNumberOfMailAddresses] && ![[[self mailImage] gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnMail = [[UITapGestureRecognizer alloc] initWithTarget:receiver action:@selector(tappedOnMail:)];
-        [[self mailImage] addGestureRecognizer:tapOnMail];
-    } else if (![contact getNumberOfMailAddresses]) {
-        if ([[[self mailImage] gestureRecognizers] count])
-            [[self mailImage] removeGestureRecognizer:[[[self mailImage] gestureRecognizers] objectAtIndex:0]];
-    }
-}
 
-- (void)setTextInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    [[self textImage] setImage:textImg[[contact getNumberOfMessageAddresses] > 0]];
-    if ([contact getNumberOfMessageAddresses] && ![[[self textImage] gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnText = [[UITapGestureRecognizer alloc] initWithTarget:receiver action:@selector(tappedOnText:)];
-        [[self textImage] addGestureRecognizer:tapOnText];
-    } else if (![contact getNumberOfMessageAddresses]) {
-        if ([[[self textImage] gestureRecognizers] count])
-            [[self textImage] removeGestureRecognizer:[[[self textImage] gestureRecognizers] objectAtIndex:0]];
+#pragma mark - Misc private functions
+- (void)setLeftViewContactInformationsWithNumberOfContacts:(NSInteger)numberOfContacts
+                                            imageToReplace:(UIImageView *)imageToReplace
+                                            selectorToCall:(SEL)selector
+                                                 andImages:(UIImage * __strong [2])images {
+    [imageToReplace setImage:images[numberOfContacts > 0]];
+    if (numberOfContacts && ![[imageToReplace gestureRecognizers] count]) { // contacts, but no gesture recognizer
+        UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:selector];
+        [imageToReplace addGestureRecognizer:gr];
+    } else if (!numberOfContacts && [[imageToReplace gestureRecognizers] count]) { // no contacts, and a gesture recognizer
+        [imageToReplace removeGestureRecognizer:[[imageToReplace gestureRecognizers] objectAtIndex:0]];
     }
-    
-}
-
-- (void)setFavoriteInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    if (![[[self favoriteImage] gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnFav = [[UITapGestureRecognizer alloc] initWithTarget:receiver action:@selector(tappedOnFavorite:)];
-        [[self favoriteImage] addGestureRecognizer:tapOnFav];
-    }
-    [[self favoriteImage] setImage:favoriteImg[[contact favorite]]];
-}
-
-- (void)setDeleteInfosWithContact:(BCContact *)contact andReceiver:(id)receiver {
-    if (![[[self deleteImage] gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnDelete = [[UITapGestureRecognizer alloc] initWithTarget:receiver action:@selector(tappedOnDelete:)];
-        [[self deleteImage] addGestureRecognizer:tapOnDelete];
-    }  
 }
 
 @end

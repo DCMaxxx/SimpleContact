@@ -11,9 +11,13 @@
 @class BCContactCell;
 @class BCContactList;
 
-@interface BCContactsTableViewController : UITableViewController {
-    BCContactCell * _swipedCell;
-    BCContactList * _contacts;    
-}
+@interface BCContactsTableViewController : UITableViewController
+
+- (void)tappedOnPhone:(BCContactCell *)cell;
+- (void)tappedOnMail:(BCContactCell *)cell;
+- (void)tappedOnText:(BCContactCell *)cell;
+
+- (void)tappedOnFavorite:(BCContactCell *)cell;
+- (void)tappedOnDelete:(BCContactCell *)cell;
 
 @end

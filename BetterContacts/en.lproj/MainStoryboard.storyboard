@@ -106,6 +106,9 @@
                                                         <constraint firstItem="di8-aX-Xtt" firstAttribute="centerX" secondItem="1D5-MZ-UxE" secondAttribute="centerX" type="default" id="vML-l0-sKd"/>
                                                         <constraint firstItem="di8-aX-Xtt" firstAttribute="centerY" secondItem="1D5-MZ-UxE" secondAttribute="centerY" type="default" id="vyw-9K-y6g"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="nofav.png" translatesAutoresizingMaskIntoConstraints="NO" id="6p2-UB-4NY" userLabel="Image View - Favorite">
                                                     <constraints>
@@ -147,18 +150,17 @@
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="top" secondItem="bFx-n7-RnL" secondAttribute="top" type="default" id="ohS-Hr-Fem"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="boxView" destination="1D5-MZ-UxE" id="sVJ-hP-gdd"/>
                                     <outlet property="contactNameLabel" destination="Whg-qd-GaJ" id="pIG-bY-vwO"/>
                                     <outlet property="contactPicture" destination="di8-aX-Xtt" id="qvp-aT-68I"/>
                                     <outlet property="contactSmallNameLabel" destination="aPv-ql-2RW" id="Byh-iM-Jq7"/>
-                                    <outlet property="defaultView" destination="6ZU-Ih-iAm" id="gB6-7i-yb0"/>
                                     <outlet property="deleteImage" destination="Xzi-AZ-Vz4" id="nZi-v2-U1E"/>
-                                    <outlet property="favoriteImage" destination="YzI-ua-pKX" id="5bi-Sh-gNV"/>
-                                    <outlet property="favoriteImageDefault" destination="6p2-UB-4NY" id="pdU-bL-e0a"/>
+                                    <outlet property="favoriteImage" destination="6p2-UB-4NY" id="f0t-2q-nBU"/>
+                                    <outlet property="favoriteSelectorImage" destination="YzI-ua-pKX" id="7ah-h8-lgL"/>
+                                    <outlet property="leftView" destination="uzV-aC-Moa" id="OzK-Y9-eMQ"/>
                                     <outlet property="mailImage" destination="p4v-kL-hMO" id="oQw-E0-yE7"/>
+                                    <outlet property="mainView" destination="6ZU-Ih-iAm" id="oGe-5Q-9qd"/>
                                     <outlet property="phoneImage" destination="5GO-h0-7qQ" id="gx0-Aa-J85"/>
-                                    <outlet property="rightSwipingView" destination="OeB-xD-NdU" id="Yzk-zm-7y0"/>
-                                    <outlet property="swipingView" destination="uzV-aC-Moa" id="2Sp-a7-lyv"/>
+                                    <outlet property="rightView" destination="OeB-xD-NdU" id="vKm-TA-f4U"/>
                                     <outlet property="textImage" destination="sEE-dp-hCA" id="uBW-Cx-qbT"/>
                                 </connections>
                             </tableViewCell>
@@ -289,6 +291,52 @@
         <image name="nofav.png" width="60" height="60"/>
         <image name="sms.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="BCContactCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactSmallNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="deleteImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favoriteImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favoriteSelectorImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mailImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="phoneImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="BCContactsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactsTableViewController.h"/>
+        </class>
+        <class className="BCImageLabelCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCImageLabelCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="leftImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rightLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="BCModalListView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCModalListView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="pictureContact" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pictureType" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="BCModalListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCModalListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="view" candidateClass="BCModalListView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

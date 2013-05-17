@@ -16,7 +16,6 @@ typedef enum ModalTypeView { MTVPhone, MTVMail, MTVText } eModalTypeView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *pictureType;
-@property (weak, nonatomic) IBOutlet UIView *boxView;
 @property (weak, nonatomic) IBOutlet UIImageView *pictureContact;
 
 - (void)setType:(eModalTypeView)type;

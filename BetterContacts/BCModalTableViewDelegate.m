@@ -35,7 +35,7 @@
     NSInteger indexOfPhone = [indexPath indexAtPosition:1];
 
     BCImageLabelCell * cell = [tableView dequeueReusableCellWithIdentifier:@"TwoLabelsCell"];
-    NSDictionary *phone = [[_contact getPhoneNumbers] objectAtIndex:indexOfPhone];
+    NSDictionary *phone = [[_contact phoneNumbers] objectAtIndex:indexOfPhone];
     NSString *label = [phone objectForKey:@"label"];
     [[cell leftImage] setImage:[_controller getImageFromLabel:label]];
     
@@ -45,7 +45,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_contact getNumberOfPhoneNumbers];
+    return [_contact numberOfPhoneNumbers];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

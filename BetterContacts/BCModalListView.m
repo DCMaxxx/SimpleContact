@@ -15,7 +15,6 @@
 
 @synthesize tableView = _tableView;
 @synthesize pictureType = _pictureType;
-@synthesize boxView = _boxView;
 @synthesize pictureContact = _pictureContact;
 
 - (id)initWithFrame:(CGRect)frame
@@ -33,8 +32,6 @@
     [[self layer] setBorderColor:[color CGColor]];
     [[self layer] setBorderWidth:2.0f];
     [[self layer] setCornerRadius:10.0f];
-    [[_boxView layer] setBorderColor:[[UIColor blackColor] CGColor]];
-    [[_boxView layer] setBorderWidth:1.0f];
 }
 
 - (void)setType:(eModalTypeView)type {

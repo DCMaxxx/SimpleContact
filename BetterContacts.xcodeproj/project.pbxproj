@@ -70,8 +70,8 @@
 		9C5DB56316EE57DF00300925 /* BCContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactList.m; sourceTree = "<group>"; };
 		9C6F605F174564EF002753D7 /* BCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactsTableViewController.h; sourceTree = "<group>"; };
 		9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactsTableViewController.m; sourceTree = "<group>"; };
-		9C7233D4173A660700C2F633 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57x57.png; sourceTree = "<group>"; };
-		9C7233D6173A660B00C2F633 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 114x114.png; sourceTree = "<group>"; };
+		9C7233D4173A660700C2F633 /* 57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 57x57.png; path = ../57x57.png; sourceTree = "<group>"; };
+		9C7233D6173A660B00C2F633 /* 114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 114x114.png; path = ../114x114.png; sourceTree = "<group>"; };
 		9C7233E0173AB6B100C2F633 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		9C7233E1173AB6B100C2F633 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = images/Default.png; sourceTree = "<group>"; };
 		9C7233E2173AB6B100C2F633 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "images/Default@2x.png"; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9C3591931738237B00764635 /* PhoneNumberModal */ = {
+		9C3591931738237B00764635 /* Contact modal view */ = {
 			isa = PBXGroup;
 			children = (
 				9C088B5417391AAC003B7644 /* BCModalListViewController.h */,
@@ -149,7 +149,7 @@
 				9C088B5917392128003B7644 /* BCImageLabelCell.h */,
 				9C088B5A17392128003B7644 /* BCImageLabelCell.m */,
 			);
-			name = PhoneNumberModal;
+			name = "Contact modal view";
 			sourceTree = "<group>";
 		};
 		9C6F605E174562BA002753D7 /* Main view */ = {
@@ -166,8 +166,6 @@
 		9CA6B9C516BAD16D006EAF8D = {
 			isa = PBXGroup;
 			children = (
-				9C7233D6173A660B00C2F633 /* 114x114.png */,
-				9C7233D4173A660700C2F633 /* 57x57.png */,
 				9CA6B9D716BAD16D006EAF8D /* BetterContacts */,
 				9CA6B9D016BAD16D006EAF8D /* Frameworks */,
 				9CA6B9CF16BAD16D006EAF8D /* Products */,
@@ -222,9 +220,9 @@
 			children = (
 				9CA6B9E016BAD16D006EAF8D /* BCAppDelegate.h */,
 				9CA6B9E116BAD16D006EAF8D /* BCAppDelegate.m */,
+				9CC67F5716BBD69A00F1A9BA /* Contact representation */,
 				9C6F605E174562BA002753D7 /* Main view */,
-				9CC67F5716BBD69A00F1A9BA /* Contact List */,
-				9C3591931738237B00764635 /* PhoneNumberModal */,
+				9C3591931738237B00764635 /* Contact modal view */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -245,6 +243,8 @@
 		9CA6B9FA16BAD9EC006EAF8D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9C7233D6173A660B00C2F633 /* 114x114.png */,
+				9C7233D4173A660700C2F633 /* 57x57.png */,
 				9CD30CBD173BAA8800A73606 /* no-mail.png */,
 				9CD30CBE173BAA8800A73606 /* no-sms.png */,
 				9C72340A173ABF7F00C2F633 /* no-phone.png */,
@@ -278,7 +278,7 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
-		9CC67F5716BBD69A00F1A9BA /* Contact List */ = {
+		9CC67F5716BBD69A00F1A9BA /* Contact representation */ = {
 			isa = PBXGroup;
 			children = (
 				9C14627D16BC1DFF0008EB0F /* BCContact.h */,
@@ -286,7 +286,7 @@
 				9C5DB56216EE57DF00300925 /* BCContactList.h */,
 				9C5DB56316EE57DF00300925 /* BCContactList.m */,
 			);
-			name = "Contact List";
+			name = "Contact representation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

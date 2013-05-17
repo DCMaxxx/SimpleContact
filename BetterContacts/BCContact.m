@@ -12,17 +12,27 @@ static UIImage * noPictureContact = nil;
 
 @implementation BCContact
 
-@synthesize favorite = _favorite;
 @synthesize addBookContact = _addBookContact;
+@synthesize favorite = _favorite;
+@synthesize UID = _UID;
+@synthesize firstName = _firstName;
+@synthesize lastName = _lastName;
+@synthesize picture = _picture;
+@synthesize phoneNumbers = _phoneNumbers;
+@synthesize numberOfPhoneNumbers = _numberOfPhoneNumbers;
+@synthesize mailAddresses = _mailAddresses;
+@synthesize numberOfMailAddresses = _numberOfMailAddresses;
+@synthesize textAddresses = _textAddresses;
+@synthesize numberOfTextAddresses = _numberOfTextAddresses;
 
-#pragma mark Init
+#pragma mark - Init
 - (id) initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
         if (!noPictureContact)
             noPictureContact = [UIImage imageNamed:@"user.png"];
         _numberOfPhoneNumbers = -1;
         _numberOfMailAddresses = -1;
-        _numberOfMessageAddresses = -1;
+        _numberOfTextAddresses = -1;
         _addBookContact = addBookContact;
         _favorite = YES;
     }
@@ -30,20 +40,20 @@ static UIImage * noPictureContact = nil;
 }
 
 
-#pragma mark Getting user informations
-- (NSString *) getFirstName {
+#pragma mark - Getters overrides
+- (NSString *) firstName {
     if (!_firstName)
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
     return _firstName;
 }
 
-- (NSString *) getLastName {
+- (NSString *) lastName {
     if (!_lastName)
         _lastName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonLastNameProperty);
     return _lastName;
 }
 
-- (UIImage *) getPicture {
+- (UIImage *) picture {
     if (!_picture) {
         CFDataRef pic = ABPersonCopyImageData(_addBookContact);
         if (pic)
@@ -54,20 +64,20 @@ static UIImage * noPictureContact = nil;
     return _picture;
 }
 
-- (NSInteger)getUID {
+- (NSInteger)UID {
     return ABRecordGetRecordID(_addBookContact);
 }
 
-- (NSInteger)getNumberOfPhoneNumbers {
+- (NSInteger)numberOfPhoneNumbers {
     if (_numberOfPhoneNumbers == -1)
-        [self getPhoneNumbers];
+        [self phoneNumbers];
     return _numberOfPhoneNumbers;
 }
 
 
-- (NSArray *)getPhoneNumbers {
+- (NSArray *)phoneNumbers {
     if (!_phoneNumbers) {
-        _phoneNumbers = [[NSMutableArray alloc] init];
+        NSMutableArray * mutablePhoneNumbers = [[NSMutableArray alloc] init];
 
         ABMultiValueRef const * phones = ABRecordCopyValue(_addBookContact, kABPersonPhoneProperty);
         for (CFIndex j = 0; j < ABMultiValueGetCount(phones); j++) {
@@ -78,16 +88,17 @@ static UIImage * noPictureContact = nil;
             CFRelease(phoneNumberRef);
             CFRelease(locLabel);
             NSDictionary * tmp = [[NSDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
-            [_phoneNumbers addObject:tmp];
+            [mutablePhoneNumbers addObject:tmp];
         }
-        _numberOfPhoneNumbers = [_phoneNumbers count];
+        _numberOfPhoneNumbers = [mutablePhoneNumbers count];
+        _phoneNumbers = [mutablePhoneNumbers copy];
     }
     return _phoneNumbers;
 }
 
-- (NSArray *)getMailAddresses {
+- (NSArray *)mailAddresses {
     if (!_mailAddresses) {
-        _mailAddresses = [[NSMutableArray alloc] init];
+        NSMutableArray * mutableMailAddresses = [[NSMutableArray alloc] init];
         
         ABMultiValueRef const * mails = ABRecordCopyValue(_addBookContact, kABPersonEmailProperty);
         for (CFIndex j = 0; j < ABMultiValueGetCount(mails); j++) {
@@ -98,35 +109,36 @@ static UIImage * noPictureContact = nil;
             CFRelease(mailRef);
             CFRelease(locLabel);
             NSDictionary * tmp = [[NSDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
-            [_mailAddresses addObject:tmp];
+            [mutableMailAddresses addObject:tmp];
         }
-        _numberOfMailAddresses = [_mailAddresses count];
+        _numberOfMailAddresses = [mutableMailAddresses count];
+        _mailAddresses = [mutableMailAddresses copy];
     }
     return _mailAddresses;
 }
 
-- (NSInteger)getNumberOfMailAddresses {
+- (NSInteger)numberOfMailAddresses {
     if (_numberOfMailAddresses == -1)
-        [self getMailAddresses];
+        [self mailAddresses];
     return _numberOfMailAddresses;
 }
 
-- (NSArray *)getMessageAddresses {
+- (NSArray *)textAddresses {
     if (!_phoneNumbers)
-        [self getPhoneNumbers];
+        [self phoneNumbers];
     if (!_mailAddresses)
-        [self getMailAddresses];
-    if (!_messageAddresses) {
-        _messageAddresses = [[_phoneNumbers arrayByAddingObjectsFromArray:_mailAddresses] mutableCopy];
-        _numberOfMessageAddresses = [_messageAddresses count];
+        [self mailAddresses];
+    if (!_textAddresses) {
+        _textAddresses = [_phoneNumbers arrayByAddingObjectsFromArray:_mailAddresses];
+        _numberOfTextAddresses = [_textAddresses count];
     }
-    return _messageAddresses;
+    return _textAddresses;
 }
 
-- (NSInteger)getNumberOfMessageAddresses {
-    if (_numberOfMessageAddresses == -1)
-        [self getMessageAddresses];
-    return _numberOfMessageAddresses;
+- (NSInteger)numberOfTextAddresses {
+    if (_numberOfTextAddresses == -1)
+        [self textAddresses];
+    return _numberOfTextAddresses;
 }
 
 

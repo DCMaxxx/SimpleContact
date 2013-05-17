@@ -8,50 +8,43 @@
 
 #import "BCContactList.h"
 
-static NSString * plistFileName = @"favorites.plist";
+@interface BCContactList ()
+
+@property (nonatomic) ABAddressBookRef addressBook;
+@property (strong, nonatomic) NSMutableArray * contacts;
+@property (strong, nonatomic) NSMutableDictionary * favorites;
+
+@end
+
 
 @implementation BCContactList
 
+@synthesize addressBook = _addressBook;
+@synthesize contacts = _contacts;
+@synthesize favorites = _favorites;
+
 -(id) init {
     if (self = [super init]) {
-        BOOL writePlist = NO;
-        NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsPath = [paths objectAtIndex:0];
-        NSString *plistFile = [documentsPath stringByAppendingPathComponent:plistFileName];
-
-        _favPlist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistFile];
-        if (!_favPlist) {
-            _favPlist = [NSMutableDictionary new];
-            writePlist = YES;
-        }
-        
-        // Loading addressbook
         _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-        
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(_addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
         CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName, (void *)kABPersonFirstNameProperty);
         NSArray * allPersons = (__bridge_transfer NSArray *)peopleMutable;
         
         _contacts = [NSMutableArray arrayWithCapacity:[allPersons count]];
-        
+
         for (NSUInteger i = 0; i < [allPersons count]; ++i) {
             ABRecordRef currentPerson = (__bridge ABRecordRef)[allPersons objectAtIndex:i];
             BCContact * contact = [[BCContact alloc] initWithAddressBookContact:currentPerson];
-            id isFavObj = [_favPlist objectForKey:[NSNumber numberWithInteger:[contact getUID]]];
+            id isFavObj = [_favorites objectForKey:[NSNumber numberWithInteger:[contact UID]]];
             if (!isFavObj) {
-                [_favPlist setObject:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d", [contact getUID]]];
-                [contact setFavorite:!(arc4random() % 2)];
-                writePlist = YES;
-                
+                [_favorites setObject:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+                [contact setFavorite:NO];
             } else
                 [contact setFavorite:[isFavObj boolValue]];
             [_contacts insertObject:contact atIndex:i];
         }
-        if (writePlist)
-            [_favPlist writeToFile:plistFile atomically:YES];
     }
-    NSLog(@"Nombre de contacts (1) : %d", [_contacts count]);
     return self;
 }
 
@@ -63,21 +56,11 @@ static NSString * plistFileName = @"favorites.plist";
     return [_contacts count];
 }
 
-- (BOOL) changeFavForContactAtIndex:(NSUInteger)index {
+- (void) changeFavForContactAtIndex:(NSUInteger)index {
     BCContact * contact = [self contactAtIndex:index];
     BOOL newStatus = ![contact favorite];
     [contact setFavorite:newStatus];
 
-    [_favPlist setObject:[NSNumber numberWithBool:YES] forKey:[NSString stringWithFormat:@"%d", [contact getUID]]];
-    [self updateFavorites];    return newStatus;
+    [_favorites setObject:[NSNumber numberWithBool:newStatus] forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
 }
-
-- (void) updateFavorites {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *plistFile = [documentsPath stringByAppendingPathComponent:plistFileName];
-
-    [_favPlist writeToFile:plistFile atomically:YES];
-}
-
 @end

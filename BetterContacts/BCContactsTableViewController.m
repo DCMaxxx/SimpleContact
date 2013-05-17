@@ -13,9 +13,15 @@
 
 @interface BCContactsTableViewController ()
 
+@property (weak, nonatomic) BCContactCell * swipedCell;
+@property (strong, nonatomic) BCContactList * contacts;
+
 @end
 
 @implementation BCContactsTableViewController
+
+@synthesize swipedCell = _swipedCell;
+@synthesize contacts = _contacts;
 
 #pragma mark - Init
 - (id) initWithCoder:(NSCoder *)aDecoder {
@@ -33,19 +39,20 @@
 
 
 #pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_contacts numberOfContacts];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"contactCell";
 
     NSInteger indexOfContact = [indexPath indexAtPosition:1];
     
     BCContact * contact = [_contacts contactAtIndex:indexOfContact];
     BCContactCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (![cell viewController])
+        [cell setViewController:self];
     
     if (![[cell gestureRecognizers] count]) {
         UISwipeGestureRecognizer * swipeRightOnContact = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRightOnContact:)];
@@ -58,15 +65,14 @@
     }
     
     [cell setTag:indexOfContact];
-    [cell setPictureAndNameInfosWithContact:contact andReceiver:self];
+    [cell setMainViewInformationsWithContact:contact];
     
     return cell;
 }
 
 
 #pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self unselectCell:(BCContactCell *)[tableView cellForRowAtIndexPath:indexPath]];
 
     // Navigation logic may go here. Create and push another view controller.
@@ -85,22 +91,20 @@
 - (void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-        if (cell == _swipedCell  && [[cell defaultView] frame].origin.x > 0)
+        if (cell == _swipedCell  && [[cell mainView] frame].origin.x > 0)
             return ;
         [self unselectCell:_swipedCell];
         _swipedCell = cell;
         
         BCContact * contact = [_contacts contactAtIndex:[cell tag]];
-        [cell setPhoneInfosWithContact:contact andReceiver:self];
-        [cell setMailInfosWithContact:contact andReceiver:self];
-        [cell setTextInfosWithContact:contact andReceiver:self];
+        [cell setLeftViewInformationsWithContact:contact];
         
-        CGRect newContactFrame = [[cell defaultView] frame];
-        newContactFrame.origin.x += [[cell swipingView] frame].size.width;
+        CGRect newContactFrame = [[cell mainView] frame];
+        newContactFrame.origin.x += [[cell leftView] frame].size.width;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
-        [[cell defaultView] setFrame:newContactFrame];
+        [[cell mainView] setFrame:newContactFrame];
         [UIView commitAnimations];
     }
 }
@@ -108,21 +112,20 @@
 - (void)swipedLeftOnContact:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-        if (cell == _swipedCell && [[cell defaultView] frame].origin.x < 0)
+        if (cell == _swipedCell && [[cell mainView] frame].origin.x < 0)
             return ;
         [self unselectCell:_swipedCell];
         _swipedCell = cell;
         
         BCContact * contact = [_contacts contactAtIndex:[cell tag]];
-        [cell setDeleteInfosWithContact:contact andReceiver:self];
-        [cell setFavoriteInfosWithContact:contact andReceiver:self];
+        [cell setRightViewInformationsWithContact:contact];
         
-        CGRect newContactFrame = [[cell defaultView] frame];
-        newContactFrame.origin.x -= [[cell rightSwipingView] frame].size.width;
+        CGRect newContactFrame = [[cell mainView] frame];
+        newContactFrame.origin.x -= [[cell rightView] frame].size.width;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
-        [[cell defaultView] setFrame:newContactFrame];
+        [[cell mainView] setFrame:newContactFrame];
         [UIView commitAnimations];
     }
 }
@@ -131,17 +134,40 @@
     if (_swipedCell) {
         [_swipedCell setSelected:NO animated:NO];
         
-        CGRect newContactFrame = [[_swipedCell defaultView] frame];
-        newContactFrame.origin.x = -[[cell swipingView] frame].size.width;
+        CGRect newContactFrame = [[_swipedCell mainView] frame];
+        newContactFrame.origin.x = -[[cell leftView] frame].size.width;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
-        [[_swipedCell defaultView] setFrame:newContactFrame];
+        [[_swipedCell mainView] setFrame:newContactFrame];
         [UIView commitAnimations];
         _swipedCell = nil;
     }
     if (cell)
         [cell setSelected:NO animated:NO];
+}
+
+
+#pragma mark - Tapped on left view buttons
+- (void)tappedOnPhone:(BCContactCell *)cell {
+    NSLog(@"Hello, world !");
+}
+
+- (void)tappedOnMail:(BCContactCell *)cell {
+    NSLog(@"Hello, world !");
+}
+
+- (void)tappedOnText:(BCContactCell *)cell {
+    NSLog(@"Hello, world !");
+}
+
+#pragma mark - Tapped on right view buttons
+- (void)tappedOnFavorite:(BCContactCell *)cell {
+    NSLog(@"Hello, world !");
+}
+
+- (void)tappedOnDelete:(BCContactCell *)cell {
+    NSLog(@"Hello, world !");
 }
 
 
