@@ -10,6 +10,12 @@
 
 static UIImage * noPictureContact = nil;
 
+@interface BCContact ()
+
+@property (nonatomic, readonly) ABRecordRef addBookContact;
+
+@end
+
 @implementation BCContact
 
 @synthesize addBookContact = _addBookContact;
@@ -26,10 +32,12 @@ static UIImage * noPictureContact = nil;
 @synthesize numberOfTextAddresses = _numberOfTextAddresses;
 
 #pragma mark - Init
-- (id) initWithAddressBookContact:(ABRecordRef)addBookContact {
++(void)initialize {
+    noPictureContact = [UIImage imageNamed:@"user.png"];
+}
+
+-(id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
-        if (!noPictureContact)
-            noPictureContact = [UIImage imageNamed:@"user.png"];
         _numberOfPhoneNumbers = -1;
         _numberOfMailAddresses = -1;
         _numberOfTextAddresses = -1;
@@ -41,19 +49,19 @@ static UIImage * noPictureContact = nil;
 
 
 #pragma mark - Getters overrides
-- (NSString *) firstName {
+-(NSString *)firstName {
     if (!_firstName)
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
     return _firstName;
 }
 
-- (NSString *) lastName {
+-(NSString *)lastName {
     if (!_lastName)
         _lastName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonLastNameProperty);
     return _lastName;
 }
 
-- (UIImage *) picture {
+-(UIImage *)picture {
     if (!_picture) {
         CFDataRef pic = ABPersonCopyImageData(_addBookContact);
         if (pic)
@@ -64,18 +72,18 @@ static UIImage * noPictureContact = nil;
     return _picture;
 }
 
-- (NSInteger)UID {
+-(NSInteger)UID {
     return ABRecordGetRecordID(_addBookContact);
 }
 
-- (NSInteger)numberOfPhoneNumbers {
+-(NSInteger)numberOfPhoneNumbers {
     if (_numberOfPhoneNumbers == -1)
         [self phoneNumbers];
     return _numberOfPhoneNumbers;
 }
 
 
-- (NSArray *)phoneNumbers {
+-(NSArray *)phoneNumbers {
     if (!_phoneNumbers) {
         NSMutableArray * mutablePhoneNumbers = [[NSMutableArray alloc] init];
 
@@ -96,7 +104,7 @@ static UIImage * noPictureContact = nil;
     return _phoneNumbers;
 }
 
-- (NSArray *)mailAddresses {
+-(NSArray *)mailAddresses {
     if (!_mailAddresses) {
         NSMutableArray * mutableMailAddresses = [[NSMutableArray alloc] init];
         
@@ -117,13 +125,13 @@ static UIImage * noPictureContact = nil;
     return _mailAddresses;
 }
 
-- (NSInteger)numberOfMailAddresses {
+-(NSInteger)numberOfMailAddresses {
     if (_numberOfMailAddresses == -1)
         [self mailAddresses];
     return _numberOfMailAddresses;
 }
 
-- (NSArray *)textAddresses {
+-(NSArray *)textAddresses {
     if (!_phoneNumbers)
         [self phoneNumbers];
     if (!_mailAddresses)
@@ -135,11 +143,10 @@ static UIImage * noPictureContact = nil;
     return _textAddresses;
 }
 
-- (NSInteger)numberOfTextAddresses {
+-(NSInteger)numberOfTextAddresses {
     if (_numberOfTextAddresses == -1)
         [self textAddresses];
     return _numberOfTextAddresses;
 }
-
 
 @end

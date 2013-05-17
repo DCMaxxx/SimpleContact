@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BCImageLabelCell : UITableViewCell
+@interface BCContactModalCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *rightLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *leftImage;
+@property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIImageView *icon;
 
 @end

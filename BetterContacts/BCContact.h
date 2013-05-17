@@ -11,8 +11,6 @@
 
 @interface BCContact : NSObject
 
-@property (nonatomic, readonly) ABRecordRef addBookContact;
-
 @property (nonatomic) BOOL favorite;
 
 @property (nonatomic, readonly) NSInteger UID;

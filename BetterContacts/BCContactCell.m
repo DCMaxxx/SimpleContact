@@ -27,24 +27,17 @@ static UIImage * textImg[2] = {nil, nil};
 @synthesize deleteImage = _deleteImage;
 @synthesize favoriteSelectorImage = _favoriteSelectorImage;
 
-
 #pragma mark - Init
--(id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        if (!favoriteImg[0]) {
-            favoriteImg[NO] = [UIImage imageNamed:@"nofav.png"];
-            favoriteImg[YES] = [UIImage imageNamed:@"fav.png"];
-            phoneImg[NO] = [UIImage imageNamed:@"no-phone.png"];
-            phoneImg[YES] = [UIImage imageNamed:@"telephone.png"];
-            mailImg[NO] = [UIImage imageNamed:@"no-mail.png"];
-            mailImg[YES] = [UIImage imageNamed:@"email.png"];
-            textImg[NO] = [UIImage imageNamed:@"no-sms.png"];
-            textImg[YES] = [UIImage imageNamed:@"sms.png"];
-        }
-    }
-    return self;
++(void)initialize {
+    favoriteImg[NO] = [UIImage imageNamed:@"nofav.png"];
+    favoriteImg[YES] = [UIImage imageNamed:@"fav.png"];
+    phoneImg[NO] = [UIImage imageNamed:@"no-phone.png"];
+    phoneImg[YES] = [UIImage imageNamed:@"telephone.png"];
+    mailImg[NO] = [UIImage imageNamed:@"no-mail.png"];
+    mailImg[YES] = [UIImage imageNamed:@"email.png"];
+    textImg[NO] = [UIImage imageNamed:@"no-sms.png"];
+    textImg[YES] = [UIImage imageNamed:@"sms.png"];
 }
-
 
 #pragma mark - Setting views informations
 - (void)setMainViewInformationsWithContact:(BCContact *)contact {

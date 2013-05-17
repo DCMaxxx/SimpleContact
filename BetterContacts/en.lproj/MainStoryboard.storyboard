@@ -172,32 +172,46 @@
             </objects>
             <point key="canvasLocation" x="600" y="209"/>
         </scene>
-        <!--Modal List View Controller - ChooseView-->
+        <!--Contact Modal View Controller - ChooseView-->
         <scene sceneID="Gic-un-v3u">
             <objects>
-                <viewController storyboardIdentifier="ChooseViewController" autoresizesArchivedViewToFullSize="NO" title="ChooseView" id="SWS-Bg-s6R" customClass="BCModalListViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="IF3-zQ-aiv" customClass="BCModalListView">
+                <viewController storyboardIdentifier="BCContactModalViewController" autoresizesArchivedViewToFullSize="NO" title="ChooseView" id="SWS-Bg-s6R" customClass="BCContactModalViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IF3-zQ-aiv">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="165"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-JQ-ScW" userLabel="View - boxView">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-s2-KDF" userLabel="Image View - pictureContact">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="jef-o0-2eS"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhn-1t-a0R" userLabel="Image View - pictureType">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="5RS-oR-gek"/>
-                                    <constraint firstAttribute="width" constant="32" id="NB7-rV-htj"/>
+                                    <constraint firstAttribute="width" constant="32" id="hFs-Ya-0R0"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6LO-JQ-ScW" userLabel="View - boxView">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBK-s2-KDF" userLabel="Image View - pictureContact">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="je7-Qt-x1H"/>
+                                            <constraint firstAttribute="height" constant="32" id="jef-o0-2eS"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="fBK-s2-KDF" firstAttribute="centerY" secondItem="6LO-JQ-ScW" secondAttribute="centerY" type="default" id="4SH-eL-reQ"/>
+                                    <constraint firstItem="fBK-s2-KDF" firstAttribute="centerX" secondItem="6LO-JQ-ScW" secondAttribute="centerX" type="default" id="QiI-cS-r9s"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="33" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="uq7-Ey-2SC">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="132" id="M6E-xo-yBa"/>
+                                    <constraint firstAttribute="width" constant="220" id="jIl-B6-uCf"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TwoLabelsCell" id="aYL-WQ-ShH" customClass="BCImageLabelCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ModalCell" id="aYL-WQ-ShH" customClass="BCContactModalCell">
                                         <rect key="frame" x="0.0" y="22" width="220" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -209,7 +223,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="mobile.png" translatesAutoresizingMaskIntoConstraints="NO" id="2cs-qx-ZP7" userLabel="Image View - leftImage">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cs-qx-ZP7" userLabel="Image View - leftImage">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="cDk-6f-tfl"/>
                                                         <constraint firstAttribute="height" constant="22" id="nIg-Qn-Rrp"/>
@@ -225,34 +239,23 @@
                                             <constraint firstItem="2cs-qx-ZP7" firstAttribute="centerY" secondItem="aYL-WQ-ShH" secondAttribute="centerY" type="default" id="vtP-iy-2e3"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="leftImage" destination="2cs-qx-ZP7" id="i6Y-Nb-BMY"/>
-                                            <outlet property="rightLabel" destination="C4y-16-7Nf" id="1s4-ah-CDL"/>
+                                            <outlet property="icon" destination="2cs-qx-ZP7" id="k88-ai-cVR"/>
+                                            <outlet property="label" destination="C4y-16-7Nf" id="vtB-I1-DDG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="uhn-1t-a0R" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="0Yg-Xh-6Ik"/>
-                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="centerY" secondItem="fBK-s2-KDF" secondAttribute="centerY" type="default" id="1LV-uk-YUs"/>
-                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="centerX" secondItem="fBK-s2-KDF" secondAttribute="centerX" type="default" id="A6p-Eo-RBn"/>
-                            <constraint firstItem="fBK-s2-KDF" firstAttribute="centerY" secondItem="uq7-Ey-2SC" secondAttribute="centerY" type="default" id="G0s-Fh-TUo"/>
-                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="leading" secondItem="IF3-zQ-aiv" secondAttribute="leading" constant="18" id="SZf-5I-eom"/>
-                            <constraint firstAttribute="trailing" secondItem="uq7-Ey-2SC" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="TDb-cO-zYz"/>
-                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="leading" secondItem="fBK-s2-KDF" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="X8C-qu-gVw"/>
-                            <constraint firstItem="fBK-s2-KDF" firstAttribute="leading" secondItem="IF3-zQ-aiv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YvJ-Cv-yIR"/>
-                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="a5z-kX-ob1"/>
-                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="68" id="b5Y-Js-qhe"/>
-                            <constraint firstItem="fBK-s2-KDF" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="70" id="ef0-zd-2XT"/>
-                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="leading" secondItem="uhn-1t-a0R" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="wre-1i-Gcc"/>
-                            <constraint firstItem="uhn-1t-a0R" firstAttribute="leading" secondItem="IF3-zQ-aiv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="zFE-vH-eln"/>
+                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="centerY" secondItem="6LO-JQ-ScW" secondAttribute="centerY" type="default" id="KoT-Dj-ueP"/>
+                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="leading" secondItem="6LO-JQ-ScW" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MVf-IG-nP5"/>
+                            <constraint firstItem="uhn-1t-a0R" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="YEG-8A-Xdx"/>
+                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="68" id="hBv-tX-enp"/>
+                            <constraint firstItem="6LO-JQ-ScW" firstAttribute="leading" secondItem="IF3-zQ-aiv" secondAttribute="leading" constant="18" id="n0l-NY-EnA"/>
+                            <constraint firstItem="uq7-Ey-2SC" firstAttribute="top" secondItem="IF3-zQ-aiv" secondAttribute="top" constant="20" symbolic="YES" type="default" id="qrb-Ns-rna"/>
+                            <constraint firstItem="uhn-1t-a0R" firstAttribute="centerX" secondItem="6LO-JQ-ScW" secondAttribute="centerX" type="default" id="tWC-BY-Xd2"/>
+                            <constraint firstItem="uhn-1t-a0R" firstAttribute="leading" secondItem="IF3-zQ-aiv" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xAW-08-6eu"/>
                         </constraints>
-                        <connections>
-                            <outlet property="boxView" destination="6LO-JQ-ScW" id="SCb-21-8Ad"/>
-                            <outlet property="pictureContact" destination="fBK-s2-KDF" id="fGo-ap-kxm"/>
-                            <outlet property="pictureType" destination="uhn-1t-a0R" id="0aW-OG-DLg"/>
-                            <outlet property="tableView" destination="uq7-Ey-2SC" id="8SO-lT-ZgK"/>
-                        </connections>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -260,7 +263,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="view" destination="IF3-zQ-aiv" id="lOk-81-C25"/>
+                        <outlet property="contactPicture" destination="fBK-s2-KDF" id="5Pf-7B-cgZ"/>
+                        <outlet property="tableView" destination="uq7-Ey-2SC" id="vML-lE-4RT"/>
+                        <outlet property="typeImageView" destination="uhn-1t-a0R" id="wpk-17-eW7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-4t-bnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -287,7 +292,6 @@
     <resources>
         <image name="delete.png" width="60" height="60"/>
         <image name="email.png" width="60" height="60"/>
-        <image name="mobile.png" width="32" height="32"/>
         <image name="nofav.png" width="60" height="60"/>
         <image name="sms.png" width="60" height="60"/>
     </resources>
@@ -309,29 +313,23 @@
                 <relationship kind="outlet" name="textImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="BCContactsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactsTableViewController.h"/>
-        </class>
-        <class className="BCImageLabelCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCImageLabelCell.h"/>
+        <class className="BCContactModalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalCell.h"/>
             <relationships>
                 <relationship kind="outlet" name="leftImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="rightLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="BCModalListView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCModalListView.h"/>
+        <class className="BCContactModalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="pictureContact" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="pictureType" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="typeImageView" candidateClass="UIImageView"/>
             </relationships>
         </class>
-        <class className="BCModalListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCModalListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="view" candidateClass="BCModalListView"/>
-            </relationships>
+        <class className="BCContactsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactsTableViewController.h"/>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>

@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C088B5617391AAD003B7644 /* BCModalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5517391AAC003B7644 /* BCModalListViewController.m */; };
-		9C088B5B17392128003B7644 /* BCImageLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5A17392128003B7644 /* BCImageLabelCell.m */; };
+		9C088B5B17392128003B7644 /* BCContactModalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5A17392128003B7644 /* BCContactModalCell.m */; };
 		9C14627F16BC1DFF0008EB0F /* BCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* BCContact.m */; };
+		9C247A0317463AA30096AECE /* BCContactModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* BCContactModalViewController.m */; };
 		9C35918A1738056800764635 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3591891738056800764635 /* Accelerate.framework */; };
-		9C359196173823C700764635 /* BCModalTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C359195173823C700764635 /* BCModalTableViewDelegate.m */; };
-		9C35919917382B8900764635 /* BCModalListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C35919817382B8900764635 /* BCModalListView.m */; };
+		9C3E909817465E5E00275A68 /* BCPhoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */; };
 		9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* BCContactList.m */; };
 		9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */; };
 		9C7233D5173A660700C2F633 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D4173A660700C2F633 /* 57x57.png */; };
@@ -51,21 +50,19 @@
 		9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */; };
 		9CD30CBF173BAA8800A73606 /* no-mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBD173BAA8800A73606 /* no-mail.png */; };
 		9CD30CC0173BAA8800A73606 /* no-sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBE173BAA8800A73606 /* no-sms.png */; };
-		9CD30CC3173BB5D800A73606 /* BCModalTableViewMailDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD30CC2173BB5D800A73606 /* BCModalTableViewMailDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C088B5417391AAC003B7644 /* BCModalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalListViewController.h; sourceTree = "<group>"; };
-		9C088B5517391AAC003B7644 /* BCModalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalListViewController.m; sourceTree = "<group>"; };
-		9C088B5917392128003B7644 /* BCImageLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCImageLabelCell.h; sourceTree = "<group>"; };
-		9C088B5A17392128003B7644 /* BCImageLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCImageLabelCell.m; sourceTree = "<group>"; };
+		9C088B5917392128003B7644 /* BCContactModalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactModalCell.h; sourceTree = "<group>"; };
+		9C088B5A17392128003B7644 /* BCContactModalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactModalCell.m; sourceTree = "<group>"; };
 		9C14627D16BC1DFF0008EB0F /* BCContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContact.h; sourceTree = "<group>"; };
 		9C14627E16BC1DFF0008EB0F /* BCContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContact.m; sourceTree = "<group>"; };
+		9C247A0117463AA30096AECE /* BCContactModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactModalViewController.h; sourceTree = "<group>"; };
+		9C247A0217463AA30096AECE /* BCContactModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactModalViewController.m; sourceTree = "<group>"; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		9C359194173823C700764635 /* BCModalTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalTableViewDelegate.h; sourceTree = "<group>"; };
-		9C359195173823C700764635 /* BCModalTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalTableViewDelegate.m; sourceTree = "<group>"; };
-		9C35919717382B8900764635 /* BCModalListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalListView.h; sourceTree = "<group>"; };
-		9C35919817382B8900764635 /* BCModalListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalListView.m; sourceTree = "<group>"; };
+		9C3E909617465E5E00275A68 /* BCPhoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCPhoneTableViewController.h; sourceTree = "<group>"; };
+		9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCPhoneTableViewController.m; sourceTree = "<group>"; };
+		9C3E909A1746779600275A68 /* BCModalTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCModalTableViewController.h; sourceTree = "<group>"; };
 		9C5DB56216EE57DF00300925 /* BCContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactList.h; sourceTree = "<group>"; };
 		9C5DB56316EE57DF00300925 /* BCContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactList.m; sourceTree = "<group>"; };
 		9C6F605F174564EF002753D7 /* BCContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactsTableViewController.h; sourceTree = "<group>"; };
@@ -113,8 +110,6 @@
 		9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactCell.m; sourceTree = "<group>"; };
 		9CD30CBD173BAA8800A73606 /* no-mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-mail.png"; path = "images/no-mail.png"; sourceTree = "<group>"; };
 		9CD30CBE173BAA8800A73606 /* no-sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-sms.png"; path = "images/no-sms.png"; sourceTree = "<group>"; };
-		9CD30CC1173BB5D800A73606 /* BCModalTableViewMailDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCModalTableViewMailDelegate.h; sourceTree = "<group>"; };
-		9CD30CC2173BB5D800A73606 /* BCModalTableViewMailDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCModalTableViewMailDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,18 +133,23 @@
 		9C3591931738237B00764635 /* Contact modal view */ = {
 			isa = PBXGroup;
 			children = (
-				9C088B5417391AAC003B7644 /* BCModalListViewController.h */,
-				9C088B5517391AAC003B7644 /* BCModalListViewController.m */,
-				9C359194173823C700764635 /* BCModalTableViewDelegate.h */,
-				9C359195173823C700764635 /* BCModalTableViewDelegate.m */,
-				9CD30CC1173BB5D800A73606 /* BCModalTableViewMailDelegate.h */,
-				9CD30CC2173BB5D800A73606 /* BCModalTableViewMailDelegate.m */,
-				9C35919717382B8900764635 /* BCModalListView.h */,
-				9C35919817382B8900764635 /* BCModalListView.m */,
-				9C088B5917392128003B7644 /* BCImageLabelCell.h */,
-				9C088B5A17392128003B7644 /* BCImageLabelCell.m */,
+				9C3E90991746776100275A68 /* Table views */,
+				9C247A0117463AA30096AECE /* BCContactModalViewController.h */,
+				9C247A0217463AA30096AECE /* BCContactModalViewController.m */,
+				9C088B5917392128003B7644 /* BCContactModalCell.h */,
+				9C088B5A17392128003B7644 /* BCContactModalCell.m */,
 			);
 			name = "Contact modal view";
+			sourceTree = "<group>";
+		};
+		9C3E90991746776100275A68 /* Table views */ = {
+			isa = PBXGroup;
+			children = (
+				9C3E909A1746779600275A68 /* BCModalTableViewController.h */,
+				9C3E909617465E5E00275A68 /* BCPhoneTableViewController.h */,
+				9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */,
+			);
+			name = "Table views";
 			sourceTree = "<group>";
 		};
 		9C6F605E174562BA002753D7 /* Main view */ = {
@@ -381,14 +381,12 @@
 				9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */,
 				9C14627F16BC1DFF0008EB0F /* BCContact.m in Sources */,
 				9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */,
-				9C359196173823C700764635 /* BCModalTableViewDelegate.m in Sources */,
-				9C35919917382B8900764635 /* BCModalListView.m in Sources */,
-				9C088B5617391AAD003B7644 /* BCModalListViewController.m in Sources */,
-				9C088B5B17392128003B7644 /* BCImageLabelCell.m in Sources */,
+				9C088B5B17392128003B7644 /* BCContactModalCell.m in Sources */,
 				9C723408173AB6FF00C2F633 /* RMPhoneFormat.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,
-				9CD30CC3173BB5D800A73606 /* BCModalTableViewMailDelegate.m in Sources */,
 				9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */,
+				9C247A0317463AA30096AECE /* BCContactModalViewController.m in Sources */,
+				9C3E909817465E5E00275A68 /* BCPhoneTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
