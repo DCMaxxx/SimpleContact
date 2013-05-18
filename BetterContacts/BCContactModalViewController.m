@@ -8,6 +8,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "RNBlurModalView.h"
+
 #import "BCContactModalViewController.h"
 #import "BCContactModalCell.h"
 #import "BCContact.h"
@@ -61,6 +63,12 @@
     if (![dic objectForKey:label])
         return [dic objectForKey:@"other"];
     return [dic objectForKey:label];
+}
+
+-(void)hidePopup {
+    UIView * view = [[self view] superview];
+    if ([view isKindOfClass:[RNBlurModalView class]])
+        [(RNBlurModalView *)view hideWithDuration:0 delay:0 options:0 completion:nil];
 }
 
 @end

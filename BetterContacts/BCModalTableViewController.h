@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class BCContactModalViewController;
-
+@class BCContact;
 
 @protocol BCModalTableViewController <NSObject>
 
 @property (weak, nonatomic) BCContactModalViewController * modalViewController;
+@property (weak, nonatomic) BCContact * contact;
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "RMPhoneFormat.h"
+
 #import "BCPhoneTableViewController.h"
 
 #import "BCContactModalViewController.h"
@@ -38,6 +40,8 @@
     [[cell icon] setImage:icon];
     
     NSString * phoneNumber = [phoneDic objectForKey:@"value"];
+    RMPhoneFormat * rpt = [[RMPhoneFormat alloc] init];
+    phoneNumber = [rpt format:phoneNumber];
     [[cell label] setText:phoneNumber];
     
     return cell;
@@ -49,6 +53,8 @@
     BCContactModalCell * cell = (BCContactModalCell *)[tableView cellForRowAtIndexPath:indexPath];
     NSString * phoneNumber = [[[cell label] text] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString * callUrl = [@"tel://" stringByAppendingString:phoneNumber];
+    
+    [_modalViewController hidePopup];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callUrl]];
 }
 

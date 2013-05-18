@@ -199,6 +199,7 @@ typedef void (^RNBlurCompletion)(void);
         _contentView.layer.masksToBounds = YES;
         
         _dismissButton.center = CGPointMake(view.left, view.top);
+        _dismissButton.tag = 4242;
         [self addSubview:_dismissButton];
     }
     return self;

@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Contacts Table View Controller - Contacts-->
+        <!--Contacts Table View Controller-->
         <scene sceneID="loL-lh-2Zl">
             <objects>
                 <tableViewController id="VXc-Kh-F64" customClass="BCContactsTableViewController" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="Gkt-E8-uS6"/>
+                    <navigationItem key="navigationItem" id="Gkt-E8-uS6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGv-uI-zSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -208,14 +208,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="M6E-xo-yBa"/>
-                                    <constraint firstAttribute="width" constant="220" id="jIl-B6-uCf"/>
+                                    <constraint firstAttribute="width" constant="228" id="yym-Ko-K2k"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ModalCell" id="aYL-WQ-ShH" customClass="BCContactModalCell">
-                                        <rect key="frame" x="0.0" y="22" width="220" height="33"/>
+                                        <rect key="frame" x="0.0" y="22" width="228" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="220" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="228" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4y-16-7Nf">
@@ -233,10 +233,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="2cs-qx-ZP7" firstAttribute="top" secondItem="C4y-16-7Nf" secondAttribute="top" type="default" id="Ema-L0-Tqb"/>
+                                            <constraint firstItem="C4y-16-7Nf" firstAttribute="top" secondItem="aYL-WQ-ShH" secondAttribute="top" constant="5" id="A8E-VA-UNf"/>
+                                            <constraint firstItem="C4y-16-7Nf" firstAttribute="leading" secondItem="2cs-qx-ZP7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UzX-AJ-xPv"/>
                                             <constraint firstItem="2cs-qx-ZP7" firstAttribute="leading" secondItem="aYL-WQ-ShH" secondAttribute="leading" constant="6" id="fbu-p6-Tod"/>
-                                            <constraint firstItem="C4y-16-7Nf" firstAttribute="leading" secondItem="aYL-WQ-ShH" secondAttribute="leading" constant="49" id="oMm-pL-fPB"/>
-                                            <constraint firstItem="2cs-qx-ZP7" firstAttribute="centerY" secondItem="aYL-WQ-ShH" secondAttribute="centerY" type="default" id="vtP-iy-2e3"/>
+                                            <constraint firstItem="2cs-qx-ZP7" firstAttribute="top" secondItem="aYL-WQ-ShH" secondAttribute="top" constant="6" id="rRp-fh-VGR"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="icon" destination="2cs-qx-ZP7" id="k88-ai-cVR"/>
@@ -246,6 +246,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uq7-Ey-2SC" firstAttribute="centerY" secondItem="6LO-JQ-ScW" secondAttribute="centerY" type="default" id="KoT-Dj-ueP"/>
                             <constraint firstItem="uq7-Ey-2SC" firstAttribute="leading" secondItem="6LO-JQ-ScW" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MVf-IG-nP5"/>
@@ -270,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-4t-bnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="600" y="869"/>
+            <point key="canvasLocation" x="993" y="410"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gp-xR-VbS">
@@ -278,7 +279,6 @@
                 <navigationController definesPresentationContext="YES" id="nCH-Oa-G1E" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NNF-wd-9fe">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="VXc-Kh-F64" kind="relationship" relationship="rootViewController" id="UNa-CZ-ooW"/>
@@ -316,8 +316,8 @@
         <class className="BCContactModalCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="leftImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="rightLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="BCContactModalViewController" superclassName="UIViewController">

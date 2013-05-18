@@ -19,5 +19,6 @@
 @property (strong, nonatomic) UIImage * typeImage;
 
 -(UIImage *)getImageFromLabel:(NSString *)label;
+-(void)hidePopup;
 
 @end
