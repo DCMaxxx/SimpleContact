@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Contacts Table View Controller-->
+        <!--Contacts Table View Controller - Contacts-->
         <scene sceneID="loL-lh-2Zl">
             <objects>
                 <tableViewController id="VXc-Kh-F64" customClass="BCContactsTableViewController" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Gkt-E8-uS6"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="Gkt-E8-uS6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGv-uI-zSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,7 +271,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-4t-bnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="410"/>
+            <point key="canvasLocation" x="976" y="209"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gp-xR-VbS">

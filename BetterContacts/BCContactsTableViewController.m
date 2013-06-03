@@ -12,6 +12,7 @@
 
 #import "BCContactModalViewController.h"
 #import "BCPhoneTableViewController.h"
+#import "BCTextTableViewController.h"
 #import "BCMailTableViewController.h"
 #import "BCContactCell.h"
 #import "BCContactList.h"
@@ -171,7 +172,9 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 }
 
 -(void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"Hello, world !");
+    BCContact * contact = [self getContactFromContactCell:[self getCellFromGestureRecognizer:gestureRecognizer]];
+    BCTextTableViewController * controller = [[BCTextTableViewController alloc] init];
+    [self showModalViewWithImageType:modalTypeImages[kMTText] contact:contact andViewController:controller];
 }
 
 #pragma mark - Tapped on right view buttons

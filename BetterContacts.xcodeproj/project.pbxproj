@@ -50,6 +50,7 @@
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
 		9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */; };
+		9CC785EA175BAA0A00DA4399 /* BCTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC785E9175BAA0A00DA4399 /* BCTextTableViewController.m */; };
 		9CD30CBF173BAA8800A73606 /* no-mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBD173BAA8800A73606 /* no-mail.png */; };
 		9CD30CC0173BAA8800A73606 /* no-sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBE173BAA8800A73606 /* no-sms.png */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,8 @@
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CC67F5816BBD6B100F1A9BA /* BCContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactCell.m; sourceTree = "<group>"; };
+		9CC785E8175BAA0A00DA4399 /* BCTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTextTableViewController.h; sourceTree = "<group>"; };
+		9CC785E9175BAA0A00DA4399 /* BCTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTextTableViewController.m; sourceTree = "<group>"; };
 		9CD30CBD173BAA8800A73606 /* no-mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-mail.png"; path = "images/no-mail.png"; sourceTree = "<group>"; };
 		9CD30CBE173BAA8800A73606 /* no-sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-sms.png"; path = "images/no-sms.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +157,7 @@
 				9C3E909A1746779600275A68 /* BCModalTableViewController.h */,
 				9C78167F1747C7FD00F66500 /* Phone */,
 				9C7816801747C80800F66500 /* Mail */,
+				9CC785E7175BA9E600DA4399 /* Text */,
 			);
 			name = "Table views";
 			sourceTree = "<group>";
@@ -314,6 +318,15 @@
 			name = "Contact representation";
 			sourceTree = "<group>";
 		};
+		9CC785E7175BA9E600DA4399 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				9CC785E8175BAA0A00DA4399 /* BCTextTableViewController.h */,
+				9CC785E9175BAA0A00DA4399 /* BCTextTableViewController.m */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,6 +426,7 @@
 				9C247A0317463AA30096AECE /* BCContactModalViewController.m in Sources */,
 				9C3E909817465E5E00275A68 /* BCPhoneTableViewController.m in Sources */,
 				9C7816791747C39300F66500 /* BCMailTableViewController.m in Sources */,
+				9CC785EA175BAA0A00DA4399 /* BCTextTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
