@@ -11,9 +11,9 @@
 #import "BCContact.h"
 
 static UIImage * favoriteImg[2] = {nil,nil};
-static UIImage * phoneImg[2] = {nil, nil};
-static UIImage * mailImg[2] = {nil, nil};
-static UIImage * textImg[2] = {nil, nil};
+static UIImage * phoneImg = nil;
+static UIImage * mailImg = nil;
+static UIImage * textImg = nil;
 
 @implementation BCContactCell
 
@@ -24,19 +24,15 @@ static UIImage * textImg[2] = {nil, nil};
 @synthesize phoneImage = _phoneImage;
 @synthesize mailImage = _mailImage;
 @synthesize textImage = _textImage;
-@synthesize deleteImage = _deleteImage;
 @synthesize favoriteSelectorImage = _favoriteSelectorImage;
 
 #pragma mark - Init
 +(void)initialize {
     favoriteImg[NO] = [UIImage imageNamed:@"nofav.png"];
     favoriteImg[YES] = [UIImage imageNamed:@"fav.png"];
-    phoneImg[NO] = [UIImage imageNamed:@"no-phone.png"];
-    phoneImg[YES] = [UIImage imageNamed:@"telephone.png"];
-    mailImg[NO] = [UIImage imageNamed:@"no-mail.png"];
-    mailImg[YES] = [UIImage imageNamed:@"email.png"];
-    textImg[NO] = [UIImage imageNamed:@"no-sms.png"];
-    textImg[YES] = [UIImage imageNamed:@"sms.png"];
+    phoneImg = [UIImage imageNamed:@"telephone.png"];
+    mailImg = [UIImage imageNamed:@"email.png"];
+    textImg = [UIImage imageNamed:@"sms.png"];
 }
 
 #pragma mark - Setting views informations
@@ -47,14 +43,14 @@ static UIImage * textImg[2] = {nil, nil};
     [_contactSmallNameLabel setText:[contact lastName]];
     
     [_contactPicture setImage:[contact picture]];
-
+    
     [_favoriteImage setImage:favoriteImg[[contact favorite]]];
 }
 
 - (void)setLeftViewInformationsWithContact:(BCContact *)contact {
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers] imageToReplace:_phoneImage selectorToCall:@selector(tappedOnPhone:) andImages:phoneImg];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses] imageToReplace:_mailImage selectorToCall:@selector(tappedOnMail:) andImages:mailImg];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses] imageToReplace:_textImage selectorToCall:@selector(tappedOnText:) andImages:textImg];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers] imageToReplace:_phoneImage selectorToCall:@selector(tappedOnPhone:) image:phoneImg andTag:4242];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses] imageToReplace:_mailImage selectorToCall:@selector(tappedOnMail:) image:mailImg andTag:4243];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses] imageToReplace:_textImage selectorToCall:@selector(tappedOnText:) image:textImg andTag:4244];
 }
 
 - (void)setRightViewInformationsWithContact:(BCContact *)contact {
@@ -63,11 +59,12 @@ static UIImage * textImg[2] = {nil, nil};
         UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:@selector(tappedOnFavorite:)];
         [_favoriteSelectorImage addGestureRecognizer:gr];
     }
+}
 
-    if (![[_deleteImage gestureRecognizers] count]) {
-        UITapGestureRecognizer * tapOnDelete = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:@selector(tappedOnDelete:)];
-        [_deleteImage addGestureRecognizer:tapOnDelete];
-    }
+- (void)updateFavoriteInformationWithContact:(BCContact *)contact {
+    UIImage * img = favoriteImg[[contact favorite]];
+    [_favoriteImage setImage:img];
+    [_favoriteSelectorImage setImage:img];
 }
 
 
@@ -75,8 +72,25 @@ static UIImage * textImg[2] = {nil, nil};
 - (void)setLeftViewContactInformationsWithNumberOfContacts:(NSInteger)numberOfContacts
                                             imageToReplace:(UIImageView *)imageToReplace
                                             selectorToCall:(SEL)selector
-                                                 andImages:(UIImage * __strong [2])images {
-    [imageToReplace setImage:images[numberOfContacts > 0]];
+                                                     image:(UIImage *)image
+                                                    andTag:(NSInteger)tag {
+    [imageToReplace setImage:image];
+    
+    if (!numberOfContacts) {
+        UIImageView * noIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"no-icon.png"]];
+        CGRect theFrame = [imageToReplace frame];
+        theFrame.origin.x = -3;
+        theFrame.origin.y = -3;
+        theFrame.size.height += 6;
+        theFrame.size.width += 6;
+        [noIconView setFrame:theFrame];
+        [noIconView setTag:tag];
+        [imageToReplace addSubview:noIconView];
+    } else {
+        if ([imageToReplace viewWithTag:tag])
+            [[imageToReplace viewWithTag:tag] removeFromSuperview];
+    }
+    
     if (numberOfContacts && ![[imageToReplace gestureRecognizers] count]) { // contacts, but no gesture recognizer
         UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:selector];
         [imageToReplace addGestureRecognizer:gr];

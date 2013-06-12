@@ -91,7 +91,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 
 #pragma mark - Table view delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   [self unselectCell:[tableView cellForRowAtIndexPath:indexPath]];
+    [self unselectCell:[tableView cellForRowAtIndexPath:indexPath]];
 }
 
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -179,12 +179,13 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 
 #pragma mark - Tapped on right view buttons
 -(void)tappedOnFavorite:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"Hello, world !");
+    BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
+    NSInteger idx = [cell tag];
+
+    [_contacts changeFavForContactAtIndex:idx];
+    [cell updateFavoriteInformationWithContact:[_contacts contactAtIndex:idx]];
 }
 
--(void)tappedOnDelete:(UIGestureRecognizer *)gestureRecognizer {
-    NSLog(@"Hello, world !");
-}
 
 
 #pragma mark - Misc private functions

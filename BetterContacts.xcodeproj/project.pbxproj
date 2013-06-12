@@ -11,11 +11,10 @@
 		9C14627F16BC1DFF0008EB0F /* BCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* BCContact.m */; };
 		9C247A0317463AA30096AECE /* BCContactModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* BCContactModalViewController.m */; };
 		9C35918A1738056800764635 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3591891738056800764635 /* Accelerate.framework */; };
+		9C38969917661AE7000CA15D /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C38969817661AE7000CA15D /* Favorites.plist */; };
 		9C3E909817465E5E00275A68 /* BCPhoneTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */; };
 		9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* BCContactList.m */; };
 		9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* BCContactsTableViewController.m */; };
-		9C7233D5173A660700C2F633 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D4173A660700C2F633 /* 57x57.png */; };
-		9C7233D7173A660B00C2F633 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D6173A660B00C2F633 /* 114x114.png */; };
 		9C7233F1173AB6B100C2F633 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233E0173AB6B100C2F633 /* Default-568h@2x.png */; };
 		9C7233F2173AB6B100C2F633 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233E1173AB6B100C2F633 /* Default.png */; };
 		9C7233F3173AB6B100C2F633 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233E2173AB6B100C2F633 /* Default@2x.png */; };
@@ -35,10 +34,10 @@
 		9C723403173AB6F100C2F633 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9C723402173AB6F100C2F633 /* PhoneFormats.dat */; };
 		9C723408173AB6FF00C2F633 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723405173AB6FF00C2F633 /* RMPhoneFormat.m */; };
 		9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723407173AB6FF00C2F633 /* RNBlurModalView.m */; };
-		9C72340B173ABF7F00C2F633 /* no-phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C72340A173ABF7F00C2F633 /* no-phone.png */; };
 		9C7816791747C39300F66500 /* BCMailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7816781747C39300F66500 /* BCMailTableViewController.m */; };
 		9C78167B1747C62F00F66500 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C78167A1747C62F00F66500 /* MessageUI.framework */; };
 		9C7816821747D21100F66500 /* top_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7816811747D21100F66500 /* top_background.png */; };
+		9C97811C1768CD96006A74FF /* no-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C97811B1768CD96006A74FF /* no-icon.png */; };
 		9CA6B9D216BAD16D006EAF8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D116BAD16D006EAF8D /* UIKit.framework */; };
 		9CA6B9D416BAD16D006EAF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D316BAD16D006EAF8D /* Foundation.framework */; };
 		9CA6B9D616BAD16D006EAF8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D516BAD16D006EAF8D /* CoreGraphics.framework */; };
@@ -51,8 +50,8 @@
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
 		9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */; };
 		9CC785EA175BAA0A00DA4399 /* BCTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC785E9175BAA0A00DA4399 /* BCTextTableViewController.m */; };
-		9CD30CBF173BAA8800A73606 /* no-mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBD173BAA8800A73606 /* no-mail.png */; };
-		9CD30CC0173BAA8800A73606 /* no-sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD30CBE173BAA8800A73606 /* no-sms.png */; };
+		9CD6FB74176789940027C837 /* 57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D4173A660700C2F633 /* 57x57.png */; };
+		9CD6FB75176789970027C837 /* 114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233D6173A660B00C2F633 /* 114x114.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +61,9 @@
 		9C14627E16BC1DFF0008EB0F /* BCContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContact.m; sourceTree = "<group>"; };
 		9C247A0117463AA30096AECE /* BCContactModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCContactModalViewController.h; sourceTree = "<group>"; };
 		9C247A0217463AA30096AECE /* BCContactModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactModalViewController.m; sourceTree = "<group>"; };
+		9C2B9EA81767895D003D7E0D /* 120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120x120.png; sourceTree = SOURCE_ROOT; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9C38969817661AE7000CA15D /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = BetterContacts/ressources/Favorites.plist; sourceTree = "<group>"; };
 		9C3E909617465E5E00275A68 /* BCPhoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCPhoneTableViewController.h; sourceTree = "<group>"; };
 		9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCPhoneTableViewController.m; sourceTree = "<group>"; };
 		9C3E909A1746779600275A68 /* BCModalTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCModalTableViewController.h; sourceTree = "<group>"; };
@@ -93,11 +94,11 @@
 		9C723405173AB6FF00C2F633 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPhoneFormat.m; path = ressources/RMPhoneFormat.m; sourceTree = "<group>"; };
 		9C723406173AB6FF00C2F633 /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNBlurModalView.h; path = ressources/RNBlurModalView.h; sourceTree = "<group>"; };
 		9C723407173AB6FF00C2F633 /* RNBlurModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNBlurModalView.m; path = ressources/RNBlurModalView.m; sourceTree = "<group>"; };
-		9C72340A173ABF7F00C2F633 /* no-phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-phone.png"; path = "images/no-phone.png"; sourceTree = "<group>"; };
 		9C7816771747C39300F66500 /* BCMailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMailTableViewController.h; sourceTree = "<group>"; };
 		9C7816781747C39300F66500 /* BCMailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMailTableViewController.m; sourceTree = "<group>"; };
 		9C78167A1747C62F00F66500 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C7816811747D21100F66500 /* top_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_background.png; path = images/top_background.png; sourceTree = "<group>"; };
+		9C97811B1768CD96006A74FF /* no-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-icon.png"; path = "images/no-icon.png"; sourceTree = "<group>"; };
 		9CA6B9CE16BAD16D006EAF8D /* BetterContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA6B9D116BAD16D006EAF8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CA6B9D316BAD16D006EAF8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,8 +117,6 @@
 		9CC67F5916BBD6B100F1A9BA /* BCContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactCell.m; sourceTree = "<group>"; };
 		9CC785E8175BAA0A00DA4399 /* BCTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTextTableViewController.h; sourceTree = "<group>"; };
 		9CC785E9175BAA0A00DA4399 /* BCTextTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTextTableViewController.m; sourceTree = "<group>"; };
-		9CD30CBD173BAA8800A73606 /* no-mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-mail.png"; path = "images/no-mail.png"; sourceTree = "<group>"; };
-		9CD30CBE173BAA8800A73606 /* no-sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-sms.png"; path = "images/no-sms.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +193,7 @@
 		9CA6B9C516BAD16D006EAF8D = {
 			isa = PBXGroup;
 			children = (
+				9C38969817661AE7000CA15D /* Favorites.plist */,
 				9CA6B9D716BAD16D006EAF8D /* BetterContacts */,
 				9CA6B9D016BAD16D006EAF8D /* Frameworks */,
 				9CA6B9CF16BAD16D006EAF8D /* Products */,
@@ -272,12 +272,11 @@
 		9CA6B9FA16BAD9EC006EAF8D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9C97811B1768CD96006A74FF /* no-icon.png */,
 				9C7816811747D21100F66500 /* top_background.png */,
+				9C2B9EA81767895D003D7E0D /* 120x120.png */,
 				9C7233D6173A660B00C2F633 /* 114x114.png */,
 				9C7233D4173A660700C2F633 /* 57x57.png */,
-				9CD30CBD173BAA8800A73606 /* no-mail.png */,
-				9CD30CBE173BAA8800A73606 /* no-sms.png */,
-				9C72340A173ABF7F00C2F633 /* no-phone.png */,
 				9C7233E0173AB6B100C2F633 /* Default-568h@2x.png */,
 				9C7233E1173AB6B100C2F633 /* Default.png */,
 				9C7233E2173AB6B100C2F633 /* Default@2x.png */,
@@ -381,8 +380,6 @@
 			files = (
 				9CA6B9DC16BAD16D006EAF8D /* InfoPlist.strings in Resources */,
 				9CA6B9EB16BAD16D006EAF8D /* MainStoryboard.storyboard in Resources */,
-				9C7233D5173A660700C2F633 /* 57x57.png in Resources */,
-				9C7233D7173A660B00C2F633 /* 114x114.png in Resources */,
 				9C7233F1173AB6B100C2F633 /* Default-568h@2x.png in Resources */,
 				9C7233F2173AB6B100C2F633 /* Default.png in Resources */,
 				9C7233F3173AB6B100C2F633 /* Default@2x.png in Resources */,
@@ -390,6 +387,7 @@
 				9C7233F5173AB6B100C2F633 /* email-black.png in Resources */,
 				9C7233F6173AB6B100C2F633 /* email.png in Resources */,
 				9C7233F7173AB6B100C2F633 /* fav.png in Resources */,
+				9C97811C1768CD96006A74FF /* no-icon.png in Resources */,
 				9C7233F8173AB6B100C2F633 /* home.png in Resources */,
 				9C7233F9173AB6B100C2F633 /* mobile.png in Resources */,
 				9C7233FA173AB6B100C2F633 /* nofav.png in Resources */,
@@ -400,10 +398,10 @@
 				9C723400173AB6B100C2F633 /* user.png in Resources */,
 				9C723401173AB6B100C2F633 /* work.png in Resources */,
 				9C723403173AB6F100C2F633 /* PhoneFormats.dat in Resources */,
-				9C72340B173ABF7F00C2F633 /* no-phone.png in Resources */,
-				9CD30CBF173BAA8800A73606 /* no-mail.png in Resources */,
-				9CD30CC0173BAA8800A73606 /* no-sms.png in Resources */,
 				9C7816821747D21100F66500 /* top_background.png in Resources */,
+				9C38969917661AE7000CA15D /* Favorites.plist in Resources */,
+				9CD6FB74176789940027C837 /* 57x57.png in Resources */,
+				9CD6FB75176789970027C837 /* 114x114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

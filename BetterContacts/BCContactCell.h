@@ -29,12 +29,12 @@
 
 // Right view
 @property (weak, nonatomic) IBOutlet UIView *rightView;
-@property (weak, nonatomic) IBOutlet UIImageView *deleteImage;
 @property (weak, nonatomic) IBOutlet UIImageView *favoriteSelectorImage;
 
 
 - (void)setMainViewInformationsWithContact:(BCContact *)contact;
 - (void)setLeftViewInformationsWithContact:(BCContact *)contact;
 - (void)setRightViewInformationsWithContact:(BCContact *)contact;
+- (void)updateFavoriteInformationWithContact:(BCContact *)contact;
 
 @end

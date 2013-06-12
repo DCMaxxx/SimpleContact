@@ -18,6 +18,5 @@
 - (void)tappedOnText:(BCContactCell *)cell;
 
 - (void)tappedOnFavorite:(BCContactCell *)cell;
-- (void)tappedOnDelete:(BCContactCell *)cell;
 
 @end
