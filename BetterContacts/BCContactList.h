@@ -11,8 +11,12 @@
 
 @interface BCContactList : NSObject
 
-- (BCContact *)contactAtIndex:(NSUInteger)index;
-- (NSUInteger)numberOfContacts;
-- (void)changeFavForContactAtIndex:(NSUInteger)index;
+- (void) toogleFavoriteForContact:(BCContact *)contact;
+- (NSArray *) getFavoriteContacts;
+
+- (NSUInteger) numberOfInitials;
+- (NSString *) initialAtIndex:(NSUInteger)index;
+- (NSArray *) contactsForInitialAtIndex:(NSUInteger)index;
+- (NSUInteger) numberOfContactsForInitialAtIndex:(NSUInteger)index;
 
 @end

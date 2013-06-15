@@ -13,10 +13,4 @@
 
 @interface BCContactsTableViewController : UITableViewController
 
-- (void)tappedOnPhone:(BCContactCell *)cell;
-- (void)tappedOnMail:(BCContactCell *)cell;
-- (void)tappedOnText:(BCContactCell *)cell;
-
-- (void)tappedOnFavorite:(BCContactCell *)cell;
-
 @end

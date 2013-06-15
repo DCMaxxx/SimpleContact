@@ -26,7 +26,7 @@ static UIImage * textImg = nil;
 @synthesize textImage = _textImage;
 @synthesize favoriteSelectorImage = _favoriteSelectorImage;
 
-#pragma mark - Init
+#pragma - mark Init
 +(void)initialize {
     favoriteImg[NO] = [UIImage imageNamed:@"nofav.png"];
     favoriteImg[YES] = [UIImage imageNamed:@"fav.png"];
@@ -35,7 +35,7 @@ static UIImage * textImg = nil;
     textImg = [UIImage imageNamed:@"sms.png"];
 }
 
-#pragma mark - Setting views informations
+#pragma - mark Setting views informations
 - (void)setMainViewInformationsWithContact:(BCContact *)contact {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
@@ -68,7 +68,7 @@ static UIImage * textImg = nil;
 }
 
 
-#pragma mark - Misc private functions
+#pragma - mark Misc private functions
 - (void)setLeftViewContactInformationsWithNumberOfContacts:(NSInteger)numberOfContacts
                                             imageToReplace:(UIImageView *)imageToReplace
                                             selectorToCall:(SEL)selector

@@ -24,7 +24,7 @@
 @synthesize messageViewController = _messageViewController;
 
 
-#pragma mark - Table view data source
+#pragma - mark Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_contact numberOfMailAddresses];
 }
@@ -47,7 +47,7 @@
 }
 
 
-#pragma mark - Table view delegate
+#pragma - mark Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (![MFMessageComposeViewController canSendText]) {
         // Oh, on peut pas envoyer de texto :'-(

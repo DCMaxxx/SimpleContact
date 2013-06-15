@@ -31,7 +31,7 @@ static UIImage * noPictureContact = nil;
 @synthesize textAddresses = _textAddresses;
 @synthesize numberOfTextAddresses = _numberOfTextAddresses;
 
-#pragma mark - Init
+#pragma - mark Init
 +(void)initialize {
     noPictureContact = [UIImage imageNamed:@"user.png"];
 }
@@ -48,7 +48,7 @@ static UIImage * noPictureContact = nil;
 }
 
 
-#pragma mark - Getters overrides
+#pragma - mark Getters overrides
 -(NSString *)firstName {
     if (!_firstName)
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
@@ -82,7 +82,6 @@ static UIImage * noPictureContact = nil;
     return _numberOfPhoneNumbers;
 }
 
-
 -(NSArray *)phoneNumbers {
     if (!_phoneNumbers) {
         NSMutableArray * mutablePhoneNumbers = [[NSMutableArray alloc] init];
@@ -104,6 +103,12 @@ static UIImage * noPictureContact = nil;
     return _phoneNumbers;
 }
 
+-(NSInteger)numberOfMailAddresses {
+    if (_numberOfMailAddresses == -1)
+        [self mailAddresses];
+    return _numberOfMailAddresses;
+}
+
 -(NSArray *)mailAddresses {
     if (!_mailAddresses) {
         NSMutableArray * mutableMailAddresses = [[NSMutableArray alloc] init];
@@ -123,12 +128,6 @@ static UIImage * noPictureContact = nil;
         _mailAddresses = [mutableMailAddresses copy];
     }
     return _mailAddresses;
-}
-
--(NSInteger)numberOfMailAddresses {
-    if (_numberOfMailAddresses == -1)
-        [self mailAddresses];
-    return _numberOfMailAddresses;
 }
 
 -(NSArray *)textAddresses {

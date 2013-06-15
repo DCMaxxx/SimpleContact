@@ -10,6 +10,7 @@
 
 #import "BCContactsTableViewController.h"
 
+#import "BCFavoritesViewViewController.h"
 #import "BCContactModalViewController.h"
 #import "BCPhoneTableViewController.h"
 #import "BCTextTableViewController.h"
@@ -34,7 +35,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 @synthesize contacts = _contacts;
 @synthesize modalContactViewController = _modalContactViewController;
 
-#pragma mark - Init
+#pragma - mark Init
 +(void)initialize {
     modalTypeImages[kMTPhone] = [UIImage imageNamed:@"telephone-black.png"];
     modalTypeImages[kMTMail] = [UIImage imageNamed:@"email-black.png"];
@@ -49,25 +50,40 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     return self;
 }
 
-#pragma mark - View controller delegate
+
+#pragma - mark View controller delegate
 -(void)viewDidLoad {
     [super viewDidLoad];
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"top_background.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
 
-#pragma mark - Table view data source
+#pragma - mark Table view data source
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [_contacts numberOfInitials];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_contacts numberOfContacts];
+    return [_contacts numberOfContactsForInitialAtIndex:section];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [_contacts initialAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return @[@"A", @"●", @"C", @"●", @"E", @"●", @"G", @"●", @"I", @"●", @"K", @"●", @"M", @"●",
+             @"●", @"P", @"●", @"R", @"●", @"T", @"●", @"V", @"●", @"X", @"●", @"Z", @"#"];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"contactCell";
-
-    NSInteger indexOfContact = [indexPath indexAtPosition:1];
-    
-    BCContact * contact = [_contacts contactAtIndex:indexOfContact];
     BCContactCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    NSUInteger indexOfSection = [indexPath indexAtPosition:0];
+    NSInteger indexOfContact = [indexPath indexAtPosition:1];
+    NSArray * contactsOfSection = [_contacts contactsForInitialAtIndex:indexOfSection];
+    BCContact * contact = [contactsOfSection objectAtIndex:indexOfContact];
     
     if (![cell viewController])
         [cell setViewController:self];
@@ -82,14 +98,13 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         [cell addGestureRecognizer:swipeLeftOnContact];
     }
     
-    [cell setTag:indexOfContact];
     [cell setMainViewInformationsWithContact:contact];
     
     return cell;
 }
 
 
-#pragma mark - Table view delegate
+#pragma - mark Table view delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self unselectCell:[tableView cellForRowAtIndexPath:indexPath]];
 }
@@ -98,6 +113,12 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     [self unselectCell:nil];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [self tableView:[self tableView] numberOfRowsInSection:section] ? 22.0f : 0.0f;
+}
+
+
+#pragma - mark Gesture recognition
 -(void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
@@ -106,7 +127,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         [self unselectCell:_swipedCell];
         _swipedCell = cell;
         
-        BCContact * contact = [_contacts contactAtIndex:[cell tag]];
+        BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
         [cell setLeftViewInformationsWithContact:contact];
         
         CGRect newContactFrame = [[cell mainView] frame];
@@ -127,7 +148,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         [self unselectCell:_swipedCell];
         _swipedCell = cell;
         
-        BCContact * contact = [_contacts contactAtIndex:[cell tag]];
+        BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
         [cell setRightViewInformationsWithContact:contact];
         
         CGRect newContactFrame = [[cell mainView] frame];
@@ -140,61 +161,51 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     }
 }
 
--(void)unselectCell:(UITableViewCell *)cell {
-    if (_swipedCell) {
-        [_swipedCell setSelected:NO animated:NO];
-        
-        CGRect newContactFrame = [[_swipedCell mainView] frame];
-        newContactFrame.origin.x = -[[_swipedCell leftView] frame].size.width;
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.2f];
-        [[_swipedCell mainView] setFrame:newContactFrame];
-        [UIView commitAnimations];
-        _swipedCell = nil;
-    }
-    if (cell)
-        [cell setSelected:NO animated:NO];
-}
-
-
-#pragma mark - Tapped on left view buttons
 -(void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
-    BCContact * contact = [self getContactFromContactCell:[self getCellFromGestureRecognizer:gestureRecognizer]];
+    BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     BCPhoneTableViewController * controller = [[BCPhoneTableViewController alloc] init];
     [self showModalViewWithImageType:modalTypeImages[kMTPhone] contact:contact andViewController:controller];
 }
 
 -(void)tappedOnMail:(UIGestureRecognizer *)gestureRecognizer {
-    BCContact * contact = [self getContactFromContactCell:[self getCellFromGestureRecognizer:gestureRecognizer]];
+    BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     BCMailTableViewController * controller = [[BCMailTableViewController alloc] init];
     [self showModalViewWithImageType:modalTypeImages[kMTMail] contact:contact andViewController:controller];
 }
 
 -(void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
-    BCContact * contact = [self getContactFromContactCell:[self getCellFromGestureRecognizer:gestureRecognizer]];
+    BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     BCTextTableViewController * controller = [[BCTextTableViewController alloc] init];
     [self showModalViewWithImageType:modalTypeImages[kMTText] contact:contact andViewController:controller];
 }
 
-#pragma mark - Tapped on right view buttons
 -(void)tappedOnFavorite:(UIGestureRecognizer *)gestureRecognizer {
     BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-    NSInteger idx = [cell tag];
-
-    [_contacts changeFavForContactAtIndex:idx];
-    [cell updateFavoriteInformationWithContact:[_contacts contactAtIndex:idx]];
+    BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
+    [_contacts toogleFavoriteForContact:contact];
+    [self unselectCell:nil];
+    [cell updateFavoriteInformationWithContact:contact];
 }
 
 
-
-#pragma mark - Misc private functions
--(NSInteger)getIndexOfContactFromContactCell: (BCContactCell *)cell {
-    return [cell tag];
+#pragma - mark Passing arguments to other VC
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
+        BCFavoritesViewViewController * nv = [segue destinationViewController];
+        [nv setFavoriteContacts:[_contacts getFavoriteContacts]];
+    }
 }
 
--(BCContact *)getContactFromContactCell: (BCContactCell *)cell {
-    return [_contacts contactAtIndex:[self getIndexOfContactFromContactCell:cell]];
+
+#pragma - mark Misc private functions
+-(BCContact *)getContactFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
+    CGPoint location = [gestureRecognizer locationInView:[self tableView]];
+    NSIndexPath * indexPath = [[self tableView] indexPathForRowAtPoint:location];
+    NSUInteger indexOfSection = [indexPath indexAtPosition:0];
+    NSInteger indexOfContact = [indexPath indexAtPosition:1];
+    NSArray * contactsOfSection = [_contacts contactsForInitialAtIndex:indexOfSection];
+    BCContact * contact = [contactsOfSection objectAtIndex:indexOfContact];
+    return contact;
 }
 
 -(BCContactCell *)getCellFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
@@ -220,4 +231,22 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     RNBlurModalView * modal = [[RNBlurModalView alloc] initWithView:[_modalContactViewController view]];
     [modal show];
 }
+
+-(void)unselectCell:(UITableViewCell *)cell {
+    if (_swipedCell) {
+        [_swipedCell setSelected:NO animated:NO];
+        
+        CGRect newContactFrame = [[_swipedCell mainView] frame];
+        newContactFrame.origin.x = -[[_swipedCell leftView] frame].size.width;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.2f];
+        [[_swipedCell mainView] setFrame:newContactFrame];
+        [UIView commitAnimations];
+        _swipedCell = nil;
+    }
+    if (cell)
+        [cell setSelected:NO animated:NO];
+}
+
 @end

@@ -38,6 +38,8 @@
 		9C78167B1747C62F00F66500 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C78167A1747C62F00F66500 /* MessageUI.framework */; };
 		9C7816821747D21100F66500 /* top_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7816811747D21100F66500 /* top_background.png */; };
 		9C97811C1768CD96006A74FF /* no-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C97811B1768CD96006A74FF /* no-icon.png */; };
+		9C99C9CD1768F93700A3F594 /* BCFavoritesViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CC1768F93700A3F594 /* BCFavoritesViewViewController.m */; };
+		9C99C9D01768F98F00A3F594 /* BCFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CF1768F98F00A3F594 /* BCFavoriteCell.m */; };
 		9CA6B9D216BAD16D006EAF8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D116BAD16D006EAF8D /* UIKit.framework */; };
 		9CA6B9D416BAD16D006EAF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D316BAD16D006EAF8D /* Foundation.framework */; };
 		9CA6B9D616BAD16D006EAF8D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D516BAD16D006EAF8D /* CoreGraphics.framework */; };
@@ -99,6 +101,10 @@
 		9C78167A1747C62F00F66500 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C7816811747D21100F66500 /* top_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_background.png; path = images/top_background.png; sourceTree = "<group>"; };
 		9C97811B1768CD96006A74FF /* no-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-icon.png"; path = "images/no-icon.png"; sourceTree = "<group>"; };
+		9C99C9CB1768F93700A3F594 /* BCFavoritesViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFavoritesViewViewController.h; sourceTree = "<group>"; };
+		9C99C9CC1768F93700A3F594 /* BCFavoritesViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFavoritesViewViewController.m; sourceTree = "<group>"; };
+		9C99C9CE1768F98F00A3F594 /* BCFavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFavoriteCell.h; sourceTree = "<group>"; };
+		9C99C9CF1768F98F00A3F594 /* BCFavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFavoriteCell.m; sourceTree = "<group>"; };
 		9CA6B9CE16BAD16D006EAF8D /* BetterContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA6B9D116BAD16D006EAF8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CA6B9D316BAD16D006EAF8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,6 +196,17 @@
 			name = Mail;
 			sourceTree = "<group>";
 		};
+		9C99C9C71768F76B00A3F594 /* Favorites view */ = {
+			isa = PBXGroup;
+			children = (
+				9C99C9CB1768F93700A3F594 /* BCFavoritesViewViewController.h */,
+				9C99C9CC1768F93700A3F594 /* BCFavoritesViewViewController.m */,
+				9C99C9CE1768F98F00A3F594 /* BCFavoriteCell.h */,
+				9C99C9CF1768F98F00A3F594 /* BCFavoriteCell.m */,
+			);
+			name = "Favorites view";
+			sourceTree = "<group>";
+		};
 		9CA6B9C516BAD16D006EAF8D = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +245,7 @@
 			children = (
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
 				9CA6B9F816BAD9BD006EAF8D /* Classes */,
+				9C99C9C71768F76B00A3F594 /* Favorites view */,
 				9CA6B9D816BAD16D006EAF8D /* Supporting Files */,
 			);
 			path = BetterContacts;
@@ -425,6 +443,8 @@
 				9C3E909817465E5E00275A68 /* BCPhoneTableViewController.m in Sources */,
 				9C7816791747C39300F66500 /* BCMailTableViewController.m in Sources */,
 				9CC785EA175BAA0A00DA4399 /* BCTextTableViewController.m in Sources */,
+				9C99C9CD1768F93700A3F594 /* BCFavoritesViewViewController.m in Sources */,
+				9C99C9D01768F98F00A3F594 /* BCFavoriteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

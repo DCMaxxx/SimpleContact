@@ -31,7 +31,7 @@
 @synthesize typeImage = _typeImage;
 @synthesize typeImageView = _typeImageView;
 
-#pragma mark - UIViewController Delegate
+#pragma - mark UIViewController Delegate
 -(void)viewDidLoad {
     UIColor *color = [UIColor colorWithRed:0.816 green:0.788 blue:0.788 alpha:1.000];
     [[self view] setAlpha:1.0f];
@@ -49,7 +49,7 @@
     [_tableView setDataSource:_tableViewController];
 }
 
-#pragma mark - Misc function
+#pragma - mark Misc function
 -(UIImage *)getImageFromLabel:(NSString *)label {
     static NSMutableDictionary * dic = nil;
     if (!dic) {

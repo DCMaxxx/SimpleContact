@@ -26,7 +26,7 @@
 @synthesize modalViewController = _modalViewController;
 @synthesize mailViewController = _mailViewController;
 
-#pragma mark - Table view data source
+#pragma - mark Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_contact numberOfMailAddresses];
 }
@@ -49,7 +49,7 @@
 }
 
 
-#pragma mark - Table view delegate
+#pragma - mark Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (![MFMailComposeViewController canSendMail]) {
         // On peut pas envoyer de mail ! Zut alors !
