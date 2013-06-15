@@ -65,7 +65,7 @@
 		9C247A0217463AA30096AECE /* BCContactModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCContactModalViewController.m; sourceTree = "<group>"; };
 		9C2B9EA81767895D003D7E0D /* 120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120x120.png; sourceTree = SOURCE_ROOT; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		9C38969817661AE7000CA15D /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = BetterContacts/ressources/Favorites.plist; sourceTree = "<group>"; };
+		9C38969817661AE7000CA15D /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = ressources/Favorites.plist; sourceTree = "<group>"; };
 		9C3E909617465E5E00275A68 /* BCPhoneTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCPhoneTableViewController.h; sourceTree = "<group>"; };
 		9C3E909717465E5E00275A68 /* BCPhoneTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCPhoneTableViewController.m; sourceTree = "<group>"; };
 		9C3E909A1746779600275A68 /* BCModalTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCModalTableViewController.h; sourceTree = "<group>"; };
@@ -210,7 +210,6 @@
 		9CA6B9C516BAD16D006EAF8D = {
 			isa = PBXGroup;
 			children = (
-				9C38969817661AE7000CA15D /* Favorites.plist */,
 				9CA6B9D716BAD16D006EAF8D /* BetterContacts */,
 				9CA6B9D016BAD16D006EAF8D /* Frameworks */,
 				9CA6B9CF16BAD16D006EAF8D /* Products */,
@@ -254,6 +253,7 @@
 		9CA6B9D816BAD16D006EAF8D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C38969817661AE7000CA15D /* Favorites.plist */,
 				9C723402173AB6F100C2F633 /* PhoneFormats.dat */,
 				9CA6B9FB16BADA03006EAF8D /* Preferences */,
 				9CA6B9FA16BAD9EC006EAF8D /* Images */,
@@ -532,6 +532,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BetterContacts/BetterContacts-Prefix.pch";
 				INFOPLIST_FILE = "BetterContacts/BetterContacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -543,6 +544,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BetterContacts/BetterContacts-Prefix.pch";
 				INFOPLIST_FILE = "BetterContacts/BetterContacts-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

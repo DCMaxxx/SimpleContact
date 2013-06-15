@@ -105,7 +105,7 @@
     NSArray * array = [[NSArray alloc] init];
     for (NSDictionary * section in _sectionnedContacts) {
         NSArray * contactsOfSection = [section objectForKey:@"contacts"];
-        [array arrayByAddingObjectsFromArray:[contactsOfSection filteredArrayUsingPredicate:pred]];
+        array = [array arrayByAddingObjectsFromArray:[contactsOfSection filteredArrayUsingPredicate:pred]];
     }
     return array;
 }

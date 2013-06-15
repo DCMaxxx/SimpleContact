@@ -131,7 +131,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         [cell setLeftViewInformationsWithContact:contact];
         
         CGRect newContactFrame = [[cell mainView] frame];
-        newContactFrame.origin.x += [[cell leftView] frame].size.width;
+        newContactFrame.origin.x += [[cell leftView] frame].size.width - 1;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
@@ -237,7 +237,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         [_swipedCell setSelected:NO animated:NO];
         
         CGRect newContactFrame = [[_swipedCell mainView] frame];
-        newContactFrame.origin.x = -[[_swipedCell leftView] frame].size.width;
+        newContactFrame.origin.x = -[[_swipedCell leftView] frame].size.width + 1;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];

@@ -72,6 +72,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
+                                                        <constraint firstItem="YzI-ua-pKX" firstAttribute="leading" secondItem="OeB-xD-NdU" secondAttribute="leading" constant="15" id="2SX-Sl-JGM"/>
                                                         <constraint firstItem="YzI-ua-pKX" firstAttribute="centerX" secondItem="OeB-xD-NdU" secondAttribute="centerX" type="default" id="MCw-Or-m2i"/>
                                                         <constraint firstAttribute="bottom" secondItem="YzI-ua-pKX" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="gcy-gA-nrk"/>
                                                         <constraint firstItem="YzI-ua-pKX" firstAttribute="top" secondItem="OeB-xD-NdU" secondAttribute="top" constant="20" symbolic="YES" type="default" id="pqK-gq-YPJ"/>
@@ -118,7 +119,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="nofav.png" translatesAutoresizingMaskIntoConstraints="NO" id="6p2-UB-4NY" userLabel="Image View - Favorite">
-                                                    <rect key="frame" x="440" y="2" width="32" height="32"/>
+                                                    <rect key="frame" x="430" y="2" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="ihn-Im-wWh"/>
                                                         <constraint firstAttribute="height" constant="32" id="yIS-fT-C9c"/>
@@ -127,13 +128,12 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="leading" secondItem="6p2-UB-4NY" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="0Ze-B6-jb5"/>
                                                 <constraint firstItem="OeB-xD-NdU" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="480" id="14J-7k-L4H"/>
                                                 <constraint firstItem="OeB-xD-NdU" firstAttribute="bottom" secondItem="6ZU-Ih-iAm" secondAttribute="bottom" type="default" id="2pe-aS-YU0"/>
                                                 <constraint firstItem="1D5-MZ-UxE" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="4" id="7RA-KV-Pth"/>
-                                                <constraint firstItem="uzV-aC-Moa" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" type="default" id="80i-25-E5a"/>
                                                 <constraint firstItem="Whg-qd-GaJ" firstAttribute="trailing" secondItem="aPv-ql-2RW" secondAttribute="trailing" type="default" id="CWF-5N-KuQ"/>
                                                 <constraint firstItem="uzV-aC-Moa" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" type="default" id="D5x-ia-Yam"/>
+                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="bottom" secondItem="uzV-aC-Moa" secondAttribute="bottom" type="default" id="Ey5-eJ-cwF"/>
                                                 <constraint firstItem="1D5-MZ-UxE" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="178" id="FQE-ky-osf"/>
                                                 <constraint firstItem="aPv-ql-2RW" firstAttribute="leading" secondItem="Whg-qd-GaJ" secondAttribute="leading" type="default" id="Mtk-6P-b1m"/>
                                                 <constraint firstAttribute="trailing" secondItem="1D5-MZ-UxE" secondAttribute="trailing" constant="356" id="apz-Fq-8LV"/>
@@ -141,10 +141,11 @@
                                                 <constraint firstItem="OeB-xD-NdU" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" type="default" id="k6Q-3a-ecS"/>
                                                 <constraint firstItem="6p2-UB-4NY" firstAttribute="bottom" secondItem="Whg-qd-GaJ" secondAttribute="bottom" type="default" id="kfM-My-daZ"/>
                                                 <constraint firstItem="aPv-ql-2RW" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="29" id="mvT-p4-vv1"/>
-                                                <constraint firstItem="uzV-aC-Moa" firstAttribute="bottom" secondItem="6ZU-Ih-iAm" secondAttribute="bottom" type="default" id="nDJ-98-8gT"/>
                                                 <constraint firstAttribute="trailing" secondItem="OeB-xD-NdU" secondAttribute="trailing" constant="53" id="o95-H4-1TW"/>
+                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="top" secondItem="uzV-aC-Moa" secondAttribute="top" type="default" id="oop-YP-2dU"/>
                                                 <constraint firstItem="Whg-qd-GaJ" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="255" id="qfk-cQ-VDr"/>
                                                 <constraint firstAttribute="trailing" secondItem="uzV-aC-Moa" secondAttribute="trailing" constant="426" id="u64-ds-HLd"/>
+                                                <constraint firstAttribute="trailing" secondItem="6p2-UB-4NY" secondAttribute="trailing" constant="124" id="yZb-tk-zwh"/>
                                                 <constraint firstAttribute="bottom" secondItem="1D5-MZ-UxE" secondAttribute="bottom" constant="7" id="zgt-Ye-2Vr"/>
                                             </constraints>
                                         </view>
@@ -154,7 +155,6 @@
                                 <constraints>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="leading" secondItem="bFx-n7-RnL" secondAttribute="leading" constant="-160" id="D35-5s-Lbp"/>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="bottom" secondItem="bFx-n7-RnL" secondAttribute="bottom" type="default" id="YrZ-dS-nlc"/>
-                                    <constraint firstAttribute="trailing" secondItem="6ZU-Ih-iAm" secondAttribute="trailing" constant="-106" id="anK-R2-zB6"/>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="top" secondItem="bFx-n7-RnL" secondAttribute="top" type="default" id="ohS-Hr-Fem"/>
                                 </constraints>
                                 <connections>
@@ -181,7 +181,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Contacts">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
@@ -235,7 +235,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="Favorites">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
@@ -381,6 +381,69 @@
         <image name="nofav.png" width="60" height="60"/>
         <image name="sms.png" width="60" height="60"/>
     </resources>
+    <classes>
+        <class className="BCContactCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactSmallNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="favoriteImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="favoriteSelectorImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="mailImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="phoneImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="textImage" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="BCContactModalCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="BCContactModalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="typeImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="BCContactsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactsTableViewController.h"/>
+        </class>
+        <class className="BCFavoriteCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCFavoriteCell.h"/>
+        </class>
+        <class className="BCFavoritesViewViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCFavoritesViewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBackToContacts"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
