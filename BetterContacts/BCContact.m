@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "BCFavoritesHandler.h"
 #import "BCContact.h"
 
 static UIImage * noPictureContact = nil;
@@ -19,7 +20,6 @@ static UIImage * noPictureContact = nil;
 @implementation BCContact
 
 @synthesize addBookContact = _addBookContact;
-@synthesize favorite = _favorite;
 @synthesize UID = _UID;
 @synthesize firstName = _firstName;
 @synthesize lastName = _lastName;
@@ -42,7 +42,6 @@ static UIImage * noPictureContact = nil;
         _numberOfMailAddresses = -1;
         _numberOfTextAddresses = -1;
         _addBookContact = addBookContact;
-        _favorite = YES;
     }
     return self;
 }
@@ -94,10 +93,12 @@ static UIImage * noPictureContact = nil;
             NSString *phoneNumber = (__bridge NSString *)phoneNumberRef;
             CFRelease(phoneNumberRef);
             CFRelease(locLabel);
-            NSDictionary * tmp = [[NSDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
             [mutablePhoneNumbers addObject:tmp];
         }
         _numberOfPhoneNumbers = [mutablePhoneNumbers count];
+        NSLog(@"Je viens de récupérer les numéros de téléphone pour : %@",_firstName);
+        [BCFavoritesHandler areFavoriteForContact:self numbers:mutablePhoneNumbers ofKind:eCNKPhone];
         _phoneNumbers = [mutablePhoneNumbers copy];
     }
     return _phoneNumbers;
@@ -121,7 +122,7 @@ static UIImage * noPictureContact = nil;
             NSString *mailAddress = (__bridge NSString *)mailRef;
             CFRelease(mailRef);
             CFRelease(locLabel);
-            NSDictionary * tmp = [[NSDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
             [mutableMailAddresses addObject:tmp];
         }
         _numberOfMailAddresses = [mutableMailAddresses count];

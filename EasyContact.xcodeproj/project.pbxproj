@@ -31,12 +31,11 @@
 		9C7233FE173AB6B100C2F633 /* telephone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233ED173AB6B100C2F633 /* telephone.png */; };
 		9C723400173AB6B100C2F633 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233EF173AB6B100C2F633 /* user.png */; };
 		9C723401173AB6B100C2F633 /* work.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7233F0173AB6B100C2F633 /* work.png */; };
-		9C723403173AB6F100C2F633 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9C723402173AB6F100C2F633 /* PhoneFormats.dat */; };
-		9C723408173AB6FF00C2F633 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723405173AB6FF00C2F633 /* RMPhoneFormat.m */; };
 		9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723407173AB6FF00C2F633 /* RNBlurModalView.m */; };
 		9C7816791747C39300F66500 /* BCMailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7816781747C39300F66500 /* BCMailTableViewController.m */; };
 		9C78167B1747C62F00F66500 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C78167A1747C62F00F66500 /* MessageUI.framework */; };
 		9C7816821747D21100F66500 /* top_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7816811747D21100F66500 /* top_background.png */; };
+		9C957D7A176E3D5C00E3B8A4 /* BCFavoritesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C957D79176E3D5C00E3B8A4 /* BCFavoritesHandler.m */; };
 		9C97811C1768CD96006A74FF /* no-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C97811B1768CD96006A74FF /* no-icon.png */; };
 		9C99C9CD1768F93700A3F594 /* BCFavoritesViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CC1768F93700A3F594 /* BCFavoritesViewViewController.m */; };
 		9C99C9D01768F98F00A3F594 /* BCFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CF1768F98F00A3F594 /* BCFavoriteCell.m */; };
@@ -91,28 +90,26 @@
 		9C7233ED173AB6B100C2F633 /* telephone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = telephone.png; path = images/telephone.png; sourceTree = "<group>"; };
 		9C7233EF173AB6B100C2F633 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user.png; path = images/user.png; sourceTree = "<group>"; };
 		9C7233F0173AB6B100C2F633 /* work.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = work.png; path = images/work.png; sourceTree = "<group>"; };
-		9C723402173AB6F100C2F633 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = ressources/PhoneFormats.dat; sourceTree = "<group>"; };
-		9C723404173AB6FF00C2F633 /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPhoneFormat.h; path = ressources/RMPhoneFormat.h; sourceTree = "<group>"; };
-		9C723405173AB6FF00C2F633 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPhoneFormat.m; path = ressources/RMPhoneFormat.m; sourceTree = "<group>"; };
 		9C723406173AB6FF00C2F633 /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNBlurModalView.h; path = ressources/RNBlurModalView.h; sourceTree = "<group>"; };
 		9C723407173AB6FF00C2F633 /* RNBlurModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNBlurModalView.m; path = ressources/RNBlurModalView.m; sourceTree = "<group>"; };
 		9C7816771747C39300F66500 /* BCMailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCMailTableViewController.h; sourceTree = "<group>"; };
 		9C7816781747C39300F66500 /* BCMailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCMailTableViewController.m; sourceTree = "<group>"; };
 		9C78167A1747C62F00F66500 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C7816811747D21100F66500 /* top_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = top_background.png; path = images/top_background.png; sourceTree = "<group>"; };
+		9C957D78176E3D5C00E3B8A4 /* BCFavoritesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFavoritesHandler.h; sourceTree = "<group>"; };
+		9C957D79176E3D5C00E3B8A4 /* BCFavoritesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFavoritesHandler.m; sourceTree = "<group>"; };
 		9C97811B1768CD96006A74FF /* no-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "no-icon.png"; path = "images/no-icon.png"; sourceTree = "<group>"; };
 		9C99C9CB1768F93700A3F594 /* BCFavoritesViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFavoritesViewViewController.h; sourceTree = "<group>"; };
 		9C99C9CC1768F93700A3F594 /* BCFavoritesViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFavoritesViewViewController.m; sourceTree = "<group>"; };
 		9C99C9CE1768F98F00A3F594 /* BCFavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCFavoriteCell.h; sourceTree = "<group>"; };
 		9C99C9CF1768F98F00A3F594 /* BCFavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCFavoriteCell.m; sourceTree = "<group>"; };
-		9CA6B9CE16BAD16D006EAF8D /* BetterContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetterContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CA6B9CE16BAD16D006EAF8D /* EasyContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CA6B9D116BAD16D006EAF8D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CA6B9D316BAD16D006EAF8D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CA6B9D516BAD16D006EAF8D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9CA6B9D916BAD16D006EAF8D /* BetterContacts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BetterContacts-Info.plist"; sourceTree = "<group>"; };
+		9CA6B9D916BAD16D006EAF8D /* EasyContact-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EasyContact-Info.plist"; sourceTree = "<group>"; };
 		9CA6B9DB16BAD16D006EAF8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9CA6B9DD16BAD16D006EAF8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9CA6B9DF16BAD16D006EAF8D /* BetterContacts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BetterContacts-Prefix.pch"; sourceTree = "<group>"; };
 		9CA6B9E016BAD16D006EAF8D /* BCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
 		9CA6B9E116BAD16D006EAF8D /* BCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCAppDelegate.m; sourceTree = "<group>"; };
 		9CA6B9EA16BAD16D006EAF8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -219,7 +216,7 @@
 		9CA6B9CF16BAD16D006EAF8D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9CA6B9CE16BAD16D006EAF8D /* BetterContacts.app */,
+				9CA6B9CE16BAD16D006EAF8D /* EasyContact.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				9C38969817661AE7000CA15D /* Favorites.plist */,
-				9C723402173AB6F100C2F633 /* PhoneFormats.dat */,
 				9CA6B9FB16BADA03006EAF8D /* Preferences */,
 				9CA6B9FA16BAD9EC006EAF8D /* Images */,
 				9CA6B9E916BAD16D006EAF8D /* MainStoryboard.storyboard */,
@@ -277,11 +273,8 @@
 		9CA6B9F916BAD9C4006EAF8D /* Other sources */ = {
 			isa = PBXGroup;
 			children = (
-				9C723404173AB6FF00C2F633 /* RMPhoneFormat.h */,
-				9C723405173AB6FF00C2F633 /* RMPhoneFormat.m */,
 				9C723406173AB6FF00C2F633 /* RNBlurModalView.h */,
 				9C723407173AB6FF00C2F633 /* RNBlurModalView.m */,
-				9CA6B9DF16BAD16D006EAF8D /* BetterContacts-Prefix.pch */,
 				9CA6B9DD16BAD16D006EAF8D /* main.m */,
 			);
 			name = "Other sources";
@@ -318,7 +311,7 @@
 		9CA6B9FB16BADA03006EAF8D /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				9CA6B9D916BAD16D006EAF8D /* BetterContacts-Info.plist */,
+				9CA6B9D916BAD16D006EAF8D /* EasyContact-Info.plist */,
 				9CA6B9DA16BAD16D006EAF8D /* InfoPlist.strings */,
 			);
 			name = Preferences;
@@ -331,6 +324,8 @@
 				9C14627E16BC1DFF0008EB0F /* BCContact.m */,
 				9C5DB56216EE57DF00300925 /* BCContactList.h */,
 				9C5DB56316EE57DF00300925 /* BCContactList.m */,
+				9C957D78176E3D5C00E3B8A4 /* BCFavoritesHandler.h */,
+				9C957D79176E3D5C00E3B8A4 /* BCFavoritesHandler.m */,
 			);
 			name = "Contact representation";
 			sourceTree = "<group>";
@@ -347,9 +342,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9CA6B9CD16BAD16D006EAF8D /* BetterContacts */ = {
+		9CA6B9CD16BAD16D006EAF8D /* EasyContact */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9CA6B9F116BAD16D006EAF8D /* Build configuration list for PBXNativeTarget "BetterContacts" */;
+			buildConfigurationList = 9CA6B9F116BAD16D006EAF8D /* Build configuration list for PBXNativeTarget "EasyContact" */;
 			buildPhases = (
 				9CA6B9CA16BAD16D006EAF8D /* Sources */,
 				9CA6B9CB16BAD16D006EAF8D /* Frameworks */,
@@ -359,9 +354,9 @@
 			);
 			dependencies = (
 			);
-			name = BetterContacts;
+			name = EasyContact;
 			productName = BetterContacts;
-			productReference = 9CA6B9CE16BAD16D006EAF8D /* BetterContacts.app */;
+			productReference = 9CA6B9CE16BAD16D006EAF8D /* EasyContact.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -370,11 +365,11 @@
 		9CA6B9C616BAD16D006EAF8D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = BC;
+				CLASSPREFIX = EC;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Maxime de Chalendar";
 			};
-			buildConfigurationList = 9CA6B9C916BAD16D006EAF8D /* Build configuration list for PBXProject "BetterContacts" */;
+			buildConfigurationList = 9CA6B9C916BAD16D006EAF8D /* Build configuration list for PBXProject "EasyContact" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -386,7 +381,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9CA6B9CD16BAD16D006EAF8D /* BetterContacts */,
+				9CA6B9CD16BAD16D006EAF8D /* EasyContact */,
 			);
 		};
 /* End PBXProject section */
@@ -415,7 +410,6 @@
 				9C7233FE173AB6B100C2F633 /* telephone.png in Resources */,
 				9C723400173AB6B100C2F633 /* user.png in Resources */,
 				9C723401173AB6B100C2F633 /* work.png in Resources */,
-				9C723403173AB6F100C2F633 /* PhoneFormats.dat in Resources */,
 				9C7816821747D21100F66500 /* top_background.png in Resources */,
 				9C38969917661AE7000CA15D /* Favorites.plist in Resources */,
 				9CD6FB74176789940027C837 /* 57x57.png in Resources */,
@@ -435,8 +429,8 @@
 				9CC67F5A16BBD6B100F1A9BA /* BCContactCell.m in Sources */,
 				9C14627F16BC1DFF0008EB0F /* BCContact.m in Sources */,
 				9C5DB56416EE57DF00300925 /* BCContactList.m in Sources */,
+				9C957D7A176E3D5C00E3B8A4 /* BCFavoritesHandler.m in Sources */,
 				9C088B5B17392128003B7644 /* BCContactModalCell.m in Sources */,
-				9C723408173AB6FF00C2F633 /* RMPhoneFormat.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,
 				9C6F6061174564EF002753D7 /* BCContactsTableViewController.m in Sources */,
 				9C247A0317463AA30096AECE /* BCContactModalViewController.m in Sources */,
@@ -530,10 +524,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BetterContacts/BetterContacts-Prefix.pch";
-				INFOPLIST_FILE = "BetterContacts/BetterContacts-Info.plist";
+				GCC_PREFIX_HEADER = "BetterContacts/EasyContact-Prefix.pch";
+				INFOPLIST_FILE = "BetterContacts/EasyContact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyContact;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -542,10 +536,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BetterContacts/BetterContacts-Prefix.pch";
-				INFOPLIST_FILE = "BetterContacts/BetterContacts-Info.plist";
+				GCC_PREFIX_HEADER = "BetterContacts/EasyContact-Prefix.pch";
+				INFOPLIST_FILE = "BetterContacts/EasyContact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EasyContact;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -553,7 +547,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9CA6B9C916BAD16D006EAF8D /* Build configuration list for PBXProject "BetterContacts" */ = {
+		9CA6B9C916BAD16D006EAF8D /* Build configuration list for PBXProject "EasyContact" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CA6B9EF16BAD16D006EAF8D /* Debug */,
@@ -562,7 +556,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9CA6B9F116BAD16D006EAF8D /* Build configuration list for PBXNativeTarget "BetterContacts" */ = {
+		9CA6B9F116BAD16D006EAF8D /* Build configuration list for PBXNativeTarget "EasyContact" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9CA6B9F216BAD16D006EAF8D /* Debug */,

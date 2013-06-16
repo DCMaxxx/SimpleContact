@@ -8,6 +8,36 @@
 
 #import "BCContactModalCell.h"
 
+static UIImage * favoriteImage;
+
 @implementation BCContactModalCell
+
++ (void)initialize {
+    favoriteImage = [UIImage imageNamed:@"fav.png"];
+}
+
+@synthesize viewController = _viewController;
+
+- (id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapOnNumber:)];
+        [self addGestureRecognizer:gr];
+    }
+    return self;
+}
+
+- (void) longTapOnNumber :(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        [[self viewController] setFavoriteForCell:self];
+    }
+}
+
+- (void)isFavorite:(BOOL)favorite {
+    if (favorite)
+        [_favorite setImage:favoriteImage];
+    else
+        [_favorite setImage:nil];
+}
+
 
 @end

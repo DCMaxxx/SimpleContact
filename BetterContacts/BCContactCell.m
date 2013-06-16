@@ -19,12 +19,12 @@ static UIImage * textImg = nil;
 
 @synthesize viewController = _viewController;
 @synthesize contactPicture = _contactPicture;
+@synthesize boxView = _boxView;
 @synthesize contactNameLabel = _contactNameLabel;
 @synthesize contactSmallNameLabel = _contactSmallNameLabel;
 @synthesize phoneImage = _phoneImage;
 @synthesize mailImage = _mailImage;
 @synthesize textImage = _textImage;
-@synthesize favoriteSelectorImage = _favoriteSelectorImage;
 
 #pragma - mark Init
 +(void)initialize {
@@ -39,32 +39,20 @@ static UIImage * textImg = nil;
 - (void)setMainViewInformationsWithContact:(BCContact *)contact {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
+    CGColorRef borderColor = [[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor];
+    if (!CGColorEqualToColor([[_boxView layer] borderColor], borderColor))
+        [[_boxView layer] setBorderColor:borderColor];
+    
     [_contactNameLabel setText:[contact firstName]];
     [_contactSmallNameLabel setText:[contact lastName]];
     
     [_contactPicture setImage:[contact picture]];
-    
-    [_favoriteImage setImage:favoriteImg[[contact favorite]]];
 }
 
 - (void)setLeftViewInformationsWithContact:(BCContact *)contact {
     [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers] imageToReplace:_phoneImage selectorToCall:@selector(tappedOnPhone:) image:phoneImg andTag:4242];
     [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses] imageToReplace:_mailImage selectorToCall:@selector(tappedOnMail:) image:mailImg andTag:4243];
     [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses] imageToReplace:_textImage selectorToCall:@selector(tappedOnText:) image:textImg andTag:4244];
-}
-
-- (void)setRightViewInformationsWithContact:(BCContact *)contact {
-    [_favoriteSelectorImage setImage:favoriteImg[[contact favorite]]];
-    if (![[_favoriteSelectorImage gestureRecognizers] count]) {
-        UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:@selector(tappedOnFavorite:)];
-        [_favoriteSelectorImage addGestureRecognizer:gr];
-    }
-}
-
-- (void)updateFavoriteInformationWithContact:(BCContact *)contact {
-    UIImage * img = favoriteImg[[contact favorite]];
-    [_favoriteImage setImage:img];
-    [_favoriteSelectorImage setImage:img];
 }
 
 
@@ -86,16 +74,15 @@ static UIImage * textImg = nil;
         [noIconView setFrame:theFrame];
         [noIconView setTag:tag];
         [imageToReplace addSubview:noIconView];
+        if ([[imageToReplace gestureRecognizers] count])
+            [imageToReplace removeGestureRecognizer:[[imageToReplace gestureRecognizers] objectAtIndex:0]];
     } else {
         if ([imageToReplace viewWithTag:tag])
             [[imageToReplace viewWithTag:tag] removeFromSuperview];
-    }
-    
-    if (numberOfContacts && ![[imageToReplace gestureRecognizers] count]) { // contacts, but no gesture recognizer
-        UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:selector];
-        [imageToReplace addGestureRecognizer:gr];
-    } else if (!numberOfContacts && [[imageToReplace gestureRecognizers] count]) { // no contacts, and a gesture recognizer
-        [imageToReplace removeGestureRecognizer:[[imageToReplace gestureRecognizers] objectAtIndex:0]];
+        if (![[imageToReplace gestureRecognizers] count]) {
+            UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:selector];
+            [imageToReplace addGestureRecognizer:gr];
+        }
     }
 }
 

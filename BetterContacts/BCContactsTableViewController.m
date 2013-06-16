@@ -92,10 +92,6 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
         UISwipeGestureRecognizer * swipeRightOnContact = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRightOnContact:)];
         [swipeRightOnContact setDirection:(UISwipeGestureRecognizerDirectionRight)];
         [cell addGestureRecognizer:swipeRightOnContact];
-        
-        UISwipeGestureRecognizer * swipeLeftOnContact = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedLeftOnContact:)];
-        [swipeLeftOnContact setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-        [cell addGestureRecognizer:swipeLeftOnContact];
     }
     
     [cell setMainViewInformationsWithContact:contact];
@@ -140,27 +136,6 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     }
 }
 
--(void)swipedLeftOnContact:(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
-        BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-        if (cell == _swipedCell && [[cell mainView] frame].origin.x < 0)
-            return ;
-        [self unselectCell:_swipedCell];
-        _swipedCell = cell;
-        
-        BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
-        [cell setRightViewInformationsWithContact:contact];
-        
-        CGRect newContactFrame = [[cell mainView] frame];
-        newContactFrame.origin.x -= [[cell rightView] frame].size.width;
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.2f];
-        [[cell mainView] setFrame:newContactFrame];
-        [UIView commitAnimations];
-    }
-}
-
 -(void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
     BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     BCPhoneTableViewController * controller = [[BCPhoneTableViewController alloc] init];
@@ -177,14 +152,6 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
     BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     BCTextTableViewController * controller = [[BCTextTableViewController alloc] init];
     [self showModalViewWithImageType:modalTypeImages[kMTText] contact:contact andViewController:controller];
-}
-
--(void)tappedOnFavorite:(UIGestureRecognizer *)gestureRecognizer {
-    BCContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-    BCContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
-    [_contacts toogleFavoriteForContact:contact];
-    [self unselectCell:nil];
-    [cell updateFavoriteInformationWithContact:contact];
 }
 
 

@@ -26,7 +26,7 @@
 
 #pragma - mark Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_contact numberOfMailAddresses];
+    return [_contact numberOfTextAddresses];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,7 +34,7 @@
     BCContactModalCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSInteger index = [indexPath indexAtPosition:1];
     
-    NSDictionary * textDic = [[_contact mailAddresses] objectAtIndex:index];
+    NSDictionary * textDic = [[_contact textAddresses] objectAtIndex:index];
     
     NSString * label = [textDic objectForKey:@"label"];
     UIImage * image = [_modalViewController getImageFromLabel:label];

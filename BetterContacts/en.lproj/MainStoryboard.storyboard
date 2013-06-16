@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="nCH-Oa-G1E">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
@@ -23,10 +23,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ZU-Ih-iAm" userLabel="View - defaultView">
-                                            <rect key="frame" x="-160" y="0.0" width="586" height="63"/>
+                                            <rect key="frame" x="-160" y="0.0" width="588" height="63"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzV-aC-Moa" userLabel="View - SwipingView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="63"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="63"/>
                                                     <subviews>
                                                         <imageView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5GO-h0-7qQ" userLabel="Image View - Phone">
                                                             <rect key="frame" x="20" y="20" width="24" height="23"/>
@@ -35,47 +35,29 @@
                                                             </constraints>
                                                         </imageView>
                                                         <imageView contentMode="scaleToFill" image="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="p4v-kL-hMO" userLabel="Image View - Mail">
-                                                            <rect key="frame" x="68" y="20" width="24" height="23"/>
+                                                            <rect key="frame" x="69" y="20" width="24" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="hJg-H4-DcF"/>
                                                             </constraints>
                                                         </imageView>
                                                         <imageView contentMode="scaleToFill" image="sms.png" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-dp-hCA" userLabel="Image View - SMS">
-                                                            <rect key="frame" x="116" y="20" width="24" height="23"/>
+                                                            <rect key="frame" x="118" y="20" width="24" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="24" id="emm-sk-eVb"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="0.75" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="sEE-dp-hCA" firstAttribute="bottom" secondItem="p4v-kL-hMO" secondAttribute="bottom" type="default" id="2NE-a9-rb6"/>
                                                         <constraint firstItem="5GO-h0-7qQ" firstAttribute="leading" secondItem="uzV-aC-Moa" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="5ZK-re-gaJ"/>
-                                                        <constraint firstItem="sEE-dp-hCA" firstAttribute="centerY" secondItem="uzV-aC-Moa" secondAttribute="centerY" type="default" id="6iU-Az-D8V"/>
                                                         <constraint firstItem="5GO-h0-7qQ" firstAttribute="bottom" secondItem="p4v-kL-hMO" secondAttribute="bottom" type="default" id="Kgz-ZY-CGz"/>
+                                                        <constraint firstItem="5GO-h0-7qQ" firstAttribute="top" secondItem="uzV-aC-Moa" secondAttribute="top" constant="20" symbolic="YES" type="default" id="OLY-hl-kPj"/>
                                                         <constraint firstItem="p4v-kL-hMO" firstAttribute="centerX" secondItem="uzV-aC-Moa" secondAttribute="centerX" type="default" id="YAs-M6-42D"/>
                                                         <constraint firstAttribute="bottom" secondItem="5GO-h0-7qQ" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="bLo-3O-Z2y"/>
                                                         <constraint firstItem="sEE-dp-hCA" firstAttribute="top" secondItem="p4v-kL-hMO" secondAttribute="top" type="default" id="fih-Zm-X3J"/>
                                                         <constraint firstItem="p4v-kL-hMO" firstAttribute="top" secondItem="5GO-h0-7qQ" secondAttribute="top" type="default" id="lb7-vp-nd9"/>
                                                         <constraint firstAttribute="trailing" secondItem="sEE-dp-hCA" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mvh-qo-dqW"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OeB-xD-NdU" userLabel="View - rightSwipingView">
-                                                    <rect key="frame" x="480" y="0.0" width="53" height="63"/>
-                                                    <subviews>
-                                                        <imageView contentMode="scaleToFill" image="nofav.png" translatesAutoresizingMaskIntoConstraints="NO" id="YzI-ua-pKX" userLabel="Image View - Favorite">
-                                                            <rect key="frame" x="15" y="20" width="24" height="23"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="24" id="WMg-Al-IVk"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="YzI-ua-pKX" firstAttribute="leading" secondItem="OeB-xD-NdU" secondAttribute="leading" constant="15" id="2SX-Sl-JGM"/>
-                                                        <constraint firstItem="YzI-ua-pKX" firstAttribute="centerX" secondItem="OeB-xD-NdU" secondAttribute="centerX" type="default" id="MCw-Or-m2i"/>
-                                                        <constraint firstAttribute="bottom" secondItem="YzI-ua-pKX" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="gcy-gA-nrk"/>
-                                                        <constraint firstItem="YzI-ua-pKX" firstAttribute="top" secondItem="OeB-xD-NdU" secondAttribute="top" constant="20" symbolic="YES" type="default" id="pqK-gq-YPJ"/>
                                                     </constraints>
                                                 </view>
                                                 <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Whg-qd-GaJ" userLabel="Label - Name">
@@ -99,10 +81,10 @@
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1D5-MZ-UxE" userLabel="View - boxView">
-                                                    <rect key="frame" x="178" y="4" width="52" height="52"/>
+                                                    <rect key="frame" x="178" y="4" width="54" height="52"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="di8-aX-Xtt" userLabel="Image View - Picture">
-                                                            <rect key="frame" x="2" y="2" width="48" height="48"/>
+                                                            <rect key="frame" x="3" y="2" width="48" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="0AJ-nO-suB"/>
                                                                 <constraint firstAttribute="width" constant="48" id="1OO-1P-kn8"/>
@@ -118,34 +100,21 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="nofav.png" translatesAutoresizingMaskIntoConstraints="NO" id="6p2-UB-4NY" userLabel="Image View - Favorite">
-                                                    <rect key="frame" x="430" y="2" width="32" height="32"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="32" id="ihn-Im-wWh"/>
-                                                        <constraint firstAttribute="height" constant="32" id="yIS-fT-C9c"/>
-                                                    </constraints>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="480" id="14J-7k-L4H"/>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="bottom" secondItem="6ZU-Ih-iAm" secondAttribute="bottom" type="default" id="2pe-aS-YU0"/>
                                                 <constraint firstItem="1D5-MZ-UxE" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="4" id="7RA-KV-Pth"/>
                                                 <constraint firstItem="Whg-qd-GaJ" firstAttribute="trailing" secondItem="aPv-ql-2RW" secondAttribute="trailing" type="default" id="CWF-5N-KuQ"/>
                                                 <constraint firstItem="uzV-aC-Moa" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" type="default" id="D5x-ia-Yam"/>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="bottom" secondItem="uzV-aC-Moa" secondAttribute="bottom" type="default" id="Ey5-eJ-cwF"/>
                                                 <constraint firstItem="1D5-MZ-UxE" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="178" id="FQE-ky-osf"/>
                                                 <constraint firstItem="aPv-ql-2RW" firstAttribute="leading" secondItem="Whg-qd-GaJ" secondAttribute="leading" type="default" id="Mtk-6P-b1m"/>
                                                 <constraint firstAttribute="trailing" secondItem="1D5-MZ-UxE" secondAttribute="trailing" constant="356" id="apz-Fq-8LV"/>
-                                                <constraint firstItem="6p2-UB-4NY" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="2" id="h5X-JE-bgW"/>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" type="default" id="k6Q-3a-ecS"/>
-                                                <constraint firstItem="6p2-UB-4NY" firstAttribute="bottom" secondItem="Whg-qd-GaJ" secondAttribute="bottom" type="default" id="kfM-My-daZ"/>
+                                                <constraint firstItem="uzV-aC-Moa" firstAttribute="bottom" secondItem="6ZU-Ih-iAm" secondAttribute="bottom" type="default" id="eHU-Ac-ZhV"/>
                                                 <constraint firstItem="aPv-ql-2RW" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="29" id="mvT-p4-vv1"/>
-                                                <constraint firstAttribute="trailing" secondItem="OeB-xD-NdU" secondAttribute="trailing" constant="53" id="o95-H4-1TW"/>
-                                                <constraint firstItem="OeB-xD-NdU" firstAttribute="top" secondItem="uzV-aC-Moa" secondAttribute="top" type="default" id="oop-YP-2dU"/>
                                                 <constraint firstItem="Whg-qd-GaJ" firstAttribute="leading" secondItem="6ZU-Ih-iAm" secondAttribute="leading" constant="255" id="qfk-cQ-VDr"/>
                                                 <constraint firstAttribute="trailing" secondItem="uzV-aC-Moa" secondAttribute="trailing" constant="426" id="u64-ds-HLd"/>
-                                                <constraint firstAttribute="trailing" secondItem="6p2-UB-4NY" secondAttribute="trailing" constant="124" id="yZb-tk-zwh"/>
+                                                <constraint firstItem="Whg-qd-GaJ" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="6" id="w7G-Gh-gr0"/>
+                                                <constraint firstItem="uzV-aC-Moa" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" type="default" id="x5k-Wx-ML5"/>
                                                 <constraint firstAttribute="bottom" secondItem="1D5-MZ-UxE" secondAttribute="bottom" constant="7" id="zgt-Ye-2Vr"/>
                                             </constraints>
                                         </view>
@@ -153,21 +122,20 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="6ZU-Ih-iAm" secondAttribute="trailing" constant="-108" id="0ho-Ig-NG6"/>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="leading" secondItem="bFx-n7-RnL" secondAttribute="leading" constant="-160" id="D35-5s-Lbp"/>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="bottom" secondItem="bFx-n7-RnL" secondAttribute="bottom" type="default" id="YrZ-dS-nlc"/>
                                     <constraint firstItem="6ZU-Ih-iAm" firstAttribute="top" secondItem="bFx-n7-RnL" secondAttribute="top" type="default" id="ohS-Hr-Fem"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="boxView" destination="1D5-MZ-UxE" id="EQ5-Ge-tZJ"/>
                                     <outlet property="contactNameLabel" destination="Whg-qd-GaJ" id="pIG-bY-vwO"/>
                                     <outlet property="contactPicture" destination="di8-aX-Xtt" id="qvp-aT-68I"/>
                                     <outlet property="contactSmallNameLabel" destination="aPv-ql-2RW" id="Byh-iM-Jq7"/>
-                                    <outlet property="favoriteImage" destination="6p2-UB-4NY" id="f0t-2q-nBU"/>
-                                    <outlet property="favoriteSelectorImage" destination="YzI-ua-pKX" id="7ah-h8-lgL"/>
                                     <outlet property="leftView" destination="uzV-aC-Moa" id="OzK-Y9-eMQ"/>
                                     <outlet property="mailImage" destination="p4v-kL-hMO" id="oQw-E0-yE7"/>
                                     <outlet property="mainView" destination="6ZU-Ih-iAm" id="oGe-5Q-9qd"/>
                                     <outlet property="phoneImage" destination="5GO-h0-7qQ" id="gx0-Aa-J85"/>
-                                    <outlet property="rightView" destination="OeB-xD-NdU" id="vKm-TA-f4U"/>
                                     <outlet property="textImage" destination="sEE-dp-hCA" id="uBW-Cx-qbT"/>
                                 </connections>
                             </tableViewCell>
@@ -179,7 +147,7 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="R5m-5P-EgQ">
                             <rect key="frame" x="5" y="-53" width="310" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
                             <state key="normal" title="Contacts">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -233,8 +201,8 @@
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="2KL-gH-xeJ">
                             <rect key="frame" x="5" y="-53" width="310" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" title="Favorites">
+                            <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
+                            <state key="normal" title="Favoris">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -314,16 +282,28 @@
                                                         <constraint firstAttribute="height" constant="22" id="nIg-Qn-Rrp"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OCN-Pl-8dM">
+                                                    <rect key="frame" x="200" y="3" width="22" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="AMd-2o-Bw2"/>
+                                                        <constraint firstAttribute="width" constant="22" id="CaS-YA-xxC"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="C4y-16-7Nf" firstAttribute="top" secondItem="aYL-WQ-ShH" secondAttribute="top" constant="5" id="A8E-VA-UNf"/>
+                                            <constraint firstItem="C4y-16-7Nf" firstAttribute="centerY" secondItem="OCN-Pl-8dM" secondAttribute="centerY" type="default" id="OR6-xl-tJ0"/>
+                                            <constraint firstAttribute="trailing" secondItem="OCN-Pl-8dM" secondAttribute="trailing" constant="6" id="Sfa-BX-b9J"/>
                                             <constraint firstItem="C4y-16-7Nf" firstAttribute="leading" secondItem="2cs-qx-ZP7" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="UzX-AJ-xPv"/>
+                                            <constraint firstItem="OCN-Pl-8dM" firstAttribute="bottom" secondItem="2cs-qx-ZP7" secondAttribute="bottom" type="default" id="ZEF-tP-DC1"/>
                                             <constraint firstItem="2cs-qx-ZP7" firstAttribute="leading" secondItem="aYL-WQ-ShH" secondAttribute="leading" constant="6" id="fbu-p6-Tod"/>
-                                            <constraint firstItem="2cs-qx-ZP7" firstAttribute="top" secondItem="aYL-WQ-ShH" secondAttribute="top" constant="6" id="rRp-fh-VGR"/>
+                                            <constraint firstItem="OCN-Pl-8dM" firstAttribute="top" secondItem="aYL-WQ-ShH" secondAttribute="top" constant="3" id="ykN-AV-gxO"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="favorite" destination="OCN-Pl-8dM" id="yXU-FR-Buf"/>
                                             <outlet property="icon" destination="2cs-qx-ZP7" id="k88-ai-cVR"/>
                                             <outlet property="label" destination="C4y-16-7Nf" id="vtB-I1-DDG"/>
                                         </connections>
@@ -378,72 +358,8 @@
     </scenes>
     <resources>
         <image name="email.png" width="60" height="60"/>
-        <image name="nofav.png" width="60" height="60"/>
         <image name="sms.png" width="60" height="60"/>
     </resources>
-    <classes>
-        <class className="BCContactCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="contactSmallNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="favoriteImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="favoriteSelectorImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="leftView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="mailImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="phoneImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="rightView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="textImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BCContactModalCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BCContactModalViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactModalViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="typeImageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="BCContactsTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCContactsTableViewController.h"/>
-        </class>
-        <class className="BCFavoriteCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCFavoriteCell.h"/>
-        </class>
-        <class className="BCFavoritesViewViewController" superclassName="UICollectionViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BCFavoritesViewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goBackToContacts"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

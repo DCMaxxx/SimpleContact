@@ -11,7 +11,6 @@
 
 @interface BCContactList : NSObject
 
-- (void) toogleFavoriteForContact:(BCContact *)contact;
 - (NSArray *) getFavoriteContacts;
 
 - (NSUInteger) numberOfInitials;

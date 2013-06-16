@@ -11,8 +11,6 @@
 
 @interface BCContact : NSObject
 
-@property (nonatomic) BOOL favorite;
-
 @property (nonatomic, readonly) NSInteger UID;
 
 @property (strong, nonatomic, readonly) NSString * firstName;

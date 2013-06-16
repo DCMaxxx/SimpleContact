@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "BCFavoriteCell.h"
 
 @implementation BCFavoriteCell
@@ -18,6 +19,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         UIView * border = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
         [[border layer] setBorderWidth:1.0f];
+        [[border layer] setBorderColor:[[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor]];
         [[self contentView] addSubview:border];
         
         _contactPicture = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 60, 60)];

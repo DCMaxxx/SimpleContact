@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BCModalTableViewController.h"
+
 
 @interface BCContactModalCell : UITableViewCell
 
+@property (weak, nonatomic) UITableViewController <BCModalTableViewController> * viewController;
+
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UIImageView *favorite;
+
+- (void)isFavorite:(BOOL)favorite;
 
 @end

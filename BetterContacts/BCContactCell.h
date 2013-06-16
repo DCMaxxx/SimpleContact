@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactSmallNameLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
+@property (weak, nonatomic) IBOutlet UIView *boxView;
 
 // Left view
 @property (weak, nonatomic) IBOutlet UIView *leftView;
@@ -27,14 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mailImage;
 @property (weak, nonatomic) IBOutlet UIImageView *textImage;
 
-// Right view
-@property (weak, nonatomic) IBOutlet UIView *rightView;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteSelectorImage;
-
 
 - (void)setMainViewInformationsWithContact:(BCContact *)contact;
 - (void)setLeftViewInformationsWithContact:(BCContact *)contact;
-- (void)setRightViewInformationsWithContact:(BCContact *)contact;
-- (void)updateFavoriteInformationWithContact:(BCContact *)contact;
 
 @end

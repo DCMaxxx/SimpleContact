@@ -38,15 +38,6 @@
             [section setObject:[[NSMutableArray alloc] init] forKey:@"contacts"];
             [_sectionnedContacts addObject:section];
         }
-        
-        // Loading favorites from plist
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString * filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-            _favorites = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-        else
-            _favorites = [[NSMutableDictionary alloc] init];
 
         // Loading all contacts from address book
         _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -59,12 +50,6 @@
         for (NSUInteger i = 0; i < [allPersons count]; ++i) {
             ABRecordRef currentPerson = (__bridge ABRecordRef)[allPersons objectAtIndex:i];
             BCContact * contact = [[BCContact alloc] initWithAddressBookContact:currentPerson];
-            id isFavObj = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-            if (!isFavObj) {
-                [_favorites setObject:[NSNumber numberWithBool:NO] forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-                [contact setFavorite:NO];
-            } else
-                [contact setFavorite:[isFavObj boolValue]];
             
             NSString * sectionTitle = [[contact firstName] substringToIndex:1];
             NSRange idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
@@ -74,7 +59,6 @@
             NSMutableArray * contacts = [dic objectForKey:@"contacts"];
             [contacts addObject:contact];
         }
-        [_favorites writeToFile:filePath atomically:YES];
     }
     return self;
 }
@@ -99,29 +83,9 @@
 }
 
 - (NSArray *) getFavoriteContacts {
-    NSPredicate * pred = [NSPredicate predicateWithBlock:^BOOL(id obj, NSDictionary * bindings) {
-        return [(BCContact *)obj favorite];
-    }];
     NSArray * array = [[NSArray alloc] init];
-    for (NSDictionary * section in _sectionnedContacts) {
-        NSArray * contactsOfSection = [section objectForKey:@"contacts"];
-        array = [array arrayByAddingObjectsFromArray:[contactsOfSection filteredArrayUsingPredicate:pred]];
-    }
     return array;
 }
 
-
-#pragma - mark Setting informations
-- (void) toogleFavoriteForContact:(BCContact *)contact {
-    BOOL newStatus = ![contact favorite];
-    [contact setFavorite:newStatus];
-
-    [_favorites setObject:[NSNumber numberWithBool:newStatus] forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString * filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
-    [_favorites writeToFile:filePath atomically:YES];
-}
 
 @end

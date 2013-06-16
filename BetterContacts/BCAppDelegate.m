@@ -20,8 +20,8 @@
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) { });
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
     else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Address Book"
-                                                        message:@"You refused access to your address book. If you don't fix this in Settings/Confidentiality, the app will be a bit less useful."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Carnet d'addresse"
+                                                        message:@"Vous avez refusé l'accès à votre carnet d'addresse. Merci de corriger le problème dans l'application Réglages, puis confidentialité."
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
