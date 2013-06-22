@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 
+@class ECFavoriteNumber;
+
 @interface ECFavoriteCell : UICollectionViewCell
 
-@property (strong, nonatomic) UIImageView * contactPicture;
-@property (strong, nonatomic) UILabel * contactName;
+- (void)setInformationsWithNumber:(ECFavoriteNumber *)number;
 
 @end

@@ -7,12 +7,13 @@
 //
 
 #import "RNBlurModalView.h"
+#import "RMPhoneFormat.h"
 
 #import "ECFavoritesViewViewController.h"
 
+#import "ECFavoriteNumber.h"
 #import "ECFavoriteCell.h"
 #import "ECContact.h"
-
 
 @interface ECFavoritesViewViewController ()
 
@@ -48,12 +49,11 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger idx = [indexPath indexAtPosition:1];
-    ECContact * contact = [_contacts objectAtIndex:idx];
+    ECFavoriteNumber * contact = [_contacts objectAtIndex:idx];
     ECFavoriteCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavoriteCell" forIndexPath:indexPath];
     
-    [[cell contactPicture] setImage:[contact picture]];
+    [cell setInformationsWithNumber:contact];
     
-    [[cell contactName] setText:[contact firstName]];
     return cell;
 }
 

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "RMPhoneFormat.h"
+
 #import "ECPhoneTableViewController.h"
 
 #import "ECContactModalViewController.h"
@@ -40,7 +42,9 @@
     [[cell icon] setImage:icon];
     
     NSString * phoneNumber = [phoneDic objectForKey:@"value"];
-    [[cell label] setText:phoneNumber];
+    RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
+    [[cell label] setText:[fmt format:phoneNumber]];
+    [cell setOriginalNumber:phoneNumber];
     
     BOOL isFavorite = [(NSNumber *)[phoneDic objectForKey:@"favorite"] boolValue];
     [cell isFavorite:isFavorite];

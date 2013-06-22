@@ -15,6 +15,7 @@
 #import "ECPhoneTableViewController.h"
 #import "ECTextTableViewController.h"
 #import "ECMailTableViewController.h"
+#import "ECFavoritesHandler.h"
 #import "ECContactCell.h"
 #import "ECContactList.h"
 
@@ -22,7 +23,7 @@
 enum eModalType { kMTPhone, kMTMail, kMTText };
 
 
-static UIImage * modalTypeImages[3] = { nil, nil, nil };
+static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", @"text-black.png" };
 
 
 @interface ECContactsTableViewController ()
@@ -37,13 +38,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 @implementation ECContactsTableViewController
 
 #pragma - mark Init
-+(void)initialize {
-    modalTypeImages[kMTPhone] = [UIImage imageNamed:@"phone-black.png"];
-    modalTypeImages[kMTMail] = [UIImage imageNamed:@"mail-black.png"];
-    modalTypeImages[kMTText] = [UIImage imageNamed:@"text-black.png"];
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _contacts = [[ECContactList alloc] init];
         _swipedCell = nil;
@@ -53,7 +48,7 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 
 
 #pragma - mark View controller delegate
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"] forBarMetrics:UIBarMetricsDefault];
 }
@@ -140,19 +135,19 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 -(void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     ECPhoneTableViewController * controller = [[ECPhoneTableViewController alloc] init];
-    [self showModalViewWithImageType:modalTypeImages[kMTPhone] contact:contact andViewController:controller];
+    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTPhone]] contact:contact andViewController:controller];
 }
 
 -(void)tappedOnMail:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     ECMailTableViewController * controller = [[ECMailTableViewController alloc] init];
-    [self showModalViewWithImageType:modalTypeImages[kMTMail] contact:contact andViewController:controller];
+    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTMail]] contact:contact andViewController:controller];
 }
 
 -(void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     ECTextTableViewController * controller = [[ECTextTableViewController alloc] init];
-    [self showModalViewWithImageType:modalTypeImages[kMTText] contact:contact andViewController:controller];
+    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTText]] contact:contact andViewController:controller];
 }
 
 
@@ -160,7 +155,8 @@ static UIImage * modalTypeImages[3] = { nil, nil, nil };
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
         ECFavoritesViewViewController * nv = [segue destinationViewController];
-        [nv setFavoriteContacts:[_contacts getFavoriteContacts]];
+        NSArray * favorites = [ECFavoritesHandler getAllFavoritesWithContactList:_contacts];
+        [nv setFavoriteContacts:favorites];
     }
 }
 

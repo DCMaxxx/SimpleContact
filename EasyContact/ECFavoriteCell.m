@@ -7,9 +7,23 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "RMPhoneFormat.h"
 
 #import "ECFavoriteCell.h"
 
+#import "ECFavoritesHandler.h"
+#import "ECFavoriteNumber.h"
+#import "ECContact.h"
+
+
+@interface ECFavoriteCell ()
+
+@property (strong, nonatomic) UIImageView * contactPicture;
+@property (strong, nonatomic) UILabel * contactName;
+@property (strong, nonatomic) UILabel * contactNumber;
+@property (strong, nonatomic) UIImageView * kind;
+
+@end
 
 @implementation ECFavoriteCell
 
@@ -23,13 +37,50 @@
         
         _contactPicture = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 60, 60)];
         [[self contentView] addSubview:_contactPicture];
+        
+        CGRect tmpFrame = [_contactPicture frame];
+        tmpFrame.origin.x = 0;
+        tmpFrame.origin.y = tmpFrame.size.height - 10;
+        tmpFrame.size.height = 10;
+        UIView * bottomView = [[UIView alloc] initWithFrame:tmpFrame];
+        [bottomView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.8f]];
+        [_contactPicture addSubview:bottomView];
+        
+        tmpFrame.origin.y = 1;
+        tmpFrame.size.width -= 10;
+        _contactNumber = [[UILabel alloc] initWithFrame:tmpFrame];
+        [_contactNumber setFont:[UIFont fontWithName:@"Avenir-Light" size:10.0f]];
+        [bottomView addSubview:_contactNumber];
+
+        tmpFrame.origin.y = 0;
+        tmpFrame.origin.x = [_contactNumber frame].size.width;
+        tmpFrame.size.height = tmpFrame.size.width = 10;
+        _kind = [[UIImageView alloc] initWithFrame:tmpFrame];
+        [bottomView addSubview:_kind];
 
         _contactName = [[UILabel alloc] initWithFrame:CGRectMake(0, 64, 64, 20)];
         [_contactName setTextAlignment:NSTextAlignmentCenter];
-        [_contactName setFont:[[_contactName font] fontWithSize:12.0f]];
+        [_contactName setFont:[UIFont fontWithName:@"Avenir-Light" size:12.0f]];
         [[self contentView] addSubview:_contactName];
     }
     return self;
+}
+
+- (void)setInformationsWithNumber:(ECFavoriteNumber *)number {
+    static NSArray * kinds = nil;
+    if (!kinds)
+        kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png"];
+    
+    ECContact * contact = [number contact];
+    [_contactName setText:[contact firstName]];
+    [_contactPicture setImage:[contact picture]];
+
+    eContactNumberKind kind = [number kind];
+    [_kind setImage:[UIImage imageNamed:[kinds objectAtIndex:kind]]];
+
+    RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
+    NSString * newNember = [fmt format:[number contactNumber]];
+    [_contactNumber setText:newNember];
 }
 
 @end

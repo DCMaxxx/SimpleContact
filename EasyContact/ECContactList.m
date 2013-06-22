@@ -26,7 +26,7 @@
     if (self = [super init]) {
         
         // Initializing sections
-        static NSString * sections = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
+        NSString * sections = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
         _sectionnedContacts = [[NSMutableArray alloc] initWithCapacity:[sections length]];
         for (NSInteger i = 0; i < [sections length]; ++i) {
             NSString * character = [sections substringWithRange:NSMakeRange(i, 1)];
@@ -79,10 +79,14 @@
     return [contacts count];
 }
 
-- (NSArray *) getFavoriteContacts {
-    NSArray * array = [[NSArray alloc] init];
-    // Will be removed soon
-    return array;
+- (ECContact *) getContactFromUID:(NSUInteger)UID {
+    for (NSDictionary * section in _sectionnedContacts) {
+        for (ECContact * contact in [section objectForKey:@"contacts"]) {
+            if ([contact UID] == UID)
+                return contact;
+        }
+    }
+    return nil;
 }
 
 @end

@@ -16,6 +16,6 @@
 - (NSString *) initialAtIndex:(NSUInteger)index;
 - (NSArray *) contactsForInitialAtIndex:(NSUInteger)index;
 - (NSUInteger) numberOfContactsForInitialAtIndex:(NSUInteger)index;
-- (NSArray *) getFavoriteContacts;
+- (ECContact *) getContactFromUID:(NSUInteger)UID;
 
 @end

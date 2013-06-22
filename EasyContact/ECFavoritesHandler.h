@@ -11,12 +11,15 @@
 
 typedef enum { eCNKPhone, eCNKMail, eCNKText } eContactNumberKind;
 
-
+@class ECContactList;
 @class ECContact;
 
 @interface ECFavoritesHandler : NSObject
 
 + (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind;
 + (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind;
++ (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list;
++ (NSString *) kindToString:(eContactNumberKind)kind;
++ (eContactNumberKind) kindFromString:(NSString *)kind;
 
 @end

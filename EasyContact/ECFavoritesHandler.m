@@ -8,6 +8,8 @@
 
 #import "ECFavoritesHandler.h"
 
+#import "ECFavoriteNumber.h"
+#import "ECContactList.h"
 #import "ECContact.h"
 
 
@@ -23,10 +25,10 @@
         [favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     }
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[NSString stringWithFormat:@"%d", kind]];
+    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECFavoritesHandler kindToString:kind]];
     if (!kindOfFavorites) {
         kindOfFavorites = [[NSMutableDictionary alloc] init];
-        [contactFavorites setObject:kindOfFavorites forKey:[NSString stringWithFormat:@"%d", kind]];
+        [contactFavorites setObject:kindOfFavorites forKey:[ECFavoritesHandler kindToString:kind]];
     }
     
     NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
@@ -35,10 +37,6 @@
         [kindOfFavorites setObject:isFavorite forKey:number];
     } else
         [kindOfFavorites removeObjectForKey:number];
-    
-    NSString * added = (!isFavorite || ![isFavorite boolValue]) ? @"added" : @"removed";
-    NSArray * arr = @[@"Phone", @"Mail", @"Number"];
-    NSLog(@"Just %@ number %@ for contact %@ of kind %@", added, number, [contact firstName], [arr objectAtIndex:kind]);
     
     [ECFavoritesHandler writeDictionaryToFile:favorites];
 }
@@ -53,7 +51,7 @@
     if (!contactFavorites)
         return ;
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[NSString stringWithFormat:@"%d", kind]];
+    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECFavoritesHandler kindToString:kind]];
     if (!kindOfFavorites)
         return ;
     
@@ -66,6 +64,41 @@
             [number setObject:[NSNumber numberWithBool:YES] forKey:@"favorite"];
     }
 }
+
++ (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list {
+    NSMutableDictionary * favorites = [ECFavoritesHandler loadFavoritesFromFile];
+    
+    NSMutableArray * result = [[NSMutableArray alloc] init];
+    
+    for (NSString * contactUID in favorites) {
+        ECContact * contact = [list getContactFromUID:[contactUID intValue]];
+        if (!contact)
+            continue ;
+        
+        NSMutableDictionary * allKindOfFavorites = [favorites objectForKey:contactUID];
+        for (NSString * kindOfFavorite in allKindOfFavorites) {
+            NSMutableDictionary * allNumbers = [allKindOfFavorites objectForKey:kindOfFavorite];
+            for (NSString * number in allNumbers) {
+                NSNumber * isFavorite = [allNumbers objectForKey:number];
+                if ([isFavorite boolValue])
+                    [result addObject:[[ECFavoriteNumber alloc] initWithContact:contact
+                                                                           kind:[ECFavoritesHandler kindFromString:kindOfFavorite]
+                                                                      andNumber:number]];
+            }
+        }
+    }
+    
+    return [result sortedArrayUsingSelector:@selector(compare:)];
+}
+
++ (NSString *) kindToString:(eContactNumberKind)kind {
+    return [NSString stringWithFormat:@"%d", kind];
+}
+
++ (eContactNumberKind) kindFromString:(NSString *)kind {
+    return (eContactNumberKind)[kind intValue];
+}
+
 
 
 #pragma - mark Private functions for handeling favorites file.
@@ -94,9 +127,6 @@
     }
     
     [dictionary writeToFile:filePath atomically:YES];
-    
-    NSString * fileContent = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"File after saving : %@", fileContent);
 }
 
 @end

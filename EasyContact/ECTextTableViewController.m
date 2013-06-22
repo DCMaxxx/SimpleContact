@@ -7,6 +7,7 @@
 //
 
 #import "RNBlurModalView.h"
+#import "RMPhoneFormat.h"
 
 #import "ECTextTableViewController.h"
 
@@ -48,8 +49,12 @@
     UIImage * image = [_modalViewController getImageFromLabel:label];
     [[cell icon] setImage:image];
     
+    
     NSString * textAddress = [textDic objectForKey:@"value"];
-    [[cell label] setText:textAddress];
+    RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
+    [[cell label] setText:[fmt format:textAddress]];
+    [cell setOriginalNumber:textAddress];
+    
     
     BOOL isFavorite = [(NSNumber *)[textDic objectForKey:@"favorite"] boolValue];
     [cell isFavorite:isFavorite];

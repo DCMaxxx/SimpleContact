@@ -11,9 +11,6 @@
 #import "ECFavoritesHandler.h"
 
 
-static UIImage * noPictureContact = nil;
-
-
 @interface ECContact ()
 
 @property (nonatomic, readonly) ABRecordRef addBookContact;
@@ -35,16 +32,18 @@ static UIImage * noPictureContact = nil;
 
 
 #pragma - mark Init
-+(void)initialize {
-    noPictureContact = [UIImage imageNamed:@"unknown-user.png"];
-}
-
 -(id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
         _numberOfPhoneNumbers = -1;
         _numberOfMailAddresses = -1;
         _numberOfTextAddresses = -1;
         _addBookContact = addBookContact;
+
+        CFDataRef pic = ABPersonCopyImageData(_addBookContact);
+        if (pic)
+            _picture = [UIImage imageWithData:(__bridge_transfer NSData *)pic];
+        else
+            _picture = [UIImage imageNamed:@"unknown-user.png"];
     }
     return self;
 }
@@ -61,17 +60,6 @@ static UIImage * noPictureContact = nil;
     if (!_lastName)
         _lastName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonLastNameProperty);
     return _lastName;
-}
-
--(UIImage *)picture {
-    if (!_picture) {
-        CFDataRef pic = ABPersonCopyImageData(_addBookContact);
-        if (pic)
-            _picture = [UIImage imageWithData:(__bridge_transfer NSData *)pic];
-        else
-            _picture = noPictureContact;
-    }
-    return _picture;
 }
 
 -(NSInteger)UID {

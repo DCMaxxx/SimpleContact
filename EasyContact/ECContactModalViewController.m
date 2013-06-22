@@ -47,18 +47,15 @@
 
 #pragma - mark Misc function
 -(UIImage *)getImageFromLabel:(NSString *)label {
-    static NSMutableDictionary * dic = nil;
-    if (!dic) {
-        dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:[UIImage imageNamed:@"label-home.png"] forKey:@"home"];
-        [dic setObject:[UIImage imageNamed:@"label-mobile.png"] forKey:@"mobile"];
-        [dic setObject:[UIImage imageNamed:@"label-mobile.png"] forKey:@"iPhone"];
-        [dic setObject:[UIImage imageNamed:@"label-work.png"] forKey:@"work"];
-        [dic setObject:[UIImage imageNamed:@"unknown-user.png"] forKey:@"other"];
-    }
+    static NSDictionary * dic = nil;
+    if (!dic)
+        dic = @{@"home": @"label-home.png",
+                @"mobile": @"label-mobile.png",
+                @"iPhone": @"label-mobile.png",
+                @"work": @"label-work.png"};
     if (![dic objectForKey:label])
-        return [dic objectForKey:@"other"];
-    return [dic objectForKey:label];
+        return _typeImage;
+    return [UIImage imageNamed:[dic objectForKey:label]];
 }
 
 -(void)hidePopup {

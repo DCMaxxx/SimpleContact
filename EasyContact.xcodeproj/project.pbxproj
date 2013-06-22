@@ -50,6 +50,8 @@
 		9CA6B9F616BAD884006EAF8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F416BAD884006EAF8D /* AddressBook.framework */; };
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
+		9CACE3311770827000BDC2D3 /* ECFavoriteNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */; };
+		9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */; };
 		9CC67F5A16BBD6B100F1A9BA /* ECContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */; };
 		9CC785EA175BAA0A00DA4399 /* ECTextTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC785E9175BAA0A00DA4399 /* ECTextTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -114,6 +116,11 @@
 		9CA6B9F416BAD884006EAF8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9CACE32F1770827000BDC2D3 /* ECFavoriteNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoriteNumber.h; sourceTree = "<group>"; };
+		9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoriteNumber.m; sourceTree = "<group>"; };
+		9CACE3321770AA3A00BDC2D3 /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPhoneFormat.h; sourceTree = "<group>"; };
+		9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
+		9CACE3351770AB0300BDC2D3 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = ressources/PhoneFormats.dat; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactCell.m; sourceTree = "<group>"; };
 		9CC785E8175BAA0A00DA4399 /* ECTextTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTextTableViewController.h; sourceTree = "<group>"; };
@@ -159,7 +166,7 @@
 			name = "Launch image";
 			sourceTree = "<group>";
 		};
-		9C017A30176F042600A68013 /* App images */ = {
+		9C017A30176F042600A68013 /* App icons */ = {
 			isa = PBXGroup;
 			children = (
 				9C017A0E176F03ED00A68013 /* favorite-flag.png */,
@@ -176,7 +183,7 @@
 				9C017A19176F03ED00A68013 /* unavailable-overlay.png */,
 				9C017A1A176F03ED00A68013 /* unknown-user.png */,
 			);
-			name = "App images";
+			name = "App icons";
 			sourceTree = "<group>";
 		};
 		9C017A31176F047500A68013 /* Configuration files */ = {
@@ -321,9 +328,11 @@
 			isa = PBXGroup;
 			children = (
 				9C017A32176F075C00A68013 /* EasyContact-Prefix.pch */,
+				9CA6B9DD16BAD16D006EAF8D /* main.m */,
+				9CACE3321770AA3A00BDC2D3 /* RMPhoneFormat.h */,
+				9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */,
 				9C723406173AB6FF00C2F633 /* RNBlurModalView.h */,
 				9C723407173AB6FF00C2F633 /* RNBlurModalView.m */,
-				9CA6B9DD16BAD16D006EAF8D /* main.m */,
 			);
 			name = "Other sources";
 			sourceTree = "<group>";
@@ -333,7 +342,7 @@
 			children = (
 				9C017A2E176F03FA00A68013 /* App icon */,
 				9C017A2F176F040700A68013 /* Launch image */,
-				9C017A30176F042600A68013 /* App images */,
+				9C017A30176F042600A68013 /* App icons */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 		9CA6B9FB16BADA03006EAF8D /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				9CACE3351770AB0300BDC2D3 /* PhoneFormats.dat */,
 				9CA6B9D916BAD16D006EAF8D /* EasyContact-Info.plist */,
 				9CA6B9DA16BAD16D006EAF8D /* InfoPlist.strings */,
 			);
@@ -356,6 +366,8 @@
 				9C5DB56316EE57DF00300925 /* ECContactList.m */,
 				9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */,
 				9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */,
+				9CACE32F1770827000BDC2D3 /* ECFavoriteNumber.h */,
+				9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */,
 			);
 			name = "Contact representation";
 			sourceTree = "<group>";
@@ -465,8 +477,10 @@
 				9C247A0317463AA30096AECE /* ECContactModalViewController.m in Sources */,
 				9C3E909817465E5E00275A68 /* ECPhoneTableViewController.m in Sources */,
 				9C7816791747C39300F66500 /* ECMailTableViewController.m in Sources */,
+				9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */,
 				9CC785EA175BAA0A00DA4399 /* ECTextTableViewController.m in Sources */,
 				9C99C9CD1768F93700A3F594 /* ECFavoritesViewViewController.m in Sources */,
+				9CACE3311770827000BDC2D3 /* ECFavoriteNumber.m in Sources */,
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

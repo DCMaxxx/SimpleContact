@@ -9,16 +9,11 @@
 #import "ECContactModalCell.h"
 
 
-static UIImage * favoriteImage;
 static NSInteger const kFavoriteImageTag = 4242;
 
 @implementation ECContactModalCell
 
 #pragma - mark Init
-+ (void)initialize {
-    favoriteImage = [UIImage imageNamed:@"favorite-flag.png"];
-}
-
 - (id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapOnNumber:)];
@@ -45,7 +40,7 @@ static NSInteger const kFavoriteImageTag = 4242;
             [view setTag:kFavoriteImageTag];
             [[self contentView] addSubview:view];
         }
-        [view setImage:favoriteImage];
+        [view setImage:[UIImage imageNamed:@"favorite-flag.png"]];
     }
     else if ([[self contentView] viewWithTag:kFavoriteImageTag])
         [(UIImageView *)[[self contentView] viewWithTag:kFavoriteImageTag] setImage:nil];

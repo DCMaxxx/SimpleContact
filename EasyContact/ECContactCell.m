@@ -14,21 +14,8 @@
 
 enum eImageTypeTag { eITTPhone = 4242, eITTMail, eITTText };
 
-static UIImage * phoneImg = nil;
-static UIImage * mailImg = nil;
-static UIImage * textImg = nil;
-static UIImage * unavailableImg = nil;
-
 
 @implementation ECContactCell
-
-#pragma - mark Init
-+(void)initialize {
-    phoneImg = [UIImage imageNamed:@"phone-white.png"];
-    mailImg = [UIImage imageNamed:@"mail-white.png"];
-    textImg = [UIImage imageNamed:@"text-white.png"];
-    unavailableImg = [UIImage imageNamed:@"unavailable-overlay.png"];
-}
 
 #pragma - mark Setting views informations
 - (void)setMainViewInformationsWithContact:(ECContact *)contact {
@@ -45,9 +32,21 @@ static UIImage * unavailableImg = nil;
 }
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact {
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers] imageToReplace:_phoneImage selectorToCall:@selector(tappedOnPhone:) image:phoneImg andTag:eITTPhone];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses] imageToReplace:_mailImage selectorToCall:@selector(tappedOnMail:) image:mailImg andTag:eITTMail];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses] imageToReplace:_textImage selectorToCall:@selector(tappedOnText:) image:textImg andTag:eITTText];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers]
+                                              imageToReplace:_phoneImage
+                                              selectorToCall:@selector(tappedOnPhone:)
+                                                       image:[UIImage imageNamed:@"phone-white.png"]
+                                                      andTag:eITTPhone];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses]
+                                              imageToReplace:_mailImage
+                                              selectorToCall:@selector(tappedOnMail:)
+                                                       image:[UIImage imageNamed:@"mail-white.png"]
+                                                      andTag:eITTMail];
+    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses]
+                                              imageToReplace:_textImage
+                                              selectorToCall:@selector(tappedOnText:)
+                                                       image:[UIImage imageNamed:@"text-white.png"]
+                                                      andTag:eITTText];
 }
 
 
@@ -60,7 +59,7 @@ static UIImage * unavailableImg = nil;
     [imageToReplace setImage:image];
     
     if (!numberOfContacts) {
-        UIImageView * noIconView = [[UIImageView alloc] initWithImage:unavailableImg];
+        UIImageView * noIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unavailable-overlay.png"]];
         CGRect theFrame = [imageToReplace frame];
         theFrame.origin.x = -3;
         theFrame.origin.y = -3;

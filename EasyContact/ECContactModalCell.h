@@ -16,6 +16,7 @@
 @property (weak, nonatomic) UITableViewController <ECModalTableViewController> * viewController;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) NSString * originalNumber;
 
 - (void)isFavorite:(BOOL)favorite;
 
