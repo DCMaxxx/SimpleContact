@@ -8,12 +8,12 @@
 
 #import "ECContact.h"
 
-#import "ECFavoritesHandler.h"
-
+#import "ECKindHandler.h"
 
 @interface ECContact ()
 
 @property (nonatomic, readonly) ABRecordRef addBookContact;
+@property (strong, nonatomic) NSMutableDictionary * addresses;
 
 @end
 
@@ -22,21 +22,12 @@
 
 @synthesize firstName = _firstName;
 @synthesize lastName = _lastName;
-@synthesize picture = _picture;
-@synthesize phoneNumbers = _phoneNumbers;
-@synthesize numberOfPhoneNumbers = _numberOfPhoneNumbers;
-@synthesize mailAddresses = _mailAddresses;
-@synthesize numberOfMailAddresses = _numberOfMailAddresses;
-@synthesize textAddresses = _textAddresses;
-@synthesize numberOfTextAddresses = _numberOfTextAddresses;
 
 
 #pragma - mark Init
 -(id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
-        _numberOfPhoneNumbers = -1;
-        _numberOfMailAddresses = -1;
-        _numberOfTextAddresses = -1;
+        _addresses = [[NSMutableDictionary alloc] init];
         _addBookContact = addBookContact;
 
         CFDataRef pic = ABPersonCopyImageData(_addBookContact);
@@ -51,14 +42,20 @@
 
 #pragma - mark Getters overrides
 -(NSString *)firstName {
-    if (!_firstName)
+    if (!_firstName) {
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
+        if (!_firstName)
+            _firstName = @"";
+    }
     return _firstName;
 }
 
 -(NSString *)lastName {
-    if (!_lastName)
+    if (!_lastName) {
         _lastName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonLastNameProperty);
+        if (!_lastName)
+            _lastName = @"";
+    }
     return _lastName;
 }
 
@@ -66,43 +63,76 @@
     return ABRecordGetRecordID(_addBookContact);
 }
 
--(NSInteger)numberOfPhoneNumbers {
-    if (_numberOfPhoneNumbers == -1)
-        [self phoneNumbers];
-    return _numberOfPhoneNumbers;
+#pragma - mark Default getters
+- (NSInteger) numberOf:(eContactNumberKind)kind {
+    NSArray * selectors = @[@"numberOfPhones",
+                            @"numberOfMails",
+                            @"numberOfTexts"];
+    SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
+    if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        return [[self performSelector:selector] integerValue];
+#pragma clang diagnostic pop
+    }
+    return 0;
 }
 
--(NSArray *)phoneNumbers {
-    if (!_phoneNumbers) {
-        NSMutableArray * mutablePhoneNumbers = [[NSMutableArray alloc] init];
+- (NSArray *)addessesOf:(eContactNumberKind)kind {
+    NSArray * selectors = @[@"phones",
+                            @"mails",
+                            @"texts"];
+    SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
+    if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        return [self performSelector:selector];
+#pragma clang diagnostic pop
+    }
+    return [[NSArray alloc] init];
+}
 
+#pragma - mark Hidden getters
+- (NSNumber *)numberOfPhones {
+    return [NSNumber numberWithInt:[[self phones] count]];
+}
+
+- (NSNumber *)numberOfMails {
+    return [NSNumber numberWithInt:[[self mails] count]];
+}
+
+- (NSNumber *)numberOfTexts {
+    return [NSNumber numberWithInt:[[self texts] count]];
+}
+
+- (NSArray *)phones {
+    NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKPhone]];
+    if (!result) {
+        result = [[NSMutableArray alloc] init];
+        
         ABMultiValueRef const * phones = ABRecordCopyValue(_addBookContact, kABPersonPhoneProperty);
         for (CFIndex j = 0; j < ABMultiValueGetCount(phones); j++) {
             CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(phones, j);
             CFStringRef locLabel = ABMultiValueCopyLabelAtIndex(phones, j);
             NSString *phoneLabel =(__bridge NSString*) ABAddressBookCopyLocalizedLabel(locLabel);
             NSString *phoneNumber = (__bridge NSString *)phoneNumberRef;
-            CFRelease(phoneNumberRef);
-            CFRelease(locLabel);
+            if (phoneNumberRef)
+                CFRelease(phoneNumberRef);
+            if (locLabel)
+                CFRelease(locLabel);
             NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
-            [mutablePhoneNumbers addObject:tmp];
+            [result addObject:tmp];
         }
-        _numberOfPhoneNumbers = [mutablePhoneNumbers count];
-        [ECFavoritesHandler areFavoriteForContact:self numbers:mutablePhoneNumbers ofKind:eCNKPhone];
-        _phoneNumbers = [mutablePhoneNumbers copy];
+        [ECFavoritesHandler areFavoriteForContact:self numbers:result ofKind:eCNKPhone];
+        [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKPhone]];
     }
-    return _phoneNumbers;
+    return result;
 }
 
--(NSInteger)numberOfMailAddresses {
-    if (_numberOfMailAddresses == -1)
-        [self mailAddresses];
-    return _numberOfMailAddresses;
-}
-
--(NSArray *)mailAddresses {
-    if (!_mailAddresses) {
-        NSMutableArray * mutableMailAddresses = [[NSMutableArray alloc] init];
+- (NSArray *)mails {
+    NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKMail]];
+    if (!result) {
+        result = [[NSMutableArray alloc] init];
         
         ABMultiValueRef const * mails = ABRecordCopyValue(_addBookContact, kABPersonEmailProperty);
         for (CFIndex j = 0; j < ABMultiValueGetCount(mails); j++) {
@@ -110,36 +140,29 @@
             CFStringRef locLabel = ABMultiValueCopyLabelAtIndex(mails, j);
             NSString *mailLabel =(__bridge NSString*) ABAddressBookCopyLocalizedLabel(locLabel);
             NSString *mailAddress = (__bridge NSString *)mailRef;
-            CFRelease(mailRef);
-            CFRelease(locLabel);
+            if (mailRef)
+                CFRelease(mailRef);
+            if (locLabel)
+                CFRelease(locLabel);
             NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
-            [mutableMailAddresses addObject:tmp];
+            [result addObject:tmp];
         }
-        _numberOfMailAddresses = [mutableMailAddresses count];
-        [ECFavoritesHandler areFavoriteForContact:self numbers:mutableMailAddresses ofKind:eCNKMail];
-        _mailAddresses = [mutableMailAddresses copy];
+        [ECFavoritesHandler areFavoriteForContact:self numbers:result ofKind:eCNKMail];
+        [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKMail]];
     }
-    return _mailAddresses;
+    return result;
+
 }
 
--(NSArray *)textAddresses {
-    if (!_phoneNumbers)
-        [self phoneNumbers];
-    if (!_mailAddresses)
-        [self mailAddresses];
-    if (!_textAddresses) {
-        NSMutableArray * mutableTextAddess = [[[self deepCopy:_phoneNumbers] arrayByAddingObjectsFromArray:[self deepCopy:_mailAddresses]] mutableCopy];
-        _numberOfTextAddresses = [mutableTextAddess count];
-        [ECFavoritesHandler areFavoriteForContact:self numbers:mutableTextAddess ofKind:eCNKText];
-        _textAddresses = [mutableTextAddess copy];
+- (NSArray *)texts {
+    NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKText]];
+    if (!result) {
+        NSMutableArray * phones = [self deepCopy:[self phones]];
+        NSMutableArray * mails = [self deepCopy:[self mails]];
+        result = [[phones arrayByAddingObjectsFromArray:mails] mutableCopy];
+        [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKText]];
     }
-    return _textAddresses;
-}
-
--(NSInteger)numberOfTextAddresses {
-    if (_numberOfTextAddresses == -1)
-        [self textAddresses];
-    return _numberOfTextAddresses;
+    return result;
 }
 
 

@@ -11,7 +11,7 @@
 
 #import "ECFavoriteCell.h"
 
-#import "ECFavoritesHandler.h"
+#import "ECKindHandler.h"
 #import "ECFavoriteNumber.h"
 #import "ECContact.h"
 
@@ -70,6 +70,8 @@
     static NSArray * kinds = nil;
     if (!kinds)
         kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png"];
+    
+    _number = number;
     
     ECContact * contact = [number contact];
     [_contactName setText:[contact firstName]];

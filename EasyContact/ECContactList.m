@@ -25,7 +25,6 @@
 -(id) init {
     if (self = [super init]) {
         
-        // Initializing sections
         NSString * sections = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
         _sectionnedContacts = [[NSMutableArray alloc] initWithCapacity:[sections length]];
         for (NSInteger i = 0; i < [sections length]; ++i) {
@@ -36,21 +35,22 @@
             [_sectionnedContacts addObject:section];
         }
 
-        // Loading all contacts from address book
         _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(_addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
         CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName, (void *)kABPersonFirstNameProperty);
         NSArray * allPersons = (__bridge_transfer NSArray *)peopleMutable;
         
-        // Loading all contacts to array
         for (NSUInteger i = 0; i < [allPersons count]; ++i) {
             ABRecordRef currentPerson = (__bridge ABRecordRef)[allPersons objectAtIndex:i];
             ECContact * contact = [[ECContact alloc] initWithAddressBookContact:currentPerson];
             
+            if (![[contact firstName] length])
+                continue;
+            
             NSString * sectionTitle = [[contact firstName] substringToIndex:1];
             NSRange idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
-            if (idx.location == NSNotFound) // Starts without a letter, put it in #
+            if (idx.location == NSNotFound)
                 idx.location = [sections length] - 1;
             NSMutableDictionary * dic = [_sectionnedContacts objectAtIndex:idx.location];
             NSMutableArray * contacts = [dic objectForKey:@"contacts"];

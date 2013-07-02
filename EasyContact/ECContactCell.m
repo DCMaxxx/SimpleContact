@@ -12,15 +12,14 @@
 
 #import "ECContact.h"
 
-enum eImageTypeTag { eITTPhone = 4242, eITTMail, eITTText };
-
+static NSUInteger kTagLowestValue = 4241;
 
 @implementation ECContactCell
 
 #pragma - mark Setting views informations
 - (void)setMainViewInformationsWithContact:(ECContact *)contact {
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-    
+
     CGColorRef borderColor = [[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor];
     if (!CGColorEqualToColor([[_boxView layer] borderColor], borderColor))
         [[_boxView layer] setBorderColor:borderColor];
@@ -32,52 +31,68 @@ enum eImageTypeTag { eITTPhone = 4242, eITTMail, eITTText };
 }
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact {
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfPhoneNumbers]
-                                              imageToReplace:_phoneImage
-                                              selectorToCall:@selector(tappedOnPhone:)
-                                                       image:[UIImage imageNamed:@"phone-white.png"]
-                                                      andTag:eITTPhone];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfMailAddresses]
-                                              imageToReplace:_mailImage
-                                              selectorToCall:@selector(tappedOnMail:)
-                                                       image:[UIImage imageNamed:@"mail-white.png"]
-                                                      andTag:eITTMail];
-    [self setLeftViewContactInformationsWithNumberOfContacts:[contact numberOfTextAddresses]
-                                              imageToReplace:_textImage
-                                              selectorToCall:@selector(tappedOnText:)
-                                                       image:[UIImage imageNamed:@"text-white.png"]
-                                                      andTag:eITTText];
+    NSArray * availableKinds = [ECKindHandler availableKinds];
+    NSUInteger numberOfKinds = [availableKinds count];
+    
+    if ([_leftView tag] != kTagLowestValue) {
+        [_leftView setTag:kTagLowestValue];
+
+        CGFloat frameWidth = [_leftView frame].size.width;
+        CGFloat imageSize = 28;
+        CGFloat topSpacing = ([_leftView frame].size.height - imageSize) / 2;
+        CGFloat spacing = (frameWidth - (numberOfKinds * imageSize)) / (numberOfKinds + 1);
+        CGFloat totalSpace = 0.0f;
+
+        for (NSUInteger i = 0; i < numberOfKinds; ++i) {
+            totalSpace += spacing;
+            CGRect frame = CGRectMake(totalSpace, topSpacing, imageSize, imageSize);
+            totalSpace += imageSize;
+            
+            eContactNumberKind kind = [ECKindHandler kindFromString:[availableKinds objectAtIndex:i]];
+
+            UIImageView * imageView = [[UIImageView alloc] initWithFrame:frame];
+            [imageView setTag:(kTagLowestValue - kind - 1)];
+            [imageView setImage:[ECKindHandler iconForKind:kind andWhite:NO]];
+            [imageView setUserInteractionEnabled:YES];
+            [_leftView addSubview:imageView];
+        }
+    }
+
+    for (NSUInteger i = 0; i < numberOfKinds; ++i) {
+        eContactNumberKind kind = [ECKindHandler kindFromString:[availableKinds objectAtIndex:i]];
+        UIImageView * imageView = (UIImageView *)[_leftView viewWithTag:(kTagLowestValue - kind - 1)];
+        [self setLeftViewInformationsWithContact:contact kind:kind andImageView:imageView];
+    }
+
+    
 }
 
-
-#pragma - mark Misc private functions
-- (void)setLeftViewContactInformationsWithNumberOfContacts:(NSInteger)numberOfContacts
-                                            imageToReplace:(UIImageView *)imageToReplace
-                                            selectorToCall:(SEL)selector
-                                                     image:(UIImage *)image
-                                                    andTag:(NSInteger)tag {
-    [imageToReplace setImage:image];
+- (void)setLeftViewInformationsWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andImageView:(UIImageView *)imageView {
+    SEL selector = [ECKindHandler selectorForKind:kind prefix:@"tappedOn" andSuffix:@":"];
     
-    if (!numberOfContacts) {
+
+    NSUInteger nbOfContacts = [contact numberOf:kind];
+    if (!nbOfContacts) {
         UIImageView * noIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unavailable-overlay.png"]];
-        CGRect theFrame = [imageToReplace frame];
+        CGRect theFrame = [imageView frame];
         theFrame.origin.x = -3;
         theFrame.origin.y = -3;
         theFrame.size.height += 6;
         theFrame.size.width += 6;
         [noIconView setFrame:theFrame];
-        [noIconView setTag:tag];
-        [imageToReplace addSubview:noIconView];
-        if ([[imageToReplace gestureRecognizers] count])
-            [imageToReplace removeGestureRecognizer:[[imageToReplace gestureRecognizers] objectAtIndex:0]];
+        [noIconView setTag:(kTagLowestValue + kind + 1)];
+        [imageView addSubview:noIconView];
+        if ([[imageView gestureRecognizers] count])
+            [imageView removeGestureRecognizer:[[imageView gestureRecognizers] objectAtIndex:0]];
     } else {
-        if ([imageToReplace viewWithTag:tag])
-            [[imageToReplace viewWithTag:tag] removeFromSuperview];
-        if (![[imageToReplace gestureRecognizers] count]) {
+        if ([imageView viewWithTag:(kTagLowestValue + kind + 1)])
+            [[imageView viewWithTag:(kTagLowestValue + kind + 1)] removeFromSuperview];
+        if (![[imageView gestureRecognizers] count]) {
             UITapGestureRecognizer * gr = [[UITapGestureRecognizer alloc] initWithTarget:_viewController action:selector];
-            [imageToReplace addGestureRecognizer:gr];
+            [imageView addGestureRecognizer:gr];
         }
     }
+    
 }
 
 @end

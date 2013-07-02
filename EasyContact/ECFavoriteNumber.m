@@ -23,11 +23,10 @@
 }
 
 - (NSComparisonResult)compare:(ECFavoriteNumber *)number {
-    NSComparisonResult res = [[_contact firstName] compare:[[number contact] firstName]]; // Sort by first name
+    NSComparisonResult res = [[_contact firstName] compare:[[number contact] firstName]];
     if (res == NSOrderedSame) {
-        res = [[_contact lastName] compare:[[number contact] lastName]]; // If same first name, by last name
-        if (res == NSOrderedSame)
-            res = (_kind < [number kind] ? NSOrderedAscending : (_kind > [number kind] ? NSOrderedDescending : NSOrderedSame)); // If it's the same person, order by kind of number
+        res = [[_contact lastName] compare:[[number contact] lastName]];        if (res == NSOrderedSame)
+            res = (_kind < [number kind] ? NSOrderedAscending : (_kind > [number kind] ? NSOrderedDescending : NSOrderedSame));
     }
     return res;
 }

@@ -12,12 +12,14 @@
 #import "ECFavoritesViewViewController.h"
 
 #import "ECFavoriteNumber.h"
+#import "ECContactJoiner.h"
 #import "ECFavoriteCell.h"
 #import "ECContact.h"
 
 @interface ECFavoritesViewViewController ()
 
 @property (strong, nonatomic) NSMutableArray * contacts;
+@property (strong, nonatomic) ECContactJoiner * joiner;
 
 @end
 
@@ -28,6 +30,7 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [[self navigationItem] setHidesBackButton:YES];
+        _joiner = [[ECContactJoiner alloc] init];
     }
     return self;
 }
@@ -70,8 +73,10 @@
 
 #pragma - mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    RNBlurModalView * modal = [[RNBlurModalView alloc] initWithTitle:@"Selected contact" message:@"Hey yeah !"];
-    [modal show];
+    ECFavoriteCell * cell = (ECFavoriteCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    ECFavoriteNumber * number = [cell number];
+
+    [_joiner joinContactWithKind:[number kind] address:[number contactNumber] andViewController:self];
 }
 
 

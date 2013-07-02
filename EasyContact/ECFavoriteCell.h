@@ -13,6 +13,8 @@
 
 @interface ECFavoriteCell : UICollectionViewCell
 
+@property (strong, nonatomic) ECFavoriteNumber * number;
+
 - (void)setInformationsWithNumber:(ECFavoriteNumber *)number;
 
 @end

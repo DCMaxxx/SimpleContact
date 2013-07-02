@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <AddressBook/AddressBook.h>
 
+#import "ECFavoritesHandler.h"
+
 
 @interface ECContact : NSObject
 
@@ -16,13 +18,9 @@
 @property (strong, nonatomic, readonly) NSString * firstName;
 @property (strong, nonatomic, readonly) NSString * lastName;
 @property (strong, nonatomic, readonly) UIImage * picture;
-@property (strong, nonatomic, readonly) NSArray * phoneNumbers;
-@property (nonatomic, readonly) NSInteger numberOfPhoneNumbers;
-@property (strong, nonatomic, readonly) NSArray * mailAddresses;
-@property (nonatomic, readonly) NSInteger numberOfMailAddresses;
-@property (strong, nonatomic, readonly) NSArray * textAddresses;
-@property (nonatomic, readonly) NSInteger numberOfTextAddresses;
 
 - (id) initWithAddressBookContact:(ABRecordRef)addBookContact;
+- (NSInteger) numberOf:(eContactNumberKind)kind;
+- (NSArray *) addessesOf:(eContactNumberKind)kind;
 
 @end

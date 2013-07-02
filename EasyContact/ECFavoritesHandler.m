@@ -25,10 +25,10 @@
         [favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     }
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECFavoritesHandler kindToString:kind]];
+    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
     if (!kindOfFavorites) {
         kindOfFavorites = [[NSMutableDictionary alloc] init];
-        [contactFavorites setObject:kindOfFavorites forKey:[ECFavoritesHandler kindToString:kind]];
+        [contactFavorites setObject:kindOfFavorites forKey:[ECKindHandler kindToString:kind]];
     }
     
     NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
@@ -51,7 +51,7 @@
     if (!contactFavorites)
         return ;
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECFavoritesHandler kindToString:kind]];
+    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
     if (!kindOfFavorites)
         return ;
     
@@ -82,7 +82,7 @@
                 NSNumber * isFavorite = [allNumbers objectForKey:number];
                 if ([isFavorite boolValue])
                     [result addObject:[[ECFavoriteNumber alloc] initWithContact:contact
-                                                                           kind:[ECFavoritesHandler kindFromString:kindOfFavorite]
+                                                                           kind:[ECKindHandler kindFromString:kindOfFavorite]
                                                                       andNumber:number]];
             }
         }
@@ -90,15 +90,6 @@
     
     return [result sortedArrayUsingSelector:@selector(compare:)];
 }
-
-+ (NSString *) kindToString:(eContactNumberKind)kind {
-    return [NSString stringWithFormat:@"%d", kind];
-}
-
-+ (eContactNumberKind) kindFromString:(NSString *)kind {
-    return (eContactNumberKind)[kind intValue];
-}
-
 
 
 #pragma - mark Private functions for handeling favorites file.

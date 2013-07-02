@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ECKindHandler.h"
 
-typedef enum { eCNKPhone, eCNKMail, eCNKText } eContactNumberKind;
 
 @class ECContactList;
 @class ECContact;
@@ -19,7 +19,5 @@ typedef enum { eCNKPhone, eCNKMail, eCNKText } eContactNumberKind;
 + (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind;
 + (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind;
 + (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list;
-+ (NSString *) kindToString:(eContactNumberKind)kind;
-+ (eContactNumberKind) kindFromString:(NSString *)kind;
 
 @end

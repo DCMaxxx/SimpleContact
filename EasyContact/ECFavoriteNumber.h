@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ECFavoritesHandler.h"
+#import "ECKindHandler.h"
 
 @class ECContact;
 

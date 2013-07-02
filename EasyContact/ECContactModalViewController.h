@@ -8,18 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ECModalTableViewController.h"
+#import "ECKindHandler.h"
+
 
 @class ECContact;
 
 
 @interface ECContactModalViewController : UIViewController
+<
+UITableViewDataSource,
+UITableViewDelegate
+>
 
 @property (weak, nonatomic) ECContact * contact;
-@property (strong, nonatomic) UITableViewController < ECModalTableViewController > * tableViewController;
-@property (strong, nonatomic) UIImage * typeImage;
+@property (nonatomic) eContactNumberKind kind;
 
--(UIImage *)getImageFromLabel:(NSString *)label;
 -(void)hidePopup;
 
 @end

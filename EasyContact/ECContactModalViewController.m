@@ -9,10 +9,12 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "RNBlurModalView.h"
+#import "RMPhoneFormat.h"
 
 #import "ECContactModalViewController.h"
 
 #import "ECContactModalCell.h"
+#import "ECContactJoiner.h"
 #import "ECContact.h"
 
 
@@ -21,11 +23,21 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
+@property (strong, nonatomic) ECContactJoiner * joiner;
 
 @end
 
 
 @implementation ECContactModalViewController
+
+#pragma - mark Init
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        _joiner = [[ECContactJoiner alloc] init];
+    }
+    return self;
+}
+
 
 #pragma - mark UIViewController Delegate
 -(void)viewDidLoad {
@@ -37,24 +49,85 @@
     [[[self view] layer] setCornerRadius:10.0f];
     
     [_contactPicture setImage:[_contact picture]];
-    [_typeImageView setImage:_typeImage];
-    
-    [_tableViewController setModalViewController:self];
-    
-    [_tableView setDelegate:_tableViewController];
-    [_tableView setDataSource:_tableViewController];
+    [_typeImageView setImage:[ECKindHandler iconForKind:_kind andWhite:NO]];
+        
+    [_tableView setDelegate:self];
+    [_tableView setDataSource:self];
 }
+
+
+#pragma - mark Table view data source
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_contact numberOf:_kind];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"ModalCell";
+    ECContactModalCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSInteger index = [indexPath indexAtPosition:1];
+    
+    [cell setTag:index];
+    
+    if (![cell viewController])
+        [cell setViewController:self];
+    
+    NSDictionary * dic = [[_contact addessesOf:_kind] objectAtIndex:index];
+    
+    BOOL isFavorite = [(NSNumber *)[dic objectForKey:@"favorite"] boolValue];
+    [cell isFavorite:isFavorite];
+
+    NSString *label = [dic objectForKey:@"label"];
+    UIImage *icon = [self getImageFromLabel:label];
+    [[cell icon] setImage:icon];
+    
+    NSString * value = [dic objectForKey:@"value"];
+    [cell setValue:value];
+
+    NSString * displayedValue;
+    if (_kind == eCNKPhone) {
+        RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
+        displayedValue = [fmt format:value];
+    } else
+        displayedValue = value;
+    [[cell label] setText:displayedValue];
+    
+    return cell;
+}
+
+
+#pragma - mark Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ECContactModalCell * cell = (ECContactModalCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    [_joiner joinContactWithKind:_kind address:[cell value] andViewController:self];
+}
+
+
+#pragma - mark BCModalTableViewController protocol
+- (void) longTapOnNumber:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan)  {
+        CGPoint location = [gestureRecognizer locationInView:[self tableView]];
+        NSIndexPath * path = [[self tableView] indexPathForRowAtPoint:location];
+        ECContactModalCell * cell = (ECContactModalCell*)[_tableView cellForRowAtIndexPath:path];
+        NSInteger index = [cell tag];
+        NSMutableDictionary * number = [[_contact addessesOf:_kind] objectAtIndex:index];
+        NSNumber * isFavorite = [number objectForKey:@"favorite"];
+        [number setObject:[NSNumber numberWithBool:![isFavorite boolValue]] forKey:@"favorite"];
+        [cell isFavorite:![isFavorite boolValue]];
+        
+        [ECFavoritesHandler toogleContact:_contact number:[[cell label] text] ofKind:_kind];
+    }
+}
+
 
 #pragma - mark Misc function
 -(UIImage *)getImageFromLabel:(NSString *)label {
-    static NSDictionary * dic = nil;
-    if (!dic)
-        dic = @{@"home": @"label-home.png",
-                @"mobile": @"label-mobile.png",
-                @"iPhone": @"label-mobile.png",
-                @"work": @"label-work.png"};
+    NSDictionary * dic = @{@"home": @"label-home.png",
+                           @"mobile": @"label-mobile.png",
+                           @"iPhone": @"label-mobile.png",
+                           @"work": @"label-work.png"};
     if (![dic objectForKey:label])
-        return _typeImage;
+        return [ECKindHandler iconForKind:_kind andWhite:NO];
     return [UIImage imageNamed:[dic objectForKey:label]];
 }
 

@@ -16,17 +16,10 @@ static NSInteger const kFavoriteImageTag = 4242;
 #pragma - mark Init
 - (id) initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapOnNumber:)];
+        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:_viewController action:@selector(longTapOnNumber:)];
         [self addGestureRecognizer:gr];
     }
     return self;
-}
-
-
-#pragma - mark Gesture handling
-- (void) longTapOnNumber :(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan)
-        [[self viewController] setFavoriteForCell:self];
 }
 
 

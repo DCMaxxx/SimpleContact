@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "ECModalTableViewController.h"
-
 
 @interface ECContactModalCell : UITableViewCell
 
-@property (weak, nonatomic) UITableViewController <ECModalTableViewController> * viewController;
+@property (weak, nonatomic) UIViewController * viewController;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-@property (weak, nonatomic) NSString * originalNumber;
+@property (weak, nonatomic) NSString * value;
 
 - (void)isFavorite:(BOOL)favorite;
 

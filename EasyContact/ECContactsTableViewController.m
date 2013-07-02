@@ -12,18 +12,9 @@
 
 #import "ECFavoritesViewViewController.h"
 #import "ECContactModalViewController.h"
-#import "ECPhoneTableViewController.h"
-#import "ECTextTableViewController.h"
-#import "ECMailTableViewController.h"
-#import "ECFavoritesHandler.h"
+#import "ECKindHandler.h"
 #import "ECContactCell.h"
 #import "ECContactList.h"
-
-
-enum eModalType { kMTPhone, kMTMail, kMTText };
-
-
-static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", @"text-black.png" };
 
 
 @interface ECContactsTableViewController ()
@@ -73,23 +64,23 @@ static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", 
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"contactCell";
+    static NSString *CellIdentifier = @"ContactCell";
     ECContactCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSUInteger indexOfSection = [indexPath indexAtPosition:0];
     NSInteger indexOfContact = [indexPath indexAtPosition:1];
     NSArray * contactsOfSection = [_contacts contactsForInitialAtIndex:indexOfSection];
     ECContact * contact = [contactsOfSection objectAtIndex:indexOfContact];
-    
+
     if (![cell viewController])
         [cell setViewController:self];
-    
+
     if (![[cell gestureRecognizers] count]) {
         UISwipeGestureRecognizer * swipeRightOnContact = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRightOnContact:)];
         [swipeRightOnContact setDirection:(UISwipeGestureRecognizerDirectionRight)];
         [cell addGestureRecognizer:swipeRightOnContact];
     }
-    
+
     [cell setMainViewInformationsWithContact:contact];
     
     return cell;
@@ -108,6 +99,22 @@ static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return [self tableView:[self tableView] numberOfRowsInSection:section] ? 22.0f : 0.0f;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (![self tableView:[self tableView]numberOfRowsInSection:section])
+        return nil;
+    
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)];
+    [view setBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.75f]];
+    NSString * str = [self tableView:[self tableView] titleForHeaderInSection:section];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(5, 2.5f, 15, 15)];
+    [label setFont:[UIFont fontWithName:@"Avenir-Light" size:16.0f]];
+    [label setText:str];
+    [view addSubview:label];
+    return view;
+}
+
+
 
 
 #pragma - mark Gesture recognition
@@ -134,20 +141,17 @@ static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", 
 
 -(void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
-    ECPhoneTableViewController * controller = [[ECPhoneTableViewController alloc] init];
-    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTPhone]] contact:contact andViewController:controller];
+    [self showModalViewWithKind:eCNKPhone contact:contact];
 }
 
 -(void)tappedOnMail:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
-    ECMailTableViewController * controller = [[ECMailTableViewController alloc] init];
-    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTMail]] contact:contact andViewController:controller];
+    [self showModalViewWithKind:eCNKMail contact:contact];
 }
 
 -(void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
-    ECTextTableViewController * controller = [[ECTextTableViewController alloc] init];
-    [self showModalViewWithImageType:[UIImage imageNamed:modalTypeImages[kMTText]] contact:contact andViewController:controller];
+    [self showModalViewWithKind:eCNKText contact:contact];
 }
 
 
@@ -178,19 +182,15 @@ static NSString * modalTypeImages[3] = { @"phone-black.png", @"mail-black.png", 
     return (ECContactCell *)[[self tableView] cellForRowAtIndexPath:path];
 }
 
--(void)showModalViewWithImageType:(UIImage *)image
-                          contact:(ECContact *)contact
-                andViewController:(UITableViewController <ECModalTableViewController> *) controller {
+-(void)showModalViewWithKind:(eContactNumberKind)kind
+                          contact:(ECContact *)contact {
     
     [self unselectCell:nil];
-
-    [controller setContact:contact];
 
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"BCContactModalViewController"];
     [_modalContactViewController setContact:contact];
-    [_modalContactViewController setTypeImage:image];
-    [_modalContactViewController setTableViewController:controller];
+    [_modalContactViewController setKind:kind];
     
     RNBlurModalView * modal = [[RNBlurModalView alloc] initWithView:[_modalContactViewController view]];
     [modal show];
