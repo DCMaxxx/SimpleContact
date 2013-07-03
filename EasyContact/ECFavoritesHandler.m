@@ -8,7 +8,7 @@
 
 #import "ECFavoritesHandler.h"
 
-#import "ECFavoriteNumber.h"
+#import "ECFavorite.h"
 #import "ECContactList.h"
 #import "ECContact.h"
 
@@ -81,7 +81,7 @@
             for (NSString * number in allNumbers) {
                 NSNumber * isFavorite = [allNumbers objectForKey:number];
                 if ([isFavorite boolValue])
-                    [result addObject:[[ECFavoriteNumber alloc] initWithContact:contact
+                    [result addObject:[[ECFavorite alloc] initWithContact:contact
                                                                            kind:[ECKindHandler kindFromString:kindOfFavorite]
                                                                       andNumber:number]];
             }

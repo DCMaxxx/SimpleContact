@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
-#import "ECFavoriteNumber.h"
+#import "ECFavorite.h"
 
 #import "ECContact.h"
 
 
-@implementation ECFavoriteNumber
+@implementation ECFavorite
 
 - (id)initWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andNumber:(NSString *) contactNumber {
     if (self = [super init]) {
@@ -22,7 +22,7 @@
     return self;
 }
 
-- (NSComparisonResult)compare:(ECFavoriteNumber *)number {
+- (NSComparisonResult)compare:(ECFavorite *)number {
     NSComparisonResult res = [[_contact firstName] compare:[[number contact] firstName]];
     if (res == NSOrderedSame) {
         res = [[_contact lastName] compare:[[number contact] lastName]];        if (res == NSOrderedSame)

@@ -12,6 +12,6 @@
 @class ECContactList;
 
 
-@interface ECContactsTableViewController : UITableViewController
+@interface ECMainTableViewController : UITableViewController
 
 @end

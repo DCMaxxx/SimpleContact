@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ECContactModalCell : UITableViewCell
+@class ECModalViewController;
 
-@property (weak, nonatomic) UIViewController * viewController;
+
+@interface ECNumberCell : UITableViewCell
+
+@property (weak, nonatomic) ECModalViewController * viewController;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 @property (weak, nonatomic) NSString * value;

@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@class ECFavoriteNumber;
+@class ECFavorite;
 
 @interface ECFavoriteCell : UICollectionViewCell
 
-@property (strong, nonatomic) ECFavoriteNumber * number;
+@property (strong, nonatomic) ECFavorite * number;
 
-- (void)setInformationsWithNumber:(ECFavoriteNumber *)number;
+- (void)setInformationsWithNumber:(ECFavorite *)number;
 
 @end

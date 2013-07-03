@@ -9,14 +9,14 @@
 #import "RNBlurModalView.h"
 #import "RMPhoneFormat.h"
 
-#import "ECFavoritesViewViewController.h"
+#import "ECFavoritesViewController.h"
 
-#import "ECFavoriteNumber.h"
+#import "ECFavorite.h"
 #import "ECContactJoiner.h"
 #import "ECFavoriteCell.h"
 #import "ECContact.h"
 
-@interface ECFavoritesViewViewController ()
+@interface ECFavoritesViewController ()
 
 @property (strong, nonatomic) NSMutableArray * contacts;
 @property (strong, nonatomic) ECContactJoiner * joiner;
@@ -24,7 +24,7 @@
 @end
 
 
-@implementation ECFavoritesViewViewController
+@implementation ECFavoritesViewController
 
 #pragma - mark Init
 - (id) initWithCoder:(NSCoder *)aDecoder {
@@ -52,7 +52,7 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger idx = [indexPath indexAtPosition:1];
-    ECFavoriteNumber * contact = [_contacts objectAtIndex:idx];
+    ECFavorite * contact = [_contacts objectAtIndex:idx];
     ECFavoriteCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavoriteCell" forIndexPath:indexPath];
     
     [cell setInformationsWithNumber:contact];
@@ -74,7 +74,7 @@
 #pragma - mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ECFavoriteCell * cell = (ECFavoriteCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    ECFavoriteNumber * number = [cell number];
+    ECFavorite * number = [cell number];
 
     [_joiner joinContactWithKind:[number kind] address:[number contactNumber] andViewController:self];
 }

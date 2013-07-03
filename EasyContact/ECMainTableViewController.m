@@ -8,25 +8,25 @@
 
 #import "RNBlurModalView.h"
 
-#import "ECContactsTableViewController.h"
+#import "ECMainTableViewController.h"
 
-#import "ECFavoritesViewViewController.h"
-#import "ECContactModalViewController.h"
+#import "ECFavoritesViewController.h"
+#import "ECModalViewController.h"
 #import "ECKindHandler.h"
 #import "ECContactCell.h"
 #import "ECContactList.h"
 
 
-@interface ECContactsTableViewController ()
+@interface ECMainTableViewController ()
 
 @property (weak, nonatomic) ECContactCell * swipedCell;
 @property (strong, nonatomic) ECContactList * contacts;
-@property (strong, nonatomic) ECContactModalViewController * modalContactViewController;
+@property (strong, nonatomic) ECModalViewController * modalContactViewController;
 
 @end
 
 
-@implementation ECContactsTableViewController
+@implementation ECMainTableViewController
 
 #pragma - mark Init
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -42,6 +42,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
+    [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
+    NSLog(@"Changed background");
 }
 
 
@@ -109,12 +113,11 @@
     NSString * str = [self tableView:[self tableView] titleForHeaderInSection:section];
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(5, 2.5f, 15, 15)];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:16.0f]];
+    [label setBackgroundColor:[UIColor clearColor]];
     [label setText:str];
     [view addSubview:label];
     return view;
 }
-
-
 
 
 #pragma - mark Gesture recognition
@@ -158,7 +161,7 @@
 #pragma - mark Passing arguments to other VC
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
-        ECFavoritesViewViewController * nv = [segue destinationViewController];
+        ECFavoritesViewController * nv = [segue destinationViewController];
         NSArray * favorites = [ECFavoritesHandler getAllFavoritesWithContactList:_contacts];
         [nv setFavoriteContacts:favorites];
     }

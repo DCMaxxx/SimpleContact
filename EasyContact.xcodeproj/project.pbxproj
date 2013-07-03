@@ -26,20 +26,20 @@
 		9C017A2B176F03ED00A68013 /* text-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C017A18176F03ED00A68013 /* text-white.png */; };
 		9C017A2C176F03ED00A68013 /* unavailable-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C017A19176F03ED00A68013 /* unavailable-overlay.png */; };
 		9C017A2D176F03ED00A68013 /* unknown-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C017A1A176F03ED00A68013 /* unknown-user.png */; };
-		9C088B5B17392128003B7644 /* ECContactModalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5A17392128003B7644 /* ECContactModalCell.m */; };
+		9C088B5B17392128003B7644 /* ECNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5A17392128003B7644 /* ECNumberCell.m */; };
 		9C0E274D1780819200DA4EF8 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9C0E274C1780819200DA4EF8 /* PhoneFormats.dat */; };
 		9C0E275017809A8E00DA4EF8 /* ECKindHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */; };
 		9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* ECContact.m */; };
-		9C247A0317463AA30096AECE /* ECContactModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECContactModalViewController.m */; };
+		9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECModalViewController.m */; };
 		9C35918A1738056800764635 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3591891738056800764635 /* Accelerate.framework */; };
 		9C38969917661AE7000CA15D /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C38969817661AE7000CA15D /* Favorites.plist */; };
 		9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* ECContactList.m */; };
-		9C6F6061174564EF002753D7 /* ECContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* ECContactsTableViewController.m */; };
+		9C6F6061174564EF002753D7 /* ECMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* ECMainTableViewController.m */; };
 		9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723407173AB6FF00C2F633 /* RNBlurModalView.m */; };
 		9C78167B1747C62F00F66500 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C78167A1747C62F00F66500 /* MessageUI.framework */; };
 		9C8DB0E01775D0C40015FD67 /* ECContactJoiner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */; };
 		9C957D7A176E3D5C00E3B8A4 /* ECFavoritesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */; };
-		9C99C9CD1768F93700A3F594 /* ECFavoritesViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CC1768F93700A3F594 /* ECFavoritesViewViewController.m */; };
+		9C99C9CD1768F93700A3F594 /* ECFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CC1768F93700A3F594 /* ECFavoritesViewController.m */; };
 		9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C99C9CF1768F98F00A3F594 /* ECFavoriteCell.m */; };
 		9CA6B9D216BAD16D006EAF8D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D116BAD16D006EAF8D /* UIKit.framework */; };
 		9CA6B9D416BAD16D006EAF8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9D316BAD16D006EAF8D /* Foundation.framework */; };
@@ -51,7 +51,7 @@
 		9CA6B9F616BAD884006EAF8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F416BAD884006EAF8D /* AddressBook.framework */; };
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
-		9CACE3311770827000BDC2D3 /* ECFavoriteNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */; };
+		9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavorite.m */; };
 		9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */; };
 		9CC67F5A16BBD6B100F1A9BA /* ECContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */; };
 /* End PBXBuildFile section */
@@ -77,21 +77,21 @@
 		9C017A19176F03ED00A68013 /* unavailable-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unavailable-overlay.png"; path = "images/unavailable-overlay.png"; sourceTree = "<group>"; };
 		9C017A1A176F03ED00A68013 /* unknown-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unknown-user.png"; path = "images/unknown-user.png"; sourceTree = "<group>"; };
 		9C017A32176F075C00A68013 /* EasyContact-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EasyContact-Prefix.pch"; sourceTree = "<group>"; };
-		9C088B5917392128003B7644 /* ECContactModalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactModalCell.h; sourceTree = "<group>"; };
-		9C088B5A17392128003B7644 /* ECContactModalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactModalCell.m; sourceTree = "<group>"; };
+		9C088B5917392128003B7644 /* ECNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECNumberCell.h; sourceTree = "<group>"; };
+		9C088B5A17392128003B7644 /* ECNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECNumberCell.m; sourceTree = "<group>"; };
 		9C0E274C1780819200DA4EF8 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = ressources/PhoneFormats.dat; sourceTree = "<group>"; };
 		9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECKindHandler.h; sourceTree = "<group>"; };
 		9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECKindHandler.m; sourceTree = "<group>"; };
 		9C14627D16BC1DFF0008EB0F /* ECContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContact.h; sourceTree = "<group>"; };
 		9C14627E16BC1DFF0008EB0F /* ECContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContact.m; sourceTree = "<group>"; };
-		9C247A0117463AA30096AECE /* ECContactModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactModalViewController.h; sourceTree = "<group>"; };
-		9C247A0217463AA30096AECE /* ECContactModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactModalViewController.m; sourceTree = "<group>"; };
+		9C247A0117463AA30096AECE /* ECModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECModalViewController.h; sourceTree = "<group>"; };
+		9C247A0217463AA30096AECE /* ECModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECModalViewController.m; sourceTree = "<group>"; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9C38969817661AE7000CA15D /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = ressources/Favorites.plist; sourceTree = "<group>"; };
 		9C5DB56216EE57DF00300925 /* ECContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactList.h; sourceTree = "<group>"; };
 		9C5DB56316EE57DF00300925 /* ECContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactList.m; sourceTree = "<group>"; };
-		9C6F605F174564EF002753D7 /* ECContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactsTableViewController.h; sourceTree = "<group>"; };
-		9C6F6060174564EF002753D7 /* ECContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactsTableViewController.m; sourceTree = "<group>"; };
+		9C6F605F174564EF002753D7 /* ECMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMainTableViewController.h; sourceTree = "<group>"; };
+		9C6F6060174564EF002753D7 /* ECMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMainTableViewController.m; sourceTree = "<group>"; };
 		9C723406173AB6FF00C2F633 /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNBlurModalView.h; path = ressources/RNBlurModalView.h; sourceTree = "<group>"; };
 		9C723407173AB6FF00C2F633 /* RNBlurModalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNBlurModalView.m; path = ressources/RNBlurModalView.m; sourceTree = "<group>"; };
 		9C78167A1747C62F00F66500 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -99,8 +99,8 @@
 		9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactJoiner.m; sourceTree = "<group>"; };
 		9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoritesHandler.h; sourceTree = "<group>"; };
 		9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoritesHandler.m; sourceTree = "<group>"; };
-		9C99C9CB1768F93700A3F594 /* ECFavoritesViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoritesViewViewController.h; sourceTree = "<group>"; };
-		9C99C9CC1768F93700A3F594 /* ECFavoritesViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoritesViewViewController.m; sourceTree = "<group>"; };
+		9C99C9CB1768F93700A3F594 /* ECFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoritesViewController.h; sourceTree = "<group>"; };
+		9C99C9CC1768F93700A3F594 /* ECFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoritesViewController.m; sourceTree = "<group>"; };
 		9C99C9CE1768F98F00A3F594 /* ECFavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoriteCell.h; sourceTree = "<group>"; };
 		9C99C9CF1768F98F00A3F594 /* ECFavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoriteCell.m; sourceTree = "<group>"; };
 		9CA6B9CE16BAD16D006EAF8D /* EasyContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,8 +116,8 @@
 		9CA6B9F416BAD884006EAF8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9CACE32F1770827000BDC2D3 /* ECFavoriteNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavoriteNumber.h; sourceTree = "<group>"; };
-		9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavoriteNumber.m; sourceTree = "<group>"; };
+		9CACE32F1770827000BDC2D3 /* ECFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavorite.h; sourceTree = "<group>"; };
+		9CACE3301770827000BDC2D3 /* ECFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavorite.m; sourceTree = "<group>"; };
 		9CACE3321770AA3A00BDC2D3 /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPhoneFormat.h; sourceTree = "<group>"; };
 		9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactCell.h; sourceTree = "<group>"; };
@@ -191,42 +191,46 @@
 			name = "Configuration files";
 			sourceTree = "<group>";
 		};
-		9C3591931738237B00764635 /* Contact modal view */ = {
+		9C3591931738237B00764635 /* Modal view */ = {
 			isa = PBXGroup;
 			children = (
-				9C247A0117463AA30096AECE /* ECContactModalViewController.h */,
-				9C247A0217463AA30096AECE /* ECContactModalViewController.m */,
-				9C088B5917392128003B7644 /* ECContactModalCell.h */,
-				9C088B5A17392128003B7644 /* ECContactModalCell.m */,
+				9C247A0117463AA30096AECE /* ECModalViewController.h */,
+				9C247A0217463AA30096AECE /* ECModalViewController.m */,
+				9C088B5917392128003B7644 /* ECNumberCell.h */,
+				9C088B5A17392128003B7644 /* ECNumberCell.m */,
 			);
-			name = "Contact modal view";
+			name = "Modal view";
 			sourceTree = "<group>";
 		};
 		9C6F605E174562BA002753D7 /* Main view */ = {
 			isa = PBXGroup;
 			children = (
-				9C6F605F174564EF002753D7 /* ECContactsTableViewController.h */,
-				9C6F6060174564EF002753D7 /* ECContactsTableViewController.m */,
+				9C6F605F174564EF002753D7 /* ECMainTableViewController.h */,
+				9C6F6060174564EF002753D7 /* ECMainTableViewController.m */,
 				9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */,
 				9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */,
 			);
 			name = "Main view";
 			sourceTree = "<group>";
 		};
-		9C8DB0DD1775D09D0015FD67 /* Join contact */ = {
+		9C8DB0DD1775D09D0015FD67 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */,
+				9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */,
+				9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */,
+				9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */,
 				9C8DB0DE1775D0C40015FD67 /* ECContactJoiner.h */,
 				9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */,
 			);
-			name = "Join contact";
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		9C99C9C71768F76B00A3F594 /* Favorites view */ = {
 			isa = PBXGroup;
 			children = (
-				9C99C9CB1768F93700A3F594 /* ECFavoritesViewViewController.h */,
-				9C99C9CC1768F93700A3F594 /* ECFavoritesViewViewController.m */,
+				9C99C9CB1768F93700A3F594 /* ECFavoritesViewController.h */,
+				9C99C9CC1768F93700A3F594 /* ECFavoritesViewController.m */,
 				9C99C9CE1768F98F00A3F594 /* ECFavoriteCell.h */,
 				9C99C9CF1768F98F00A3F594 /* ECFavoriteCell.m */,
 			);
@@ -293,9 +297,9 @@
 				9CA6B9E116BAD16D006EAF8D /* ECAppDelegate.m */,
 				9CC67F5716BBD69A00F1A9BA /* Contact representation */,
 				9C6F605E174562BA002753D7 /* Main view */,
-				9C3591931738237B00764635 /* Contact modal view */,
+				9C3591931738237B00764635 /* Modal view */,
 				9C99C9C71768F76B00A3F594 /* Favorites view */,
-				9C8DB0DD1775D09D0015FD67 /* Join contact */,
+				9C8DB0DD1775D09D0015FD67 /* Utilities */,
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
 			);
 			name = Sources;
@@ -339,14 +343,10 @@
 			children = (
 				9C14627D16BC1DFF0008EB0F /* ECContact.h */,
 				9C14627E16BC1DFF0008EB0F /* ECContact.m */,
+				9CACE32F1770827000BDC2D3 /* ECFavorite.h */,
+				9CACE3301770827000BDC2D3 /* ECFavorite.m */,
 				9C5DB56216EE57DF00300925 /* ECContactList.h */,
 				9C5DB56316EE57DF00300925 /* ECContactList.m */,
-				9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */,
-				9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */,
-				9CACE32F1770827000BDC2D3 /* ECFavoriteNumber.h */,
-				9CACE3301770827000BDC2D3 /* ECFavoriteNumber.m */,
-				9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */,
-				9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */,
 			);
 			name = "Contact representation";
 			sourceTree = "<group>";
@@ -447,15 +447,15 @@
 				9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */,
 				9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */,
 				9C957D7A176E3D5C00E3B8A4 /* ECFavoritesHandler.m in Sources */,
-				9C088B5B17392128003B7644 /* ECContactModalCell.m in Sources */,
+				9C088B5B17392128003B7644 /* ECNumberCell.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,
-				9C6F6061174564EF002753D7 /* ECContactsTableViewController.m in Sources */,
-				9C247A0317463AA30096AECE /* ECContactModalViewController.m in Sources */,
+				9C6F6061174564EF002753D7 /* ECMainTableViewController.m in Sources */,
+				9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */,
 				9C0E275017809A8E00DA4EF8 /* ECKindHandler.m in Sources */,
 				9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */,
 				9C8DB0E01775D0C40015FD67 /* ECContactJoiner.m in Sources */,
-				9C99C9CD1768F93700A3F594 /* ECFavoritesViewViewController.m in Sources */,
-				9CACE3311770827000BDC2D3 /* ECFavoriteNumber.m in Sources */,
+				9C99C9CD1768F93700A3F594 /* ECFavoritesViewController.m in Sources */,
+				9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */,
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

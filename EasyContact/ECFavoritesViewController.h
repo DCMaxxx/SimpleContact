@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ECFavoritesViewViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ECFavoritesViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSArray * favoriteContacts;
 

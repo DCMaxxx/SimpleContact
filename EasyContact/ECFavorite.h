@@ -13,7 +13,7 @@
 @class ECContact;
 
 
-@interface ECFavoriteNumber : NSObject
+@interface ECFavorite : NSObject
 
 @property (strong, nonatomic) NSString * contactNumber;
 @property (nonatomic) eContactNumberKind kind;

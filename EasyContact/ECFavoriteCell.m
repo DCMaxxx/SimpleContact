@@ -12,7 +12,7 @@
 #import "ECFavoriteCell.h"
 
 #import "ECKindHandler.h"
-#import "ECFavoriteNumber.h"
+#import "ECFavorite.h"
 #import "ECContact.h"
 
 
@@ -37,6 +37,8 @@
         
         _contactPicture = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 60, 60)];
         [[self contentView] addSubview:_contactPicture];
+        [_contactPicture setClipsToBounds:YES];
+        [_contactPicture setContentMode:UIViewContentModeScaleAspectFill];
         
         CGRect tmpFrame = [_contactPicture frame];
         tmpFrame.origin.x = 0;
@@ -66,7 +68,7 @@
     return self;
 }
 
-- (void)setInformationsWithNumber:(ECFavoriteNumber *)number {
+- (void)setInformationsWithNumber:(ECFavorite *)number {
     static NSArray * kinds = nil;
     if (!kinds)
         kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png"];

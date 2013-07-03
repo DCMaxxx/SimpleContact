@@ -11,14 +11,14 @@
 #import "RNBlurModalView.h"
 #import "RMPhoneFormat.h"
 
-#import "ECContactModalViewController.h"
+#import "ECModalViewController.h"
 
-#import "ECContactModalCell.h"
+#import "ECNumberCell.h"
 #import "ECContactJoiner.h"
 #import "ECContact.h"
 
 
-@interface ECContactModalViewController ()
+@interface ECModalViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
@@ -28,7 +28,7 @@
 @end
 
 
-@implementation ECContactModalViewController
+@implementation ECModalViewController
 
 #pragma - mark Init
 -(id) initWithCoder:(NSCoder *)aDecoder {
@@ -48,6 +48,8 @@
     [[[self view] layer] setBorderWidth:2.0f];
     [[[self view] layer] setCornerRadius:10.0f];
     
+    [[_borderView layer] setBorderColor:[[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor]];
+
     [_contactPicture setImage:[_contact picture]];
     [_typeImageView setImage:[ECKindHandler iconForKind:_kind andWhite:NO]];
         
@@ -63,7 +65,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ModalCell";
-    ECContactModalCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ECNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSInteger index = [indexPath indexAtPosition:1];
     
     [cell setTag:index];
@@ -97,26 +99,20 @@
 
 #pragma - mark Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ECContactModalCell * cell = (ECContactModalCell *)[tableView cellForRowAtIndexPath:indexPath];
+    ECNumberCell * cell = (ECNumberCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     [_joiner joinContactWithKind:_kind address:[cell value] andViewController:self];
 }
 
 
-#pragma - mark BCModalTableViewController protocol
-- (void) longTapOnNumber:(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan)  {
-        CGPoint location = [gestureRecognizer locationInView:[self tableView]];
-        NSIndexPath * path = [[self tableView] indexPathForRowAtPoint:location];
-        ECContactModalCell * cell = (ECContactModalCell*)[_tableView cellForRowAtIndexPath:path];
-        NSInteger index = [cell tag];
-        NSMutableDictionary * number = [[_contact addessesOf:_kind] objectAtIndex:index];
-        NSNumber * isFavorite = [number objectForKey:@"favorite"];
-        [number setObject:[NSNumber numberWithBool:![isFavorite boolValue]] forKey:@"favorite"];
-        [cell isFavorite:![isFavorite boolValue]];
-        
-        [ECFavoritesHandler toogleContact:_contact number:[[cell label] text] ofKind:_kind];
-    }
+- (void) setFavoriteWithCell:(ECNumberCell *)cell {
+    NSInteger index = [cell tag];
+    NSMutableDictionary * number = [[_contact addessesOf:_kind] objectAtIndex:index];
+    NSNumber * isFavorite = [number objectForKey:@"favorite"];
+    [number setObject:[NSNumber numberWithBool:![isFavorite boolValue]] forKey:@"favorite"];
+    [cell isFavorite:![isFavorite boolValue]];
+    
+    [ECFavoritesHandler toogleContact:_contact number:[[cell label] text] ofKind:_kind];
 }
 
 

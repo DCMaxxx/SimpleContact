@@ -12,9 +12,9 @@
 
 
 @class ECContact;
+@class ECNumberCell;
 
-
-@interface ECContactModalViewController : UIViewController
+@interface ECModalViewController : UIViewController
 <
 UITableViewDataSource,
 UITableViewDelegate
@@ -22,7 +22,9 @@ UITableViewDelegate
 
 @property (weak, nonatomic) ECContact * contact;
 @property (nonatomic) eContactNumberKind kind;
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 
+- (void) setFavoriteWithCell:(ECNumberCell *)cell;
 -(void)hidePopup;
 
 @end
