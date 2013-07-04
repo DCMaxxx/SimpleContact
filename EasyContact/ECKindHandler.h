@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum { eCNKPhone, eCNKMail, eCNKText } eContactNumberKind;
-
+typedef enum { eCNKPhone, eCNKMail, eCNKText, eCNKFaceTime } eContactNumberKind;
+typedef enum { eICWhite, eICBlack, eICBlue } eImageColor;
 
 @interface ECKindHandler : NSObject
 

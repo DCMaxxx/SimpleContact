@@ -45,11 +45,12 @@
             ABRecordRef currentPerson = (__bridge ABRecordRef)[allPersons objectAtIndex:i];
             ECContact * contact = [[ECContact alloc] initWithAddressBookContact:currentPerson];
             
-            if (![[contact firstName] length])
-                continue;
-            
-            NSString * sectionTitle = [[contact firstName] substringToIndex:1];
-            NSRange idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
+            NSRange idx;
+            if ([[contact firstName] length]) {
+                NSString * sectionTitle = [[contact firstName] substringToIndex:1];
+                 idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
+            } else
+                idx.location = NSNotFound;
             if (idx.location == NSNotFound)
                 idx.location = [sections length] - 1;
             NSMutableDictionary * dic = [_sectionnedContacts objectAtIndex:idx.location];

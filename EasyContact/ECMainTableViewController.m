@@ -45,7 +45,6 @@
     
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
-    NSLog(@"Changed background");
 }
 
 
@@ -84,7 +83,7 @@
         [swipeRightOnContact setDirection:(UISwipeGestureRecognizerDirectionRight)];
         [cell addGestureRecognizer:swipeRightOnContact];
     }
-
+    
     [cell setMainViewInformationsWithContact:contact];
     
     return cell;
@@ -124,7 +123,7 @@
 -(void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         ECContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
-        if (cell == _swipedCell  && [[cell mainView] frame].origin.x > 0)
+        if (cell == _swipedCell)
             return ;
         [self unselectCell:_swipedCell];
         _swipedCell = cell;
@@ -133,7 +132,7 @@
         [cell setLeftViewInformationsWithContact:contact];
         
         CGRect newContactFrame = [[cell mainView] frame];
-        newContactFrame.origin.x += [[cell leftView] frame].size.width - 1;
+        newContactFrame.origin.x += [[cell leftView] frame].size.width;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
@@ -157,6 +156,10 @@
     [self showModalViewWithKind:eCNKText contact:contact];
 }
 
+-(void)tappedOnFaceTime:(UIGestureRecognizer *)gestureRecognizer {
+    ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
+    [self showModalViewWithKind:eCNKFaceTime contact:contact];
+}
 
 #pragma - mark Passing arguments to other VC
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -204,7 +207,7 @@
         [_swipedCell setSelected:NO animated:NO];
         
         CGRect newContactFrame = [[_swipedCell mainView] frame];
-        newContactFrame.origin.x = -[[_swipedCell leftView] frame].size.width;
+        newContactFrame.origin.x -= [[_swipedCell leftView] frame].size.width;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];

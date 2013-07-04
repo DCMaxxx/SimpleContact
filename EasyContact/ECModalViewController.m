@@ -85,12 +85,8 @@
     NSString * value = [dic objectForKey:@"value"];
     [cell setValue:value];
 
-    NSString * displayedValue;
-    if (_kind == eCNKPhone) {
-        RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
-        displayedValue = [fmt format:value];
-    } else
-        displayedValue = value;
+    RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
+    NSString * displayedValue = [fmt format:value];
     [[cell label] setText:displayedValue];
     
     return cell;

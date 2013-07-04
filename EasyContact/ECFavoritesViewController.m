@@ -57,7 +57,38 @@
     
     [cell setInformationsWithNumber:contact];
     
+    if (![[cell gestureRecognizers] count]) {
+        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(hello:)];
+        [cell addGestureRecognizer:gr];
+    }
+    
     return cell;
+}
+
+-(void)hello:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        CGPoint location = [gestureRecognizer locationInView:[self collectionView]];
+        NSIndexPath * path = [[self collectionView] indexPathForItemAtPoint:location];
+
+        ECFavoriteCell * cell = (ECFavoriteCell *)[[self collectionView] cellForItemAtIndexPath:path];
+        ECFavorite * number = [cell number];
+        [ECFavoritesHandler toogleContact:[number contact] number:[number contactNumber] ofKind:[number kind]];
+
+        [self.collectionView performBatchUpdates:^{
+            NSArray *selectedItemsIndexPaths = [NSArray arrayWithObject:path];
+            [self deleteItemsFromDataSourceAtIndexPaths:selectedItemsIndexPaths];
+            [[self collectionView] deleteItemsAtIndexPaths:selectedItemsIndexPaths];
+        } completion:nil];
+    }
+}
+
+-(void)deleteItemsFromDataSourceAtIndexPaths:(NSArray  *)itemPaths {
+    NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *itemPath  in itemPaths) {
+        [indexSet addIndex:itemPath.row];
+    }
+    [_contacts removeObjectsAtIndexes:indexSet];
+    
 }
 
 

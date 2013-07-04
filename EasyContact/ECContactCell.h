@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contactSmallNameLabel;
 @property (weak, nonatomic) IBOutlet UIView *boxView;
-@property (weak, nonatomic) IBOutlet UIView *leftView;
+@property (strong, nonatomic) UIView *leftView;
 
 
 - (void)setMainViewInformationsWithContact:(ECContact *)contact;

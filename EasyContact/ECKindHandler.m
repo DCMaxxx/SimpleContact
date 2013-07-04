@@ -29,17 +29,19 @@
         [kinds addObject:[ECKindHandler kindToString:eCNKMail]];
     if ([MFMessageComposeViewController canSendText])
         [kinds addObject:[ECKindHandler kindToString:eCNKText]];
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
+        [kinds addObject:[ECKindHandler kindToString:eCNKFaceTime]];
     return kinds;
 }
 
 + (UIImage *)iconForKind:(eContactNumberKind)kind andWhite:(BOOL)white {
-    NSArray * iconBaseNames = @[@"phone", @"mail", @"text"];
+    NSArray * iconBaseNames = @[@"phone", @"mail", @"text", @"facetime"];
     NSString * imageName = [NSString stringWithFormat:@"%@-%@.png", [iconBaseNames objectAtIndex:kind], (white ? @"white" : @"black")];
     return [UIImage imageNamed:imageName];
 }
 
 + (SEL)selectorForKind:(eContactNumberKind)kind prefix:(NSString *)prefix andSuffix:(NSString *)suffix {
-    NSArray * kinds = @[@"Phone", @"Mail", @"Text"];
+    NSArray * kinds = @[@"Phone", @"Mail", @"Text", @"FaceTime"];
     NSString * kindStr = [kinds objectAtIndex:kind];
     NSString * selectorStr = [NSString stringWithFormat:@"%@%@%@", (prefix ? prefix : @""), kindStr, (suffix ? suffix : @"")];
     return NSSelectorFromString(selectorStr);

@@ -34,15 +34,22 @@ static NSUInteger kTagLowestValue = 4241;
     NSArray * availableKinds = [ECKindHandler availableKinds];
     NSUInteger numberOfKinds = [availableKinds count];
     
-    if ([_leftView tag] != kTagLowestValue) {
-        [_leftView setTag:kTagLowestValue];
+    if (!_leftView) {
+        CGFloat const imageSize = 28;
+        CGFloat const spacing = 15;
+        CGFloat frameWidth = (imageSize + spacing) * numberOfKinds + spacing;
+        
+        CGRect frame;
+        frame.size.width = frameWidth;
+        frame.origin.x = 320 - frameWidth;
+        frame.origin.y = 0;
+        frame.size.height = 63;
+        _leftView = [[UIView alloc] initWithFrame:frame];
+        [_leftView setBackgroundColor:[UIColor colorWithWhite:0.85f alpha:1.0f]];
+        [_leftView setUserInteractionEnabled:YES];
 
-        CGFloat frameWidth = [_leftView frame].size.width;
-        CGFloat imageSize = 28;
-        CGFloat topSpacing = ([_leftView frame].size.height - imageSize) / 2;
-        CGFloat spacing = (frameWidth - (numberOfKinds * imageSize)) / (numberOfKinds + 1);
         CGFloat totalSpace = 0.0f;
-
+        CGFloat topSpacing = ([_leftView frame].size.height - imageSize) / 2;
         for (NSUInteger i = 0; i < numberOfKinds; ++i) {
             totalSpace += spacing;
             CGRect frame = CGRectMake(totalSpace, topSpacing, imageSize, imageSize);
@@ -56,6 +63,7 @@ static NSUInteger kTagLowestValue = 4241;
             [imageView setUserInteractionEnabled:YES];
             [_leftView addSubview:imageView];
         }
+        [_mainView addSubview:_leftView];
     }
 
     for (NSUInteger i = 0; i < numberOfKinds; ++i) {
@@ -69,7 +77,6 @@ static NSUInteger kTagLowestValue = 4241;
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andImageView:(UIImageView *)imageView {
     SEL selector = [ECKindHandler selectorForKind:kind prefix:@"tappedOn" andSuffix:@":"];
-    
 
     NSUInteger nbOfContacts = [contact numberOf:kind];
     if (!nbOfContacts) {

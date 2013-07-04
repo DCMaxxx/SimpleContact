@@ -63,11 +63,13 @@
     return ABRecordGetRecordID(_addBookContact);
 }
 
+
 #pragma - mark Default getters
 - (NSInteger) numberOf:(eContactNumberKind)kind {
     NSArray * selectors = @[@"numberOfPhones",
                             @"numberOfMails",
-                            @"numberOfTexts"];
+                            @"numberOfTexts",
+                            @"numberOfFaceTimes"];
     SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
     if ([self respondsToSelector:selector]) {
 #pragma clang diagnostic push
@@ -81,7 +83,8 @@
 - (NSArray *)addessesOf:(eContactNumberKind)kind {
     NSArray * selectors = @[@"phones",
                             @"mails",
-                            @"texts"];
+                            @"texts",
+                            @"facetimes"];
     SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
     if ([self respondsToSelector:selector]) {
 #pragma clang diagnostic push
@@ -103,6 +106,10 @@
 
 - (NSNumber *)numberOfTexts {
     return [NSNumber numberWithInt:[[self texts] count]];
+}
+
+- (NSNumber *)numberOfFaceTimes {
+    return [NSNumber numberWithInt:[[self facetimes] count]];
 }
 
 - (NSArray *)phones {
@@ -161,6 +168,15 @@
         NSMutableArray * mails = [self deepCopy:[self mails]];
         result = [[phones arrayByAddingObjectsFromArray:mails] mutableCopy];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKText]];
+    }
+    return result;
+}
+
+- (NSArray *)facetimes {
+    NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKFaceTime]];
+    if (!result) {
+        result = [self deepCopy:[self texts]];
+        [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKFaceTime]];
     }
     return result;
 }

@@ -32,6 +32,9 @@
         case eCNKText:
             [self sendText:address withCurrentController:vc];
             break;
+        case eCNKFaceTime:
+            [self faceTimeNumber:address];
+            break;
     }
 }
 
@@ -68,6 +71,12 @@
     [_messageViewController setRecipients:toRecipients];
     
     [_currentController presentViewController:_messageViewController animated:YES completion:nil];
+}
+
+- (void) faceTimeNumber:(NSString *)number {
+    number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString * callUrl = [@"facetime://" stringByAppendingString:number];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callUrl]];
 }
 
 
