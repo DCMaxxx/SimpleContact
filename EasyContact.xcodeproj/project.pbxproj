@@ -56,10 +56,7 @@
 		9CC67F5A16BBD6B100F1A9BA /* ECContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */; };
 		9CEE487D17848F31006BB683 /* facetime-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487B17848F31006BB683 /* facetime-black.png */; };
 		9CEE487E17848F31006BB683 /* facetime-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487C17848F31006BB683 /* facetime-white.png */; };
-		9CEE488317855AC7006BB683 /* facetime-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487F17855AC7006BB683 /* facetime-blue.png */; };
 		9CEE488417855AC7006BB683 /* mail-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE488017855AC7006BB683 /* mail-blue.png */; };
-		9CEE488517855AC7006BB683 /* phone-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE488117855AC7006BB683 /* phone-blue.png */; };
-		9CEE488617855AC7006BB683 /* text-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE488217855AC7006BB683 /* text-blue.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,10 +127,7 @@
 		9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactCell.m; sourceTree = "<group>"; };
 		9CEE487B17848F31006BB683 /* facetime-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-black.png"; path = "images/facetime-black.png"; sourceTree = "<group>"; };
 		9CEE487C17848F31006BB683 /* facetime-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-white.png"; path = "images/facetime-white.png"; sourceTree = "<group>"; };
-		9CEE487F17855AC7006BB683 /* facetime-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-blue.png"; path = "images/facetime-blue.png"; sourceTree = "<group>"; };
 		9CEE488017855AC7006BB683 /* mail-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail-blue.png"; path = "images/mail-blue.png"; sourceTree = "<group>"; };
-		9CEE488117855AC7006BB683 /* phone-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "phone-blue.png"; path = "images/phone-blue.png"; sourceTree = "<group>"; };
-		9CEE488217855AC7006BB683 /* text-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "text-blue.png"; path = "images/text-blue.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				9CEE487B17848F31006BB683 /* facetime-black.png */,
-				9CEE487F17855AC7006BB683 /* facetime-blue.png */,
 				9CEE487C17848F31006BB683 /* facetime-white.png */,
 				9C017A0E176F03ED00A68013 /* favorite-flag.png */,
 				9C017A0F176F03ED00A68013 /* label-home.png */,
@@ -190,10 +183,8 @@
 				9C017A13176F03ED00A68013 /* mail-white.png */,
 				9C017A14176F03ED00A68013 /* navigationbar-background.png */,
 				9C017A15176F03ED00A68013 /* phone-black.png */,
-				9CEE488117855AC7006BB683 /* phone-blue.png */,
 				9C017A16176F03ED00A68013 /* phone-white.png */,
 				9C017A17176F03ED00A68013 /* text-black.png */,
-				9CEE488217855AC7006BB683 /* text-blue.png */,
 				9C017A18176F03ED00A68013 /* text-white.png */,
 				9C017A19176F03ED00A68013 /* unavailable-overlay.png */,
 				9C017A1A176F03ED00A68013 /* unknown-user.png */,
@@ -441,8 +432,6 @@
 				9C017A20176F03ED00A68013 /* Default@2x.png in Resources */,
 				9C017A1F176F03ED00A68013 /* Default.png in Resources */,
 				9CA6B9EB16BAD16D006EAF8D /* MainStoryboard.storyboard in Resources */,
-				9CEE488317855AC7006BB683 /* facetime-blue.png in Resources */,
-				9CEE488517855AC7006BB683 /* phone-blue.png in Resources */,
 				9C017A2D176F03ED00A68013 /* unknown-user.png in Resources */,
 				9C017A28176F03ED00A68013 /* phone-black.png in Resources */,
 				9C017A22176F03ED00A68013 /* label-home.png in Resources */,
@@ -452,7 +441,6 @@
 				9C017A2B176F03ED00A68013 /* text-white.png in Resources */,
 				9CEE487E17848F31006BB683 /* facetime-white.png in Resources */,
 				9C017A1D176F03ED00A68013 /* 120x120.png in Resources */,
-				9CEE488617855AC7006BB683 /* text-blue.png in Resources */,
 				9C017A1E176F03ED00A68013 /* Default-568h@2x.png in Resources */,
 				9C38969917661AE7000CA15D /* Favorites.plist in Resources */,
 			);
