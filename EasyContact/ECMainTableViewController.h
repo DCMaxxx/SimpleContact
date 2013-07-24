@@ -14,4 +14,6 @@
 
 @interface ECMainTableViewController : UITableViewController
 
+- (IBAction)displaySettings:(id)sender;
+
 @end

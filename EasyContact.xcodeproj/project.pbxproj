@@ -31,8 +31,13 @@
 		9C0E275017809A8E00DA4EF8 /* ECKindHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */; };
 		9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* ECContact.m */; };
 		9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECModalViewController.m */; };
+		9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C305A06179008A600F5D9C4 /* ECNavigationBar.m */; };
+		9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C305A091790135900F5D9C4 /* validation-tick.png */; };
+		9C305A0C17906A8A00F5D9C4 /* backbutton-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */; };
 		9C35918A1738056800764635 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3591891738056800764635 /* Accelerate.framework */; };
 		9C38969917661AE7000CA15D /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C38969817661AE7000CA15D /* Favorites.plist */; };
+		9C42A4711786B53000591BC9 /* ECSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */; };
+		9C42A4731786E9F500591BC9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C42A4721786E9F500591BC9 /* settings.png */; };
 		9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* ECContactList.m */; };
 		9C6F6061174564EF002753D7 /* ECMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* ECMainTableViewController.m */; };
 		9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723407173AB6FF00C2F633 /* RNBlurModalView.m */; };
@@ -89,8 +94,15 @@
 		9C14627E16BC1DFF0008EB0F /* ECContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContact.m; sourceTree = "<group>"; };
 		9C247A0117463AA30096AECE /* ECModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECModalViewController.h; sourceTree = "<group>"; };
 		9C247A0217463AA30096AECE /* ECModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECModalViewController.m; sourceTree = "<group>"; };
+		9C305A05179008A600F5D9C4 /* ECNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECNavigationBar.h; sourceTree = "<group>"; };
+		9C305A06179008A600F5D9C4 /* ECNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECNavigationBar.m; sourceTree = "<group>"; };
+		9C305A091790135900F5D9C4 /* validation-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "validation-tick.png"; path = "images/validation-tick.png"; sourceTree = "<group>"; };
+		9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backbutton-background.png"; path = "images/backbutton-background.png"; sourceTree = "<group>"; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		9C38969817661AE7000CA15D /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Favorites.plist; path = ressources/Favorites.plist; sourceTree = "<group>"; };
+		9C42A46F1786B53000591BC9 /* ECSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSettingsTableViewController.h; sourceTree = "<group>"; };
+		9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSettingsTableViewController.m; sourceTree = "<group>"; };
+		9C42A4721786E9F500591BC9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		9C5DB56216EE57DF00300925 /* ECContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactList.h; sourceTree = "<group>"; };
 		9C5DB56316EE57DF00300925 /* ECContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactList.m; sourceTree = "<group>"; };
 		9C6F605F174564EF002753D7 /* ECMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMainTableViewController.h; sourceTree = "<group>"; };
@@ -172,6 +184,9 @@
 		9C017A30176F042600A68013 /* App images */ = {
 			isa = PBXGroup;
 			children = (
+				9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */,
+				9C305A091790135900F5D9C4 /* validation-tick.png */,
+				9C42A4721786E9F500591BC9 /* settings.png */,
 				9CEE487B17848F31006BB683 /* facetime-black.png */,
 				9CEE487C17848F31006BB683 /* facetime-white.png */,
 				9C017A0E176F03ED00A68013 /* favorite-flag.png */,
@@ -200,6 +215,15 @@
 			name = "Configuration files";
 			sourceTree = "<group>";
 		};
+		9C305A08179008AA00F5D9C4 /* Navigation bar */ = {
+			isa = PBXGroup;
+			children = (
+				9C305A05179008A600F5D9C4 /* ECNavigationBar.h */,
+				9C305A06179008A600F5D9C4 /* ECNavigationBar.m */,
+			);
+			name = "Navigation bar";
+			sourceTree = "<group>";
+		};
 		9C3591931738237B00764635 /* Modal view */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +233,15 @@
 				9C088B5A17392128003B7644 /* ECNumberCell.m */,
 			);
 			name = "Modal view";
+			sourceTree = "<group>";
+		};
+		9C42A46B1786B3A400591BC9 /* Settings view */ = {
+			isa = PBXGroup;
+			children = (
+				9C42A46F1786B53000591BC9 /* ECSettingsTableViewController.h */,
+				9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */,
+			);
+			name = "Settings view";
 			sourceTree = "<group>";
 		};
 		9C6F605E174562BA002753D7 /* Main view */ = {
@@ -304,10 +337,12 @@
 			children = (
 				9CA6B9E016BAD16D006EAF8D /* ECAppDelegate.h */,
 				9CA6B9E116BAD16D006EAF8D /* ECAppDelegate.m */,
-				9CC67F5716BBD69A00F1A9BA /* Contact representation */,
+				9CC67F5716BBD69A00F1A9BA /* Contact */,
 				9C6F605E174562BA002753D7 /* Main view */,
 				9C3591931738237B00764635 /* Modal view */,
+				9C305A08179008AA00F5D9C4 /* Navigation bar */,
 				9C99C9C71768F76B00A3F594 /* Favorites view */,
+				9C42A46B1786B3A400591BC9 /* Settings view */,
 				9C8DB0DD1775D09D0015FD67 /* Utilities */,
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
 			);
@@ -347,7 +382,7 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
-		9CC67F5716BBD69A00F1A9BA /* Contact representation */ = {
+		9CC67F5716BBD69A00F1A9BA /* Contact */ = {
 			isa = PBXGroup;
 			children = (
 				9C14627D16BC1DFF0008EB0F /* ECContact.h */,
@@ -357,7 +392,7 @@
 				9C5DB56216EE57DF00300925 /* ECContactList.h */,
 				9C5DB56316EE57DF00300925 /* ECContactList.m */,
 			);
-			name = "Contact representation";
+			name = Contact;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +467,7 @@
 				9C017A20176F03ED00A68013 /* Default@2x.png in Resources */,
 				9C017A1F176F03ED00A68013 /* Default.png in Resources */,
 				9CA6B9EB16BAD16D006EAF8D /* MainStoryboard.storyboard in Resources */,
+				9C42A4731786E9F500591BC9 /* settings.png in Resources */,
 				9C017A2D176F03ED00A68013 /* unknown-user.png in Resources */,
 				9C017A28176F03ED00A68013 /* phone-black.png in Resources */,
 				9C017A22176F03ED00A68013 /* label-home.png in Resources */,
@@ -443,6 +479,8 @@
 				9C017A1D176F03ED00A68013 /* 120x120.png in Resources */,
 				9C017A1E176F03ED00A68013 /* Default-568h@2x.png in Resources */,
 				9C38969917661AE7000CA15D /* Favorites.plist in Resources */,
+				9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */,
+				9C305A0C17906A8A00F5D9C4 /* backbutton-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +497,7 @@
 				9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */,
 				9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */,
 				9C957D7A176E3D5C00E3B8A4 /* ECFavoritesHandler.m in Sources */,
+				9C42A4711786B53000591BC9 /* ECSettingsTableViewController.m in Sources */,
 				9C088B5B17392128003B7644 /* ECNumberCell.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,
 				9C6F6061174564EF002753D7 /* ECMainTableViewController.m in Sources */,
@@ -469,6 +508,7 @@
 				9C99C9CD1768F93700A3F594 /* ECFavoritesViewController.m in Sources */,
 				9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */,
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
+				9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

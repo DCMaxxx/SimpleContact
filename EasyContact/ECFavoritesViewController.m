@@ -11,6 +11,7 @@
 
 #import "ECFavoritesViewController.h"
 
+#import "ECNavigationBar.h"
 #import "ECFavorite.h"
 #import "ECContactJoiner.h"
 #import "ECFavoriteCell.h"
@@ -116,4 +117,8 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
+- (IBAction)displaySettings:(id)sender {
+    ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
+    [nv displaySettingsOnNavigationController:self.navigationController];
+}
 @end

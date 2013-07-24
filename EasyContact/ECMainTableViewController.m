@@ -12,6 +12,7 @@
 
 #import "ECFavoritesViewController.h"
 #import "ECModalViewController.h"
+#import "ECNavigationBar.h"
 #import "ECKindHandler.h"
 #import "ECContactCell.h"
 #import "ECContactList.h"
@@ -41,7 +42,6 @@
 #pragma - mark View controller delegate
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[[self navigationController] navigationBar] setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"] forBarMetrics:UIBarMetricsDefault];
     
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
@@ -194,7 +194,7 @@
     [self unselectCell:nil];
 
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"BCContactModalViewController"];
+    _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"ECModalViewController"];
     [_modalContactViewController setContact:contact];
     [_modalContactViewController setKind:kind];
     
@@ -217,6 +217,11 @@
     }
     if (cell)
         [cell setSelected:NO animated:NO];
+}
+
+- (IBAction)displaySettings:(id)sender {
+    ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
+    [nv displaySettingsOnNavigationController:self.navigationController];
 }
 
 @end

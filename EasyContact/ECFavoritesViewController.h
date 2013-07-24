@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSArray * favoriteContacts;
 
 - (IBAction)goBackToContacts;
+- (IBAction)displaySettings:(id)sender;
 
 @end
