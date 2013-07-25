@@ -130,7 +130,7 @@
             NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
             [result addObject:tmp];
         }
-        [ECFavoritesHandler areFavoriteForContact:self numbers:result ofKind:eCNKPhone];
+        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKPhone];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKPhone]];
     }
     return result;
@@ -154,7 +154,7 @@
             NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
             [result addObject:tmp];
         }
-        [ECFavoritesHandler areFavoriteForContact:self numbers:result ofKind:eCNKMail];
+        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKMail];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKMail]];
     }
     return result;

@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum { eTTVKDefault = 4341, eTTVKListOrder, eTTVKContactKind, eTTVKFavoriteOrder } eTagTableViewKind;
+
+typedef enum { eTCVShowImages = 4242, eTCVFirstName, eTCVLastName, eTCVNickName,
+    eTCVPhone, eTCVMail, eTCVMessage, eTCVFaceTime } eTagCellValue;
+
+
 @interface ECSettingsTableViewController : UITableViewController
+
+@property eTagTableViewKind kind;
 
 @end

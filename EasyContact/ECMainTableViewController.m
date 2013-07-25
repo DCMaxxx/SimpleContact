@@ -165,7 +165,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
         ECFavoritesViewController * nv = [segue destinationViewController];
-        NSArray * favorites = [ECFavoritesHandler getAllFavoritesWithContactList:_contacts];
+        NSArray * favorites = [[ECFavoritesHandler sharedInstance] getAllFavoritesWithContactList:_contacts];
         [nv setFavoriteContacts:favorites];
     }
 }

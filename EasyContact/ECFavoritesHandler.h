@@ -16,8 +16,11 @@
 
 @interface ECFavoritesHandler : NSObject
 
-+ (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind;
-+ (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind;
-+ (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list;
++ (ECFavoritesHandler *)sharedInstance;
+
+- (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind;
+- (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind;
+- (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list;
+- (void) saveModifications;
 
 @end

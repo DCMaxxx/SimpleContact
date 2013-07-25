@@ -29,6 +29,8 @@
 		9C088B5B17392128003B7644 /* ECNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C088B5A17392128003B7644 /* ECNumberCell.m */; };
 		9C0E274D1780819200DA4EF8 /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = 9C0E274C1780819200DA4EF8 /* PhoneFormats.dat */; };
 		9C0E275017809A8E00DA4EF8 /* ECKindHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */; };
+		9C0F8B3917A12A93007449B0 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C0F8B3817A12A93007449B0 /* Settings.plist */; };
+		9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */; };
 		9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* ECContact.m */; };
 		9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECModalViewController.m */; };
 		9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C305A06179008A600F5D9C4 /* ECNavigationBar.m */; };
@@ -90,6 +92,9 @@
 		9C0E274C1780819200DA4EF8 /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = PhoneFormats.dat; path = ressources/PhoneFormats.dat; sourceTree = "<group>"; };
 		9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECKindHandler.h; sourceTree = "<group>"; };
 		9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECKindHandler.m; sourceTree = "<group>"; };
+		9C0F8B3817A12A93007449B0 /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
+		9C0F8B3A17A12DCD007449B0 /* ECSettingsHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSettingsHandler.h; sourceTree = "<group>"; };
+		9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSettingsHandler.m; sourceTree = "<group>"; };
 		9C14627D16BC1DFF0008EB0F /* ECContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContact.h; sourceTree = "<group>"; };
 		9C14627E16BC1DFF0008EB0F /* ECContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContact.m; sourceTree = "<group>"; };
 		9C247A0117463AA30096AECE /* ECModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECModalViewController.h; sourceTree = "<group>"; };
@@ -210,6 +215,7 @@
 		9C017A31176F047500A68013 /* Configuration files */ = {
 			isa = PBXGroup;
 			children = (
+				9C0F8B3817A12A93007449B0 /* Settings.plist */,
 				9C38969817661AE7000CA15D /* Favorites.plist */,
 			);
 			name = "Configuration files";
@@ -264,6 +270,8 @@
 				9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */,
 				9C8DB0DE1775D0C40015FD67 /* ECContactJoiner.h */,
 				9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */,
+				9C0F8B3A17A12DCD007449B0 /* ECSettingsHandler.h */,
+				9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -481,6 +489,7 @@
 				9C38969917661AE7000CA15D /* Favorites.plist in Resources */,
 				9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */,
 				9C305A0C17906A8A00F5D9C4 /* backbutton-background.png in Resources */,
+				9C0F8B3917A12A93007449B0 /* Settings.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +518,7 @@
 				9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */,
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
 				9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */,
+				9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

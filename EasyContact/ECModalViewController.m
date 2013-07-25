@@ -108,7 +108,7 @@
     [number setObject:[NSNumber numberWithBool:![isFavorite boolValue]] forKey:@"favorite"];
     [cell isFavorite:![isFavorite boolValue]];
     
-    [ECFavoritesHandler toogleContact:_contact number:[[cell label] text] ofKind:_kind];
+    [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] ofKind:_kind];
 }
 
 

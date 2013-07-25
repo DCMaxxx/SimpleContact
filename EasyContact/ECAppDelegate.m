@@ -11,11 +11,12 @@
 
 #import "ECAppDelegate.h"
 
+#import "ECFavoritesHandler.h"
+
 
 @implementation ECAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) { });
@@ -55,6 +56,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [[ECFavoritesHandler sharedInstance] saveModifications];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

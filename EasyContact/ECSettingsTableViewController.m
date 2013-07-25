@@ -8,37 +8,39 @@
 
 #import "ECSettingsTableViewController.h"
 
+#import "ECSettingsHandler.h"
 #import "ECNavigationBar.h"
+
 
 @interface ECSettingsTableViewController ()
 
 @end
 
-typedef enum { eTTVKListOrder = 4242, eTTVKListDisplay, eTTVKFavoriteOrder, eTTVKFavoriteDisplay } eTagTableViewKind;
-
-typedef enum { eTCVShowImages = 4242, eTCVFirstName, eTCVLastName, eTCVNickName } eTagCellValue;
-
 @implementation ECSettingsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        _kind = eTTVKDefault;
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
+        ECSettingsTableViewController * tvc = [segue destinationViewController];
+        [tvc setKind:[sender tag]];
+    }
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     [self.navigationController setValue:[[ECNavigationBar alloc] init] forKeyPath:@"navigationBar"];
 
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 400, 44)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:21.0f]];
     [label setTextColor:[UIColor whiteColor]];
-    [label setBackgroundColor:[UIColor colorWithRed:0 green:119.0f/255.0f blue:1.0f alpha:1.0f]];
+    [label setBackgroundColor:[UIColor clearColor]];
     [label setText:@"Préférences"];
     [label setTextAlignment:NSTextAlignmentCenter];
     [[self navigationItem] setTitleView:label];
@@ -58,7 +60,16 @@ typedef enum { eTCVShowImages = 4242, eTCVFirstName, eTCVLastName, eTCVNickName 
                                                     barMetrics:UIBarMetricsDefault];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell * cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_kind];
+    if (set)
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    return cell;
+}
+
 - (void) cancelEdit: (id) sender {
+    [[ECSettingsHandler sharedInstance] saveModifications];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -81,18 +92,71 @@ typedef enum { eTCVShowImages = 4242, eTCVFirstName, eTCVLastName, eTCVNickName 
     
     UILabel * label = [[UILabel alloc] init];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:20.0f]];
-    [label setTextColor:[UIColor colorWithWhite:0.75f alpha:1.0f]];
+    [label setTextColor:[UIColor colorWithWhite:0.6f alpha:1.0f]];
     [label setText:title];
     return label;
 }
 
 
 -(void)saveSettingsOfCell:(UITableViewCell *)cell {
-    if ([cell tag] == eTCVShowImages) {
-        BOOL isSet = ([cell accessoryType] == UITableViewCellAccessoryNone);
-        UITableViewCellAccessoryType newType = (isSet ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone);
+    NSArray * selectors = @[@"saveSettingsForDefaultViewWithCell:",
+                            @"saveSettingsForListOrderViewWithCell:",
+                            @"saveSettingsForContactKindWithCell:",
+                            @"saveSettingsForFavoriteOrderWithCell:"];
+    SEL selector = NSSelectorFromString([selectors objectAtIndex:(_kind - eTTVKDefault)]);
+    
+    if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:selector withObject:cell];
+#pragma clang diagnostic pop
+    }
+}
+
+-(void)saveSettingsForDefaultViewWithCell:(UITableViewCell *)cell {
+    if ([cell tag] != eTCVShowImages)
+        return ;
+    [self changeSettingsForCell:cell andResetOthers:NO];
+}
+
+-(void)saveSettingsForListOrderViewWithCell:(UITableViewCell *)cell {
+    if (([cell tag] != eTCVFirstName && [cell tag] != eTCVLastName)
+        || [cell accessoryType] != UITableViewCellAccessoryNone)
+        return ;
+    [self changeSettingsForCell:cell andResetOthers:YES];
+}
+
+-(void)saveSettingsForContactKindWithCell:(UITableViewCell *)cell {
+    if ([cell tag] != eTCVPhone && [cell tag] != eTCVMail
+        && [cell tag] != eTCVMessage && [cell tag] != eTCVFaceTime)
+        return ;
+    [self changeSettingsForCell:cell andResetOthers:NO];
+}
+
+-(void)saveSettingsForFavoriteOrderWithCell:(UITableViewCell *)cell {
+    if ([cell tag] != eTCVFirstName &&[cell tag] != eTCVLastName
+        && [cell tag] != eTCVNickName)
+        return ;
+    [self changeSettingsForCell:cell andResetOthers:YES];
+}
+
+-(void)changeSettingsForCell:(UITableViewCell *)cell andResetOthers:(BOOL)reset {
+    BOOL isSet = ([cell accessoryType] == UITableViewCellAccessoryCheckmark);
+    if (!isSet || (isSet && !reset)) {
+        UITableViewCellAccessoryType newType = (isSet ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark);
         [cell setAccessoryType:newType];
-        // Updated preferences
+        [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_kind withValue:!isSet];
+    }
+    if (reset) {
+        NSIndexPath * indexPath = [[self tableView] indexPathForCell:cell];
+        NSInteger sectionIdx = [indexPath indexAtPosition:0];
+        for (NSUInteger i = 0; i < [[self tableView] numberOfRowsInSection:sectionIdx]; ++i) {
+            if (i != [indexPath indexAtPosition:1]) {
+                UITableViewCell * cell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:sectionIdx]];
+                [cell setAccessoryType:UITableViewCellAccessoryNone];
+                [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_kind withValue:NO];
+            }
+        }
     }
 }
 

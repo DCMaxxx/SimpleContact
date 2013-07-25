@@ -13,16 +13,48 @@
 #import "ECContact.h"
 
 
+@interface ECFavoritesHandler ()
+
+@property NSMutableDictionary * favorites;
+@property NSString * filePath;
+
+@end
+
+
 @implementation ECFavoritesHandler
 
++(ECFavoritesHandler *)sharedInstance {
+    static dispatch_once_t pred;
+    static ECFavoritesHandler *shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[ECFavoritesHandler alloc] init];
+    });
+    return shared;
+}
+
+- (id) init {
+    if (self = [super init]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        _filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:_filePath])
+            _favorites = [NSMutableDictionary dictionaryWithContentsOfFile:_filePath];
+        else {
+            _favorites = [[NSMutableDictionary alloc] init];
+            NSString * bundle = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
+            [[NSFileManager defaultManager] copyItemAtPath:bundle toPath:_filePath error:nil];
+        }
+    }
+    return self;
+}
+
 #pragma - mark Handle favorites functions
-+ (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
-    NSMutableDictionary * favorites = [ECFavoritesHandler loadFavoritesFromFile];
-    
-    NSMutableDictionary * contactFavorites = [favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+- (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
+    NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     if (!contactFavorites) {
         contactFavorites = [[NSMutableDictionary alloc] init];
-        [favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+        [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     }
     
     NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
@@ -37,17 +69,13 @@
         [kindOfFavorites setObject:isFavorite forKey:number];
     } else
         [kindOfFavorites removeObjectForKey:number];
-    
-    [ECFavoritesHandler writeDictionaryToFile:favorites];
 }
 
-+ (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind {
+- (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind {
     if (![numbers count])
         return ;
     
-    NSMutableDictionary * favorites = [ECFavoritesHandler loadFavoritesFromFile];
-    
-    NSMutableDictionary * contactFavorites = [favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+    NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     if (!contactFavorites)
         return ;
     
@@ -65,17 +93,15 @@
     }
 }
 
-+ (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list {
-    NSMutableDictionary * favorites = [ECFavoritesHandler loadFavoritesFromFile];
-    
+- (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list {
     NSMutableArray * result = [[NSMutableArray alloc] init];
     
-    for (NSString * contactUID in favorites) {
+    for (NSString * contactUID in _favorites) {
         ECContact * contact = [list getContactFromUID:[contactUID intValue]];
         if (!contact)
             continue ;
         
-        NSMutableDictionary * allKindOfFavorites = [favorites objectForKey:contactUID];
+        NSMutableDictionary * allKindOfFavorites = [_favorites objectForKey:contactUID];
         for (NSString * kindOfFavorite in allKindOfFavorites) {
             NSMutableDictionary * allNumbers = [allKindOfFavorites objectForKey:kindOfFavorite];
             for (NSString * number in allNumbers) {
@@ -91,33 +117,8 @@
     return [result sortedArrayUsingSelector:@selector(compare:)];
 }
 
-
-#pragma - mark Private functions for handeling favorites file.
-+ (NSMutableDictionary *)loadFavoritesFromFile {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString * filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
-    
-    NSMutableDictionary * favorites;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
-        favorites = [NSMutableDictionary dictionaryWithContentsOfFile:filePath];
-    else
-        favorites = [[NSMutableDictionary alloc] init];
-    
-    return favorites;
-}
-
-+ (void)writeDictionaryToFile:(NSDictionary *)dictionary {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString * filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        NSString * bundle = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
-        [[NSFileManager defaultManager] copyItemAtPath:bundle toPath:filePath error:nil];
-    }
-    
-    [dictionary writeToFile:filePath atomically:YES];
+- (void) saveModifications {
+    [_favorites writeToFile:_filePath atomically:YES];
 }
 
 @end
