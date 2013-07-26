@@ -23,7 +23,7 @@ For now, you'll have to :
 + An iDevice on iOS 6.0+ (UICollectionView)
 + A developper licence (and if you don't, you can try it in the simulator !)
 
-In a few weeks, I plan to post it on the store, under the same name, EeasyContact.
+In a few weeks, I plan to post it on the store, under the same name, EasyContact.
 
 
 Can I see it ?
@@ -47,3 +47,14 @@ Can I give my opinion ?
 -------
 Of course ! I'd love to here from you.  
 Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar@me.com)
+
+
+To do
+-------
++ Bug fix on first launch (must start it again to see contacts)
++ Automatic update of views after settings update (must restart app for now)
++ Update first and last name position if pictures are hidden
++ Disable impossible contact option (such as phone on an iPod Touch) 
++ Add a first launch tutorial
++ Add research field on main view
++ Add research field on favorite view
