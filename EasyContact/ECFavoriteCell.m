@@ -76,7 +76,7 @@
     _number = number;
     
     ECContact * contact = [number contact];
-    [_contactName setText:[contact firstName]];
+    [_contactName setText:[contact favoriteName]];
     [_contactPicture setImage:[contact picture]];
 
     eContactNumberKind kind = [number kind];

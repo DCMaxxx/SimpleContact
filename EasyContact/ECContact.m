@@ -8,6 +8,7 @@
 
 #import "ECContact.h"
 
+#import "ECSettingsHandler.h"
 #import "ECKindHandler.h"
 
 @interface ECContact ()
@@ -22,6 +23,7 @@
 
 @synthesize firstName = _firstName;
 @synthesize lastName = _lastName;
+@synthesize nickName = _nickName;
 
 
 #pragma - mark Init
@@ -37,6 +39,26 @@
             _picture = [UIImage imageNamed:@"unknown-user.png"];
     }
     return self;
+}
+
+-(NSString *)importantName {
+    if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder])
+        return [self firstName];
+    return [self lastName];
+}
+
+-(NSString *)secondaryName {
+    if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder])
+        return [self lastName];
+    return [self firstName];
+}
+
+-(NSString *)favoriteName {
+    if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCFavoriteOrder])
+        return [self firstName];
+    else if ([[ECSettingsHandler sharedInstance] getOption:eSOLastName ofCategory:eSCFavoriteOrder])
+        return [self lastName];
+    return [self nickName];
 }
 
 
@@ -57,6 +79,15 @@
             _lastName = @"";
     }
     return _lastName;
+}
+
+-(NSString *)nickName {
+    if (!_nickName) {
+        _nickName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonNicknameProperty);
+        if (!_nickName)
+            _nickName = @"";
+    }
+    return _nickName;
 }
 
 -(NSInteger)UID {

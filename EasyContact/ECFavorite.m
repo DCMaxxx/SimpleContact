@@ -23,9 +23,10 @@
 }
 
 - (NSComparisonResult)compare:(ECFavorite *)number {
-    NSComparisonResult res = [[_contact firstName] compare:[[number contact] firstName]];
+    NSComparisonResult res = [[_contact favoriteName] compare:[[number contact] favoriteName] options:NSCaseInsensitiveSearch];
     if (res == NSOrderedSame) {
-        res = [[_contact lastName] compare:[[number contact] lastName]];        if (res == NSOrderedSame)
+        res = [[_contact lastName] compare:[[number contact] lastName]];
+        if (res == NSOrderedSame)
             res = (_kind < [number kind] ? NSOrderedAscending : (_kind > [number kind] ? NSOrderedDescending : NSOrderedSame));
     }
     return res;

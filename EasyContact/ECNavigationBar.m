@@ -12,16 +12,6 @@
 
 @implementation ECNavigationBar
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"] forBarMetrics:UIBarMetricsDefault];
-        // Initialization code
-    }
-    return self;
-}
-
 - (void)drawRect:(CGRect)rect {
     UIImage * img = [UIImage imageNamed:@"navigationbar-background.png"];
     [img drawInRect:CGRectMake(0, 0, [self frame].size.width, [self frame].size.height)];

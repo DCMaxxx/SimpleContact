@@ -8,13 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ECSettingsTableViewController.h"
+/*
+ ** Linked with ECSettingsTableView's tags, be sure to change both
+ */
+typedef enum { eSCDefault = 4341, eSCListOrder, eSCContactKind, eSCFavoriteOrder } eSettingsCategory;
+
+typedef enum { eSOShowImages = 4242, eSOFirstName, eSOLastName, eSONickName,
+    eSOPhone, eSOMail, eSOMessage, eSOFaceTime } eSettingsOption;
 
 @interface ECSettingsHandler : NSObject
 
 + (ECSettingsHandler *)sharedInstance;
-- (BOOL)getOption:(eTagCellValue)option ofCategory:(eTagTableViewKind)category;
-- (void)setOption:(eTagCellValue)option ofCategory:(eTagTableViewKind)category withValue:(BOOL)value;
+- (BOOL)getOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category;
+- (void)setOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category withValue:(BOOL)value;
 - (void)saveModifications;
 
 @end

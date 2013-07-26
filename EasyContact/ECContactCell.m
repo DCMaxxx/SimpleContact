@@ -10,6 +10,7 @@
 
 #import "ECContactCell.h"
 
+#import "ECSettingsHandler.h"
 #import "ECContact.h"
 
 static NSUInteger kTagLowestValue = 4241;
@@ -24,14 +25,19 @@ static NSUInteger kTagLowestValue = 4241;
     if (!CGColorEqualToColor([[_boxView layer] borderColor], borderColor))
         [[_boxView layer] setBorderColor:borderColor];
     
-    [_contactNameLabel setText:[contact firstName]];
-    [_contactSmallNameLabel setText:[contact lastName]];
-    
-    [_contactPicture setImage:[contact picture]];
+    [_contactNameLabel setText:[contact importantName]];
+    [_contactSmallNameLabel setText:[contact secondaryName]];
+
+    if ([[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault])
+        [_contactPicture setImage:[contact picture]];
+    else {
+        _contactPicture.hidden = YES;
+        _boxView.hidden = YES;
+    }
 }
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact {
-    NSArray * availableKinds = [ECKindHandler availableKinds];
+    NSArray * availableKinds = [ECKindHandler enabledKinds];
     NSUInteger numberOfKinds = [availableKinds count];
     
     if (!_leftView) {

@@ -8,6 +8,8 @@
 
 #import "ECContactList.h"
 
+#import "ECSettingsHandler.h"
+
 
 @interface ECContactList ()
 
@@ -34,11 +36,14 @@
             [section setObject:[[NSMutableArray alloc] init] forKey:@"contacts"];
             [_sectionnedContacts addObject:section];
         }
+        
+        BOOL orderByFirstName = [[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder];
 
         _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(_addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
-        CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName, (void *)kABPersonFirstNameProperty);
+        CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName,
+                          (void*)(orderByFirstName ? kABPersonFirstNameProperty : kABPersonLastNameProperty));
         NSArray * allPersons = (__bridge_transfer NSArray *)peopleMutable;
         
         for (NSUInteger i = 0; i < [allPersons count]; ++i) {
@@ -46,8 +51,8 @@
             ECContact * contact = [[ECContact alloc] initWithAddressBookContact:currentPerson];
             
             NSRange idx;
-            if ([[contact firstName] length]) {
-                NSString * sectionTitle = [[contact firstName] substringToIndex:1];
+            if ([[contact importantName] length]) {
+                NSString * sectionTitle = [[contact importantName] substringToIndex:1];
                  idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
             } else
                 idx.location = NSNotFound;

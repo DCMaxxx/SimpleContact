@@ -16,7 +16,6 @@
 @interface ECFavoritesHandler ()
 
 @property NSMutableDictionary * favorites;
-@property NSString * filePath;
 
 @end
 
@@ -34,17 +33,11 @@
 
 - (id) init {
     if (self = [super init]) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        _filePath = [documentsDirectory stringByAppendingPathComponent:@"Favorites.plist"];
-        
-        if ([[NSFileManager defaultManager] fileExistsAtPath:_filePath])
-            _favorites = [NSMutableDictionary dictionaryWithContentsOfFile:_filePath];
-        else {
+        NSDictionary * favorites = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"Favorites"];
+        if (!favorites)
             _favorites = [[NSMutableDictionary alloc] init];
-            NSString * bundle = [[NSBundle mainBundle] pathForResource:@"Favorites" ofType:@"plist"];
-            [[NSFileManager defaultManager] copyItemAtPath:bundle toPath:_filePath error:nil];
-        }
+        else
+            _favorites = [favorites mutableCopy];
     }
     return self;
 }
@@ -52,16 +45,18 @@
 #pragma - mark Handle favorites functions
 - (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
     NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-    if (!contactFavorites) {
+    if (!contactFavorites)
         contactFavorites = [[NSMutableDictionary alloc] init];
-        [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-    }
+    else
+        contactFavorites = [contactFavorites mutableCopy];
+    [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
-    if (!kindOfFavorites) {
+    NSMutableDictionary * kindOfFavorites = [[contactFavorites objectForKey:[ECKindHandler kindToString:kind]] mutableCopy];
+    if (!kindOfFavorites)
         kindOfFavorites = [[NSMutableDictionary alloc] init];
-        [contactFavorites setObject:kindOfFavorites forKey:[ECKindHandler kindToString:kind]];
-    }
+    else
+        kindOfFavorites = [kindOfFavorites mutableCopy];
+    [contactFavorites setObject:kindOfFavorites forKey:[ECKindHandler kindToString:kind]];
     
     NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
     if (!isFavorite || ![isFavorite boolValue]) {
@@ -75,11 +70,11 @@
     if (![numbers count])
         return ;
     
-    NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+    NSDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     if (!contactFavorites)
         return ;
     
-    NSMutableDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
+    NSDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
     if (!kindOfFavorites)
         return ;
     
@@ -101,9 +96,9 @@
         if (!contact)
             continue ;
         
-        NSMutableDictionary * allKindOfFavorites = [_favorites objectForKey:contactUID];
+        NSDictionary * allKindOfFavorites = [_favorites objectForKey:contactUID];
         for (NSString * kindOfFavorite in allKindOfFavorites) {
-            NSMutableDictionary * allNumbers = [allKindOfFavorites objectForKey:kindOfFavorite];
+            NSDictionary * allNumbers = [allKindOfFavorites objectForKey:kindOfFavorite];
             for (NSString * number in allNumbers) {
                 NSNumber * isFavorite = [allNumbers objectForKey:number];
                 if ([isFavorite boolValue])
@@ -118,7 +113,8 @@
 }
 
 - (void) saveModifications {
-    [_favorites writeToFile:_filePath atomically:YES];
+    [[NSUserDefaults standardUserDefaults] setObject:_favorites forKey:@"Favorites"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

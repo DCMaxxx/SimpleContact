@@ -29,6 +29,19 @@
                                               otherButtonTitles:nil];
         [alert show];
     }
+
+    
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"TutorialDisplayed"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"TutorialDisplayed"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {
+        NSDictionary * settings = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"]];
+        [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"UserSettings"];
+    }
+    
     return YES;
 }
 							
@@ -40,7 +53,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    [[ECFavoritesHandler sharedInstance] saveModifications];
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

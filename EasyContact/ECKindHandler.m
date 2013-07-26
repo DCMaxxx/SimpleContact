@@ -11,6 +11,9 @@
 
 #import "ECKindHandler.h"
 
+#import "ECSettingsHandler.h"
+
+
 @implementation ECKindHandler
 
 + (NSString *) kindToString:(eContactNumberKind)kind {
@@ -21,7 +24,21 @@
     return (eContactNumberKind)[kind intValue];
 }
 
-+ (NSArray *) availableKinds {
++ (NSArray *) enabledKinds {
+    NSMutableArray * kinds = [[NSMutableArray alloc] init];
+    ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
+    if ([settingsHandler getOption:eSOPhone ofCategory:eSCContactKind])
+        [kinds addObject:[ECKindHandler kindToString:eCNKPhone]];
+    if ([settingsHandler getOption:eSOMail ofCategory:eSCContactKind])
+        [kinds addObject:[ECKindHandler kindToString:eCNKMail]];
+    if ([settingsHandler getOption:eSOMessage ofCategory:eSCContactKind])
+        [kinds addObject:[ECKindHandler kindToString:eCNKText]];
+    if ([settingsHandler getOption:eSOFaceTime ofCategory:eSCContactKind])
+        [kinds addObject:[ECKindHandler kindToString:eCNKFaceTime]];
+    return kinds;
+}
+
++ (NSArray *) possibleKinds {
     NSMutableArray * kinds = [[NSMutableArray alloc] init];
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
         [kinds addObject:[ECKindHandler kindToString:eCNKPhone]];

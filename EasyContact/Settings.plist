@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>4341</key>
+	<dict>
+		<key>4242</key>
+		<true/>
+	</dict>
+	<key>4342</key>
+	<dict>
+		<key>4243</key>
+		<true/>
+		<key>4244</key>
+		<false/>
+	</dict>
+	<key>4343</key>
+	<dict>
+		<key>4246</key>
+		<false/>
+		<key>4247</key>
+		<false/>
+		<key>4248</key>
+		<false/>
+		<key>4249</key>
+		<false/>
+	</dict>
+	<key>4344</key>
+	<dict>
+		<key>4243</key>
+		<true/>
+		<key>4244</key>
+		<false/>
+		<key>4245</key>
+		<false/>
+	</dict>
+</dict>
 </plist>

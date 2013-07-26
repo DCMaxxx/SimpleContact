@@ -20,7 +20,7 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _kind = eTTVKDefault;
+        _currentCategory = eSCDefault;
     }
     return self;
 }
@@ -28,7 +28,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
         ECSettingsTableViewController * tvc = [segue destinationViewController];
-        [tvc setKind:[sender tag]];
+        [tvc setCurrentCategory:[sender tag]];
     }
 }
 
@@ -62,7 +62,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-    BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_kind];
+    BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_currentCategory];
     if (set)
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
     return cell;
@@ -103,7 +103,7 @@
                             @"saveSettingsForListOrderViewWithCell:",
                             @"saveSettingsForContactKindWithCell:",
                             @"saveSettingsForFavoriteOrderWithCell:"];
-    SEL selector = NSSelectorFromString([selectors objectAtIndex:(_kind - eTTVKDefault)]);
+    SEL selector = NSSelectorFromString([selectors objectAtIndex:(_currentCategory - eSCDefault)]);
     
     if ([self respondsToSelector:selector]) {
 #pragma clang diagnostic push
@@ -114,28 +114,28 @@
 }
 
 -(void)saveSettingsForDefaultViewWithCell:(UITableViewCell *)cell {
-    if ([cell tag] != eTCVShowImages)
+    if ([cell tag] != eSOShowImages)
         return ;
     [self changeSettingsForCell:cell andResetOthers:NO];
 }
 
 -(void)saveSettingsForListOrderViewWithCell:(UITableViewCell *)cell {
-    if (([cell tag] != eTCVFirstName && [cell tag] != eTCVLastName)
+    if (([cell tag] != eSOFirstName && [cell tag] != eSOLastName)
         || [cell accessoryType] != UITableViewCellAccessoryNone)
         return ;
     [self changeSettingsForCell:cell andResetOthers:YES];
 }
 
 -(void)saveSettingsForContactKindWithCell:(UITableViewCell *)cell {
-    if ([cell tag] != eTCVPhone && [cell tag] != eTCVMail
-        && [cell tag] != eTCVMessage && [cell tag] != eTCVFaceTime)
+    if ([cell tag] != eSOPhone && [cell tag] != eSOMail
+        && [cell tag] != eSOMessage && [cell tag] != eSOFaceTime)
         return ;
     [self changeSettingsForCell:cell andResetOthers:NO];
 }
 
 -(void)saveSettingsForFavoriteOrderWithCell:(UITableViewCell *)cell {
-    if ([cell tag] != eTCVFirstName &&[cell tag] != eTCVLastName
-        && [cell tag] != eTCVNickName)
+    if ([cell tag] != eSOFirstName &&[cell tag] != eSOLastName
+        && [cell tag] != eSONickName)
         return ;
     [self changeSettingsForCell:cell andResetOthers:YES];
 }
@@ -145,7 +145,7 @@
     if (!isSet || (isSet && !reset)) {
         UITableViewCellAccessoryType newType = (isSet ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark);
         [cell setAccessoryType:newType];
-        [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_kind withValue:!isSet];
+        [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_currentCategory withValue:!isSet];
     }
     if (reset) {
         NSIndexPath * indexPath = [[self tableView] indexPathForCell:cell];
@@ -154,7 +154,7 @@
             if (i != [indexPath indexAtPosition:1]) {
                 UITableViewCell * cell = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:sectionIdx]];
                 [cell setAccessoryType:UITableViewCellAccessoryNone];
-                [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_kind withValue:NO];
+                [[ECSettingsHandler sharedInstance] setOption:[cell tag] ofCategory:_currentCategory withValue:NO];
             }
         }
     }

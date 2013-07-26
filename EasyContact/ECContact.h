@@ -17,10 +17,15 @@
 @property (nonatomic, readonly) NSInteger UID;
 @property (strong, nonatomic, readonly) NSString * firstName;
 @property (strong, nonatomic, readonly) NSString * lastName;
+@property (strong, nonatomic, readonly) NSString * nickName;
 @property (strong, nonatomic, readonly) UIImage * picture;
 
 - (id) initWithAddressBookContact:(ABRecordRef)addBookContact;
 - (NSInteger) numberOf:(eContactNumberKind)kind;
 - (NSArray *) addessesOf:(eContactNumberKind)kind;
+- (NSString *)importantName;
+- (NSString *)secondaryName;
+- (NSString *)favoriteName;
+
 
 @end
