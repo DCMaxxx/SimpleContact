@@ -71,7 +71,7 @@
 - (void)setInformationsWithNumber:(ECFavorite *)number {
     static NSArray * kinds = nil;
     if (!kinds)
-        kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png"];
+        kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png", @"facetime-black.png"];
     
     _number = number;
     

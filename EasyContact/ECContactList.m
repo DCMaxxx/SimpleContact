@@ -96,4 +96,33 @@
     return nil;
 }
 
+- (void)sortArrayAccordingToSettings {
+    NSString * sections = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
+    NSMutableArray * newSections = [[NSMutableArray alloc] initWithCapacity:[sections length]];
+    for (NSInteger i = 0; i < [sections length]; ++i) {
+        NSString * character = [sections substringWithRange:NSMakeRange(i, 1)];
+        NSMutableDictionary * section = [[NSMutableDictionary alloc] init];
+        [section setObject:character forKey:@"initial"];
+        [section setObject:[[NSMutableArray alloc] init] forKey:@"contacts"];
+        [newSections addObject:section];
+    }
+    
+    for (NSMutableDictionary * section in _sectionnedContacts) {
+        for (ECContact * contact in [section objectForKey:@"contacts"]) {
+            NSRange idx;
+            if ([[contact importantName] length]) {
+                NSString * sectionTitle = [[contact importantName] substringToIndex:1];
+                idx = [sections rangeOfString:sectionTitle options:NSCaseInsensitiveSearch];
+            } else
+                idx.location = NSNotFound;
+            if (idx.location == NSNotFound)
+                idx.location = [sections length] - 1;
+            NSMutableDictionary * dic = [newSections objectAtIndex:idx.location];
+            NSMutableArray * contacts = [dic objectForKey:@"contacts"];
+            [contacts addObject:contact];
+        }
+    }
+    _sectionnedContacts = newSections;
+}
+
 @end

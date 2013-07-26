@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ECSettingsDelegate.h"
+
 @class ECContactCell;
 @class ECContactList;
 
 
-@interface ECMainTableViewController : UITableViewController
+@interface ECMainTableViewController : UITableViewController <ECSettingsDelegate>
 
 - (IBAction)displaySettings:(id)sender;
 - (void)updateContacts;

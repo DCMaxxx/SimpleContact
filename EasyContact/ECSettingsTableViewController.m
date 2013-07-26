@@ -29,6 +29,7 @@
     if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
         ECSettingsTableViewController * tvc = [segue destinationViewController];
         [tvc setCurrentCategory:[sender tag]];
+        [tvc setDelegate:_delegate];
     }
 }
 
@@ -58,6 +59,7 @@
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:image
                                                       forState:UIControlStateNormal
                                                     barMetrics:UIBarMetricsDefault];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -70,6 +72,8 @@
 
 - (void) cancelEdit: (id) sender {
     [[ECSettingsHandler sharedInstance] saveModifications];
+    if (_delegate)
+        [_delegate updatedSettings];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

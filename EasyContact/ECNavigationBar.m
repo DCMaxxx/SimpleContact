@@ -17,9 +17,10 @@
     [img drawInRect:CGRectMake(0, 0, [self frame].size.width, [self frame].size.height)];
 }
 
-- (void)displaySettingsOnNavigationController:(UINavigationController *)controller {
+- (void)displaySettingsOnNavigationController:(UINavigationController *)controller andDelegate:(id<ECSettingsDelegate>)delegate {
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    ECSettingsTableViewController * tvc = [sb instantiateViewControllerWithIdentifier:@"ECSettingsViewController"];;
+    ECSettingsTableViewController * tvc = [sb instantiateViewControllerWithIdentifier:@"ECSettingsViewController"];
+    [tvc setDelegate:delegate];
     UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:tvc];
     [controller presentViewController:nc animated:YES completion:nil];
 }

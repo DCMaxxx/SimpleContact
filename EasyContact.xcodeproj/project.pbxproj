@@ -140,6 +140,7 @@
 		9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactCell.m; sourceTree = "<group>"; };
+		9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSettingsDelegate.h; sourceTree = "<group>"; };
 		9CEE487B17848F31006BB683 /* facetime-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-black.png"; path = "images/facetime-black.png"; sourceTree = "<group>"; };
 		9CEE487C17848F31006BB683 /* facetime-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-white.png"; path = "images/facetime-white.png"; sourceTree = "<group>"; };
 		9CEE488017855AC7006BB683 /* mail-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail-blue.png"; path = "images/mail-blue.png"; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 				9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */,
 				9C42A46F1786B53000591BC9 /* ECSettingsTableViewController.h */,
 				9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */,
+				9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */,
 			);
 			name = "Settings view";
 			sourceTree = "<group>";

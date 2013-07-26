@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ECSettingsDelegate.h"
 #import "ECSettingsHandler.h"
 
 
 @interface ECSettingsTableViewController : UITableViewController
 
 @property eSettingsCategory currentCategory;
+@property (weak, nonatomic) id<ECSettingsDelegate> delegate;
 
 @end

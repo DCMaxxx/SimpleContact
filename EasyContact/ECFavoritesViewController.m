@@ -119,6 +119,12 @@
 
 - (IBAction)displaySettings:(id)sender {
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
-    [nv displaySettingsOnNavigationController:self.navigationController];
+    [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
 }
+
+- (void)updatedSettings {
+    [_contacts sortUsingSelector:@selector(compare:)];
+    [[self collectionView] reloadData];
+}
+
 @end

@@ -223,11 +223,16 @@
 - (IBAction)displaySettings:(id)sender {
     [self unselectCell:nil];
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
-    [nv displaySettingsOnNavigationController:self.navigationController];
+    [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
 }
 
 - (void)updateContacts {
     _contacts = [[ECContactList alloc] init];
+    [[self tableView] reloadData];
+}
+
+-(void)updatedSettings {
+    [_contacts sortArrayAccordingToSettings];
     [[self tableView] reloadData];
 }
 
