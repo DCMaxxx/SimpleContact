@@ -52,7 +52,6 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 To do
 -------
 + Update first and last name position if pictures are hidden
-+ Disable impossible contact option (such as phone on an iPod Touch) 
 + Add a first launch tutorial
 + Add research field on main view
 + Add research field on favorite view

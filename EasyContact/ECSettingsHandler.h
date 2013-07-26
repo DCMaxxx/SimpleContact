@@ -21,6 +21,9 @@ typedef enum { eSOShowImages = 4242, eSOFirstName, eSOLastName, eSONickName,
 + (ECSettingsHandler *)sharedInstance;
 - (BOOL)getOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category;
 - (void)setOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category withValue:(BOOL)value;
+- (void)setUnavailableContactOption:(eSettingsOption)option;
+- (BOOL)isKindAvailable:(eSettingsOption)option;
 - (void)saveModifications;
+- (void)reloadSettings;
 
 @end

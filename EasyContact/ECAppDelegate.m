@@ -13,6 +13,8 @@
 
 #import "ECMainTableViewController.h"
 #import "ECFavoritesHandler.h"
+#import "ECSettingsHandler.h"
+#import "ECKindHandler.h"
 
 
 @implementation ECAppDelegate
@@ -47,8 +49,11 @@
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {
         NSDictionary * settings = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"]];
         [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"UserSettings"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[ECSettingsHandler sharedInstance] reloadSettings];
     }
     
+    [ECKindHandler setPossibleKinds];
     return YES;
 }
 							

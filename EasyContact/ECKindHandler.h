@@ -18,6 +18,6 @@ typedef enum { eICWhite, eICBlack, eICBlue } eImageColor;
 + (NSArray *)enabledKinds;
 + (UIImage *)iconForKind:(eContactNumberKind)kind andWhite:(BOOL)white;
 + (SEL)selectorForKind:(eContactNumberKind)kind prefix:(NSString *)prefix andSuffix:(NSString *)suffix;
-
++ (void)setPossibleKinds;
 
 @end

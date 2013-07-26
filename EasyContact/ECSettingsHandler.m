@@ -11,6 +11,7 @@
 @interface ECSettingsHandler ()
 
 @property NSMutableDictionary * settings;
+@property NSMutableArray * unavailabeSettings;
 
 @end
 
@@ -28,6 +29,7 @@
 - (id)init {
     if (self = [super init]) {
         _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"UserSettings"] mutableCopy];
+        _unavailabeSettings = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -52,9 +54,23 @@
     [options setObject:[NSNumber numberWithBool:value] forKey:[NSString stringWithFormat:@"%d", option]];
 }
 
+- (void)setUnavailableContactOption:(eSettingsOption)option {
+    [self setOption:option ofCategory:eSCContactKind withValue:NO];
+    [_unavailabeSettings addObject:[NSNumber numberWithInt:option]];
+}
+
+- (BOOL)isKindAvailable:(eSettingsOption)option {
+    return ([_unavailabeSettings indexOfObject:[NSNumber numberWithInt:option]]) == NSNotFound;
+        
+}
+
 - (void)saveModifications {
     [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"UserSettings"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)reloadSettings {
+    _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"UserSettings"] mutableCopy];
 }
 
 @end

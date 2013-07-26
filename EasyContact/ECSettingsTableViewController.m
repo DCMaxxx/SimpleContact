@@ -11,6 +11,7 @@
 #import "ECSettingsHandler.h"
 #import "ECNavigationBar.h"
 
+static NSUInteger kLabelViewTag = 4242;
 
 @interface ECSettingsTableViewController ()
 
@@ -67,6 +68,11 @@
     BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_currentCategory];
     if (set)
         [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    else if (_currentCategory == eSCContactKind && ![[ECSettingsHandler sharedInstance] isKindAvailable:[cell tag]]) {
+        [cell setUserInteractionEnabled:NO];
+        UILabel * label = (UILabel *)[cell viewWithTag:kLabelViewTag];
+        [label setEnabled:NO];
+    }
     return cell;
 }
 
@@ -96,7 +102,7 @@
     
     UILabel * label = [[UILabel alloc] init];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:20.0f]];
-    [label setTextColor:[UIColor colorWithWhite:0.6f alpha:1.0f]];
+    [label setTextColor:[UIColor colorWithWhite:0.3f alpha:1.0f]];
     [label setText:title];
     return label;
 }

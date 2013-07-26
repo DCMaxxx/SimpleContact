@@ -38,17 +38,17 @@
     return kinds;
 }
 
-+ (NSArray *) possibleKinds {
-    NSMutableArray * kinds = [[NSMutableArray alloc] init];
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
-        [kinds addObject:[ECKindHandler kindToString:eCNKPhone]];
-    if ([MFMailComposeViewController canSendMail])
-        [kinds addObject:[ECKindHandler kindToString:eCNKMail]];
-    if ([MFMessageComposeViewController canSendText])
-        [kinds addObject:[ECKindHandler kindToString:eCNKText]];
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
-        [kinds addObject:[ECKindHandler kindToString:eCNKFaceTime]];
-    return kinds;
++ (void) setPossibleKinds {
+    ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
+        [settingsHandler setUnavailableContactOption:eSOPhone];
+    if (![MFMailComposeViewController canSendMail])
+        [settingsHandler setUnavailableContactOption:eSOMail];
+    if (![MFMessageComposeViewController canSendText])
+        [settingsHandler setUnavailableContactOption:eSOMessage];
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
+        [settingsHandler setUnavailableContactOption:eSOFaceTime];
+    [settingsHandler saveModifications];
 }
 
 + (UIImage *)iconForKind:(eContactNumberKind)kind andWhite:(BOOL)white {

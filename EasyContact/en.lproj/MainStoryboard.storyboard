@@ -194,7 +194,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="4242" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="NLr-Ub-uTQ">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -222,7 +222,7 @@
                             <tableViewSection headerTitle="  Liste des favoris" id="rkS-aF-53v">
                                 <cells>
                                     <tableViewCell tag="4344" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="Bnw-3k-lll">
-                                        <rect key="frame" x="0.0" y="225" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="225" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -280,7 +280,7 @@
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Téléphone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyR-Ow-ISz">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Téléphone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyR-Ow-ISz">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="hrn-ii-tk1"/>
                                                         <constraint firstAttribute="width" constant="241" id="njh-oH-5fj"/>
@@ -304,7 +304,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pd3-gI-YJy">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pd3-gI-YJy">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Gxi-5p-rXZ"/>
                                                         <constraint firstAttribute="width" constant="241" id="KYb-1H-PrU"/>
@@ -328,7 +328,7 @@
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-R1-803">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vde-R1-803">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Ap9-ac-Khc"/>
                                                         <constraint firstAttribute="width" constant="241" id="XEA-6j-fmh"/>
@@ -346,13 +346,13 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell tag="4249" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="FZ6-xZ-7bH">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="179" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FaceTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-cN-6Ux">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FaceTime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an2-cN-6Ux">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="241" id="H9P-TH-N8t"/>
                                                         <constraint firstAttribute="height" constant="21" id="fLf-MC-y5k"/>
@@ -444,7 +444,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell tag="4245" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e5V-SB-hXh">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -518,7 +518,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell tag="4244" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="z30-Pn-eEz">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -746,6 +746,74 @@
     <resources>
         <image name="settings.png" width="512" height="512"/>
     </resources>
+    <classes>
+        <class className="ECContactCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECContactCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="boxView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="contactNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="contactSmallNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="ECFavoriteCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECFavoriteCell.h"/>
+        </class>
+        <class className="ECFavoritesViewController" superclassName="UICollectionViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECFavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displaySettings:"/>
+                <relationship kind="action" name="goBackToContacts"/>
+            </relationships>
+        </class>
+        <class className="ECMainTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECMainTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="displaySettings:"/>
+            </relationships>
+        </class>
+        <class className="ECModalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECModalViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="borderView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="contactPicture" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="typeImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ECNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECNavigationBar.h"/>
+        </class>
+        <class className="ECNumberCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECNumberCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="icon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ECSettingsTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ECSettingsTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewController.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
