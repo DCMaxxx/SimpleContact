@@ -163,6 +163,7 @@
 
 #pragma - mark Passing arguments to other VC
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [self unselectCell:nil];
     if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
         ECFavoritesViewController * nv = [segue destinationViewController];
         NSArray * favorites = [[ECFavoritesHandler sharedInstance] getAllFavoritesWithContactList:_contacts];
@@ -220,8 +221,16 @@
 }
 
 - (IBAction)displaySettings:(id)sender {
+    [self unselectCell:nil];
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
     [nv displaySettingsOnNavigationController:self.navigationController];
 }
+
+- (void)updateContacts {
+    _contacts = [[ECContactList alloc] init];
+    [[self tableView] reloadData];
+}
+
+
 
 @end

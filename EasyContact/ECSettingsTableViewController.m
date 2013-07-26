@@ -51,7 +51,7 @@
     UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:validationButton];
     [[self navigationItem] setRightBarButtonItem:barButtonItem];
     
-    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f]};
+    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, 2.0f) forBarMetrics:UIBarMetricsDefault];
     UIImage * image = [UIImage imageNamed:@"backbutton-background.png"];

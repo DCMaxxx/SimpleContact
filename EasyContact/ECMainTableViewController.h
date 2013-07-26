@@ -15,5 +15,6 @@
 @interface ECMainTableViewController : UITableViewController
 
 - (IBAction)displaySettings:(id)sender;
+- (void)updateContacts;
 
 @end

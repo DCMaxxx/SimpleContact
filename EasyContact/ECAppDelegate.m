@@ -11,6 +11,7 @@
 
 #import "ECAppDelegate.h"
 
+#import "ECMainTableViewController.h"
 #import "ECFavoritesHandler.h"
 
 
@@ -19,7 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
-        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) { });
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            if (granted) {
+                UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];
+                if ([[mainController visibleViewController] isKindOfClass:[ECMainTableViewController class]])
+                    [(ECMainTableViewController*)mainController.visibleViewController updateContacts];
+            }
+        });
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Carnet d'addresse"
@@ -31,10 +38,10 @@
     }
 
     
-    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
-                                objectForKey:@"TutorialDisplayed"]]) {
-        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"TutorialDisplayed"];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TutorialDisplayed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        // Show display tutorial
     }
     
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {

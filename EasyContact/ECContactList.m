@@ -26,6 +26,9 @@
 #pragma - mark Init
 -(id) init {
     if (self = [super init]) {
+        _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+        if (!_addressBook)
+            return nil;
         
         NSString * sections = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ#";
         _sectionnedContacts = [[NSMutableArray alloc] initWithCapacity:[sections length]];
@@ -38,8 +41,6 @@
         }
         
         BOOL orderByFirstName = [[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder];
-
-        _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
         CFArrayRef people = ABAddressBookCopyArrayOfAllPeople(_addressBook);
         CFMutableArrayRef peopleMutable = CFArrayCreateMutableCopy(kCFAllocatorDefault, CFArrayGetCount(people), people);
         CFArraySortValues(peopleMutable, CFRangeMake(0, CFArrayGetCount(peopleMutable)), (CFComparatorFunction) ABPersonComparePeopleByName,

@@ -51,7 +51,6 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 
 To do
 -------
-+ Bug fix on first launch (must start it again to see contacts)
 + Automatic update of views after settings update (must restart app for now)
 + Update first and last name position if pictures are hidden
 + Disable impossible contact option (such as phone on an iPod Touch) 
