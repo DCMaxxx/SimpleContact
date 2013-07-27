@@ -94,13 +94,14 @@
 
 }
 - (void)hideSearchBar {
-    [[self tableView] setContentOffset:CGPointMake(0, [_searchBar frame].size.height)];
+    if (!_searchedContacts)
+        [[self tableView] setContentOffset:CGPointMake(0, [_searchBar frame].size.height)];
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     CGFloat contentOffset = [[self tableView] contentOffset].y;
     CGFloat height = [_searchBar frame].size.height;
-    if (contentOffset > height)
+    if (contentOffset > height || _searchedContacts)
         return ;
     else if (contentOffset <= height / 2.0f)
         [[self tableView] setContentOffset:CGPointMake(0, height) animated:YES];
