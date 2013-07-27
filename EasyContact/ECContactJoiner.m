@@ -7,6 +7,7 @@
 //
 
 #import "RNBlurModalView.h"
+#import "UIDevice-Hardware.h"
 
 #import "ECContactJoiner.h"
 
@@ -38,6 +39,25 @@
             break;
     }
 }
+
+- (void) reportIssueOnViewController:(UIViewController *)controller {
+    _mailViewController = [[MFMailComposeViewController alloc] init];
+    [_mailViewController setMailComposeDelegate:self];
+    
+    NSArray *toRecipients = [NSArray arrayWithObject:@"maxime.dechalendar@me.com"];
+    [_mailViewController setToRecipients:toRecipients];
+    
+    [_mailViewController setSubject:@"Problème avec EasyContact"];
+    
+    NSString * appV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString * iOSV = [[UIDevice currentDevice] systemVersion];
+    NSString * deviceV = [[UIDevice currentDevice] platformString];
+    NSString * body = [NSString stringWithFormat:@"Je suis désolé que vous rencontriez un problème.\nMerci de le décrire précisément, avec le nom et prénom du contact posant éventuellement problème, l'action pour reproduire le bug, etc.\nMerci également de laisser toutes les lignes en dessous des \"-----\"\n\n-----\nVersion d'EasyContact : %@\nVersion d'iOS : %@\n iDevice : %@\n", appV, iOSV, deviceV];
+    [_mailViewController setMessageBody:body isHTML:NO];
+
+    [controller presentViewController:_mailViewController animated:YES completion:nil];
+}
+
 
 
 #pragma - mark Private methods to contact

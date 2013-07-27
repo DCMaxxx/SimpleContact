@@ -10,10 +10,14 @@
 
 #import "ECSettingsHandler.h"
 #import "ECNavigationBar.h"
+#import "ECContactJoiner.h"
 
 static NSUInteger kLabelViewTag = 4242;
 
 @interface ECSettingsTableViewController ()
+
+@property (weak, nonatomic) IBOutlet UITableViewCell *contactMeCell;
+@property (strong, nonatomic) ECContactJoiner * joiner;
 
 @end
 
@@ -78,7 +82,11 @@ static NSUInteger kLabelViewTag = 4242;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell tag])
+    if (cell == _contactMeCell) {
+        if (!_joiner)
+            _joiner = [[ECContactJoiner alloc] init];
+        [_joiner reportIssueOnViewController:self];
+    } else
         [self saveSettingsOfCell:cell];
 }
 

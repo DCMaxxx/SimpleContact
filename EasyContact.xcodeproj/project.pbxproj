@@ -32,6 +32,7 @@
 		9C0F8B3917A12A93007449B0 /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C0F8B3817A12A93007449B0 /* Settings.plist */; };
 		9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */; };
 		9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* ECContact.m */; };
+		9C19DFDE17A3FB72005C70CA /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C19DFDD17A3FB72005C70CA /* UIDevice-Hardware.m */; };
 		9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECModalViewController.m */; };
 		9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C305A06179008A600F5D9C4 /* ECNavigationBar.m */; };
 		9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C305A091790135900F5D9C4 /* validation-tick.png */; };
@@ -96,6 +97,8 @@
 		9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSettingsHandler.m; sourceTree = "<group>"; };
 		9C14627D16BC1DFF0008EB0F /* ECContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContact.h; sourceTree = "<group>"; };
 		9C14627E16BC1DFF0008EB0F /* ECContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContact.m; sourceTree = "<group>"; };
+		9C19DFDC17A3FB72005C70CA /* UIDevice-Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice-Hardware.h"; sourceTree = "<group>"; };
+		9C19DFDD17A3FB72005C70CA /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		9C247A0117463AA30096AECE /* ECModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECModalViewController.h; sourceTree = "<group>"; };
 		9C247A0217463AA30096AECE /* ECModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECModalViewController.m; sourceTree = "<group>"; };
 		9C305A05179008A600F5D9C4 /* ECNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECNavigationBar.h; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 		9CA6B9F916BAD9C4006EAF8D /* Other sources */ = {
 			isa = PBXGroup;
 			children = (
+				9C19DFDC17A3FB72005C70CA /* UIDevice-Hardware.h */,
+				9C19DFDD17A3FB72005C70CA /* UIDevice-Hardware.m */,
 				9C017A32176F075C00A68013 /* EasyContact-Prefix.pch */,
 				9CA6B9DD16BAD16D006EAF8D /* main.m */,
 				9CACE3321770AA3A00BDC2D3 /* RMPhoneFormat.h */,
@@ -517,6 +522,7 @@
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
 				9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */,
 				9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */,
+				9C19DFDE17A3FB72005C70CA /* UIDevice-Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

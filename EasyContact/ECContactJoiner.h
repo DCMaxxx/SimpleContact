@@ -19,5 +19,6 @@ MFMessageComposeViewControllerDelegate
 >
 
 - (void) joinContactWithKind:(eContactNumberKind)kind address:(NSString *)address andViewController:(UIViewController *)vc;
+- (void) reportIssueOnViewController:(UIViewController *)controller;
 
 @end
