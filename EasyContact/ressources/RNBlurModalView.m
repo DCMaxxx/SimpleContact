@@ -31,7 +31,7 @@
     This is the tag for the close view button.
     So if you want to present a modal view controller on it, oyu can remove the close button
  */
-NSInteger const kRNBlurCloseViewTag = 4242;
+NSInteger const kRNBlurCloseViewTag = 8484;
 
 /*
     This bit is important! In order to prevent capturing selected states of UIResponders I've implemented a delay. Please feel free to set this delay to *whatever* you deem apprpriate.

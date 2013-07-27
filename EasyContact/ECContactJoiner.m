@@ -9,6 +9,7 @@
 #import "RNBlurModalView.h"
 #import "UIDevice-Hardware.h"
 
+#import "ECSettingsTableViewController.h"
 #import "ECContactJoiner.h"
 
 
@@ -41,6 +42,7 @@
 }
 
 - (void) reportIssueOnViewController:(UIViewController *)controller {
+    _currentController = controller;
     _mailViewController = [[MFMailComposeViewController alloc] init];
     [_mailViewController setMailComposeDelegate:self];
     
@@ -55,7 +57,12 @@
     NSString * body = [NSString stringWithFormat:@"Je suis désolé que vous rencontriez un problème.\nMerci de le décrire précisément, avec le nom et prénom du contact posant éventuellement problème, l'action pour reproduire le bug, etc.\nMerci également de laisser toutes les lignes en dessous des \"-----\"\n\n-----\nVersion d'EasyContact : %@\nVersion d'iOS : %@\n iDevice : %@\n", appV, iOSV, deviceV];
     [_mailViewController setMessageBody:body isHTML:NO];
 
-    [controller presentViewController:_mailViewController animated:YES completion:nil];
+    [[[_mailViewController navigationBar] backItem] setTitle:@"hello"];
+
+    NSDictionary * dic = @{UITextAttributeFont: [UIFont boldSystemFontOfSize:12.0f]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
+
+    [_currentController presentViewController:_mailViewController animated:YES completion:nil];
 }
 
 
@@ -105,10 +112,13 @@
 #pragma mark - MFMailCompose View Controller Delegate
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
+    BOOL restoreBackButtonFontExists = [_currentController respondsToSelector:@selector(restoreBackButtonFont)];
     [_currentController dismissViewControllerAnimated:!hidePopupExists
                                              completion:^{
                                                  if (hidePopupExists)
                                                      [_currentController performSelector:@selector(hidePopup)];
+                                                 if (restoreBackButtonFontExists)
+                                                     [_currentController performSelector:@selector(restoreBackButtonFont)];
                                              }];
 }
 

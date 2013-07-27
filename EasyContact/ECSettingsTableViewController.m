@@ -123,6 +123,11 @@ static NSUInteger kLabelViewTag = 4242;
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
+- (void)restoreBackButtonFont {
+    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
+}
+
 
 #pragma - mark Saving new settings
 -(void)saveSettingsOfCell:(UITableViewCell *)cell {
