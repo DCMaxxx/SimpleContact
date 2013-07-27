@@ -23,15 +23,12 @@
 
 @property (weak, nonatomic) ECContactCell * swipedCell;
 @property (strong, nonatomic) ECContactList * contacts;
-@property (strong, nonatomic) NSArray * searchedContacts;
 @property (strong, nonatomic) ECModalViewController * modalContactViewController;
-@property (nonatomic) BOOL mustReloadLeftView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (weak, nonatomic) IBOutlet UIView *searchBarPlaceHolder;
+@property (strong, nonatomic) NSArray * filteredContacts;
+@property (nonatomic) BOOL shouldBeginEditingResearch;
 @property (nonatomic) float currentOffset;
-
-@property (strong, nonatomic) UIGestureRecognizer* cancelGesture;
-@property (nonatomic) BOOL shouldBeginEditing;
+@property (nonatomic) BOOL mustReloadLeftView;
 
 @end
 
@@ -42,41 +39,14 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _contacts = [[ECContactList alloc] init];
-        _mustReloadLeftView = NO;
-        _shouldBeginEditing = YES;
+        _shouldBeginEditingResearch = YES;
         _currentOffset = -1.0f;
     }
     return self;
 }
 
 
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
-    if (![searchBar isFirstResponder]) {
-        _searchedContacts = nil;
-        _shouldBeginEditing = NO;
-    }
-    NSLog(@"BOU BABY");
-    
-    if (![text length])
-        _searchedContacts = nil;
-    else
-        _searchedContacts = [_contacts filterWithText:text];
-    [[self tableView] reloadData];
-}
-
-- (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
-    [_searchBar resignFirstResponder];
-}
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)bar {
-    [self unselectCell:nil];
-    BOOL retVal = _shouldBeginEditing;
-    _shouldBeginEditing = YES;
-    return retVal;
-}
-
-
-#pragma - mark View controller delegate
+#pragma - mark View, ScrollView controller delegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -85,57 +55,28 @@
     [_searchBar setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"]];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    if (_currentOffset != -1.0f) {
-        [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
-        _currentOffset = -1.0f;
-    } else
-        [self performSelector:@selector(hideSearchBar) withObject:nil afterDelay:0.0f];
-
-}
-- (void)hideSearchBar {
-    if (!_searchedContacts)
-        [[self tableView] setContentOffset:CGPointMake(0, [_searchBar frame].size.height)];
-}
-
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    CGFloat contentOffset = [[self tableView] contentOffset].y;
-    CGFloat height = [_searchBar frame].size.height;
-    if (contentOffset > height || _searchedContacts)
-        return ;
-    else if (contentOffset <= height / 2.0f)
-        [[self tableView] setContentOffset:CGPointMake(0, height) animated:YES];
-    else
-        [[self tableView] setContentOffset:CGPointZero animated:YES];
-}
-
-- (void) backgroundTouched:(id)sender {
-    [self.view endEditing:YES];
-}
-
 
 #pragma - mark Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _searchedContacts ? 1 : [_contacts numberOfInitials];
+    return _filteredContacts ? 1 : [_contacts numberOfInitials];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _searchedContacts ? [_searchedContacts count] : [_contacts numberOfContactsForInitialAtIndex:section];
+    return _filteredContacts ? [_filteredContacts count] : [_contacts numberOfContactsForInitialAtIndex:section];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return _searchedContacts ? nil : [_contacts initialAtIndex:(section ? section - 1 : section)];
+    return _filteredContacts ? nil : [_contacts initialAtIndex:(section ? section - 1 : section)];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-    return _searchedContacts ? nil : @[@"", @"A", @"●", @"C", @"●", @"E", @"●", @"G", @"●", @"I", @"●", @"K", @"●", @"M", @"●",
+    return _filteredContacts ? nil : @[@"", @"A", @"●", @"C", @"●", @"E", @"●", @"G", @"●", @"I", @"●", @"K", @"●", @"M", @"●",
              @"●", @"P", @"●", @"R", @"●", @"T", @"●", @"V", @"●", @"X", @"●", @"Z", @"#"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? 63.0f : 33.0f;
 }
-
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ContactCell";
@@ -146,8 +87,8 @@
     NSUInteger indexOfSection = [indexPath indexAtPosition:0];
     NSInteger indexOfContact = [indexPath indexAtPosition:1];
     NSArray * contactsOfSection;
-    if (_searchedContacts)
-        contactsOfSection = _searchedContacts;
+    if (_filteredContacts)
+        contactsOfSection = _filteredContacts;
     else
         contactsOfSection = [_contacts contactsForInitialAtIndex:indexOfSection];
     ECContact * contact = [contactsOfSection objectAtIndex:indexOfContact];
@@ -187,7 +128,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (_searchedContacts || ![self tableView:[self tableView]numberOfRowsInSection:section])
+    if (_filteredContacts || ![self tableView:[self tableView]numberOfRowsInSection:section])
         return nil;
     
     UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 22.0f)];
@@ -199,13 +140,6 @@
     [label setText:str];
     [view addSubview:label];
     return view;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    CGRect rect = _searchBar.frame;
-    rect.origin.y = MIN(0, scrollView.contentOffset.y);
-    _searchBar.frame = rect;
 }
 
 
@@ -251,7 +185,71 @@
     [self showModalViewWithKind:eCNKFaceTime contact:contact];
 }
 
-#pragma - mark Passing arguments to other VC
+
+#pragma - mark UISearchBarDelegate
+-(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
+    if (![searchBar isFirstResponder]) {
+        _filteredContacts = nil;
+        _shouldBeginEditingResearch = NO;
+    } else if (![text length])
+        _filteredContacts = nil;
+    else
+        _filteredContacts = [_contacts filterWithText:text];
+    [[self tableView] reloadData];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)bar {
+    [self unselectCell:nil];
+    BOOL retVal = _shouldBeginEditingResearch;
+    _shouldBeginEditingResearch = YES;
+    return retVal;
+}
+
+
+#pragma - mark ScrollView Controller, searchbar related
+- (void)viewWillAppear:(BOOL)animated {
+    if (_currentOffset != -1.0f) {
+        [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
+        _currentOffset = -1.0f;
+    } else
+        [self performSelector:@selector(hideSearchBar) withObject:nil afterDelay:0.0f];
+    
+}
+
+- (void)hideSearchBar {
+    if (!_filteredContacts)
+        [[self tableView] setContentOffset:CGPointMake(0, [_searchBar frame].size.height)];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    CGFloat contentOffset = [[self tableView] contentOffset].y;
+    CGFloat height = [_searchBar frame].size.height;
+    if (contentOffset > height || _filteredContacts)
+        return ;
+    else if (contentOffset <= height / 2.0f)
+        [[self tableView] setContentOffset:CGPointMake(0, height) animated:YES];
+    else
+        
+        
+        [[self tableView] setContentOffset:CGPointZero animated:YES];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect rect = _searchBar.frame;
+    rect.origin.y = MIN(0, scrollView.contentOffset.y);
+    _searchBar.frame = rect;
+}
+
+
+#pragma - mark ECSettingsDelegate
+-(void)updatedSettings {
+    [_contacts sortArrayAccordingToSettings];
+    _mustReloadLeftView = YES;
+    [[self tableView] reloadData];
+}
+
+
+#pragma - mark Changing view controllers
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _currentOffset = [[self tableView] contentOffset].y;
     [self unselectCell:nil];
@@ -260,6 +258,20 @@
         NSArray * favorites = [[ECFavoritesHandler sharedInstance] getAllFavoritesWithContactList:_contacts];
         [nv setFavoriteContacts:favorites];
     }
+}
+
+- (IBAction)displaySettings:(id)sender {
+    _currentOffset = [[self tableView] contentOffset].y;
+    [self unselectCell:nil];
+    ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
+    [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
+}
+
+
+#pragma - mark Misc functions
+- (void)updateContacts {
+    _contacts = [[ECContactList alloc] init];
+    [[self tableView] reloadData];
 }
 
 
@@ -271,8 +283,8 @@
     NSInteger indexOfContact = [indexPath indexAtPosition:1];
     NSArray * contactsOfSection = [_contacts contactsForInitialAtIndex:indexOfSection];
     ECContact * contact;
-    if (_searchedContacts)
-        contact = [_searchedContacts objectAtIndex:indexOfContact];
+    if (_filteredContacts)
+        contact = [_filteredContacts objectAtIndex:indexOfContact];
     else
         contact = [contactsOfSection objectAtIndex:indexOfContact];
     return contact;
@@ -285,10 +297,10 @@
 }
 
 -(void)showModalViewWithKind:(eContactNumberKind)kind
-                          contact:(ECContact *)contact {
+                     contact:(ECContact *)contact {
     
     [self unselectCell:nil];
-
+    
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"ECModalViewController"];
     [_modalContactViewController setContact:contact];
@@ -315,25 +327,5 @@
     if (cell)
         [cell setSelected:NO animated:NO];
 }
-
-- (IBAction)displaySettings:(id)sender {
-    _currentOffset = [[self tableView] contentOffset].y;
-    [self unselectCell:nil];
-    ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
-    [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
-}
-
-- (void)updateContacts {
-    _contacts = [[ECContactList alloc] init];
-    [[self tableView] reloadData];
-}
-
--(void)updatedSettings {
-    [_contacts sortArrayAccordingToSettings];
-    _mustReloadLeftView = YES;
-    [[self tableView] reloadData];
-}
-
-
 
 @end

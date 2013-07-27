@@ -28,7 +28,7 @@
 @implementation ECFavoritesViewController
 
 #pragma - mark Init
-- (id) initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [[self navigationItem] setHidesBackButton:YES];
         _joiner = [[ECContactJoiner alloc] init];
@@ -47,11 +47,11 @@
 
 
 #pragma - mark UICollectionViewDataSource
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [_contacts count];
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger idx = [indexPath indexAtPosition:1];
     ECFavorite * contact = [_contacts objectAtIndex:idx];
     ECFavoriteCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavoriteCell" forIndexPath:indexPath];
@@ -66,7 +66,7 @@
     return cell;
 }
 
--(void)hello:(UIGestureRecognizer *)gestureRecognizer {
+- (void)hello:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
         CGPoint location = [gestureRecognizer locationInView:[self collectionView]];
         NSIndexPath * path = [[self collectionView] indexPathForItemAtPoint:location];
@@ -84,13 +84,12 @@
     }
 }
 
--(void)deleteItemsFromDataSourceAtIndexPaths:(NSArray  *)itemPaths {
+- (void)deleteItemsFromDataSourceAtIndexPaths:(NSArray  *)itemPaths {
     NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
     for (NSIndexPath *itemPath  in itemPaths) {
         [indexSet addIndex:itemPath.row];
     }
     [_contacts removeObjectsAtIndexes:indexSet];
-    
 }
 
 
@@ -113,7 +112,14 @@
 }
 
 
-#pragma - mark Misc functions
+#pragma - mark ECSettingsDelegate
+- (void)updatedSettings {
+    [_contacts sortUsingSelector:@selector(compare:)];
+    [[self collectionView] reloadData];
+}
+
+
+#pragma - mark Display other view controllers
 - (IBAction)goBackToContacts {
     [[self navigationController] popViewControllerAnimated:YES];
 }
@@ -121,11 +127,6 @@
 - (IBAction)displaySettings:(id)sender {
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
     [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
-}
-
-- (void)updatedSettings {
-    [_contacts sortUsingSelector:@selector(compare:)];
-    [[self collectionView] reloadData];
 }
 
 @end

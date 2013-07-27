@@ -52,9 +52,7 @@
 
     [_contactPicture setImage:[_contact picture]];
     [_typeImageView setImage:[ECKindHandler iconForKind:_kind andWhite:NO]];
-        
-    [_tableView setDelegate:self];
-    [_tableView setDataSource:self];
+
 }
 
 
@@ -96,7 +94,6 @@
 #pragma - mark Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ECNumberCell * cell = (ECNumberCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
     [_joiner joinContactWithKind:_kind address:[cell value] andViewController:self];
 }
 

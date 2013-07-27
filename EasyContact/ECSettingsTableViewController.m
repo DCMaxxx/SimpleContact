@@ -19,6 +19,7 @@ static NSUInteger kLabelViewTag = 4242;
 
 @implementation ECSettingsTableViewController
 
+#pragma - mark Init
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _currentCategory = eSCDefault;
@@ -26,14 +27,8 @@ static NSUInteger kLabelViewTag = 4242;
     return self;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
-        ECSettingsTableViewController * tvc = [segue destinationViewController];
-        [tvc setCurrentCategory:[sender tag]];
-        [tvc setDelegate:_delegate];
-    }
-}
 
+#pragma - mark View delegate
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -49,7 +44,7 @@ static NSUInteger kLabelViewTag = 4242;
 
     UIButton * validationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [validationButton setBackgroundImage:[UIImage imageNamed:@"validation-tick.png"] forState:UIControlStateNormal];
-    [validationButton addTarget:self action:@selector(cancelEdit:) forControlEvents:UIControlEventTouchUpInside];
+    [validationButton addTarget:self action:@selector(validateSettings:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:validationButton];
     [[self navigationItem] setRightBarButtonItem:barButtonItem];
     
@@ -63,6 +58,8 @@ static NSUInteger kLabelViewTag = 4242;
     
 }
 
+
+#pragma - mark Table view datasource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_currentCategory];
@@ -76,18 +73,8 @@ static NSUInteger kLabelViewTag = 4242;
     return cell;
 }
 
-- (void) cancelEdit: (id) sender {
-    [[ECSettingsHandler sharedInstance] saveModifications];
-    if (_delegate)
-        [_delegate updatedSettings];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
-
-- (void)didTapBackButton:(id)sender {
-    [[self navigationController] popViewControllerAnimated:YES];
-}
-
+#pragma - mark Table view delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -108,6 +95,28 @@ static NSUInteger kLabelViewTag = 4242;
 }
 
 
+#pragma - mark Passing to other view controller
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
+        ECSettingsTableViewController * tvc = [segue destinationViewController];
+        [tvc setCurrentCategory:[sender tag]];
+        [tvc setDelegate:_delegate];
+    }
+}
+
+- (void) validateSettings: (id) sender {
+    [[ECSettingsHandler sharedInstance] saveModifications];
+    if (_delegate)
+        [_delegate updatedSettings];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)didTapBackButton:(id)sender {
+    [[self navigationController] popViewControllerAnimated:YES];
+}
+
+
+#pragma - mark Saving new settings
 -(void)saveSettingsOfCell:(UITableViewCell *)cell {
     NSArray * selectors = @[@"saveSettingsForDefaultViewWithCell:",
                             @"saveSettingsForListOrderViewWithCell:",

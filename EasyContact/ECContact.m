@@ -27,7 +27,7 @@
 
 
 #pragma - mark Init
--(id)initWithAddressBookContact:(ABRecordRef)addBookContact {
+- (id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
         _addresses = [[NSMutableDictionary alloc] init];
         _addBookContact = addBookContact;
@@ -41,19 +41,19 @@
     return self;
 }
 
--(NSString *)importantName {
+- (NSString *)importantName {
     if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder])
         return [self firstName];
     return [self lastName];
 }
 
--(NSString *)secondaryName {
+- (NSString *)secondaryName {
     if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder])
         return [self lastName];
     return [self firstName];
 }
 
--(NSString *)favoriteName {
+- (NSString *)favoriteName {
     if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCFavoriteOrder])
         return [self firstName];
     else if ([[ECSettingsHandler sharedInstance] getOption:eSOLastName ofCategory:eSCFavoriteOrder])
@@ -63,7 +63,7 @@
 
 
 #pragma - mark Getters overrides
--(NSString *)firstName {
+- (NSString *)firstName {
     if (!_firstName) {
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
         if (!_firstName)
@@ -72,7 +72,7 @@
     return _firstName;
 }
 
--(NSString *)lastName {
+- (NSString *)lastName {
     if (!_lastName) {
         _lastName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonLastNameProperty);
         if (!_lastName)
@@ -81,7 +81,7 @@
     return _lastName;
 }
 
--(NSString *)nickName {
+- (NSString *)nickName {
     if (!_nickName) {
         _nickName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonNicknameProperty);
         if (!_nickName)
@@ -90,13 +90,13 @@
     return _nickName;
 }
 
--(NSInteger)UID {
+- (NSInteger)UID {
     return ABRecordGetRecordID(_addBookContact);
 }
 
 
 #pragma - mark Default getters
-- (NSInteger) numberOf:(eContactNumberKind)kind {
+- (NSInteger)numberOf:(eContactNumberKind)kind {
     NSArray * selectors = @[@"numberOfPhones",
                             @"numberOfMails",
                             @"numberOfTexts",

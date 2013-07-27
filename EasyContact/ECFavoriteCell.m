@@ -69,10 +69,6 @@
 }
 
 - (void)setInformationsWithNumber:(ECFavorite *)number {
-    static NSArray * kinds = nil;
-    if (!kinds)
-        kinds = @[@"phone-black.png", @"mail-black.png", @"text-black.png", @"facetime-black.png"];
-    
     _number = number;
     
     ECContact * contact = [number contact];
@@ -80,7 +76,7 @@
     [_contactPicture setImage:[contact picture]];
 
     eContactNumberKind kind = [number kind];
-    [_kind setImage:[UIImage imageNamed:[kinds objectAtIndex:kind]]];
+    [_kind setImage:[ECKindHandler iconForKind:kind andWhite:NO]];
 
     RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
     NSString * newNember = [fmt format:[number contactNumber]];

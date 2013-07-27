@@ -12,11 +12,11 @@
 
 @interface ECContactList : NSObject
 
-- (NSUInteger) numberOfInitials;
-- (NSString *) initialAtIndex:(NSUInteger)index;
-- (NSArray *) contactsForInitialAtIndex:(NSUInteger)index;
-- (NSUInteger) numberOfContactsForInitialAtIndex:(NSUInteger)index;
-- (ECContact *) getContactFromUID:(NSUInteger)UID;
+- (NSUInteger)numberOfInitials;
+- (NSString *)initialAtIndex:(NSUInteger)index;
+- (NSArray *)contactsForInitialAtIndex:(NSUInteger)index;
+- (NSUInteger)numberOfContactsForInitialAtIndex:(NSUInteger)index;
+- (ECContact *)getContactFromUID:(NSUInteger)UID;
 - (void)sortArrayAccordingToSettings;
 - (NSArray *)filterWithText:(NSString *)text;
 

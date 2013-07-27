@@ -242,11 +242,8 @@
 		9C42A46B1786B3A400591BC9 /* Settings view */ = {
 			isa = PBXGroup;
 			children = (
-				9C0F8B3A17A12DCD007449B0 /* ECSettingsHandler.h */,
-				9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */,
 				9C42A46F1786B53000591BC9 /* ECSettingsTableViewController.h */,
 				9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */,
-				9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */,
 			);
 			name = "Settings view";
 			sourceTree = "<group>";
@@ -262,11 +259,25 @@
 			name = "Main view";
 			sourceTree = "<group>";
 		};
+		9C742BF317A3E79A003718D7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9C8DB0DE1775D0C40015FD67 /* ECContactJoiner.h */,
+				9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */,
+				9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */,
+				9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */,
+				9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */,
+				9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */,
+				9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */,
+				9C0F8B3A17A12DCD007449B0 /* ECSettingsHandler.h */,
+				9C0F8B3B17A12DCD007449B0 /* ECSettingsHandler.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		9C99C9C71768F76B00A3F594 /* Favorites view */ = {
 			isa = PBXGroup;
 			children = (
-				9C957D78176E3D5C00E3B8A4 /* ECFavoritesHandler.h */,
-				9C957D79176E3D5C00E3B8A4 /* ECFavoritesHandler.m */,
 				9C99C9CB1768F93700A3F594 /* ECFavoritesViewController.h */,
 				9C99C9CC1768F93700A3F594 /* ECFavoritesViewController.m */,
 				9C99C9CE1768F98F00A3F594 /* ECFavoriteCell.h */,
@@ -339,6 +350,7 @@
 				9C99C9C71768F76B00A3F594 /* Favorites view */,
 				9C42A46B1786B3A400591BC9 /* Settings view */,
 				9C305A08179008AA00F5D9C4 /* Navigation bar */,
+				9C742BF317A3E79A003718D7 /* Utilities */,
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
 			);
 			name = Sources;
@@ -380,10 +392,6 @@
 		9CC67F5716BBD69A00F1A9BA /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				9C8DB0DE1775D0C40015FD67 /* ECContactJoiner.h */,
-				9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */,
-				9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */,
-				9C0E274F17809A8E00DA4EF8 /* ECKindHandler.m */,
 				9C14627D16BC1DFF0008EB0F /* ECContact.h */,
 				9C14627E16BC1DFF0008EB0F /* ECContact.m */,
 				9CACE32F1770827000BDC2D3 /* ECFavorite.h */,

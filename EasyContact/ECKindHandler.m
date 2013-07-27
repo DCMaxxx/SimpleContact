@@ -38,19 +38,6 @@
     return kinds;
 }
 
-+ (void) setPossibleKinds {
-    ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
-    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
-        [settingsHandler setUnavailableContactOption:eSOPhone];
-    if (![MFMailComposeViewController canSendMail])
-        [settingsHandler setUnavailableContactOption:eSOMail];
-    if (![MFMessageComposeViewController canSendText])
-        [settingsHandler setUnavailableContactOption:eSOMessage];
-    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
-        [settingsHandler setUnavailableContactOption:eSOFaceTime];
-    [settingsHandler saveModifications];
-}
-
 + (UIImage *)iconForKind:(eContactNumberKind)kind andWhite:(BOOL)white {
     NSArray * iconBaseNames = @[@"phone", @"mail", @"text", @"facetime"];
     NSString * imageName = [NSString stringWithFormat:@"%@-%@.png", [iconBaseNames objectAtIndex:kind], (white ? @"white" : @"black")];
@@ -64,5 +51,17 @@
     return NSSelectorFromString(selectorStr);
 }
 
++ (void) setPossibleKinds {
+    ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
+        [settingsHandler setUnavailableContactOption:eSOPhone];
+    if (![MFMailComposeViewController canSendMail])
+        [settingsHandler setUnavailableContactOption:eSOMail];
+    if (![MFMessageComposeViewController canSendText])
+        [settingsHandler setUnavailableContactOption:eSOMessage];
+    if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
+        [settingsHandler setUnavailableContactOption:eSOFaceTime];
+    [settingsHandler saveModifications];
+}
 
 @end

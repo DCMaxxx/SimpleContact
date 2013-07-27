@@ -21,6 +21,7 @@
 
 @implementation ECContactJoiner
 
+#pragma - mark Join a contact
 - (void) joinContactWithKind:(eContactNumberKind)kind address:(NSString *)address andViewController:(UIViewController *)vc {
     switch (kind) {
         case eCNKPhone:
@@ -39,6 +40,7 @@
 }
 
 
+#pragma - mark Private methods to contact
 - (void) callNumber:(NSString *)number {
     number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString * callUrl = [@"tel://" stringByAppendingString:number];
@@ -100,6 +102,5 @@
                                                      [_currentController performSelector:@selector(hidePopup)];
                                              }];
 }
-
 
 @end

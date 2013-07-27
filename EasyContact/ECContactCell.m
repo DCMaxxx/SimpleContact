@@ -31,7 +31,6 @@ static NSUInteger kTagLowestValue = 4241;
 }
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact {
-    // both
     NSArray * availableKinds = [ECKindHandler enabledKinds];
     NSUInteger numberOfKinds = [availableKinds count];
     

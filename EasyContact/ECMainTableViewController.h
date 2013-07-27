@@ -14,7 +14,10 @@
 @class ECContactList;
 
 
-@interface ECMainTableViewController : UITableViewController <ECSettingsDelegate>
+@interface ECMainTableViewController : UITableViewController
+<
+ECSettingsDelegate
+>
 
 - (IBAction)displaySettings:(id)sender;
 - (void)updateContacts;

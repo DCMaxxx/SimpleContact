@@ -22,6 +22,7 @@
 
 @implementation ECFavoritesHandler
 
+#pragma - mark Singletion creation
 +(ECFavoritesHandler *)sharedInstance {
     static dispatch_once_t pred;
     static ECFavoritesHandler *shared = nil;
@@ -31,6 +32,8 @@
     return shared;
 }
 
+
+#pragma - mark Init
 - (id) init {
     if (self = [super init]) {
         NSDictionary * favorites = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"Favorites"];
@@ -41,6 +44,7 @@
     }
     return self;
 }
+
 
 #pragma - mark Handle favorites functions
 - (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {

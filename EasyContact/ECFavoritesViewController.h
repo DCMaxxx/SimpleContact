@@ -11,7 +11,12 @@
 #import "ECSettingsDelegate.h"
 
 
-@interface ECFavoritesViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, ECSettingsDelegate>
+@interface ECFavoritesViewController : UICollectionViewController
+<
+UICollectionViewDataSource,
+UICollectionViewDelegate,
+ECSettingsDelegate
+>
 
 @property (strong, nonatomic) NSArray * favoriteContacts;
 

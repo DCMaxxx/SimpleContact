@@ -43,7 +43,6 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TutorialDisplayed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        // Show display tutorial
     }
     
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {

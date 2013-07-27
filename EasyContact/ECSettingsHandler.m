@@ -17,6 +17,7 @@
 
 @implementation ECSettingsHandler
 
+#pragma - mark Singleton creation
 +(ECSettingsHandler *)sharedInstance {
     static dispatch_once_t pred;
     static ECSettingsHandler *shared = nil;
@@ -26,6 +27,8 @@
     return shared;
 }
 
+
+#pragma - mark Init
 - (id)init {
     if (self = [super init]) {
         _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"UserSettings"] mutableCopy];
@@ -34,6 +37,7 @@
     return self;
 }
 
+#pragma - mark Settings handling functions
 - (BOOL)getOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category {
     NSDictionary * options = [_settings objectForKey:[NSString stringWithFormat:@"%d", category]];
     if (!options)
