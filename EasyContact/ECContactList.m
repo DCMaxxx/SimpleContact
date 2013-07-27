@@ -125,4 +125,18 @@
     _sectionnedContacts = newSections;
 }
 
+- (NSArray *)filterWithText:(NSString *)text {
+    NSMutableArray * result = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary * section in _sectionnedContacts) {
+        for (ECContact * contact in [section objectForKey:@"contacts"]) {
+            NSRange firstName = [[contact firstName] rangeOfString:text options:NSCaseInsensitiveSearch];
+            NSRange lastName = [[contact lastName] rangeOfString:text options:NSCaseInsensitiveSearch];
+            if (firstName.location != NSNotFound || lastName.location != NSNotFound)
+                [result addObject:contact];
+        }
+    }
+    NSLog(@"Filtered contact for text %@ : %@", text, result);
+    return result;
+}
+
 @end

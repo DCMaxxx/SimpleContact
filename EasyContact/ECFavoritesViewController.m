@@ -74,6 +74,7 @@
         ECFavoriteCell * cell = (ECFavoriteCell *)[[self collectionView] cellForItemAtIndexPath:path];
         ECFavorite * number = [cell number];
         [[ECFavoritesHandler sharedInstance] toogleContact:[number contact] number:[number contactNumber] ofKind:[number kind]];
+        [[ECFavoritesHandler sharedInstance] saveModifications];
 
         [self.collectionView performBatchUpdates:^{
             NSArray *selectedItemsIndexPaths = [NSArray arrayWithObject:path];

@@ -13,9 +13,31 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="SSV-ZB-Dtc">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" placeholder="Rechercher" translatesAutoresizingMaskIntoConstraints="NO" id="T4E-kN-Zlk">
+                                    <textInputTraits key="textInputTraits"/>
+                                    <scopeButtonTitles>
+                                        <string>Title</string>
+                                        <string>Title</string>
+                                    </scopeButtonTitles>
+                                    <connections>
+                                        <outlet property="delegate" destination="VXc-Kh-F64" id="SCd-bF-svR"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="T4E-kN-Zlk" firstAttribute="top" secondItem="SSV-ZB-Dtc" secondAttribute="top" type="default" id="Rte-hS-VtP"/>
+                                <constraint firstItem="T4E-kN-Zlk" firstAttribute="leading" secondItem="SSV-ZB-Dtc" secondAttribute="leading" type="default" id="SWs-8A-q3D"/>
+                                <constraint firstItem="T4E-kN-Zlk" firstAttribute="trailing" secondItem="SSV-ZB-Dtc" secondAttribute="trailing" type="default" id="Y6W-t6-mXr"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" id="bFx-n7-RnL" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="63"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
@@ -60,6 +82,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Whg-qd-GaJ" secondAttribute="trailing" constant="32" id="7w1-o3-SRf"/>
                                                 <constraint firstItem="1D5-MZ-UxE" firstAttribute="top" secondItem="6ZU-Ih-iAm" secondAttribute="top" constant="6" id="D3F-VE-wt9"/>
@@ -91,7 +114,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noPictureCell" rowHeight="33" id="uOC-7X-Jgk" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="85" width="320" height="33"/>
+                                <rect key="frame" x="0.0" y="129" width="320" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
@@ -176,6 +199,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="T4E-kN-Zlk" id="e3O-DK-fgP"/>
+                        <outlet property="searchBarPlaceHolder" destination="SSV-ZB-Dtc" id="spH-rx-P2O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGv-uI-zSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -824,6 +851,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ECMainTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="displaySettings:"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchBarPlaceHolder" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="ECModalViewController" superclassName="UIViewController">

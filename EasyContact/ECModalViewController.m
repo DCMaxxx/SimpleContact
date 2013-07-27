@@ -109,6 +109,7 @@
     [cell isFavorite:![isFavorite boolValue]];
     
     [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] ofKind:_kind];
+    [[ECFavoritesHandler sharedInstance] saveModifications];
 }
 
 

@@ -52,5 +52,3 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 To do
 -------
 + Add a first launch tutorial
-+ Add research field on main view
-+ Add research field on favorite view

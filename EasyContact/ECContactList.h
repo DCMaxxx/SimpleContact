@@ -18,5 +18,6 @@
 - (NSUInteger) numberOfContactsForInitialAtIndex:(NSUInteger)index;
 - (ECContact *) getContactFromUID:(NSUInteger)UID;
 - (void)sortArrayAccordingToSettings;
+- (NSArray *)filterWithText:(NSString *)text;
 
 @end
