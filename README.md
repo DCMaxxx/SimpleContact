@@ -51,7 +51,6 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 
 To do
 -------
-+ Update first and last name position if pictures are hidden
 + Add a first launch tutorial
 + Add research field on main view
 + Add research field on favorite view

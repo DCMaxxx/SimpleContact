@@ -12,6 +12,7 @@
 
 #import "ECFavoritesViewController.h"
 #import "ECModalViewController.h"
+#import "ECSettingsHandler.h"
 #import "ECNavigationBar.h"
 #import "ECKindHandler.h"
 #import "ECContactCell.h"
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) ECContactCell * swipedCell;
 @property (strong, nonatomic) ECContactList * contacts;
 @property (strong, nonatomic) ECModalViewController * modalContactViewController;
+@property (nonatomic) BOOL mustReloadLeftView;
 
 @end
 
@@ -34,6 +36,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         _contacts = [[ECContactList alloc] init];
         _swipedCell = nil;
+        _mustReloadLeftView = NO;
     }
     return self;
 }
@@ -66,9 +69,16 @@
              @"●", @"P", @"●", @"R", @"●", @"T", @"●", @"V", @"●", @"X", @"●", @"Z", @"#"];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? 63.0f : 33.0f;
+}
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ContactCell";
-    ECContactCell * cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *NoPicCell = @"noPictureCell";
+    NSString * cellType = [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? CellIdentifier : NoPicCell;
+    ECContactCell * cell = [tableView dequeueReusableCellWithIdentifier:cellType forIndexPath:indexPath];
     
     NSUInteger indexOfSection = [indexPath indexAtPosition:0];
     NSInteger indexOfContact = [indexPath indexAtPosition:1];
@@ -85,6 +95,12 @@
     }
     
     [cell setMainViewInformationsWithContact:contact];
+    if (_mustReloadLeftView) {
+        if (indexOfSection == [tableView numberOfSections]
+            && indexOfContact == [tableView numberOfRowsInSection:indexOfSection])
+            _mustReloadLeftView = NO;
+        [cell setLeftView:nil];
+    }
     
     return cell;
 }
@@ -233,6 +249,7 @@
 
 -(void)updatedSettings {
     [_contacts sortArrayAccordingToSettings];
+    _mustReloadLeftView = YES;
     [[self tableView] reloadData];
 }
 

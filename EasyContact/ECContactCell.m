@@ -19,29 +19,24 @@ static NSUInteger kTagLowestValue = 4241;
 
 #pragma - mark Setting views informations
 - (void)setMainViewInformationsWithContact:(ECContact *)contact {
-    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-
-    CGColorRef borderColor = [[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor];
-    if (!CGColorEqualToColor([[_boxView layer] borderColor], borderColor))
-        [[_boxView layer] setBorderColor:borderColor];
-    
     [_contactNameLabel setText:[contact importantName]];
     [_contactSmallNameLabel setText:[contact secondaryName]];
 
-    if ([[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault])
+    if (_boxView && _contactPicture) {
+        CGColorRef borderColor = [[UIColor colorWithRed:0.75f green:0.75f blue:0.75f alpha:1.0f] CGColor];
+        if (!CGColorEqualToColor([[_boxView layer] borderColor], borderColor))
+            [[_boxView layer] setBorderColor:borderColor];
         [_contactPicture setImage:[contact picture]];
-    else {
-        _contactPicture.hidden = YES;
-        _boxView.hidden = YES;
     }
 }
 
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact {
+    // both
     NSArray * availableKinds = [ECKindHandler enabledKinds];
     NSUInteger numberOfKinds = [availableKinds count];
     
     if (!_leftView) {
-        CGFloat const imageSize = 28;
+        CGFloat const imageSize = _boxView ? 28 : 18;
         CGFloat const spacing = 15;
         CGFloat frameWidth = (imageSize + spacing) * numberOfKinds + spacing;
         
@@ -49,7 +44,7 @@ static NSUInteger kTagLowestValue = 4241;
         frame.size.width = frameWidth;
         frame.origin.x = 320 - frameWidth;
         frame.origin.y = 0;
-        frame.size.height = 63;
+        frame.size.height = _mainView.frame.size.height;
         _leftView = [[UIView alloc] initWithFrame:frame];
         [_leftView setBackgroundColor:[UIColor colorWithWhite:0.85f alpha:1.0f]];
         [_leftView setUserInteractionEnabled:YES];
