@@ -40,7 +40,7 @@
     }
 
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TutorialDisplayed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];

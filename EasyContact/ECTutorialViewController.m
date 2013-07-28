@@ -14,18 +14,21 @@
 
 @end
 
-#define WIDTH 240
-#define HEIGHT 300
-
 @implementation ECTutorialViewController
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        NSMutableDictionary * view1 = [@{@"image": @"unknown-user.png",
+        NSMutableDictionary * view1 = [@{@"image": @"tutorial-1.png",
                                        @"description": @"description 1"} mutableCopy];
-        NSMutableDictionary * view2 = [@{@"image": @"mail-blue.png",
+        NSMutableDictionary * view2 = [@{@"image": @"tutorial-2.png",
                                        @"description": @"description 2"} mutableCopy];
-        _tutorialView = @[view1, view2];
+        NSMutableDictionary * view3 = [@{@"image": @"tutorial-3.png",
+                                       @"description": @"description 2"} mutableCopy];
+        NSMutableDictionary * view4 = [@{@"image": @"tutorial-4.png",
+                                       @"description": @"description 2"} mutableCopy];
+        NSMutableDictionary * view5 = [@{@"image": @"tutorial-5.png",
+                                       @"description": @"description 2"} mutableCopy];
+        _tutorialView = @[view1, view2, view3, view4, view5];
     }
     return self;
 }
