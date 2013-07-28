@@ -21,5 +21,6 @@ ECSettingsDelegate
 
 - (IBAction)displaySettings:(id)sender;
 - (void)updateContacts;
+- (void)displayTutorial;
 
 @end

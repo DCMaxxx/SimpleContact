@@ -43,6 +43,9 @@
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TutorialDisplayed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];
+        if ([[mainController visibleViewController] isKindOfClass:[ECMainTableViewController class]])
+            [mainController.visibleViewController performSelector:@selector(displayTutorial) withObject:nil afterDelay:0.0f];
     }
     
     if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {

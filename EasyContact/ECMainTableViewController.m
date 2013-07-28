@@ -11,6 +11,7 @@
 #import "ECMainTableViewController.h"
 
 #import "ECFavoritesViewController.h"
+#import "ECTutorialViewController.h"
 #import "ECModalViewController.h"
 #import "ECSettingsHandler.h"
 #import "ECNavigationBar.h"
@@ -66,7 +67,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return _filteredContacts ? nil : [_contacts initialAtIndex:(section ? section - 1 : section)];
+    return _filteredContacts ? nil : [_contacts initialAtIndex:section];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -265,6 +266,12 @@
     [self unselectCell:nil];
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
     [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
+}
+
+-(void)displayTutorial {
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    ECTutorialViewController * tutorial = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+    [self.navigationController presentViewController:tutorial animated:NO completion:nil];
 }
 
 

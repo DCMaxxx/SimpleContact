@@ -60,6 +60,7 @@
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
 		9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavorite.m */; };
 		9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */; };
+		9CC05DF417A4CA850077E7EF /* ECTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */; };
 		9CC67F5A16BBD6B100F1A9BA /* ECContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */; };
 		9CEE487D17848F31006BB683 /* facetime-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487B17848F31006BB683 /* facetime-black.png */; };
 		9CEE487E17848F31006BB683 /* facetime-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487C17848F31006BB683 /* facetime-white.png */; };
@@ -141,6 +142,8 @@
 		9CACE3301770827000BDC2D3 /* ECFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavorite.m; sourceTree = "<group>"; };
 		9CACE3321770AA3A00BDC2D3 /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPhoneFormat.h; sourceTree = "<group>"; };
 		9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
+		9CC05DF217A4CA850077E7EF /* ECTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTutorialViewController.h; sourceTree = "<group>"; };
+		9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTutorialViewController.m; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactCell.m; sourceTree = "<group>"; };
 		9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSettingsDelegate.h; sourceTree = "<group>"; };
@@ -352,6 +355,7 @@
 				9C3591931738237B00764635 /* Modal view */,
 				9C99C9C71768F76B00A3F594 /* Favorites view */,
 				9C42A46B1786B3A400591BC9 /* Settings view */,
+				9CC05DF117A4CA630077E7EF /* Tutorial view */,
 				9C305A08179008AA00F5D9C4 /* Navigation bar */,
 				9C742BF317A3E79A003718D7 /* Utilities */,
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
@@ -392,6 +396,15 @@
 				9CA6B9DA16BAD16D006EAF8D /* InfoPlist.strings */,
 			);
 			name = Preferences;
+			sourceTree = "<group>";
+		};
+		9CC05DF117A4CA630077E7EF /* Tutorial view */ = {
+			isa = PBXGroup;
+			children = (
+				9CC05DF217A4CA850077E7EF /* ECTutorialViewController.h */,
+				9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */,
+			);
+			name = "Tutorial view";
 			sourceTree = "<group>";
 		};
 		9CC67F5716BBD69A00F1A9BA /* Contact */ = {
@@ -523,6 +536,7 @@
 				9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */,
 				9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */,
 				9C19DFDE17A3FB72005C70CA /* UIDevice-Hardware.m in Sources */,
+				9CC05DF417A4CA850077E7EF /* ECTutorialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
