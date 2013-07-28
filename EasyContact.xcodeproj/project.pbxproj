@@ -34,7 +34,6 @@
 		9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C14627E16BC1DFF0008EB0F /* ECContact.m */; };
 		9C19DFDE17A3FB72005C70CA /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C19DFDD17A3FB72005C70CA /* UIDevice-Hardware.m */; };
 		9C247A0317463AA30096AECE /* ECModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C247A0217463AA30096AECE /* ECModalViewController.m */; };
-		9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C305A06179008A600F5D9C4 /* ECNavigationBar.m */; };
 		9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C305A091790135900F5D9C4 /* validation-tick.png */; };
 		9C305A0C17906A8A00F5D9C4 /* backbutton-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */; };
 		9C35918A1738056800764635 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C3591891738056800764635 /* Accelerate.framework */; };
@@ -61,10 +60,15 @@
 		9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavorite.m */; };
 		9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */; };
 		9CC05DF417A4CA850077E7EF /* ECTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */; };
+		9CC05DF617A4F9C70077E7EF /* tutorial-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC05DF517A4F9C60077E7EF /* tutorial-1.png */; };
+		9CC05DF817A501360077E7EF /* tutorial-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC05DF717A501360077E7EF /* tutorial-2.png */; };
+		9CC05DFB17A504CE0077E7EF /* ECNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC05DFA17A504CE0077E7EF /* ECNavigationBar.m */; };
+		9CC05DFE17A506E50077E7EF /* tutorial-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC05DFD17A506E50077E7EF /* tutorial-3.png */; };
+		9CC05E0017A50ACC0077E7EF /* tutorial-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC05DFF17A50ACC0077E7EF /* tutorial-4.png */; };
+		9CC05E0217A50EA90077E7EF /* tutorial-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC05E0117A50EA90077E7EF /* tutorial-5.png */; };
 		9CC67F5A16BBD6B100F1A9BA /* ECContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */; };
 		9CEE487D17848F31006BB683 /* facetime-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487B17848F31006BB683 /* facetime-black.png */; };
 		9CEE487E17848F31006BB683 /* facetime-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE487C17848F31006BB683 /* facetime-white.png */; };
-		9CEE488417855AC7006BB683 /* mail-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CEE488017855AC7006BB683 /* mail-blue.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,8 +106,6 @@
 		9C19DFDD17A3FB72005C70CA /* UIDevice-Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice-Hardware.m"; sourceTree = "<group>"; };
 		9C247A0117463AA30096AECE /* ECModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECModalViewController.h; sourceTree = "<group>"; };
 		9C247A0217463AA30096AECE /* ECModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECModalViewController.m; sourceTree = "<group>"; };
-		9C305A05179008A600F5D9C4 /* ECNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECNavigationBar.h; sourceTree = "<group>"; };
-		9C305A06179008A600F5D9C4 /* ECNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECNavigationBar.m; sourceTree = "<group>"; };
 		9C305A091790135900F5D9C4 /* validation-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "validation-tick.png"; path = "images/validation-tick.png"; sourceTree = "<group>"; };
 		9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backbutton-background.png"; path = "images/backbutton-background.png"; sourceTree = "<group>"; };
 		9C3591891738056800764635 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -144,12 +146,18 @@
 		9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
 		9CC05DF217A4CA850077E7EF /* ECTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECTutorialViewController.h; sourceTree = "<group>"; };
 		9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECTutorialViewController.m; sourceTree = "<group>"; };
+		9CC05DF517A4F9C60077E7EF /* tutorial-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tutorial-1.png"; path = "images/tutorial-1.png"; sourceTree = "<group>"; };
+		9CC05DF717A501360077E7EF /* tutorial-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tutorial-2.png"; path = "images/tutorial-2.png"; sourceTree = "<group>"; };
+		9CC05DF917A504CD0077E7EF /* ECNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECNavigationBar.h; sourceTree = "<group>"; };
+		9CC05DFA17A504CE0077E7EF /* ECNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECNavigationBar.m; sourceTree = "<group>"; };
+		9CC05DFD17A506E50077E7EF /* tutorial-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tutorial-3.png"; path = "images/tutorial-3.png"; sourceTree = "<group>"; };
+		9CC05DFF17A50ACC0077E7EF /* tutorial-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tutorial-4.png"; path = "images/tutorial-4.png"; sourceTree = "<group>"; };
+		9CC05E0117A50EA90077E7EF /* tutorial-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tutorial-5.png"; path = "images/tutorial-5.png"; sourceTree = "<group>"; };
 		9CC67F5816BBD6B100F1A9BA /* ECContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactCell.h; sourceTree = "<group>"; };
 		9CC67F5916BBD6B100F1A9BA /* ECContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactCell.m; sourceTree = "<group>"; };
 		9CDD444417A29968009B8A8D /* ECSettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSettingsDelegate.h; sourceTree = "<group>"; };
 		9CEE487B17848F31006BB683 /* facetime-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-black.png"; path = "images/facetime-black.png"; sourceTree = "<group>"; };
 		9CEE487C17848F31006BB683 /* facetime-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-white.png"; path = "images/facetime-white.png"; sourceTree = "<group>"; };
-		9CEE488017855AC7006BB683 /* mail-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mail-blue.png"; path = "images/mail-blue.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,11 @@
 		9C017A30176F042600A68013 /* App images */ = {
 			isa = PBXGroup;
 			children = (
+				9CC05E0117A50EA90077E7EF /* tutorial-5.png */,
+				9CC05DFF17A50ACC0077E7EF /* tutorial-4.png */,
+				9CC05DFD17A506E50077E7EF /* tutorial-3.png */,
+				9CC05DF717A501360077E7EF /* tutorial-2.png */,
+				9CC05DF517A4F9C60077E7EF /* tutorial-1.png */,
 				9C305A0B17906A8A00F5D9C4 /* backbutton-background.png */,
 				9C305A091790135900F5D9C4 /* validation-tick.png */,
 				9C42A4721786E9F500591BC9 /* settings.png */,
@@ -204,7 +217,6 @@
 				9C017A10176F03ED00A68013 /* label-mobile.png */,
 				9C017A11176F03ED00A68013 /* label-work.png */,
 				9C017A12176F03ED00A68013 /* mail-black.png */,
-				9CEE488017855AC7006BB683 /* mail-blue.png */,
 				9C017A13176F03ED00A68013 /* mail-white.png */,
 				9C017A14176F03ED00A68013 /* navigationbar-background.png */,
 				9C017A15176F03ED00A68013 /* phone-black.png */,
@@ -223,15 +235,6 @@
 				9C0F8B3817A12A93007449B0 /* Settings.plist */,
 			);
 			name = "Configuration files";
-			sourceTree = "<group>";
-		};
-		9C305A08179008AA00F5D9C4 /* Navigation bar */ = {
-			isa = PBXGroup;
-			children = (
-				9C305A05179008A600F5D9C4 /* ECNavigationBar.h */,
-				9C305A06179008A600F5D9C4 /* ECNavigationBar.m */,
-			);
-			name = "Navigation bar";
 			sourceTree = "<group>";
 		};
 		9C3591931738237B00764635 /* Modal view */ = {
@@ -356,7 +359,7 @@
 				9C99C9C71768F76B00A3F594 /* Favorites view */,
 				9C42A46B1786B3A400591BC9 /* Settings view */,
 				9CC05DF117A4CA630077E7EF /* Tutorial view */,
-				9C305A08179008AA00F5D9C4 /* Navigation bar */,
+				9CC05DFC17A504FD0077E7EF /* Navigation bar */,
 				9C742BF317A3E79A003718D7 /* Utilities */,
 				9CA6B9F916BAD9C4006EAF8D /* Other sources */,
 			);
@@ -405,6 +408,15 @@
 				9CC05DF317A4CA850077E7EF /* ECTutorialViewController.m */,
 			);
 			name = "Tutorial view";
+			sourceTree = "<group>";
+		};
+		9CC05DFC17A504FD0077E7EF /* Navigation bar */ = {
+			isa = PBXGroup;
+			children = (
+				9CC05DF917A504CD0077E7EF /* ECNavigationBar.h */,
+				9CC05DFA17A504CE0077E7EF /* ECNavigationBar.m */,
+			);
+			name = "Navigation bar";
 			sourceTree = "<group>";
 		};
 		9CC67F5716BBD69A00F1A9BA /* Contact */ = {
@@ -497,7 +509,6 @@
 				9C017A28176F03ED00A68013 /* phone-black.png in Resources */,
 				9C017A22176F03ED00A68013 /* label-home.png in Resources */,
 				9C017A24176F03ED00A68013 /* label-work.png in Resources */,
-				9CEE488417855AC7006BB683 /* mail-blue.png in Resources */,
 				9C017A2C176F03ED00A68013 /* unavailable-overlay.png in Resources */,
 				9C017A2B176F03ED00A68013 /* text-white.png in Resources */,
 				9CEE487E17848F31006BB683 /* facetime-white.png in Resources */,
@@ -506,6 +517,11 @@
 				9C305A0A1790135900F5D9C4 /* validation-tick.png in Resources */,
 				9C305A0C17906A8A00F5D9C4 /* backbutton-background.png in Resources */,
 				9C0F8B3917A12A93007449B0 /* Settings.plist in Resources */,
+				9CC05DF617A4F9C70077E7EF /* tutorial-1.png in Resources */,
+				9CC05DF817A501360077E7EF /* tutorial-2.png in Resources */,
+				9CC05DFE17A506E50077E7EF /* tutorial-3.png in Resources */,
+				9CC05E0017A50ACC0077E7EF /* tutorial-4.png in Resources */,
+				9CC05E0217A50EA90077E7EF /* tutorial-5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,10 +549,10 @@
 				9C99C9CD1768F93700A3F594 /* ECFavoritesViewController.m in Sources */,
 				9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */,
 				9C99C9D01768F98F00A3F594 /* ECFavoriteCell.m in Sources */,
-				9C305A07179008A600F5D9C4 /* ECNavigationBar.m in Sources */,
 				9C0F8B3C17A12DCD007449B0 /* ECSettingsHandler.m in Sources */,
 				9C19DFDE17A3FB72005C70CA /* UIDevice-Hardware.m in Sources */,
 				9CC05DF417A4CA850077E7EF /* ECTutorialViewController.m in Sources */,
+				9CC05DFB17A504CE0077E7EF /* ECNavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,7 +25,7 @@
 @property (weak, nonatomic) ECContactCell * swipedCell;
 @property (strong, nonatomic) ECContactList * contacts;
 @property (strong, nonatomic) ECModalViewController * modalContactViewController;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray * filteredContacts;
 @property (nonatomic) BOOL shouldBeginEditingResearch;
 @property (nonatomic) float currentOffset;
@@ -53,7 +53,10 @@
     
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    [_searchBar setDelegate:self];
     [_searchBar setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"]];
+    [[self tableView] setTableHeaderView:_searchBar];
 }
 
 
@@ -212,33 +215,7 @@
     if (_currentOffset != -1.0f) {
         [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
         _currentOffset = -1.0f;
-    } else
-        [self performSelector:@selector(hideSearchBar) withObject:nil afterDelay:0.0f];
-    
-}
-
-- (void)hideSearchBar {
-    if (!_filteredContacts)
-        [[self tableView] setContentOffset:CGPointMake(0, [_searchBar frame].size.height)];
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    CGFloat contentOffset = [[self tableView] contentOffset].y;
-    CGFloat height = [_searchBar frame].size.height;
-    if (contentOffset > height || _filteredContacts)
-        return ;
-    else if (contentOffset <= height / 2.0f)
-        [[self tableView] setContentOffset:CGPointMake(0, height) animated:YES];
-    else
-        
-        
-        [[self tableView] setContentOffset:CGPointZero animated:YES];
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGRect rect = _searchBar.frame;
-    rect.origin.y = MIN(0, scrollView.contentOffset.y);
-    _searchBar.frame = rect;
+    }
 }
 
 

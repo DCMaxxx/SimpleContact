@@ -52,6 +52,7 @@
 }
 
 + (void) setPossibleKinds {
+    return ;
     ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
         [settingsHandler setUnavailableContactOption:eSOPhone];

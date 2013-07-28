@@ -51,4 +51,4 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 
 To do
 -------
-+ Add a first launch tutorial
++ Check for iOS 6 compatibility

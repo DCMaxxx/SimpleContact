@@ -16,6 +16,7 @@
 
 @interface ECMainTableViewController : UITableViewController
 <
+UISearchBarDelegate,
 ECSettingsDelegate
 >
 
