@@ -95,7 +95,7 @@
 
 #pragma - mark UICollectionViewFlowLayoutDelegate
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(15, 5, 15, 5);
+    return UIEdgeInsetsMake(15, 5, (self.collectionView.frame.size.height - 84.0f) / 4, 5);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {

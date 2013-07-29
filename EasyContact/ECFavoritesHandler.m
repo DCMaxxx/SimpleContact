@@ -68,6 +68,7 @@
         [kindOfFavorites setObject:isFavorite forKey:number];
     } else
         [kindOfFavorites removeObjectForKey:number];
+    NSLog(@"favvv : %@", _favorites);
 }
 
 - (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind {
