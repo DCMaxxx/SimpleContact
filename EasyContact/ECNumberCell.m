@@ -42,6 +42,8 @@ static NSInteger const kFavoriteImageTag = 4242;
 #pragma mark - Misc public methods
 /*----------------------------------------------------------------------------*/
 - (void)isFavorite:(BOOL)favorite {
+    NSString * const ImgFavoriteFlag = @"favorite-flag.png";
+
     if (favorite) {
         CGRect favoriteFrame = CGRectMake([_icon frame].size.width, 2, 10, 10);
         UIImageView * view = (UIImageView *)[[self contentView] viewWithTag:kFavoriteImageTag];
@@ -50,7 +52,7 @@ static NSInteger const kFavoriteImageTag = 4242;
             [view setTag:kFavoriteImageTag];
             [[self contentView] addSubview:view];
         }
-        [view setImage:[UIImage imageNamed:@"favorite-flag.png"]];
+        [view setImage:[UIImage imageNamed:ImgFavoriteFlag]];
     }
     else if ([[self contentView] viewWithTag:kFavoriteImageTag])
         [(UIImageView *)[[self contentView] viewWithTag:kFavoriteImageTag] setImage:nil];

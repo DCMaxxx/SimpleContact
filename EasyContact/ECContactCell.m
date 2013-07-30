@@ -58,7 +58,7 @@ static NSUInteger const kTagLowestValue = 4241;
         frame.size.width = frameWidth;
         frame.origin.x = 320 - frameWidth;
         frame.origin.y = 0;
-        frame.size.height = _mainView.frame.size.height;
+        frame.size.height = CGRectGetHeight(_mainView.frame);
         _leftView = [[UIView alloc] initWithFrame:frame];
         [_leftView setBackgroundColor:[UIColor colorWithWhite:0.85f alpha:1.0f]];
         [_leftView setUserInteractionEnabled:YES];
@@ -95,11 +95,12 @@ static NSUInteger const kTagLowestValue = 4241;
 #pragma mark - Misc private methods
 /*----------------------------------------------------------------------------*/
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andImageView:(UIImageView *)imageView {
+    NSString * const ImgUnavalaibleOverlay = @"unavailable-overlay.png";
     SEL selector = [ECKindHandler selectorForKind:kind prefix:@"tappedOn" andSuffix:@":"];
 
     NSUInteger nbOfContacts = [contact numberOf:kind];
     if (!nbOfContacts) {
-        UIImageView * noIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unavailable-overlay.png"]];
+        UIImageView * noIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:ImgUnavalaibleOverlay]];
         CGRect theFrame = [imageView frame];
         theFrame.origin.x = -3;
         theFrame.origin.y = -3;

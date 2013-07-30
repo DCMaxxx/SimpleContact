@@ -15,6 +15,8 @@
 
 @end
 
+static NSString * const DicKeySettingsImported = @"UserSettings";
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
@@ -25,7 +27,7 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Singleton creation
 /*----------------------------------------------------------------------------*/
-+(ECSettingsHandler *)sharedInstance {
++ (ECSettingsHandler *)sharedInstance {
     static dispatch_once_t pred;
     static ECSettingsHandler *shared = nil;
     dispatch_once(&pred, ^{
@@ -34,13 +36,24 @@
     return shared;
 }
 
++ (void)loadSettings {
+    static NSString * const FileDefaultSettings = @"Settings";
+
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:DicKeySettingsImported]) {
+        NSDictionary * settings = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:FileDefaultSettings ofType:@"plist"]];
+        [[NSUserDefaults standardUserDefaults] setObject:settings forKey:DicKeySettingsImported];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[ECSettingsHandler sharedInstance] reloadSettings];
+    }
+}
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Init
 /*----------------------------------------------------------------------------*/
 - (id)init {
     if (self = [super init]) {
-        _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"UserSettings"] mutableCopy];
+        _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:DicKeySettingsImported] mutableCopy];
         _unavailabeSettings = [[NSMutableArray alloc] init];
     }
     return self;
@@ -85,7 +98,7 @@
 }
 
 - (void)saveModifications {
-    [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:@"UserSettings"];
+    [[NSUserDefaults standardUserDefaults] setObject:_settings forKey:DicKeySettingsImported];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -94,7 +107,7 @@
 #pragma mark - Misc public methods
 /*----------------------------------------------------------------------------*/
 - (void)reloadSettings {
-    _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:@"UserSettings"] mutableCopy];
+    _settings = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:DicKeySettingsImported] mutableCopy];
 }
 
 @end

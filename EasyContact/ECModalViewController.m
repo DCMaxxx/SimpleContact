@@ -71,8 +71,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"ModalCell";
-    ECNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString * const ReuIdNumberCell = @"ModalCell";
+    ECNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:ReuIdNumberCell forIndexPath:indexPath];
     NSInteger index = [indexPath indexAtPosition:1];
     
     [cell setTag:index];
@@ -80,16 +80,14 @@
     if (![cell viewController])
         [cell setViewController:self];
     
-    NSDictionary * dic = [[_contact addessesOf:_kind] objectAtIndex:index];
-    
-    BOOL isFavorite = [(NSNumber *)[dic objectForKey:@"favorite"] boolValue];
+    BOOL isFavorite = [_contact addressIsFavoriteWithKind:_kind andIndex:index];
     [cell isFavorite:isFavorite];
 
-    NSString *label = [dic objectForKey:@"label"];
+    NSString *label = [_contact addressLabelWithKind:_kind andIndex:index];
     UIImage *icon = [self getImageFromLabel:label];
     [[cell icon] setImage:icon];
     
-    NSString * value = [dic objectForKey:@"value"];
+    NSString * value = [_contact addressValueWithKind:_kind andIndex:index];
     [cell setValue:value];
 
     RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
@@ -114,13 +112,11 @@
 /*----------------------------------------------------------------------------*/
 - (void)setFavoriteWithCell:(ECNumberCell *)cell {
     NSInteger index = [cell tag];
-    NSMutableDictionary * number = [[_contact addessesOf:_kind] objectAtIndex:index];
-    NSNumber * isFavorite = [number objectForKey:@"favorite"];
-    [number setObject:[NSNumber numberWithBool:![isFavorite boolValue]] forKey:@"favorite"];
-    [cell isFavorite:![isFavorite boolValue]];
-    
-    [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] ofKind:_kind];
+
+    [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] atIndex:index ofKind:_kind];
     [[ECFavoritesHandler sharedInstance] saveModifications];
+
+    [cell isFavorite:[_contact addressIsFavoriteWithKind:_kind andIndex:index]];
 }
 
 

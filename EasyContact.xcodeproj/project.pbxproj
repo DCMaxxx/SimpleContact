@@ -40,6 +40,7 @@
 		9C42A4711786B53000591BC9 /* ECSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C42A4701786B53000591BC9 /* ECSettingsTableViewController.m */; };
 		9C42A4731786E9F500591BC9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C42A4721786E9F500591BC9 /* settings.png */; };
 		9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5DB56316EE57DF00300925 /* ECContactList.m */; };
+		9C6755C017A7D55A002F4534 /* ECConstantStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6755BF17A7D55A002F4534 /* ECConstantStrings.m */; };
 		9C6F6061174564EF002753D7 /* ECMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F6060174564EF002753D7 /* ECMainTableViewController.m */; };
 		9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C723407173AB6FF00C2F633 /* RNBlurModalView.m */; };
 		9C78167B1747C62F00F66500 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C78167A1747C62F00F66500 /* MessageUI.framework */; };
@@ -114,6 +115,8 @@
 		9C42A4721786E9F500591BC9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = images/settings.png; sourceTree = "<group>"; };
 		9C5DB56216EE57DF00300925 /* ECContactList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECContactList.h; sourceTree = "<group>"; };
 		9C5DB56316EE57DF00300925 /* ECContactList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECContactList.m; sourceTree = "<group>"; };
+		9C6755BE17A7D55A002F4534 /* ECConstantStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECConstantStrings.h; sourceTree = "<group>"; };
+		9C6755BF17A7D55A002F4534 /* ECConstantStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECConstantStrings.m; sourceTree = "<group>"; };
 		9C6F605F174564EF002753D7 /* ECMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECMainTableViewController.h; sourceTree = "<group>"; };
 		9C6F6060174564EF002753D7 /* ECMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECMainTableViewController.m; sourceTree = "<group>"; };
 		9C723406173AB6FF00C2F633 /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNBlurModalView.h; path = ressources/RNBlurModalView.h; sourceTree = "<group>"; };
@@ -271,6 +274,8 @@
 		9C742BF317A3E79A003718D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				9C6755BE17A7D55A002F4534 /* ECConstantStrings.h */,
+				9C6755BF17A7D55A002F4534 /* ECConstantStrings.m */,
 				9C8DB0DE1775D0C40015FD67 /* ECContactJoiner.h */,
 				9C8DB0DF1775D0C40015FD67 /* ECContactJoiner.m */,
 				9C0E274E17809A8E00DA4EF8 /* ECKindHandler.h */,
@@ -538,6 +543,7 @@
 				9C14627F16BC1DFF0008EB0F /* ECContact.m in Sources */,
 				9C5DB56416EE57DF00300925 /* ECContactList.m in Sources */,
 				9C957D7A176E3D5C00E3B8A4 /* ECFavoritesHandler.m in Sources */,
+				9C6755C017A7D55A002F4534 /* ECConstantStrings.m in Sources */,
 				9C42A4711786B53000591BC9 /* ECSettingsTableViewController.m in Sources */,
 				9C088B5B17392128003B7644 /* ECNumberCell.m in Sources */,
 				9C723409173AB6FF00C2F633 /* RNBlurModalView.m in Sources */,

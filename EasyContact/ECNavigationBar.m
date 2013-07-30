@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "ECConstantStrings.h"
+
 #import "ECNavigationBar.h"
 
 #import "ECSettingsTableViewController.h"
@@ -20,7 +22,7 @@
 #pragma mark - UIView
 /*----------------------------------------------------------------------------*/
 - (void)drawRect:(CGRect)rect {
-    UIImage * img = [UIImage imageNamed:@"navigationbar-background.png"];
+    UIImage * img = [UIImage imageNamed:ImgNavBarBg];
     [img drawInRect:CGRectMake(0, 0, [self frame].size.width, [self frame].size.height)];
 }
 
@@ -29,8 +31,9 @@
 #pragma mark - Misc public methods
 /*----------------------------------------------------------------------------*/
 - (void)displaySettingsOnNavigationController:(UINavigationController *)controller andDelegate:(id<ECSettingsDelegate>)delegate {
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    ECSettingsTableViewController * tvc = [sb instantiateViewControllerWithIdentifier:@"ECSettingsViewController"];
+    static NSString * const VCIdSettings = @"ECSettingsViewController";
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:MainStoryBoard bundle:nil];
+    ECSettingsTableViewController * tvc = [sb instantiateViewControllerWithIdentifier:VCIdSettings];
     [tvc setDelegate:delegate];
     UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:tvc];
     [controller presentViewController:nc animated:YES completion:nil];

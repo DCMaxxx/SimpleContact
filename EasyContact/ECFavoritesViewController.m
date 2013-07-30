@@ -61,9 +61,11 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * const ReuIdFavoriteCell = @"FavoriteCell";
+    ECFavoriteCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:ReuIdFavoriteCell forIndexPath:indexPath];
+
     NSInteger idx = [indexPath indexAtPosition:1];
     ECFavorite * contact = [_contacts objectAtIndex:idx];
-    ECFavoriteCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FavoriteCell" forIndexPath:indexPath];
     
     [cell setInformationsWithNumber:contact];
     
@@ -91,7 +93,7 @@
 #pragma mark - UICollectionViewFlowLayoutDelegate
 /*----------------------------------------------------------------------------*/
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(15, 5, (self.collectionView.frame.size.height - 84.0f) / 4, 5);
+    return UIEdgeInsetsMake(15, 5, (CGRectGetHeight([[self collectionView] frame]) - 84.0f) / 4, 5);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
@@ -109,7 +111,7 @@
         
         ECFavoriteCell * cell = (ECFavoriteCell *)[[self collectionView] cellForItemAtIndexPath:path];
         ECFavorite * number = [cell number];
-        [[ECFavoritesHandler sharedInstance] toogleContact:[number contact] number:[number contactNumber] ofKind:[number kind]];
+        [[ECFavoritesHandler sharedInstance] toogleContact:[number contact] number:[number contactNumber] atIndex:[cell tag] ofKind:[number kind]];
         [[ECFavoritesHandler sharedInstance] saveModifications];
         [self.collectionView performBatchUpdates:^{
             NSArray *selectedItemsIndexPaths = [NSArray arrayWithObject:path];

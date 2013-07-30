@@ -15,11 +15,14 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (nonatomic) BOOL loadedImages;
 
 - (IBAction)pageChanged:(id)sender;
 - (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender;
 
 @end
+
+static NSUInteger const NbImages = 5;
 
 
 /*----------------------------------------------------------------------------*/
@@ -28,42 +31,29 @@
 @implementation ECTutorialViewController
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - Init
-/*----------------------------------------------------------------------------*/
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        NSMutableDictionary * view1 = [@{@"image": @"tutorial-1.png",
-                                       @"description": @"description 1"} mutableCopy];
-        NSMutableDictionary * view2 = [@{@"image": @"tutorial-2.png",
-                                       @"description": @"description 2"} mutableCopy];
-        NSMutableDictionary * view3 = [@{@"image": @"tutorial-3.png",
-                                       @"description": @"description 2"} mutableCopy];
-        NSMutableDictionary * view4 = [@{@"image": @"tutorial-4.png",
-                                       @"description": @"description 2"} mutableCopy];
-        NSMutableDictionary * view5 = [@{@"image": @"tutorial-5.png",
-                                       @"description": @"description 2"} mutableCopy];
-        _tutorialView = @[view1, view2, view3, view4, view5];
-    }
-    return self;
-}
-
-
-/*----------------------------------------------------------------------------*/
 #pragma mark - UIViewController
 /*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    _pageControl.currentPage = 0;
-	[_pageControl setNumberOfPages:[_tutorialView count]];
+	[_pageControl setNumberOfPages:NbImages];
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width * [_tutorialView count], _scrollView.frame.size.height);
-    for (NSUInteger i =0; i < [_tutorialView count]; i++) {
-        [self loadScrollViewWithPage:i];
+    if (_loadedImages)
+        return ;
+    [_scrollView setContentSize:CGSizeMake(CGRectGetWidth(_scrollView.frame) * NbImages,
+                                           CGRectGetHeight(_scrollView.frame))];
+    for (NSUInteger i =0; i < NbImages; i++) {
+        CGRect frame = CGRectMake(CGRectGetWidth(_scrollView.frame) * i, 0, CGRectGetWidth(_scrollView.frame), CGRectGetHeight(_scrollView.frame));
+        NSString * imageName = [NSString stringWithFormat:@"tutorial-%u.png", i];
+        UIImage * image = [UIImage imageWithContentsOfFile:imageName];
+        UIImageView * imageView = [[UIImageView alloc] initWithFrame:frame];
+        [imageView setImage:image];
+        [_scrollView addSubview:imageView];
     }
+    _loadedImages = YES;
 }
 
 
@@ -71,51 +61,31 @@
 #pragma mark - UIScrollViewDelegate
 /*----------------------------------------------------------------------------*/
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    // Switch the indicator when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;
+    CGFloat pageWidth = CGRectGetWidth(_scrollView.frame);
+    int page = floor(([_scrollView contentOffset].x - pageWidth / 2) / pageWidth) + 1;
+    [_pageControl setCurrentPage:page];
 }
 
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Changing UIView, UIViewController
 /*----------------------------------------------------------------------------*/
-- (IBAction)pageChanged:(id)sender {
-    int page = ((UIPageControl *)sender).currentPage;
+- (IBAction)pageChanged:(UIPageControl *)sender {
+    int page = [sender currentPage];
     
-    CGRect frame = self.scrollView.frame;
-    frame.origin.x = frame.size.width * page;
+    CGRect frame = [_scrollView frame];
+    frame.origin.x = CGRectGetWidth(frame) * page;
     frame.origin.y = 0;
-    
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+
+    [_scrollView scrollRectToVisible:frame animated:YES];
 }
 
 - (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender {
     if ([sender state] == UIGestureRecognizerStateEnded) {
-        if (_pageControl.currentPage == [_tutorialView count] - 1)
+        if ([_pageControl currentPage] == NbImages - 1)
             [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
-
-/*----------------------------------------------------------------------------*/
-#pragma mark - Misc private methods
-/*----------------------------------------------------------------------------*/
-- (void)loadScrollViewWithPage:(int)page {
-    if (page < 0 || page >= [_tutorialView count])
-        return;
-    
-    NSMutableDictionary * infos = [_tutorialView objectAtIndex:page];
-    CGRect frame = CGRectMake(_scrollView.frame.size.width * page, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
-
-    if (![infos objectForKey:@"view"]) {
-        UIImage * image = [UIImage imageNamed:[infos objectForKey:@"image"]];
-        UIImageView * imageView = [[UIImageView alloc] initWithFrame:frame];
-        [imageView setImage:image];
-        [self.scrollView addSubview:imageView];
-        [infos setObject:imageView forKey:@"view"];
-    }
-}
 
 @end

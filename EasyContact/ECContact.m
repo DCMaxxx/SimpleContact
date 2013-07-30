@@ -18,8 +18,9 @@
 
 @end
 
-static NSString * const lgLabelKey = @"label";
-static NSString * const lgAddressKey = @"value";
+static NSString * const DicKeyLabel = @"label";
+static NSString * const DicKeyValue = @"value";
+static NSString * const DicKeyFavorite = @"favorite";
 
 
 /*----------------------------------------------------------------------------*/
@@ -36,6 +37,8 @@ static NSString * const lgAddressKey = @"value";
 /*----------------------------------------------------------------------------*/
 - (id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
+        NSString * const ImgUnknownUser = @"unknown-user.png";
+
         _addresses = [[NSMutableDictionary alloc] init];
         _addBookContact = addBookContact;
 
@@ -43,7 +46,7 @@ static NSString * const lgAddressKey = @"value";
         if (pic)
             _picture = [UIImage imageWithData:(__bridge_transfer NSData *)pic];
         else
-            _picture = [UIImage imageNamed:@"unknown-user.png"];
+            _picture = [UIImage imageNamed:ImgUnknownUser];
     }
     return self;
 }
@@ -108,11 +111,7 @@ static NSString * const lgAddressKey = @"value";
 #pragma mark - Advanced getters
 /*----------------------------------------------------------------------------*/
 - (NSInteger)numberOf:(eContactNumberKind)kind {
-    NSArray * selectors = @[@"numberOfPhones",
-                            @"numberOfMails",
-                            @"numberOfTexts",
-                            @"numberOfFaceTimes"];
-    SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
+    SEL selector = [ECKindHandler selectorForKind:kind prefix:@"numberOf" andSuffix:@"s"];
     if ([self respondsToSelector:selector]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -123,11 +122,7 @@ static NSString * const lgAddressKey = @"value";
 }
 
 - (NSArray *)addessesOf:(eContactNumberKind)kind {
-    NSArray * selectors = @[@"phones",
-                            @"mails",
-                            @"texts",
-                            @"facetimes"];
-    SEL selector = NSSelectorFromString([selectors objectAtIndex:kind]);
+    SEL selector = [ECKindHandler selectorForKind:kind prefix:@"addressesFor" andSuffix:nil];
     if ([self respondsToSelector:selector]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -137,34 +132,82 @@ static NSString * const lgAddressKey = @"value";
     return [[NSArray alloc] init];
 }
 
+- (NSString *)addressValueWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx {
+    NSArray * addresses = [self addessesOf:kind];
+    if (idx >= [addresses count])
+        return nil;
+    return [[addresses objectAtIndex:idx] objectForKey:DicKeyValue];
+}
+
+- (NSString *)addressLabelWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx {
+    NSArray * addresses = [self addessesOf:kind];
+    if (idx >= [addresses count])
+        return nil;
+    return [[addresses objectAtIndex:idx] objectForKey:DicKeyLabel];
+}
+
+- (BOOL)addressIsFavoriteWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx {
+    NSArray * addresses = [self addessesOf:kind];
+    if (idx >= [addresses count])
+        return NO;
+    NSNumber * nb = [[addresses objectAtIndex:idx] objectForKey:DicKeyFavorite];
+    return nb && [nb boolValue];
+}
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Advanced setters
 /*----------------------------------------------------------------------------*/
-- (void)toogleFavoriteForNumber:(NSString *)number andKind:(eContactNumberKind)kind {
-    [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:[_addresses objectForKey:[ECKindHandler kindToString:kind]] ofKind:kind];
+- (void)toogleFavoriteForNumber:(NSString *)number ofKind:(eContactNumberKind)kind {
+    NSArray * addresses = [self addessesOf:kind];
+    for (NSUInteger i = 0; i < [addresses count]; ++i) {
+        if ([[self addressValueWithKind:kind andIndex:i] isEqualToString:number]) {
+            NSMutableDictionary * number = [addresses objectAtIndex:i];
+            BOOL isFavorite = [self addressIsFavoriteWithKind:kind andIndex:i];
+            [number setObject:@(!isFavorite) forKey:DicKeyFavorite];
+            break ;
+        }
+    }
+    
+}
+
+- (void)toogleFavoriteForNumberWithKind:(eContactNumberKind)kind atIndex:(NSUInteger)idx {
+    NSArray * addresses = [self addessesOf:kind];
+    if (idx >= [addresses count])
+        return ;
+    NSMutableDictionary * number = [addresses objectAtIndex:idx];
+    BOOL isFavorite = [self addressIsFavoriteWithKind:kind andIndex:idx];
+    [number setObject:@(!isFavorite) forKey:DicKeyFavorite];
+}
+
+- (void)setFavorite:(BOOL)isFavorite forNumberWithKind:(eContactNumberKind)kind atIndex:(NSUInteger)idx {
+    NSArray * addresses = [self addessesOf:kind];
+    if (idx >= [addresses count])
+        return ;
+    NSMutableDictionary * number = [addresses objectAtIndex:idx];
+    [number setObject:@(isFavorite) forKey:DicKeyFavorite];
 }
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Hidden getters
 /*----------------------------------------------------------------------------*/
 - (NSNumber *)numberOfPhones {
-    return [NSNumber numberWithInt:[[self phones] count]];
+    return [NSNumber numberWithInt:[[self addressesForPhone] count]];
 }
 
 - (NSNumber *)numberOfMails {
-    return [NSNumber numberWithInt:[[self mails] count]];
+    return [NSNumber numberWithInt:[[self addressesForMail] count]];
 }
 
 - (NSNumber *)numberOfTexts {
-    return [NSNumber numberWithInt:[[self texts] count]];
+    return [NSNumber numberWithInt:[[self addressesForText] count]];
 }
 
 - (NSNumber *)numberOfFaceTimes {
-    return [NSNumber numberWithInt:[[self facetimes] count]];
+    return [NSNumber numberWithInt:[[self addressesForFaceTime] count]];
 }
 
-- (NSArray *)phones {
+- (NSArray *)addressesForPhone {
     NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKPhone]];
     if (!result) {
         result = [[NSMutableArray alloc] init];
@@ -179,16 +222,17 @@ static NSString * const lgAddressKey = @"value";
                 CFRelease(phoneNumberRef);
             if (locLabel)
                 CFRelease(locLabel);
-            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, lgLabelKey, phoneNumber, lgAddressKey, nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, DicKeyLabel, phoneNumber, DicKeyValue, nil];
+            if ([[ECFavoritesHandler sharedInstance] isFavoriteWithContact:self number:phoneNumber ofKind:eCNKPhone])
+                [tmp setObject:@(YES) forKey:DicKeyFavorite];
             [result addObject:tmp];
         }
-        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKPhone];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKPhone]];
     }
     return result;
 }
 
-- (NSArray *)mails {
+- (NSArray *)addressesForMail {
     NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKMail]];
     if (!result) {
         result = [[NSMutableArray alloc] init];
@@ -203,33 +247,40 @@ static NSString * const lgAddressKey = @"value";
                 CFRelease(mailRef);
             if (locLabel)
                 CFRelease(locLabel);
-            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, lgLabelKey, mailAddress, lgAddressKey, nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, DicKeyLabel, mailAddress, DicKeyValue, nil];
+            if ([[ECFavoritesHandler sharedInstance] isFavoriteWithContact:self number:mailAddress ofKind:eCNKMail])
+                [tmp setObject:@(YES) forKey:DicKeyFavorite];
             [result addObject:tmp];
         }
-        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKMail];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKMail]];
     }
     return result;
 
 }
 
-- (NSArray *)texts {
+- (NSArray *)addressesForText {
     NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKText]];
     if (!result) {
-        NSMutableArray * phones = [self deepCopy:[self phones]];
-        NSMutableArray * mails = [self deepCopy:[self mails]];
+        NSMutableArray * phones = [self deepCopy:[self addressesForPhone]];
+        NSMutableArray * mails = [self deepCopy:[self addressesForMail]];
         result = [[phones arrayByAddingObjectsFromArray:mails] mutableCopy];
-        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKText];
+        for (NSMutableDictionary * number in result) {
+            if ([[ECFavoritesHandler sharedInstance] isFavoriteWithContact:self number:[number objectForKey:DicKeyValue] ofKind:eCNKText])
+                [number setObject:@(YES) forKey:DicKeyFavorite];
+        }
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKText]];
     }
     return result;
 }
 
-- (NSArray *)facetimes {
+- (NSArray *)addressesForFaceTime {
     NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKFaceTime]];
     if (!result) {
-        result = [self deepCopy:[self texts]];
-        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKFaceTime];
+        result = [self deepCopy:[self addressesForText]];
+        for (NSMutableDictionary * number in result) {
+            if ([[ECFavoritesHandler sharedInstance] isFavoriteWithContact:self number:[number objectForKey:DicKeyValue] ofKind:eCNKFaceTime])
+                [number setObject:@(YES) forKey:DicKeyFavorite];
+        }
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKFaceTime]];
     }
     return result;
@@ -242,8 +293,8 @@ static NSString * const lgAddressKey = @"value";
     NSMutableArray * result = [[NSMutableArray alloc] init];
     for (NSMutableDictionary * dic in array) {
         NSMutableDictionary * copy = [[NSMutableDictionary alloc] init];
-        [copy setObject:[NSString stringWithString:[dic objectForKey:lgLabelKey]] forKey:lgLabelKey];
-        [copy setObject:[NSString stringWithString:[dic objectForKey:lgAddressKey]] forKey:lgAddressKey];
+        [copy setObject:[NSString stringWithString:[dic objectForKey:DicKeyLabel]] forKey:DicKeyLabel];
+        [copy setObject:[NSString stringWithString:[dic objectForKey:DicKeyValue]] forKey:DicKeyValue];
         [result addObject:copy];
     }
     return result;

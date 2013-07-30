@@ -20,6 +20,7 @@ typedef enum { eSOShowImages = 4242, eSOFirstName, eSOLastName, eSONickName,
 @interface ECSettingsHandler : NSObject
 
 + (ECSettingsHandler *)sharedInstance;
++ (void)loadSettings;
 
 - (BOOL)getOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category;
 - (void)setOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category withValue:(BOOL)value;

@@ -16,9 +16,6 @@
 #import "ECSettingsHandler.h"
 #import "ECKindHandler.h"
 
-static NSString * const lgTutorialDisplayed = @"TutorialDisplayed";
-static NSString * const lgDefaultSettingsImported = @"UserSettings";
-
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
@@ -47,20 +44,16 @@ static NSString * const lgDefaultSettingsImported = @"UserSettings";
     }
 
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:lgTutorialDisplayed]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:lgTutorialDisplayed];
+    static NSString * const DicKeyTutorialDisplayed = @"TutorialDisplayed";
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:DicKeyTutorialDisplayed]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DicKeyTutorialDisplayed];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];
         if ([[mainController visibleViewController] isKindOfClass:[ECMainTableViewController class]])
             [mainController.visibleViewController performSelector:@selector(displayTutorial) withObject:nil afterDelay:0.0f];
     }
     
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:lgDefaultSettingsImported]) {
-        NSDictionary * settings = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"]];
-        [[NSUserDefaults standardUserDefaults] setObject:settings forKey:lgDefaultSettingsImported];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        [[ECSettingsHandler sharedInstance] reloadSettings];
-    }
+    [ECSettingsHandler loadSettings];
     
     [ECKindHandler setPossibleKinds];
     return YES;

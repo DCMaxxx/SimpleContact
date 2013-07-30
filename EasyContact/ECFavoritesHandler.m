@@ -19,6 +19,8 @@
 
 @end
 
+static NSString * const DicKeyFavorite = @"Favorites";
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
@@ -44,7 +46,7 @@
 /*----------------------------------------------------------------------------*/
 - (id) init {
     if (self = [super init]) {
-        NSDictionary * favorites = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"Favorites"];
+        NSDictionary * favorites = [[NSUserDefaults standardUserDefaults] dictionaryForKey:DicKeyFavorite];
         if (!favorites)
             _favorites = [[NSMutableDictionary alloc] init];
         else
@@ -57,26 +59,17 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Advanced Getters
 /*----------------------------------------------------------------------------*/
-- (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind {
-    if (![numbers count])
-        return ;
-    
+- (BOOL)isFavoriteWithContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
     NSDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     if (!contactFavorites)
-        return ;
+        return NO;
     
     NSDictionary * kindOfFavorites = [contactFavorites objectForKey:[ECKindHandler kindToString:kind]];
     if (!kindOfFavorites)
-        return ;
+        return NO;
     
-    for (NSMutableDictionary * number in numbers) {
-        NSString * numberStr = [number objectForKey:@"value"];
-        NSNumber * isFavorite = [kindOfFavorites objectForKey:numberStr];
-        if (!isFavorite || ![isFavorite boolValue])
-            [number setObject:[NSNumber numberWithBool:NO] forKey:@"favorite"];
-        else
-            [number setObject:[NSNumber numberWithBool:YES] forKey:@"favorite"];
-    }
+    NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
+    return isFavorite && [isFavorite boolValue];
 }
 
 - (NSArray *)getAllFavoritesWithContactList:(ECContactList *)list {
@@ -107,13 +100,12 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - Advanced Setters
 /*----------------------------------------------------------------------------*/
-- (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
+- (void)toogleContact:(ECContact *)contact number:(NSString *)number atIndex:(NSUInteger)idx ofKind:(eContactNumberKind)kind {
     NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     if (!contactFavorites)
         contactFavorites = [[NSMutableDictionary alloc] init];
     else
         contactFavorites = [contactFavorites mutableCopy];
-    
     [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
     
     NSMutableDictionary * kindOfFavorites = [[contactFavorites objectForKey:[ECKindHandler kindToString:kind]] mutableCopy];
@@ -129,11 +121,11 @@
         [kindOfFavorites setObject:isFavorite forKey:number];
     } else
         [kindOfFavorites removeObjectForKey:number];
-    [contact toogleFavoriteForNumber:number andKind:kind];
+    [contact toogleFavoriteForNumber:number ofKind:kind];
 }
 
 - (void) saveModifications {
-    [[NSUserDefaults standardUserDefaults] setObject:_favorites forKey:@"Favorites"];
+    [[NSUserDefaults standardUserDefaults] setObject:_favorites forKey:DicKeyFavorite];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

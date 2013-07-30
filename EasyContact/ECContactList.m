@@ -20,6 +20,9 @@
 
 @end
 
+static NSString * const DicKeyInitial = @"initial";
+static NSString * const DicKeyContact = @"contacts";
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Implementation
@@ -62,11 +65,11 @@
 }
 
 - (NSString *)initialAtIndex:(NSUInteger)index {
-    return [(NSDictionary *)[_sectionnedContacts objectAtIndex:index] objectForKey:@"initial"];
+    return [(NSDictionary *)[_sectionnedContacts objectAtIndex:index] objectForKey:DicKeyInitial];
 }
 
 - (NSArray *)contactsForInitialAtIndex:(NSUInteger)index {
-    return [(NSDictionary *)[_sectionnedContacts objectAtIndex:index] objectForKey:@"contacts"];
+    return [(NSDictionary *)[_sectionnedContacts objectAtIndex:index] objectForKey:DicKeyContact];
 }
 
 - (NSUInteger)numberOfContactsForInitialAtIndex:(NSUInteger)index {
@@ -76,7 +79,7 @@
 
 - (ECContact *)getContactFromUID:(NSUInteger)UID {
     for (NSDictionary * section in _sectionnedContacts) {
-        for (ECContact * contact in [section objectForKey:@"contacts"]) {
+        for (ECContact * contact in [section objectForKey:DicKeyContact]) {
             if ([contact UID] == UID)
                 return contact;
         }
@@ -91,7 +94,7 @@
 - (void)sortArrayAccordingToSettings {
     NSMutableArray * newSections = [self getArrayOfSections];
     for (NSMutableDictionary * section in _sectionnedContacts)
-        for (ECContact * contact in [section objectForKey:@"contacts"])
+        for (ECContact * contact in [section objectForKey:DicKeyContact])
             [self addContact:contact InSection:newSections];
     _sectionnedContacts = newSections;
 }
@@ -99,7 +102,7 @@
 - (NSArray *)filterWithText:(NSString *)text {
     NSMutableArray * result = [[NSMutableArray alloc] init];
     for (NSMutableDictionary * section in _sectionnedContacts) {
-        for (ECContact * contact in [section objectForKey:@"contacts"]) {
+        for (ECContact * contact in [section objectForKey:DicKeyContact]) {
             NSRange firstName = [[contact firstName] rangeOfString:text options:NSCaseInsensitiveSearch];
             NSRange lastName = [[contact lastName] rangeOfString:text options:NSCaseInsensitiveSearch];
             if (firstName.location != NSNotFound || lastName.location != NSNotFound)
@@ -119,8 +122,8 @@
     for (NSInteger i = 0; i < [sections length]; ++i) {
         NSString * character = [sections substringWithRange:NSMakeRange(i, 1)];
         NSMutableDictionary * section = [[NSMutableDictionary alloc] init];
-        [section setObject:character forKey:@"initial"];
-        [section setObject:[[NSMutableArray alloc] init] forKey:@"contacts"];
+        [section setObject:character forKey:DicKeyInitial];
+        [section setObject:[[NSMutableArray alloc] init] forKey:DicKeyContact];
         [newSections addObject:section];
     }
     return newSections;
@@ -136,7 +139,7 @@
     if (idx.location == NSNotFound)
         idx.location = [[self sections] length] - 1;
     NSMutableDictionary * dic = [sections objectAtIndex:idx.location];
-    NSMutableArray * contacts = [dic objectForKey:@"contacts"];
+    NSMutableArray * contacts = [dic objectForKey:DicKeyContact];
     [contacts addObject:contact];
 }
 

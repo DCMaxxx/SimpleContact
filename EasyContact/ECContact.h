@@ -23,10 +23,15 @@
 - (id)initWithAddressBookContact:(ABRecordRef)addBookContact;
 - (NSInteger)numberOf:(eContactNumberKind)kind;
 - (NSArray *)addessesOf:(eContactNumberKind)kind;
+- (NSString *)addressValueWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx;
+- (NSString *)addressLabelWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx;
+- (BOOL)addressIsFavoriteWithKind:(eContactNumberKind)kind andIndex:(NSUInteger)idx;
 - (NSString *)importantName;
 - (NSString *)secondaryName;
 - (NSString *)favoriteName;
-- (void)toogleFavoriteForNumber:(NSString *)number andKind:(eContactNumberKind)kind;
+- (void)toogleFavoriteForNumber:(NSString *)number ofKind:(eContactNumberKind)kind;
+- (void)toogleFavoriteForNumberWithKind:(eContactNumberKind)kind atIndex:(NSUInteger)idx;
+- (void)setFavorite:(BOOL)isFavorite forNumberWithKind:(eContactNumberKind)kind atIndex:(NSUInteger)idx;
 
 
 @end

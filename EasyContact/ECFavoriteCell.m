@@ -46,7 +46,7 @@
         
         CGRect tmpFrame = [_contactPicture frame];
         tmpFrame.origin.x = 0;
-        tmpFrame.origin.y = tmpFrame.size.height - 10;
+        tmpFrame.origin.y = CGRectGetHeight(tmpFrame) - 10;
         tmpFrame.size.height = 10;
         UIView * bottomView = [[UIView alloc] initWithFrame:tmpFrame];
         [bottomView setBackgroundColor:[UIColor colorWithWhite:1.0f alpha:0.8f]];
@@ -59,7 +59,7 @@
         [bottomView addSubview:_contactNumber];
 
         tmpFrame.origin.y = 0;
-        tmpFrame.origin.x = [_contactNumber frame].size.width;
+        tmpFrame.origin.x = CGRectGetWidth([_contactNumber frame]);
         tmpFrame.size.height = tmpFrame.size.width = 10;
         _kind = [[UIImageView alloc] initWithFrame:tmpFrame];
         [bottomView addSubview:_kind];

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
+#import "ECConstantStrings.h"
 #import "RNBlurModalView.h"
 
 #import "ECMainTableViewController.h"
@@ -61,12 +62,17 @@
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     [_searchBar setDelegate:self];
-    [_searchBar setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"]];
+    [_searchBar setBackgroundImage:[UIImage imageNamed:ImgNavBarBg]];
     [[self tableView] setTableHeaderView:_searchBar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     if (_currentOffset != -1.0f) {
+        float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+        if (sysVer >= 7.0) {
+            _currentOffset += CGRectGetHeight([[[self navigationController] navigationBar] frame]) +
+                              CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
+        }
         [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
         _currentOffset = -1.0f;
     }
@@ -97,9 +103,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"ContactCell";
-    static NSString *NoPicCell = @"noPictureCell";
-    NSString * cellType = [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? CellIdentifier : NoPicCell;
+    static NSString * const ReuIdContactCell = @"ContactCell";
+    static NSString * const ReuIdNoPicContactCell = @"noPictureCell";
+    NSString * cellType = [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? ReuIdContactCell : ReuIdNoPicContactCell;
     ECContactCell * cell = [tableView dequeueReusableCellWithIdentifier:cellType forIndexPath:indexPath];
     
     NSUInteger indexOfSection = [indexPath indexAtPosition:0];
@@ -176,7 +182,7 @@
         [cell setLeftViewInformationsWithContact:contact];
         
         CGRect newContactFrame = [[cell mainView] frame];
-        newContactFrame.origin.x += [[cell leftView] frame].size.width;
+        newContactFrame.origin.x += CGRectGetWidth([[cell leftView] frame]);
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];
@@ -241,9 +247,10 @@
 #pragma mark - Changing current ViewController
 /*----------------------------------------------------------------------------*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    static NSString * const SegIdFavorites = @"displayFavorites";
     _currentOffset = [[self tableView] contentOffset].y;
     [self unselectCell:nil];
-    if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
+    if ([[segue identifier] isEqualToString:SegIdFavorites]) {
         ECFavoritesViewController * nv = [segue destinationViewController];
         NSArray * favorites = [[ECFavoritesHandler sharedInstance] getAllFavoritesWithContactList:_contacts];
         [nv setFavoriteContacts:favorites];
@@ -258,8 +265,9 @@
 }
 
 - (void)displayTutorial {
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    ECTutorialViewController * tutorial = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
+    static NSString * const VCIdTutorial = @"tutorialViewController";
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:MainStoryBoard bundle:nil];
+    ECTutorialViewController * tutorial = [storyboard instantiateViewControllerWithIdentifier:VCIdTutorial];
     [self.navigationController presentViewController:tutorial animated:NO completion:nil];
 }
 
@@ -298,11 +306,11 @@
 
 - (void)showModalViewWithKind:(eContactNumberKind)kind
                      contact:(ECContact *)contact {
-    
+    static NSString * const VCIdModal = @"ECModalViewController";    
     [self unselectCell:nil];
 
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-    _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"ECModalViewController"];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:MainStoryBoard bundle:nil];
+    _modalContactViewController = [sb instantiateViewControllerWithIdentifier:VCIdModal];
     [_modalContactViewController setContact:contact];
     [_modalContactViewController setKind:kind];
     
@@ -316,7 +324,7 @@
         [_swipedCell setSelected:NO animated:NO];
         
         CGRect newContactFrame = [[_swipedCell mainView] frame];
-        newContactFrame.origin.x -= [[_swipedCell leftView] frame].size.width;
+        newContactFrame.origin.x -=  CGRectGetWidth([[_swipedCell leftView] frame]);
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.2f];

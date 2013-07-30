@@ -42,6 +42,9 @@ static NSUInteger kLabelViewTag = 4242;
 #pragma mark - UIViewController
 /*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
+    NSString * const ImgValidationTick = @"validation-tick.png";
+    NSString * const ImgTransparentBg = @"backbutton-background.png";
+
     [super viewDidLoad];
 
     [self.navigationController setValue:[[ECNavigationBar alloc] init] forKeyPath:@"navigationBar"];
@@ -55,7 +58,7 @@ static NSUInteger kLabelViewTag = 4242;
     [[self navigationItem] setTitleView:label];
 
     UIButton * validationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [validationButton setBackgroundImage:[UIImage imageNamed:@"validation-tick.png"] forState:UIControlStateNormal];
+    [validationButton setBackgroundImage:[UIImage imageNamed:ImgValidationTick] forState:UIControlStateNormal];
     [validationButton addTarget:self action:@selector(validateSettings:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:validationButton];
     [[self navigationItem] setRightBarButtonItem:barButtonItem];
@@ -63,7 +66,7 @@ static NSUInteger kLabelViewTag = 4242;
     NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, 2.0f) forBarMetrics:UIBarMetricsDefault];
-    UIImage * image = [UIImage imageNamed:@"backbutton-background.png"];
+    UIImage * image = [UIImage imageNamed:ImgTransparentBg];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:image
                                                       forState:UIControlStateNormal
                                                     barMetrics:UIBarMetricsDefault];
