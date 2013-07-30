@@ -12,9 +12,9 @@
 #import "ECFavoritesViewController.h"
 
 #import "ECNavigationBar.h"
-#import "ECFavorite.h"
 #import "ECContactJoiner.h"
 #import "ECFavoriteCell.h"
+#import "ECFavorite.h"
 #import "ECContact.h"
 
 @interface ECFavoritesViewController ()
@@ -25,9 +25,14 @@
 @end
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECFavoritesViewController
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [[self navigationItem] setHidesBackButton:YES];
@@ -37,7 +42,9 @@
 }
 
 
-#pragma - mark UIViewController delegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewController
+/*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -46,7 +53,9 @@
 }
 
 
-#pragma - mark UICollectionViewDataSource
+/*----------------------------------------------------------------------------*/
+#pragma mark - UICollectionViewDataSource
+/*----------------------------------------------------------------------------*/
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return [_contacts count];
 }
@@ -59,41 +68,28 @@
     [cell setInformationsWithNumber:contact];
     
     if (![[cell gestureRecognizers] count]) {
-        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(hello:)];
+        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(removeFavorite:)];
         [cell addGestureRecognizer:gr];
     }
     
     return cell;
 }
 
-- (void)hello:(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
-        CGPoint location = [gestureRecognizer locationInView:[self collectionView]];
-        NSIndexPath * path = [[self collectionView] indexPathForItemAtPoint:location];
 
-        ECFavoriteCell * cell = (ECFavoriteCell *)[[self collectionView] cellForItemAtIndexPath:path];
-        ECFavorite * number = [cell number];
-        [[ECFavoritesHandler sharedInstance] toogleContact:[number contact] number:[number contactNumber] ofKind:[number kind]];
-        [[ECFavoritesHandler sharedInstance] saveModifications];
-
-        [self.collectionView performBatchUpdates:^{
-            NSArray *selectedItemsIndexPaths = [NSArray arrayWithObject:path];
-            [self deleteItemsFromDataSourceAtIndexPaths:selectedItemsIndexPaths];
-            [[self collectionView] deleteItemsAtIndexPaths:selectedItemsIndexPaths];
-        } completion:nil];
-    }
-}
-
-- (void)deleteItemsFromDataSourceAtIndexPaths:(NSArray  *)itemPaths {
-    NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
-    for (NSIndexPath *itemPath  in itemPaths) {
-        [indexSet addIndex:itemPath.row];
-    }
-    [_contacts removeObjectsAtIndexes:indexSet];
+/*----------------------------------------------------------------------------*/
+#pragma mark - UICollectionViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    ECFavoriteCell * cell = (ECFavoriteCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    ECFavorite * number = [cell number];
+    
+    [_joiner joinContactWithKind:[number kind] address:[number contactNumber] andViewController:self];
 }
 
 
-#pragma - mark UICollectionViewFlowLayoutDelegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - UICollectionViewFlowLayoutDelegate
+/*----------------------------------------------------------------------------*/
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     return UIEdgeInsetsMake(15, 5, (self.collectionView.frame.size.height - 84.0f) / 4, 5);
 }
@@ -103,23 +99,39 @@
 }
 
 
-#pragma - mark UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    ECFavoriteCell * cell = (ECFavoriteCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    ECFavorite * number = [cell number];
-
-    [_joiner joinContactWithKind:[number kind] address:[number contactNumber] andViewController:self];
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIGestureRecognizerDelegate
+/*----------------------------------------------------------------------------*/
+- (void)removeFavorite:(UIGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        CGPoint location = [gestureRecognizer locationInView:[self collectionView]];
+        NSIndexPath * path = [[self collectionView] indexPathForItemAtPoint:location];
+        
+        ECFavoriteCell * cell = (ECFavoriteCell *)[[self collectionView] cellForItemAtIndexPath:path];
+        ECFavorite * number = [cell number];
+        [[ECFavoritesHandler sharedInstance] toogleContact:[number contact] number:[number contactNumber] ofKind:[number kind]];
+        [[ECFavoritesHandler sharedInstance] saveModifications];
+        [self.collectionView performBatchUpdates:^{
+            NSArray *selectedItemsIndexPaths = [NSArray arrayWithObject:path];
+            [self deleteItemsFromDataSourceAtIndexPaths:selectedItemsIndexPaths];
+            [[self collectionView] deleteItemsAtIndexPaths:selectedItemsIndexPaths];
+        } completion:nil];
+    }
 }
 
 
-#pragma - mark ECSettingsDelegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - ECSettingsDelegate
+/*----------------------------------------------------------------------------*/
 - (void)updatedSettings {
     [_contacts sortUsingSelector:@selector(compare:)];
     [[self collectionView] reloadData];
 }
 
 
-#pragma - mark Display other view controllers
+/*----------------------------------------------------------------------------*/
+#pragma mark - Changing current ViewController
+/*----------------------------------------------------------------------------*/
 - (IBAction)goBackToContacts {
     [[self navigationController] popViewControllerAnimated:YES];
 }
@@ -127,6 +139,18 @@
 - (IBAction)displaySettings:(id)sender {
     ECNavigationBar * nv = (ECNavigationBar *)[[self navigationController] navigationBar];
     [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
+}
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
+- (void)deleteItemsFromDataSourceAtIndexPaths:(NSArray  *)itemPaths {
+    NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *itemPath  in itemPaths) {
+        [indexSet addIndex:itemPath.row];
+    }
+    [_contacts removeObjectsAtIndexes:indexSet];
 }
 
 @end

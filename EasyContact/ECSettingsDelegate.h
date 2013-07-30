@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-enum eSettingsOption;
-enum eSettingsCategory;
 
 @protocol ECSettingsDelegate <NSObject>
 

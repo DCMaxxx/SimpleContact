@@ -20,8 +20,8 @@ UISearchBarDelegate,
 ECSettingsDelegate
 >
 
-- (IBAction)displaySettings:(id)sender;
 - (void)updateContacts;
 - (void)displayTutorial;
+- (IBAction)displaySettings:(id)sender;
 
 @end

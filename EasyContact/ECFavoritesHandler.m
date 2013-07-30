@@ -20,9 +20,15 @@
 @end
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECFavoritesHandler
 
-#pragma - mark Singletion creation
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Singleton creation
+/*----------------------------------------------------------------------------*/
 +(ECFavoritesHandler *)sharedInstance {
     static dispatch_once_t pred;
     static ECFavoritesHandler *shared = nil;
@@ -33,7 +39,9 @@
 }
 
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id) init {
     if (self = [super init]) {
         NSDictionary * favorites = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"Favorites"];
@@ -46,31 +54,9 @@
 }
 
 
-#pragma - mark Handle favorites functions
-- (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
-    NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-    if (!contactFavorites)
-        contactFavorites = [[NSMutableDictionary alloc] init];
-    else
-        contactFavorites = [contactFavorites mutableCopy];
-    [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
-    
-    NSMutableDictionary * kindOfFavorites = [[contactFavorites objectForKey:[ECKindHandler kindToString:kind]] mutableCopy];
-    if (!kindOfFavorites)
-        kindOfFavorites = [[NSMutableDictionary alloc] init];
-    else
-        kindOfFavorites = [kindOfFavorites mutableCopy];
-    [contactFavorites setObject:kindOfFavorites forKey:[ECKindHandler kindToString:kind]];
-    
-    NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
-    if (!isFavorite || ![isFavorite boolValue]) {
-        isFavorite = [NSNumber numberWithBool:YES];
-        [kindOfFavorites setObject:isFavorite forKey:number];
-    } else
-        [kindOfFavorites removeObjectForKey:number];
-    NSLog(@"favvv : %@", _favorites);
-}
-
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced Getters
+/*----------------------------------------------------------------------------*/
 - (void)areFavoriteForContact:(ECContact *)contact numbers:(NSMutableArray *)numbers ofKind:(eContactNumberKind)kind {
     if (![numbers count])
         return ;
@@ -108,13 +94,42 @@
                 NSNumber * isFavorite = [allNumbers objectForKey:number];
                 if ([isFavorite boolValue])
                     [result addObject:[[ECFavorite alloc] initWithContact:contact
-                                                                           kind:[ECKindHandler kindFromString:kindOfFavorite]
-                                                                      andNumber:number]];
+                                                                     kind:[ECKindHandler kindFromString:kindOfFavorite]
+                                                                andNumber:number]];
             }
         }
     }
     
     return [result sortedArrayUsingSelector:@selector(compare:)];
+}
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced Setters
+/*----------------------------------------------------------------------------*/
+- (void)toogleContact:(ECContact *)contact number:(NSString *)number ofKind:(eContactNumberKind)kind {
+    NSMutableDictionary * contactFavorites = [_favorites objectForKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+    if (!contactFavorites)
+        contactFavorites = [[NSMutableDictionary alloc] init];
+    else
+        contactFavorites = [contactFavorites mutableCopy];
+    
+    [_favorites setObject:contactFavorites forKey:[NSString stringWithFormat:@"%d", [contact UID]]];
+    
+    NSMutableDictionary * kindOfFavorites = [[contactFavorites objectForKey:[ECKindHandler kindToString:kind]] mutableCopy];
+    if (!kindOfFavorites)
+        kindOfFavorites = [[NSMutableDictionary alloc] init];
+    else
+        kindOfFavorites = [kindOfFavorites mutableCopy];
+    [contactFavorites setObject:kindOfFavorites forKey:[ECKindHandler kindToString:kind]];
+    
+    NSNumber * isFavorite = [kindOfFavorites objectForKey:number];
+    if (!isFavorite || ![isFavorite boolValue]) {
+        isFavorite = [NSNumber numberWithBool:YES];
+        [kindOfFavorites setObject:isFavorite forKey:number];
+    } else
+        [kindOfFavorites removeObjectForKey:number];
+    [contact toogleFavoriteForNumber:number andKind:kind];
 }
 
 - (void) saveModifications {

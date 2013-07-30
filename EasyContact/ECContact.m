@@ -18,15 +18,22 @@
 
 @end
 
+static NSString * const lgLabelKey = @"label";
+static NSString * const lgAddressKey = @"value";
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECContact
 
 @synthesize firstName = _firstName;
 @synthesize lastName = _lastName;
 @synthesize nickName = _nickName;
 
-
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithAddressBookContact:(ABRecordRef)addBookContact {
     if (self = [super init]) {
         _addresses = [[NSMutableDictionary alloc] init];
@@ -41,6 +48,10 @@
     return self;
 }
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Getting values
+/*----------------------------------------------------------------------------*/
 - (NSString *)importantName {
     if ([[ECSettingsHandler sharedInstance] getOption:eSOFirstName ofCategory:eSCListOrder])
         return [self firstName];
@@ -61,8 +72,6 @@
     return [self nickName];
 }
 
-
-#pragma - mark Getters overrides
 - (NSString *)firstName {
     if (!_firstName) {
         _firstName = (__bridge_transfer NSString *)ABRecordCopyValue(_addBookContact, kABPersonFirstNameProperty);
@@ -95,7 +104,9 @@
 }
 
 
-#pragma - mark Default getters
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced getters
+/*----------------------------------------------------------------------------*/
 - (NSInteger)numberOf:(eContactNumberKind)kind {
     NSArray * selectors = @[@"numberOfPhones",
                             @"numberOfMails",
@@ -126,7 +137,17 @@
     return [[NSArray alloc] init];
 }
 
-#pragma - mark Hidden getters
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced setters
+/*----------------------------------------------------------------------------*/
+- (void)toogleFavoriteForNumber:(NSString *)number andKind:(eContactNumberKind)kind {
+    [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:[_addresses objectForKey:[ECKindHandler kindToString:kind]] ofKind:kind];
+}
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Hidden getters
+/*----------------------------------------------------------------------------*/
 - (NSNumber *)numberOfPhones {
     return [NSNumber numberWithInt:[[self phones] count]];
 }
@@ -158,7 +179,7 @@
                 CFRelease(phoneNumberRef);
             if (locLabel)
                 CFRelease(locLabel);
-            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, @"label", phoneNumber, @"value", nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:phoneLabel, lgLabelKey, phoneNumber, lgAddressKey, nil];
             [result addObject:tmp];
         }
         [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKPhone];
@@ -182,7 +203,7 @@
                 CFRelease(mailRef);
             if (locLabel)
                 CFRelease(locLabel);
-            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, @"label", mailAddress, @"value", nil];
+            NSMutableDictionary * tmp = [[NSMutableDictionary alloc] initWithObjectsAndKeys:mailLabel, lgLabelKey, mailAddress, lgAddressKey, nil];
             [result addObject:tmp];
         }
         [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKMail];
@@ -198,6 +219,7 @@
         NSMutableArray * phones = [self deepCopy:[self phones]];
         NSMutableArray * mails = [self deepCopy:[self mails]];
         result = [[phones arrayByAddingObjectsFromArray:mails] mutableCopy];
+        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKText];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKText]];
     }
     return result;
@@ -207,19 +229,21 @@
     NSMutableArray * result = [_addresses objectForKey:[ECKindHandler kindToString:eCNKFaceTime]];
     if (!result) {
         result = [self deepCopy:[self texts]];
+        [[ECFavoritesHandler sharedInstance] areFavoriteForContact:self numbers:result ofKind:eCNKFaceTime];
         [_addresses setObject:result forKey:[ECKindHandler kindToString:eCNKFaceTime]];
     }
     return result;
 }
 
-
-#pragma - mark Misc private functions
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc hidden methods
+/*----------------------------------------------------------------------------*/
 - (NSMutableArray *)deepCopy:(NSArray *)array {
     NSMutableArray * result = [[NSMutableArray alloc] init];
     for (NSMutableDictionary * dic in array) {
         NSMutableDictionary * copy = [[NSMutableDictionary alloc] init];
-        [copy setObject:[NSString stringWithString:[dic objectForKey:@"label"]] forKey:@"label"];
-        [copy setObject:[NSString stringWithString:[dic objectForKey:@"value"]] forKey:@"value"];
+        [copy setObject:[NSString stringWithString:[dic objectForKey:lgLabelKey]] forKey:lgLabelKey];
+        [copy setObject:[NSString stringWithString:[dic objectForKey:lgAddressKey]] forKey:lgAddressKey];
         [result addObject:copy];
     }
     return result;

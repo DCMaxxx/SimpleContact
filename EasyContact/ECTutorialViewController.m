@@ -8,14 +8,28 @@
 
 #import "ECTutorialViewController.h"
 
+
 @interface ECTutorialViewController ()
 
 @property (strong, nonatomic) NSArray * tutorialView;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+- (IBAction)pageChanged:(id)sender;
+- (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender;
+
 @end
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECTutorialViewController
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         NSMutableDictionary * view1 = [@{@"image": @"tutorial-1.png",
@@ -33,8 +47,11 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewController
+/*----------------------------------------------------------------------------*/
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     _pageControl.currentPage = 0;
@@ -49,6 +66,42 @@
     }
 }
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIScrollViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Switch the indicator when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;
+}
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Changing UIView, UIViewController
+/*----------------------------------------------------------------------------*/
+- (IBAction)pageChanged:(id)sender {
+    int page = ((UIPageControl *)sender).currentPage;
+    
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0;
+    
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+}
+
+- (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender {
+    if ([sender state] == UIGestureRecognizerStateEnded) {
+        if (_pageControl.currentPage == [_tutorialView count] - 1)
+            [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
 - (void)loadScrollViewWithPage:(int)page {
     if (page < 0 || page >= [_tutorialView count])
         return;
@@ -65,27 +118,4 @@
     }
 }
 
-- (IBAction)pageChanged:(id)sender {
-    int page = ((UIPageControl *)sender).currentPage;
-    
-    CGRect frame = self.scrollView.frame;
-    frame.origin.x = frame.size.width * page;
-    frame.origin.y = 0;
-        
-    [self.scrollView scrollRectToVisible:frame animated:YES];
-}
-
-- (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender {
-    if ([sender state] == UIGestureRecognizerStateEnded) {
-        if (_pageControl.currentPage == [_tutorialView count] - 1)
-            [self dismissViewControllerAnimated:YES completion:nil];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)sender {
-    // Switch the indicator when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;
-}
 @end

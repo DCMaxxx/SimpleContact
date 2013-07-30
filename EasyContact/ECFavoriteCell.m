@@ -15,7 +15,6 @@
 #import "ECFavorite.h"
 #import "ECContact.h"
 
-
 @interface ECFavoriteCell ()
 
 @property (strong, nonatomic) UIImageView * contactPicture;
@@ -25,9 +24,14 @@
 
 @end
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECFavoriteCell
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         UIView * border = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 64)];
@@ -68,6 +72,9 @@
     return self;
 }
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
 - (void)setInformationsWithNumber:(ECFavorite *)number {
     _number = number;
     

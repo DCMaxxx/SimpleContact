@@ -11,8 +11,14 @@
 #import "ECContact.h"
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECFavorite
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andNumber:(NSString *) contactNumber {
     if (self = [super init]) {
         _contactNumber = contactNumber;
@@ -22,6 +28,10 @@
     return self;
 }
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Comparison
+/*----------------------------------------------------------------------------*/
 - (NSComparisonResult)compare:(ECFavorite *)number {
     NSComparisonResult res = [[_contact favoriteName] compare:[[number contact] favoriteName] options:NSCaseInsensitiveSearch];
     if (res == NSOrderedSame) {

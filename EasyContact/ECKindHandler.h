@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef enum { eCNKPhone, eCNKMail, eCNKText, eCNKFaceTime } eContactNumberKind;
-typedef enum { eICWhite, eICBlack, eICBlue } eImageColor;
+
 
 @interface ECKindHandler : NSObject
 

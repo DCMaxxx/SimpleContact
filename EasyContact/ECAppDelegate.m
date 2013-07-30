@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
-#import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import <AddressBook/AddressBook.h>
 
 #import "ECAppDelegate.h"
 
@@ -16,7 +16,13 @@
 #import "ECSettingsHandler.h"
 #import "ECKindHandler.h"
 
+static NSString * const lgTutorialDisplayed = @"TutorialDisplayed";
+static NSString * const lgDefaultSettingsImported = @"UserSettings";
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -31,26 +37,27 @@
         });
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
     else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Carnet d'addresse"
-                                                        message:@"Vous avez refusé l'accès à votre carnet d'addresse. Merci de corriger le problème dans l'application Réglages, puis confidentialité."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Carnet d'addresse"
+                                                         message:@"Vous avez refusé l'accès à votre carnet d'addresse.\
+                                                         Merci de corriger le problème dans l'application Réglages, puis confidentialité."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
         [alert show];
     }
 
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"TutorialDisplayed"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"TutorialDisplayed"];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:lgTutorialDisplayed]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:lgTutorialDisplayed];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];
         if ([[mainController visibleViewController] isKindOfClass:[ECMainTableViewController class]])
             [mainController.visibleViewController performSelector:@selector(displayTutorial) withObject:nil afterDelay:0.0f];
     }
     
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"UserSettings"]) {
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:lgDefaultSettingsImported]) {
         NSDictionary * settings = [NSMutableDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"]];
-        [[NSUserDefaults standardUserDefaults] setObject:settings forKey:@"UserSettings"];
+        [[NSUserDefaults standardUserDefaults] setObject:settings forKey:lgDefaultSettingsImported];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [[ECSettingsHandler sharedInstance] reloadSettings];
     }

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ECAppDelegate : UIResponder <UIApplicationDelegate>
+@interface ECAppDelegate : UIResponder
+<
+UIApplicationDelegate
+>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow * window;
 
 @end

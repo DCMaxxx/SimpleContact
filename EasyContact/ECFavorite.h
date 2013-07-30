@@ -15,9 +15,9 @@
 
 @interface ECFavorite : NSObject
 
-@property (strong, nonatomic) NSString * contactNumber;
-@property (nonatomic) eContactNumberKind kind;
-@property (strong, nonatomic) ECContact * contact;
+@property (strong, nonatomic, readonly) NSString * contactNumber;
+@property (nonatomic, readonly) eContactNumberKind kind;
+@property (strong, nonatomic, readonly) ECContact * contact;
 
 - (id)initWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andNumber:(NSString *) contactNumber;
 

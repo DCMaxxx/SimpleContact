@@ -13,11 +13,26 @@
 #import "ECSettingsHandler.h"
 #import "ECContact.h"
 
-static NSUInteger kTagLowestValue = 4241;
+@interface ECContactCell ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
+@property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contactSmallNameLabel;
+@property (weak, nonatomic) IBOutlet UIView *boxView;
+
+@end
+
+static NSUInteger const kTagLowestValue = 4241;
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECContactCell
 
-#pragma - mark Setting views informations
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
 - (void)setMainViewInformationsWithContact:(ECContact *)contact {
     [_contactNameLabel setText:[contact importantName]];
     [_contactSmallNameLabel setText:[contact secondaryName]];
@@ -75,6 +90,10 @@ static NSUInteger kTagLowestValue = 4241;
     
 }
 
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact kind:(eContactNumberKind)kind andImageView:(UIImageView *)imageView {
     SEL selector = [ECKindHandler selectorForKind:kind prefix:@"tappedOn" andSuffix:@":"];
 

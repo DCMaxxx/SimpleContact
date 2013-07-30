@@ -12,7 +12,6 @@
 #import "ECSettingsTableViewController.h"
 #import "ECContactJoiner.h"
 
-
 @interface ECContactJoiner ()
 
 @property (strong, nonatomic) MFMailComposeViewController *mailViewController;
@@ -21,10 +20,15 @@
 
 @end
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECContactJoiner
 
-#pragma - mark Join a contact
-- (void) joinContactWithKind:(eContactNumberKind)kind address:(NSString *)address andViewController:(UIViewController *)vc {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
+- (void)joinContactWithKind:(eContactNumberKind)kind address:(NSString *)address andViewController:(UIViewController *)vc {
     switch (kind) {
         case eCNKPhone:
             [self callNumber:address];
@@ -41,7 +45,7 @@
     }
 }
 
-- (void) reportIssueOnViewController:(UIViewController *)controller {
+- (void)reportIssueOnViewController:(UIViewController *)controller {
     _currentController = controller;
     _mailViewController = [[MFMailComposeViewController alloc] init];
     [_mailViewController setMailComposeDelegate:self];
@@ -57,8 +61,6 @@
     NSString * body = [NSString stringWithFormat:@"Je suis désolé que vous rencontriez un problème.\nMerci de le décrire précisément, avec le nom et prénom du contact posant éventuellement problème, l'action pour reproduire le bug, etc.\nMerci également de laisser toutes les lignes en dessous des \"-----\"\n\n-----\nVersion d'EasyContact : %@\nVersion d'iOS : %@\n iDevice : %@\n", appV, iOSV, deviceV];
     [_mailViewController setMessageBody:body isHTML:NO];
 
-    [[[_mailViewController navigationBar] backItem] setTitle:@"hello"];
-
     NSDictionary * dic = @{UITextAttributeFont: [UIFont boldSystemFontOfSize:12.0f]};
     [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
 
@@ -66,15 +68,45 @@
 }
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - MFMailComposeViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+    BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
+    BOOL restoreBackButtonFontExists = [_currentController respondsToSelector:@selector(restoreBackButtonFont)];
+    [_currentController dismissViewControllerAnimated:!hidePopupExists
+                                           completion:^{
+                                               if (hidePopupExists)
+                                                   [_currentController performSelector:@selector(hidePopup)];
+                                               if (restoreBackButtonFontExists)
+                                                   [_currentController performSelector:@selector(restoreBackButtonFont)];
+                                           }];
+}
 
-#pragma - mark Private methods to contact
-- (void) callNumber:(NSString *)number {
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - MFMessageComposeViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
+    [_currentController dismissViewControllerAnimated:!hidePopupExists
+                                           completion:^{
+                                               if (hidePopupExists)
+                                                   [_currentController performSelector:@selector(hidePopup)];
+                                           }];
+}
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
+- (void)callNumber:(NSString *)number {
     number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString * callUrl = [@"tel://" stringByAppendingString:number];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callUrl]];   
 }
 
-- (void) sendMail:(NSString *)mail withCurrentController:(UIViewController *)controller {
+- (void)sendMail:(NSString *)mail withCurrentController:(UIViewController *)controller {
     _currentController = controller;
 
     [[[[_currentController view] superview] viewWithTag:kRNBlurCloseViewTag] removeFromSuperview];
@@ -88,7 +120,7 @@
     [_currentController presentViewController:_mailViewController animated:YES completion:nil];
 }
 
-- (void) sendText:(NSString *)address withCurrentController:(UIViewController *)controller {
+- (void)sendText:(NSString *)address withCurrentController:(UIViewController *)controller {
     _currentController = controller;
     
     [[[[_currentController view] superview] viewWithTag:kRNBlurCloseViewTag] removeFromSuperview];
@@ -102,35 +134,10 @@
     [_currentController presentViewController:_messageViewController animated:YES completion:nil];
 }
 
-- (void) faceTimeNumber:(NSString *)number {
+- (void)faceTimeNumber:(NSString *)number {
     number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString * callUrl = [@"facetime://" stringByAppendingString:number];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callUrl]];
-}
-
-
-#pragma mark - MFMailCompose View Controller Delegate
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-    BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
-    BOOL restoreBackButtonFontExists = [_currentController respondsToSelector:@selector(restoreBackButtonFont)];
-    [_currentController dismissViewControllerAnimated:!hidePopupExists
-                                             completion:^{
-                                                 if (hidePopupExists)
-                                                     [_currentController performSelector:@selector(hidePopup)];
-                                                 if (restoreBackButtonFontExists)
-                                                     [_currentController performSelector:@selector(restoreBackButtonFont)];
-                                             }];
-}
-
-
-#pragma mark - MFMailCompose View Controller Delegate
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
-    [_currentController dismissViewControllerAnimated:!hidePopupExists
-                                             completion:^{
-                                                 if (hidePopupExists)
-                                                     [_currentController performSelector:@selector(hidePopup)];
-                                             }];
 }
 
 @end

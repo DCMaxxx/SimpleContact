@@ -8,12 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ECTutorialViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-
-- (IBAction)pageChanged:(id)sender;
-- (IBAction)tappedOnScrollView:(UITapGestureRecognizer *)sender;
 
 @end

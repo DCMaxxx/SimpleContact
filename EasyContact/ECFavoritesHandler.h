@@ -10,9 +10,9 @@
 
 #import "ECKindHandler.h"
 
-
 @class ECContactList;
 @class ECContact;
+
 
 @interface ECFavoritesHandler : NSObject
 

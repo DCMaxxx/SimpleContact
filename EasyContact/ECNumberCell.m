@@ -10,13 +10,17 @@
 
 #import "ECModalViewController.h"
 
-
 static NSInteger const kFavoriteImageTag = 4242;
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECNumberCell
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapOnNumber:)];
@@ -25,16 +29,18 @@ static NSInteger const kFavoriteImageTag = 4242;
     return self;
 }
 
-
-#pragma - mark Gesture recognition
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIGestureRecognizerDelegate
+/*----------------------------------------------------------------------------*/
 - (void)longTapOnNumber:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
         [_viewController setFavoriteWithCell:self];
     }
 }
 
-
-#pragma - mark Update UI
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
 - (void)isFavorite:(BOOL)favorite {
     if (favorite) {
         CGRect favoriteFrame = CGRectMake([_icon frame].size.width, 2, 10, 10);

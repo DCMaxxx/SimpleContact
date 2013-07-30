@@ -20,6 +20,7 @@
 
 @interface ECModalViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *borderView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
@@ -28,10 +29,15 @@
 @end
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implemenation
+/*----------------------------------------------------------------------------*/
 @implementation ECModalViewController
 
-#pragma - mark Init
--(id) initWithCoder:(NSCoder *)aDecoder {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
+- (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _joiner = [[ECContactJoiner alloc] init];
     }
@@ -39,8 +45,10 @@
 }
 
 
-#pragma - mark UIViewController Delegate
--(void)viewDidLoad {
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewController
+/*----------------------------------------------------------------------------*/
+- (void)viewDidLoad {
     UIColor *color = [UIColor colorWithRed:0.816 green:0.788 blue:0.788 alpha:1.000];
     [[self view] setAlpha:1.0f];
     [[self view] setBackgroundColor:[UIColor whiteColor]];
@@ -52,11 +60,12 @@
 
     [_contactPicture setImage:[_contact picture]];
     [_typeImageView setImage:[ECKindHandler iconForKind:_kind andWhite:NO]];
-
 }
 
 
-#pragma - mark Table view data source
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDataSource
+/*----------------------------------------------------------------------------*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_contact numberOf:_kind];
 }
@@ -86,19 +95,24 @@
     RMPhoneFormat * fmt = [[RMPhoneFormat alloc] init];
     NSString * displayedValue = [fmt format:value];
     [[cell label] setText:displayedValue];
-    
+
     return cell;
 }
 
 
-#pragma - mark Table view delegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDelegate
+/*----------------------------------------------------------------------------*/
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ECNumberCell * cell = (ECNumberCell *)[tableView cellForRowAtIndexPath:indexPath];
     [_joiner joinContactWithKind:_kind address:[cell value] andViewController:self];
 }
 
 
-- (void) setFavoriteWithCell:(ECNumberCell *)cell {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
+- (void)setFavoriteWithCell:(ECNumberCell *)cell {
     NSInteger index = [cell tag];
     NSMutableDictionary * number = [[_contact addessesOf:_kind] objectAtIndex:index];
     NSNumber * isFavorite = [number objectForKey:@"favorite"];
@@ -110,8 +124,10 @@
 }
 
 
-#pragma - mark Misc function
--(UIImage *)getImageFromLabel:(NSString *)label {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
+- (UIImage *)getImageFromLabel:(NSString *)label {
     NSDictionary * dic = @{@"home": @"label-home.png",
                            @"mobile": @"label-mobile.png",
                            @"iPhone": @"label-mobile.png",
@@ -121,7 +137,7 @@
     return [UIImage imageNamed:[dic objectForKey:label]];
 }
 
--(void)hidePopup {
+- (void)hidePopup {
     UIView * view = [[self view] superview];
     if ([view isKindOfClass:[RNBlurModalView class]])
         [(RNBlurModalView *)view hideWithDuration:0 delay:0 options:0 completion:nil];

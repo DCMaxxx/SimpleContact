@@ -21,9 +21,14 @@
 @end
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECContactList
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)init {
     if (self = [super init]) {
         _addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
@@ -49,7 +54,9 @@
 }
 
 
-#pragma - mark Getting informations
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced getters
+/*----------------------------------------------------------------------------*/
 - (NSUInteger)numberOfInitials {
     return [_sectionnedContacts count];
 }
@@ -78,7 +85,9 @@
 }
 
 
-#pragma - mark Sorting and searching
+/*----------------------------------------------------------------------------*/
+#pragma mark - Sorting and searching
+/*----------------------------------------------------------------------------*/
 - (void)sortArrayAccordingToSettings {
     NSMutableArray * newSections = [self getArrayOfSections];
     for (NSMutableDictionary * section in _sectionnedContacts)
@@ -101,7 +110,9 @@
 }
 
 
-#pragma - mark Misc function
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc hidden methods
+/*----------------------------------------------------------------------------*/
 - (NSMutableArray *)getArrayOfSections {
     NSString * sections = [self sections];
     NSMutableArray * newSections = [[NSMutableArray alloc] initWithCapacity:[sections length]];

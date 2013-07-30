@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @class ECFavorite;
+
 
 @interface ECFavoriteCell : UICollectionViewCell
 

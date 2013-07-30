@@ -17,6 +17,4 @@
 @property eSettingsCategory currentCategory;
 @property (weak, nonatomic) id<ECSettingsDelegate> delegate;
 
-- (void)restoreBackButtonFont;
-
 @end

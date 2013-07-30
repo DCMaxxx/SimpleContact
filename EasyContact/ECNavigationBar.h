@@ -10,6 +10,7 @@
 
 #import "ECSettingsDelegate.h"
 
+
 @interface ECNavigationBar : UINavigationBar
 
 - (void)displaySettingsOnNavigationController:(UINavigationController *)controller andDelegate:(id<ECSettingsDelegate>)delegate;

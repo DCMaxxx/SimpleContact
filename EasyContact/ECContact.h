@@ -26,6 +26,7 @@
 - (NSString *)importantName;
 - (NSString *)secondaryName;
 - (NSString *)favoriteName;
+- (void)toogleFavoriteForNumber:(NSString *)number andKind:(eContactNumberKind)kind;
 
 
 @end

@@ -16,9 +16,11 @@ typedef enum { eSCDefault = 4341, eSCListOrder, eSCContactKind, eSCFavoriteOrder
 typedef enum { eSOShowImages = 4242, eSOFirstName, eSOLastName, eSONickName,
     eSOPhone, eSOMail, eSOMessage, eSOFaceTime } eSettingsOption;
 
+
 @interface ECSettingsHandler : NSObject
 
 + (ECSettingsHandler *)sharedInstance;
+
 - (BOOL)getOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category;
 - (void)setOption:(eSettingsOption)option ofCategory:(eSettingsCategory)category withValue:(BOOL)value;
 - (void)setUnavailableContactOption:(eSettingsOption)option;

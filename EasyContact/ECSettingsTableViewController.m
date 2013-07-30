@@ -12,8 +12,6 @@
 #import "ECNavigationBar.h"
 #import "ECContactJoiner.h"
 
-static NSUInteger kLabelViewTag = 4242;
-
 @interface ECSettingsTableViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *contactMeCell;
@@ -21,9 +19,17 @@ static NSUInteger kLabelViewTag = 4242;
 
 @end
 
+static NSUInteger kLabelViewTag = 4242;
+
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECSettingsTableViewController
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _currentCategory = eSCDefault;
@@ -32,7 +38,9 @@ static NSUInteger kLabelViewTag = 4242;
 }
 
 
-#pragma - mark View delegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewController
+/*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -63,7 +71,9 @@ static NSUInteger kLabelViewTag = 4242;
 }
 
 
-#pragma - mark Table view datasource
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDataSource
+/*----------------------------------------------------------------------------*/
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell * cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     BOOL set = [[ECSettingsHandler sharedInstance] getOption:[cell tag] ofCategory:_currentCategory];
@@ -78,8 +88,10 @@ static NSUInteger kLabelViewTag = 4242;
 }
 
 
-#pragma - mark Table view delegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == _contactMeCell) {
@@ -103,7 +115,9 @@ static NSUInteger kLabelViewTag = 4242;
 }
 
 
-#pragma - mark Passing to other view controller
+/*----------------------------------------------------------------------------*/
+#pragma mark - Changing current ViewController
+/*----------------------------------------------------------------------------*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue destinationViewController] isKindOfClass:[ECSettingsTableViewController class]]) {
         ECSettingsTableViewController * tvc = [segue destinationViewController];
@@ -112,7 +126,7 @@ static NSUInteger kLabelViewTag = 4242;
     }
 }
 
-- (void) validateSettings: (id) sender {
+- (void)validateSettings:(id)sender {
     [[ECSettingsHandler sharedInstance] saveModifications];
     if (_delegate)
         [_delegate updatedSettings];
@@ -123,14 +137,11 @@ static NSUInteger kLabelViewTag = 4242;
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
-- (void)restoreBackButtonFont {
-    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
-    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
-}
 
-
-#pragma - mark Saving new settings
--(void)saveSettingsOfCell:(UITableViewCell *)cell {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc private methods
+/*----------------------------------------------------------------------------*/
+- (void)saveSettingsOfCell:(UITableViewCell *)cell {
     NSArray * selectors = @[@"saveSettingsForDefaultViewWithCell:",
                             @"saveSettingsForListOrderViewWithCell:",
                             @"saveSettingsForContactKindWithCell:",
@@ -145,34 +156,34 @@ static NSUInteger kLabelViewTag = 4242;
     }
 }
 
--(void)saveSettingsForDefaultViewWithCell:(UITableViewCell *)cell {
+- (void)saveSettingsForDefaultViewWithCell:(UITableViewCell *)cell {
     if ([cell tag] != eSOShowImages)
         return ;
     [self changeSettingsForCell:cell andResetOthers:NO];
 }
 
--(void)saveSettingsForListOrderViewWithCell:(UITableViewCell *)cell {
+- (void)saveSettingsForListOrderViewWithCell:(UITableViewCell *)cell {
     if (([cell tag] != eSOFirstName && [cell tag] != eSOLastName)
         || [cell accessoryType] != UITableViewCellAccessoryNone)
         return ;
     [self changeSettingsForCell:cell andResetOthers:YES];
 }
 
--(void)saveSettingsForContactKindWithCell:(UITableViewCell *)cell {
+- (void)saveSettingsForContactKindWithCell:(UITableViewCell *)cell {
     if ([cell tag] != eSOPhone && [cell tag] != eSOMail
         && [cell tag] != eSOMessage && [cell tag] != eSOFaceTime)
         return ;
     [self changeSettingsForCell:cell andResetOthers:NO];
 }
 
--(void)saveSettingsForFavoriteOrderWithCell:(UITableViewCell *)cell {
+- (void)saveSettingsForFavoriteOrderWithCell:(UITableViewCell *)cell {
     if ([cell tag] != eSOFirstName &&[cell tag] != eSOLastName
         && [cell tag] != eSONickName)
         return ;
     [self changeSettingsForCell:cell andResetOthers:YES];
 }
 
--(void)changeSettingsForCell:(UITableViewCell *)cell andResetOthers:(BOOL)reset {
+- (void)changeSettingsForCell:(UITableViewCell *)cell andResetOthers:(BOOL)reset {
     BOOL isSet = ([cell accessoryType] == UITableViewCellAccessoryCheckmark);
     if (!isSet || (isSet && !reset)) {
         UITableViewCellAccessoryType newType = (isSet ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark);
@@ -190,6 +201,11 @@ static NSUInteger kLabelViewTag = 4242;
             }
         }
     }
+}
+
+- (void)restoreBackButtonFont {
+    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
+    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
 }
 
 @end

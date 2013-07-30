@@ -19,24 +19,28 @@
 #import "ECContactCell.h"
 #import "ECContactList.h"
 
-
 @interface ECMainTableViewController ()
 
-@property (weak, nonatomic) ECContactCell * swipedCell;
 @property (strong, nonatomic) ECContactList * contacts;
 @property (strong, nonatomic) ECModalViewController * modalContactViewController;
 @property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray * filteredContacts;
+@property (weak, nonatomic) ECContactCell * swipedCell;
 @property (nonatomic) BOOL shouldBeginEditingResearch;
-@property (nonatomic) float currentOffset;
 @property (nonatomic) BOOL mustReloadLeftView;
+@property (nonatomic) float currentOffset;
 
 @end
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECMainTableViewController
 
-#pragma - mark Init
+/*----------------------------------------------------------------------------*/
+#pragma mark - Init
+/*----------------------------------------------------------------------------*/
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _contacts = [[ECContactList alloc] init];
@@ -47,7 +51,9 @@
 }
 
 
-#pragma - mark View, ScrollView controller delegate
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIViewController
+/*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -59,13 +65,21 @@
     [[self tableView] setTableHeaderView:_searchBar];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (_currentOffset != -1.0f) {
+        [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
+        _currentOffset = -1.0f;
+    }
+}
 
-#pragma - mark Table view data source
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDataSource
+/*----------------------------------------------------------------------------*/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _filteredContacts ? 1 : [_contacts numberOfInitials];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _filteredContacts ? [_filteredContacts count] : [_contacts numberOfContactsForInitialAtIndex:section];
 }
 
@@ -82,7 +96,7 @@
     return [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? 63.0f : 33.0f;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"ContactCell";
     static NSString *NoPicCell = @"noPictureCell";
     NSString * cellType = [[ECSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? CellIdentifier : NoPicCell;
@@ -117,13 +131,14 @@
     return cell;
 }
 
-
-#pragma - mark Table view delegate
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+/*----------------------------------------------------------------------------*/
+#pragma mark - UITableViewDelegate
+/*----------------------------------------------------------------------------*/
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self unselectCell:[tableView cellForRowAtIndexPath:indexPath]];
 }
 
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self unselectCell:nil];
 }
 
@@ -146,9 +161,10 @@
     return view;
 }
 
-
-#pragma - mark Gesture recognition
--(void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIGestureRecognizerDelegate
+/*----------------------------------------------------------------------------*/
+- (void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         ECContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
         if (cell == _swipedCell)
@@ -169,29 +185,30 @@
     }
 }
 
--(void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
+- (void)tappedOnPhone:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     [self showModalViewWithKind:eCNKPhone contact:contact];
 }
 
--(void)tappedOnMail:(UIGestureRecognizer *)gestureRecognizer {
+- (void)tappedOnMail:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     [self showModalViewWithKind:eCNKMail contact:contact];
 }
 
--(void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
+- (void)tappedOnText:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     [self showModalViewWithKind:eCNKText contact:contact];
 }
 
--(void)tappedOnFaceTime:(UIGestureRecognizer *)gestureRecognizer {
+- (void)tappedOnFaceTime:(UIGestureRecognizer *)gestureRecognizer {
     ECContact * contact = [self getContactFromGestureRecognizer:gestureRecognizer];
     [self showModalViewWithKind:eCNKFaceTime contact:contact];
 }
 
-
-#pragma - mark UISearchBarDelegate
--(void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
+/*----------------------------------------------------------------------------*/
+#pragma mark - UISearchBarDelegate
+/*----------------------------------------------------------------------------*/
+- (void)searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)text {
     if (![searchBar isFirstResponder]) {
         _filteredContacts = nil;
         _shouldBeginEditingResearch = NO;
@@ -210,25 +227,20 @@
 }
 
 
-#pragma - mark ScrollView Controller, searchbar related
-- (void)viewWillAppear:(BOOL)animated {
-    if (_currentOffset != -1.0f) {
-        [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
-        _currentOffset = -1.0f;
-    }
-}
-
-
-#pragma - mark ECSettingsDelegate
--(void)updatedSettings {
+/*----------------------------------------------------------------------------*/
+#pragma mark - ECSettingsDelegate
+/*----------------------------------------------------------------------------*/
+- (void)updatedSettings {
     [_contacts sortArrayAccordingToSettings];
     _mustReloadLeftView = YES;
     [[self tableView] reloadData];
 }
 
 
-#pragma - mark Changing view controllers
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Changing current ViewController
+/*----------------------------------------------------------------------------*/
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     _currentOffset = [[self tableView] contentOffset].y;
     [self unselectCell:nil];
     if ([[segue identifier] isEqualToString:@"displayFavorites"]) {
@@ -245,22 +257,26 @@
     [nv displaySettingsOnNavigationController:self.navigationController andDelegate:self];
 }
 
--(void)displayTutorial {
+- (void)displayTutorial {
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     ECTutorialViewController * tutorial = [storyboard instantiateViewControllerWithIdentifier:@"tutorialViewController"];
     [self.navigationController presentViewController:tutorial animated:NO completion:nil];
 }
 
-
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
 #pragma - mark Misc functions
 - (void)updateContacts {
     _contacts = [[ECContactList alloc] init];
     [[self tableView] reloadData];
 }
 
-
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc hidden methods
+/*----------------------------------------------------------------------------*/
 #pragma - mark Misc private functions
--(ECContact *)getContactFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
+- (ECContact *)getContactFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
     CGPoint location = [gestureRecognizer locationInView:[self tableView]];
     NSIndexPath * indexPath = [[self tableView] indexPathForRowAtPoint:location];
     NSUInteger indexOfSection = [indexPath indexAtPosition:0];
@@ -274,17 +290,17 @@
     return contact;
 }
 
--(ECContactCell *)getCellFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
+- (ECContactCell *)getCellFromGestureRecognizer: (UIGestureRecognizer *)gestureRecognizer {
     CGPoint location = [gestureRecognizer locationInView:[self tableView]];
     NSIndexPath * path = [[self tableView] indexPathForRowAtPoint:location];
     return (ECContactCell *)[[self tableView] cellForRowAtIndexPath:path];
 }
 
--(void)showModalViewWithKind:(eContactNumberKind)kind
+- (void)showModalViewWithKind:(eContactNumberKind)kind
                      contact:(ECContact *)contact {
     
     [self unselectCell:nil];
-    
+
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     _modalContactViewController = [sb instantiateViewControllerWithIdentifier:@"ECModalViewController"];
     [_modalContactViewController setContact:contact];
@@ -294,7 +310,7 @@
     [modal show];
 }
 
--(void)unselectCell:(UITableViewCell *)cell {
+- (void)unselectCell:(UITableViewCell *)cell {
     [_searchBar resignFirstResponder];
     if (_swipedCell) {
         [_swipedCell setSelected:NO animated:NO];

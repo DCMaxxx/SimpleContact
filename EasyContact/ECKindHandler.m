@@ -14,16 +14,14 @@
 #import "ECSettingsHandler.h"
 
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - Implementation
+/*----------------------------------------------------------------------------*/
 @implementation ECKindHandler
 
-+ (NSString *) kindToString:(eContactNumberKind)kind {
-    return [NSString stringWithFormat:@"%d", kind];
-}
-
-+ (eContactNumberKind) kindFromString:(NSString *)kind {
-    return (eContactNumberKind)[kind intValue];
-}
-
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced getters
+/*----------------------------------------------------------------------------*/
 + (NSArray *) enabledKinds {
     NSMutableArray * kinds = [[NSMutableArray alloc] init];
     ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
@@ -51,7 +49,10 @@
     return NSSelectorFromString(selectorStr);
 }
 
-+ (void) setPossibleKinds {
+/*----------------------------------------------------------------------------*/
+#pragma mark - Advanced setters
+/*----------------------------------------------------------------------------*/
++ (void)setPossibleKinds {
     ECSettingsHandler * settingsHandler = [ECSettingsHandler sharedInstance];
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]])
         [settingsHandler setUnavailableContactOption:eSOPhone];
@@ -62,6 +63,17 @@
     if (![[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"facetime://"]])
         [settingsHandler setUnavailableContactOption:eSOFaceTime];
     [settingsHandler saveModifications];
+}
+
+/*----------------------------------------------------------------------------*/
+#pragma mark - Misc public methods
+/*----------------------------------------------------------------------------*/
++ (NSString *)kindToString:(eContactNumberKind)kind {
+    return [NSString stringWithFormat:@"%d", kind];
+}
+
++ (eContactNumberKind)kindFromString:(NSString *)kind {
+    return (eContactNumberKind)[kind intValue];
 }
 
 @end

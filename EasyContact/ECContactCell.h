@@ -15,12 +15,7 @@
 
 @property (weak, nonatomic) UITableViewController * viewController;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIImageView *contactPicture;
-@property (weak, nonatomic) IBOutlet UILabel *contactNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contactSmallNameLabel;
-@property (weak, nonatomic) IBOutlet UIView *boxView;
 @property (strong, nonatomic) UIView *leftView;
-
 
 - (void)setMainViewInformationsWithContact:(ECContact *)contact;
 - (void)setLeftViewInformationsWithContact:(ECContact *)contact;
