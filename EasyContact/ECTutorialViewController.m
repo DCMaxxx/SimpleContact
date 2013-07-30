@@ -47,8 +47,8 @@ static NSUInteger const NbImages = 5;
                                            CGRectGetHeight(_scrollView.frame))];
     for (NSUInteger i =0; i < NbImages; i++) {
         CGRect frame = CGRectMake(CGRectGetWidth(_scrollView.frame) * i, 0, CGRectGetWidth(_scrollView.frame), CGRectGetHeight(_scrollView.frame));
-        NSString * imageName = [NSString stringWithFormat:@"tutorial-%u.png", i];
-        UIImage * image = [UIImage imageWithContentsOfFile:imageName];
+        NSString * imageName = [NSString stringWithFormat:@"tutorial-%u.png", i + 1];
+        UIImage * image = [UIImage imageNamed:imageName];
         UIImageView * imageView = [[UIImageView alloc] initWithFrame:frame];
         [imageView setImage:image];
         [_scrollView addSubview:imageView];
