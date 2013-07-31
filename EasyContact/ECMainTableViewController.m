@@ -23,9 +23,9 @@
 @interface ECMainTableViewController ()
 
 @property (strong, nonatomic) ECContactList * contacts;
-@property (strong, nonatomic) ECModalViewController * modalContactViewController;
-@property (strong, nonatomic) UISearchBar *searchBar;
 @property (strong, nonatomic) NSArray * filteredContacts;
+@property (strong, nonatomic) ECModalViewController * modalContactViewController;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) ECContactCell * swipedCell;
 @property (nonatomic) BOOL shouldBeginEditingResearch;
 @property (nonatomic) BOOL mustReloadLeftView;
@@ -60,8 +60,6 @@
     
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    [_searchBar setDelegate:self];
     [_searchBar setBackgroundImage:[UIImage imageNamed:ImgNavBarBg]];
     [[self tableView] setTableHeaderView:_searchBar];
 }
@@ -120,12 +118,6 @@
     if (![cell viewController])
         [cell setViewController:self];
 
-    if (![[cell gestureRecognizers] count]) {
-        UISwipeGestureRecognizer * swipeRightOnContact = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedRightOnContact:)];
-        [swipeRightOnContact setDirection:(UISwipeGestureRecognizerDirectionRight)];
-        [cell addGestureRecognizer:swipeRightOnContact];
-    }
-    
     [cell setMainViewInformationsWithContact:contact];
     if (_mustReloadLeftView) {
         if (indexOfSection == [tableView numberOfSections]
@@ -170,7 +162,8 @@
 /*----------------------------------------------------------------------------*/
 #pragma mark - UIGestureRecognizerDelegate
 /*----------------------------------------------------------------------------*/
-- (void)swipedRightOnContact:(UIGestureRecognizer *)gestureRecognizer {
+
+- (IBAction)swipedRightOnContact:(UISwipeGestureRecognizer *)gestureRecognizer {
     if ([gestureRecognizer state] == UIGestureRecognizerStateEnded) {
         ECContactCell * cell = [self getCellFromGestureRecognizer:gestureRecognizer];
         if (cell == _swipedCell)

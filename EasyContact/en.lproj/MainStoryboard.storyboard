@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4471.1" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nCH-Oa-G1E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nCH-Oa-G1E">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3697.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <scenes>
         <!--Main Table View Controller-->
@@ -13,12 +13,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="NYf-0A-reV">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="VXc-Kh-F64" id="Vcx-Wl-y0L"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" id="bFx-n7-RnL" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="63"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFx-n7-RnL" id="gLP-hT-Ycw">
-                                    <rect key="frame" x="0.0" y="0.0" width="322" height="62"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ZU-Ih-iAm" userLabel="View - defaultView">
@@ -74,19 +82,21 @@
                                         <constraint firstItem="6ZU-Ih-iAm" firstAttribute="leading" secondItem="gLP-hT-Ycw" secondAttribute="leading" constant="-320" id="tJQ-Om-8Qe"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="boxView" destination="1D5-MZ-UxE" id="EQ5-Ge-tZJ"/>
                                     <outlet property="contactNameLabel" destination="Whg-qd-GaJ" id="pIG-bY-vwO"/>
                                     <outlet property="contactPicture" destination="di8-aX-Xtt" id="qvp-aT-68I"/>
                                     <outlet property="contactSmallNameLabel" destination="aPv-ql-2RW" id="Byh-iM-Jq7"/>
                                     <outlet property="mainView" destination="6ZU-Ih-iAm" id="oGe-5Q-9qd"/>
+                                    <outletCollection property="gestureRecognizers" destination="Izu-Bh-4ME" appends="YES" id="quJ-aA-9ws"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noPictureCell" rowHeight="33" id="uOC-7X-Jgk" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="149" width="320" height="33"/>
+                                <rect key="frame" x="0.0" y="193" width="320" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOC-7X-Jgk" id="T8C-hS-9XA">
-                                    <rect key="frame" x="0.0" y="0.0" width="322" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QZr-lU-USu">
@@ -121,10 +131,12 @@
                                         <constraint firstItem="QZr-lU-USu" firstAttribute="leading" secondItem="T8C-hS-9XA" secondAttribute="leading" constant="-320" id="rLG-mF-h3a"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="contactNameLabel" destination="8o0-qG-sr6" id="r46-3m-PmU"/>
                                     <outlet property="contactSmallNameLabel" destination="5uN-oS-FaX" id="nE9-6p-j1v"/>
                                     <outlet property="mainView" destination="QZr-lU-USu" id="637-X7-Aml"/>
+                                    <outletCollection property="gestureRecognizers" destination="hbg-eo-kXk" appends="YES" id="gyr-lH-B8L"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -149,6 +161,9 @@
                             </connections>
                         </button>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="NYf-0A-reV" id="oK0-8W-Fkd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGv-uI-zSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer numberOfTouchesRequired="2" id="3H6-iz-cPh">
@@ -156,6 +171,16 @@
                         <action selector="displaySettings:" destination="VXc-Kh-F64" id="t7s-hw-eNe"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Izu-Bh-4ME">
+                    <connections>
+                        <action selector="swipedRightOnContact:" destination="VXc-Kh-F64" id="wUs-yr-q29"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="hbg-eo-kXk">
+                    <connections>
+                        <action selector="swipedRightOnContact:" destination="VXc-Kh-F64" id="iqa-vC-t7F"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="724" y="209"/>
         </scene>
@@ -798,17 +823,17 @@
                                         <rect key="frame" x="0.0" y="22" width="228" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYL-WQ-ShH" id="Hvg-JA-ykU">
-                                            <rect key="frame" x="0.0" y="0.0" width="230" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="228" height="33"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4y-16-7Nf">
-                                                    <rect key="frame" x="37" y="7" width="42" height="20"/>
+                                                    <rect key="frame" x="35" y="7" width="42" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cs-qx-ZP7" userLabel="Image View - leftImage">
-                                                    <rect key="frame" x="7" y="7" width="22" height="22"/>
+                                                    <rect key="frame" x="7" y="7" width="20" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="2cZ-ZE-vFV"/>
                                                     </constraints>
@@ -827,6 +852,7 @@
                                         <connections>
                                             <outlet property="icon" destination="2cs-qx-ZP7" id="k88-ai-cVR"/>
                                             <outlet property="label" destination="C4y-16-7Nf" id="vtB-I1-DDG"/>
+                                            <outletCollection property="gestureRecognizers" destination="CX2-GN-xei" appends="YES" id="adQ-QS-N4g"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -861,6 +887,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIV-4t-bnA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="CX2-GN-xei">
+                    <connections>
+                        <action selector="longPressOnNumber:" destination="SWS-Bg-s6R" id="Slj-ZU-Bi3"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="716" y="-80"/>
         </scene>

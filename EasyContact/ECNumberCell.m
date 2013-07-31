@@ -19,26 +19,6 @@ static NSInteger const kFavoriteImageTag = 4242;
 @implementation ECNumberCell
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - Init
-/*----------------------------------------------------------------------------*/
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        UILongPressGestureRecognizer * gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTapOnNumber:)];
-        [self addGestureRecognizer:gr];
-    }
-    return self;
-}
-
-/*----------------------------------------------------------------------------*/
-#pragma mark - UIGestureRecognizerDelegate
-/*----------------------------------------------------------------------------*/
-- (void)longTapOnNumber:(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
-        [_viewController setFavoriteWithCell:self];
-    }
-}
-
-/*----------------------------------------------------------------------------*/
 #pragma mark - Misc public methods
 /*----------------------------------------------------------------------------*/
 - (void)isFavorite:(BOOL)favorite {

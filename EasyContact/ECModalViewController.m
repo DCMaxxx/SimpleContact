@@ -108,15 +108,20 @@
 
 
 /*----------------------------------------------------------------------------*/
-#pragma mark - Misc public methods
+#pragma mark - UIGestureRecognizerDelegate
 /*----------------------------------------------------------------------------*/
-- (void)setFavoriteWithCell:(ECNumberCell *)cell {
-    NSInteger index = [cell tag];
-
-    [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] atIndex:index ofKind:_kind];
-    [[ECFavoritesHandler sharedInstance] saveModifications];
-
-    [cell isFavorite:[_contact addressIsFavoriteWithKind:_kind andIndex:index]];
+- (IBAction)longPressOnNumber:(UILongPressGestureRecognizer *)gestureRecognizer {
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        CGPoint location = [gestureRecognizer locationInView:[self tableView]];
+        NSIndexPath * path = [[self tableView] indexPathForRowAtPoint:location];
+        ECNumberCell * cell = (ECNumberCell *)[[self tableView] cellForRowAtIndexPath:path];
+        NSInteger index = [cell tag];
+        
+        [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] atIndex:index ofKind:_kind];
+        [[ECFavoritesHandler sharedInstance] saveModifications];
+        
+        [cell isFavorite:[_contact addressIsFavoriteWithKind:_kind andIndex:index]];
+    }
 }
 
 

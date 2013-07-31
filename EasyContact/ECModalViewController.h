@@ -23,7 +23,4 @@ UITableViewDelegate
 @property (weak, nonatomic) ECContact * contact;
 @property (nonatomic) eContactNumberKind kind;
 
-- (void)setFavoriteWithCell:(ECNumberCell *)cell;
-- (void)hidePopup;
-
 @end
