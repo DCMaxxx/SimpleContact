@@ -117,7 +117,7 @@
         ECNumberCell * cell = (ECNumberCell *)[[self tableView] cellForRowAtIndexPath:path];
         NSInteger index = [cell tag];
         
-        [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[[cell label] text] atIndex:index ofKind:_kind];
+        [[ECFavoritesHandler sharedInstance] toogleContact:_contact number:[cell value] atIndex:index ofKind:_kind];
         [[ECFavoritesHandler sharedInstance] saveModifications];
         
         [cell isFavorite:[_contact addressIsFavoriteWithKind:_kind andIndex:index]];

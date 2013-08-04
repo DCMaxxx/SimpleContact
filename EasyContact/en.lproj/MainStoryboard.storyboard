@@ -893,7 +893,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="716" y="-80"/>
+            <point key="canvasLocation" x="734" y="-76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6gp-xR-VbS">

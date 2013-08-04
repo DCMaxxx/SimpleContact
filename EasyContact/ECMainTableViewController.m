@@ -30,6 +30,7 @@
 @property (nonatomic) BOOL shouldBeginEditingResearch;
 @property (nonatomic) BOOL mustReloadLeftView;
 @property (nonatomic) float currentOffset;
+@property (nonatomic) BOOL fromFavorites;
 
 @end
 
@@ -67,12 +68,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     if (_currentOffset != -1.0f) {
         float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
-        if (sysVer >= 7.0) {
+        if (sysVer >= 7.0 && _fromFavorites) {
             _currentOffset += CGRectGetHeight([[[self navigationController] navigationBar] frame]) +
                               CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]);
         }
         [[self tableView] setContentOffset:CGPointMake(0, _currentOffset)];
         _currentOffset = -1.0f;
+        _fromFavorites = NO;
     }
 }
 
@@ -244,6 +246,7 @@
     _currentOffset = [[self tableView] contentOffset].y;
     [self unselectCell:nil];
     if ([[segue identifier] isEqualToString:SegIdFavorites]) {
+        _fromFavorites = YES;
         ECFavoritesViewController * nv = [segue destinationViewController];
         NSArray * favorites = [[ECFavoritesHandler sharedInstance] getAllFavoritesWithContactList:_contacts];
         [nv setFavoriteContacts:favorites];

@@ -28,8 +28,8 @@
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
             if (granted) {
                 UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];
-                if ([[mainController visibleViewController] isKindOfClass:[ECMainTableViewController class]])
-                    [(ECMainTableViewController*)mainController.visibleViewController updateContacts];
+                if ([[[mainController viewControllers] objectAtIndex:0] isKindOfClass:[ECMainTableViewController class]])
+                    [(ECMainTableViewController*)[[mainController viewControllers] objectAtIndex:0] updateContacts];
             }
         });
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
