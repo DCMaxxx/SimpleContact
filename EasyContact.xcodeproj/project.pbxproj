@@ -57,6 +57,9 @@
 		9CA6B9EB16BAD16D006EAF8D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CA6B9E916BAD16D006EAF8D /* MainStoryboard.storyboard */; };
 		9CA6B9F616BAD884006EAF8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F416BAD884006EAF8D /* AddressBook.framework */; };
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
+		9CA8A88817AE45710023E415 /* 29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA8A88517AE45710023E415 /* 29x29.png */; };
+		9CA8A88917AE45710023E415 /* 58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA8A88617AE45710023E415 /* 58x58.png */; };
+		9CA8A88A17AE45710023E415 /* 80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CA8A88717AE45710023E415 /* 80x80.png */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
 		9CACE3311770827000BDC2D3 /* ECFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3301770827000BDC2D3 /* ECFavorite.m */; };
 		9CACE3341770AA3A00BDC2D3 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CACE3331770AA3A00BDC2D3 /* RMPhoneFormat.m */; };
@@ -142,6 +145,9 @@
 		9CA6B9EA16BAD16D006EAF8D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		9CA6B9F416BAD884006EAF8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		9CA8A88517AE45710023E415 /* 29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 29x29.png; path = images/29x29.png; sourceTree = "<group>"; };
+		9CA8A88617AE45710023E415 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = images/58x58.png; sourceTree = "<group>"; };
+		9CA8A88717AE45710023E415 /* 80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 80x80.png; path = images/80x80.png; sourceTree = "<group>"; };
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9CACE32F1770827000BDC2D3 /* ECFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECFavorite.h; sourceTree = "<group>"; };
 		9CACE3301770827000BDC2D3 /* ECFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECFavorite.m; sourceTree = "<group>"; };
@@ -185,6 +191,9 @@
 		9C017A2E176F03FA00A68013 /* App icon */ = {
 			isa = PBXGroup;
 			children = (
+				9CA8A88517AE45710023E415 /* 29x29.png */,
+				9CA8A88617AE45710023E415 /* 58x58.png */,
+				9CA8A88717AE45710023E415 /* 80x80.png */,
 				9C017A08176F03ED00A68013 /* 57x57.png */,
 				9C017A09176F03ED00A68013 /* 114x114.png */,
 				9C017A0A176F03ED00A68013 /* 120x120.png */,
@@ -498,6 +507,7 @@
 				9C017A27176F03ED00A68013 /* navigationbar-background.png in Resources */,
 				9C0E274D1780819200DA4EF8 /* PhoneFormats.dat in Resources */,
 				9C017A26176F03ED00A68013 /* mail-white.png in Resources */,
+				9CA8A88817AE45710023E415 /* 29x29.png in Resources */,
 				9C017A1C176F03ED00A68013 /* 114x114.png in Resources */,
 				9CEE487D17848F31006BB683 /* facetime-black.png in Resources */,
 				9C017A25176F03ED00A68013 /* mail-black.png in Resources */,
@@ -505,6 +515,7 @@
 				9CA6B9DC16BAD16D006EAF8D /* InfoPlist.strings in Resources */,
 				9C017A21176F03ED00A68013 /* favorite-flag.png in Resources */,
 				9C017A2A176F03ED00A68013 /* text-black.png in Resources */,
+				9CA8A88A17AE45710023E415 /* 80x80.png in Resources */,
 				9C017A29176F03ED00A68013 /* phone-white.png in Resources */,
 				9C017A20176F03ED00A68013 /* Default@2x.png in Resources */,
 				9C017A1F176F03ED00A68013 /* Default.png in Resources */,
@@ -525,6 +536,7 @@
 				9CC05DF617A4F9C70077E7EF /* tutorial-1.png in Resources */,
 				9CC05DF817A501360077E7EF /* tutorial-2.png in Resources */,
 				9CC05DFE17A506E50077E7EF /* tutorial-3.png in Resources */,
+				9CA8A88917AE45710023E415 /* 58x58.png in Resources */,
 				9CC05E0017A50ACC0077E7EF /* tutorial-4.png in Resources */,
 				9CC05E0217A50EA90077E7EF /* tutorial-5.png in Resources */,
 			);
