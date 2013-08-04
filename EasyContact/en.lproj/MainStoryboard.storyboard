@@ -8,13 +8,13 @@
         <!--Main Table View Controller-->
         <scene sceneID="loL-lh-2Zl">
             <objects>
-                <tableViewController id="VXc-Kh-F64" customClass="ECMainTableViewController" sceneMemberID="viewController">
+                <tableViewController id="VXc-Kh-F64" customClass="SCMainTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="63" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fce-x4-HWC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="NYf-0A-reV">
-                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -22,8 +22,8 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" id="bFx-n7-RnL" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="130" width="320" height="63"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContactCell" id="bFx-n7-RnL" customClass="SCContactCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFx-n7-RnL" id="gLP-hT-Ycw">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
@@ -92,8 +92,8 @@
                                     <outletCollection property="gestureRecognizers" destination="Izu-Bh-4ME" appends="YES" id="quJ-aA-9ws"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noPictureCell" rowHeight="33" id="uOC-7X-Jgk" customClass="ECContactCell">
-                                <rect key="frame" x="0.0" y="193" width="320" height="33"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="noPictureCell" rowHeight="33" id="uOC-7X-Jgk" customClass="SCContactCell">
+                                <rect key="frame" x="0.0" y="129" width="320" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uOC-7X-Jgk" id="T8C-hS-9XA">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
@@ -187,7 +187,7 @@
         <!--Tutorial View Controller - Tutorial view controller-->
         <scene sceneID="Hp0-Ug-Hue">
             <objects>
-                <viewController storyboardIdentifier="tutorialViewController" title="Tutorial view controller" id="yRi-nE-BVo" customClass="ECTutorialViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tutorialViewController" title="Tutorial view controller" id="yRi-nE-BVo" customClass="SCTutorialViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d1j-FV-Xgt"/>
                         <viewControllerLayoutGuide type="bottom" id="FQq-6s-ahg"/>
@@ -219,12 +219,12 @@
                                     <outletCollection property="gestureRecognizers" destination="jaL-fj-4L9" appends="YES" id="sh9-g0-gdE"/>
                                 </connections>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bienvenue dans EasyContact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bienvenue dans SimpleContact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
                                 <rect key="frame" x="20" y="20" width="280" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="ETN-qa-Gew"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.46666666670000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -257,7 +257,7 @@
         <!--Settings Table View Controller-->
         <scene sceneID="Iww-nv-vMb">
             <objects>
-                <tableViewController storyboardIdentifier="ECSettingsViewController" id="Fnh-a4-hgG" userLabel="Settings Table View Controller" customClass="ECSettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ECSettingsViewController" id="Fnh-a4-hgG" userLabel="Settings Table View Controller" customClass="SCSettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ifZ-Sb-mPo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -421,7 +421,7 @@
         <!--Contact type Table View Controller-->
         <scene sceneID="k7S-Cx-o1r">
             <objects>
-                <tableViewController id="URB-54-OMY" userLabel="Contact type Table View Controller" customClass="ECSettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="URB-54-OMY" userLabel="Contact type Table View Controller" customClass="SCSettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vD6-7g-3T9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,7 +543,7 @@
         <!--Favorites display options Table View Controller-->
         <scene sceneID="nf7-FG-uJZ">
             <objects>
-                <tableViewController id="I38-Ct-5vs" userLabel="Favorites display options Table View Controller" customClass="ECSettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="I38-Ct-5vs" userLabel="Favorites display options Table View Controller" customClass="SCSettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="JHq-2l-Ep7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -641,7 +641,7 @@
         <!--Order by Table View Controller-->
         <scene sceneID="7pP-5v-hb4">
             <objects>
-                <tableViewController id="wuh-bq-m4m" userLabel="Order by Table View Controller" customClass="ECSettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="wuh-bq-m4m" userLabel="Order by Table View Controller" customClass="SCSettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xRq-hK-mqU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -715,7 +715,7 @@
         <!--Favorites View Controller-->
         <scene sceneID="Oov-eZ-P5T">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="lgY-Va-Jab" customClass="ECFavoritesViewController" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="lgY-Va-Jab" customClass="SCFavoritesViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="Ro8-dh-abz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -727,8 +727,8 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteCell" id="r9p-pv-BE9" customClass="ECFavoriteCell">
-                                <rect key="frame" x="0.0" y="64" width="64" height="84"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavoriteCell" id="r9p-pv-BE9" customClass="SCFavoriteCell">
+                                <rect key="frame" x="0.0" y="0.0" width="64" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="64" height="84"/>
@@ -775,7 +775,7 @@
         <!--Modal View Controller - ChooseView-->
         <scene sceneID="Gic-un-v3u">
             <objects>
-                <viewController storyboardIdentifier="ECModalViewController" autoresizesArchivedViewToFullSize="NO" title="ChooseView" id="SWS-Bg-s6R" customClass="ECModalViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ECModalViewController" autoresizesArchivedViewToFullSize="NO" title="ChooseView" id="SWS-Bg-s6R" customClass="SCModalViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fwb-vy-Aah"/>
                         <viewControllerLayoutGuide type="bottom" id="VTz-Ad-Ayw"/>
@@ -819,7 +819,7 @@
                                     <constraint firstAttribute="width" constant="228" id="yym-Ko-K2k"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ModalCell" id="aYL-WQ-ShH" customClass="ECNumberCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ModalCell" id="aYL-WQ-ShH" customClass="SCNumberCell">
                                         <rect key="frame" x="0.0" y="22" width="228" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aYL-WQ-ShH" id="Hvg-JA-ykU">
@@ -899,7 +899,7 @@
         <scene sceneID="6gp-xR-VbS">
             <objects>
                 <navigationController definesPresentationContext="YES" id="nCH-Oa-G1E" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NNF-wd-9fe" customClass="ECNavigationBar">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NNF-wd-9fe" customClass="SCNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
