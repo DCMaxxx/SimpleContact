@@ -58,7 +58,7 @@
     NSString * appV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     NSString * iOSV = [[UIDevice currentDevice] systemVersion];
     NSString * deviceV = [[UIDevice currentDevice] platformString];
-    NSString * body = [NSString stringWithFormat:@"Je suis désolé que vous rencontriez un problème.\nMerci de le décrire précisément, avec le nom et prénom du contact posant éventuellement problème, l'action pour reproduire le bug, etc.\nMerci également de laisser toutes les lignes en dessous des \"-----\"\n\n-----\nVersion d'EasyContact : %@\nVersion d'iOS : %@\n iDevice : %@\n", appV, iOSV, deviceV];
+    NSString * body = [NSString stringWithFormat:@"Je suis désolé que vous rencontriez un problème.\nMerci de le décrire précisément, avec le nom et prénom du contact posant éventuellement problème, l'action pour reproduire le bug, etc.\nMerci également de laisser toutes les lignes en dessous des \"-----\"\n\n-----\nVersion de SimpleContact : %@\nVersion d'iOS : %@\n iDevice : %@\n", appV, iOSV, deviceV];
     [_mailViewController setMessageBody:body isHTML:NO];
 
     NSDictionary * dic = @{UITextAttributeFont: [UIFont boldSystemFontOfSize:12.0f]};
