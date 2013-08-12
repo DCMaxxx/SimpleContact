@@ -41,6 +41,9 @@ You can swipe on a contact to reveal buttons to call him, send him a mail... :
 And of course, you can select which number you want to call :  
 ![Modal view](https://raw.github.com/DCMaxxx/EasyContact/master/Screenshots/Modal%20view.png)
 
+If you have added a number into favorites, just go to the favorite's view to call / text / FaceTime / Mail it.
+![Modal view](https://raw.github.com/DCMaxxx/EasyContact/master/Screenshots/Favorite%20view.png)
+
 I'll update picture with new features.
 
 
