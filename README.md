@@ -22,7 +22,7 @@ For now, you'll have to :
 + Own a Mac
 + An iDevice on iOS 6.0+ (UICollectionView)
 + A developper licence (and if you don't, you can try it in the simulator !)
-+ XCode 5 DP4 (else you can't open the storyboard)
++ XCode 5 DP5+ (else you can't open the storyboard)
 
 In a few weeks, I plan to post it on the store, under the same name, SimpleContact.
 
@@ -55,4 +55,4 @@ Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar
 
 To do
 -------
-+ Update readme with up-to-date pictures
++ Learn how to use NSLocalizedString
