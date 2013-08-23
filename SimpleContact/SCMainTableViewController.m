@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Maxime de Chalendar. All rights reserved.
 //
 
-#import "SCConstantStrings.h"
 #import "RNBlurModalView.h"
 
 #import "SCMainTableViewController.h"
@@ -61,7 +60,6 @@
     
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
-    [_searchBar setBackgroundImage:[UIImage imageNamed:ImgNavBarBg]];
     [[self tableView] setTableHeaderView:_searchBar];
 }
 
@@ -104,7 +102,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * const ReuIdContactCell = @"ContactCell";
-    static NSString * const ReuIdNoPicContactCell = @"noPictureCell";
+    static NSString * const ReuIdNoPicContactCell = @"NoPictureCell";
     NSString * cellType = [[SCSettingsHandler sharedInstance] getOption:eSOShowImages ofCategory:eSCDefault] ? ReuIdContactCell : ReuIdNoPicContactCell;
     SCContactCell * cell = [tableView dequeueReusableCellWithIdentifier:cellType forIndexPath:indexPath];
     
@@ -262,7 +260,7 @@
 
 - (void)displayTutorial {
     static NSString * const VCIdTutorial = @"tutorialViewController";
-    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:MainStoryBoard bundle:nil];
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     SCTutorialViewController * tutorial = [storyboard instantiateViewControllerWithIdentifier:VCIdTutorial];
     [self.navigationController presentViewController:tutorial animated:NO completion:nil];
 }
@@ -305,7 +303,7 @@
     static NSString * const VCIdModal = @"ECModalViewController";    
     [self unselectCell:nil];
 
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:MainStoryBoard bundle:nil];
+    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
     _modalContactViewController = [sb instantiateViewControllerWithIdentifier:VCIdModal];
     [_modalContactViewController setContact:contact];
     [_modalContactViewController setKind:kind];

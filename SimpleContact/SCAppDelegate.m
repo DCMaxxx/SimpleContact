@@ -23,6 +23,11 @@
 @implementation SCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    static NSString * const navigationBarBackground = @"navigationbar-background.png";
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:navigationBarBackground] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [[UISearchBar appearance] setBackgroundImage:[UIImage imageNamed:navigationBarBackground]];
+    
     ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined)
         ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {

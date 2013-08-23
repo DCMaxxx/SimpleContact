@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9C0826E017B8924C00AB6C36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826B317B8924C00AB6C36 /* main.m */; };
 		9C0826E217B8924C00AB6C36 /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826B717B8924C00AB6C36 /* SCAppDelegate.m */; };
-		9C0826E317B8924C00AB6C36 /* SCConstantStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826B917B8924C00AB6C36 /* SCConstantStrings.m */; };
 		9C0826E417B8924C00AB6C36 /* SCContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826BB17B8924C00AB6C36 /* SCContact.m */; };
 		9C0826E517B8924C00AB6C36 /* SCContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826BD17B8924C00AB6C36 /* SCContactCell.m */; };
 		9C0826E617B8924C00AB6C36 /* SCContactJoiner.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0826BF17B8924C00AB6C36 /* SCContactJoiner.m */; };
@@ -79,8 +78,6 @@
 		9C0826B317B8924C00AB6C36 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SimpleContact/main.m; sourceTree = SOURCE_ROOT; };
 		9C0826B617B8924C00AB6C36 /* SCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCAppDelegate.h; path = SimpleContact/SCAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		9C0826B717B8924C00AB6C36 /* SCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCAppDelegate.m; path = SimpleContact/SCAppDelegate.m; sourceTree = SOURCE_ROOT; };
-		9C0826B817B8924C00AB6C36 /* SCConstantStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCConstantStrings.h; path = SimpleContact/SCConstantStrings.h; sourceTree = SOURCE_ROOT; };
-		9C0826B917B8924C00AB6C36 /* SCConstantStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCConstantStrings.m; path = SimpleContact/SCConstantStrings.m; sourceTree = SOURCE_ROOT; };
 		9C0826BA17B8924C00AB6C36 /* SCContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCContact.h; path = SimpleContact/SCContact.h; sourceTree = SOURCE_ROOT; };
 		9C0826BB17B8924C00AB6C36 /* SCContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCContact.m; path = SimpleContact/SCContact.m; sourceTree = SOURCE_ROOT; };
 		9C0826BC17B8924C00AB6C36 /* SCContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCContactCell.h; path = SimpleContact/SCContactCell.h; sourceTree = SOURCE_ROOT; };
@@ -285,8 +282,6 @@
 		9C742BF317A3E79A003718D7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				9C0826B817B8924C00AB6C36 /* SCConstantStrings.h */,
-				9C0826B917B8924C00AB6C36 /* SCConstantStrings.m */,
 				9C0826BE17B8924C00AB6C36 /* SCContactJoiner.h */,
 				9C0826BF17B8924C00AB6C36 /* SCContactJoiner.m */,
 				9C0826C617B8924C00AB6C36 /* SCFavoritesHandler.h */,
@@ -551,7 +546,6 @@
 			files = (
 				9C0826E017B8924C00AB6C36 /* main.m in Sources */,
 				9C0826E217B8924C00AB6C36 /* SCAppDelegate.m in Sources */,
-				9C0826E317B8924C00AB6C36 /* SCConstantStrings.m in Sources */,
 				9C0826E417B8924C00AB6C36 /* SCContact.m in Sources */,
 				9C345E3617B8960D00618320 /* RMPhoneFormat.m in Sources */,
 				9C345E3817B8960D00618320 /* UIDevice-Hardware.m in Sources */,
