@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nCH-Oa-G1E">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <scenes>
@@ -219,8 +218,8 @@
                                     <outletCollection property="gestureRecognizers" destination="jaL-fj-4L9" appends="YES" id="sh9-g0-gdE"/>
                                 </connections>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to SimpleContact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
-                                <rect key="frame" x="20" y="20" width="280" height="41"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Bienvenue dans SimpleContact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
+                                <rect key="frame" x="0.0" y="20" width="320" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="ETN-qa-Gew"/>
                                 </constraints>
@@ -232,11 +231,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6eO-Al-yUL" firstAttribute="top" secondItem="TqH-bV-P94" secondAttribute="top" constant="20" symbolic="YES" id="C3C-Bu-1n0"/>
-                            <constraint firstAttribute="trailing" secondItem="6eO-Al-yUL" secondAttribute="trailing" constant="20" symbolic="YES" id="DnD-Ei-At2"/>
+                            <constraint firstAttribute="trailing" secondItem="6eO-Al-yUL" secondAttribute="trailing" id="DnD-Ei-At2"/>
                             <constraint firstItem="tgY-Ku-7bm" firstAttribute="centerX" secondItem="dBj-so-dya" secondAttribute="centerX" id="ZD8-AZ-4rx"/>
                             <constraint firstItem="dBj-so-dya" firstAttribute="centerY" secondItem="TqH-bV-P94" secondAttribute="centerY" id="esI-7u-ccl"/>
                             <constraint firstItem="tgY-Ku-7bm" firstAttribute="top" secondItem="dBj-so-dya" secondAttribute="bottom" constant="8" symbolic="YES" id="jWR-oo-w16"/>
-                            <constraint firstItem="6eO-Al-yUL" firstAttribute="leading" secondItem="TqH-bV-P94" secondAttribute="leading" constant="20" symbolic="YES" id="oZI-SN-0IP"/>
+                            <constraint firstItem="6eO-Al-yUL" firstAttribute="leading" secondItem="TqH-bV-P94" secondAttribute="leading" id="oZI-SN-0IP"/>
                             <constraint firstItem="dBj-so-dya" firstAttribute="centerX" secondItem="TqH-bV-P94" secondAttribute="centerX" id="unp-0D-fcR"/>
                         </constraints>
                     </view>
@@ -263,7 +262,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="  Contact list" id="il8-Ju-Se0">
+                            <tableViewSection headerTitle="  Liste des contacts" id="il8-Ju-Se0">
                                 <cells>
                                     <tableViewCell tag="4342" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="Y7r-fl-R6a">
                                         <rect key="frame" x="0.0" y="55" width="320" height="44"/>
@@ -272,7 +271,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg1-Tu-vbW">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ordre de tri" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg1-Tu-vbW">
                                                     <rect key="frame" x="30" y="11" width="240" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="PCO-l3-0ob"/>
@@ -299,7 +298,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact option" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU5-0R-5eJ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options de contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mU5-0R-5eJ">
                                                     <rect key="frame" x="30" y="11" width="240" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="2Mq-fA-tRV"/>
@@ -326,7 +325,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show pictures" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAx-SN-3h3">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Afficher les photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAx-SN-3h3">
                                                     <rect key="frame" x="30" y="11" width="240" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="A6e-sh-VoQ"/>
@@ -345,7 +344,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="  Favorites list" id="rkS-aF-53v">
+                            <tableViewSection headerTitle="  Liste des favoris" id="rkS-aF-53v">
                                 <cells>
                                     <tableViewCell tag="4344" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" id="Bnw-3k-lll">
                                         <rect key="frame" x="0.0" y="235" width="320" height="44"/>
@@ -354,7 +353,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUM-cr-fuY">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ordre de tri" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUM-cr-fuY">
                                                     <rect key="frame" x="30" y="12" width="240" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="Xzl-Qs-7qC"/>
@@ -376,7 +375,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="  An issue ?" id="jmV-VY-pub">
+                            <tableViewSection headerTitle="  Un problème ?" id="jmV-VY-pub">
                                 <cells>
                                     <tableViewCell tag="4344" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="TZi-hO-ddl">
                                         <rect key="frame" x="0.0" y="327" width="320" height="44"/>
@@ -385,7 +384,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVv-ew-9Bz">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contactez moi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVv-ew-9Bz">
                                                     <rect key="frame" x="30" y="10" width="240" height="25"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="u1B-lX-9wb"/>
@@ -427,7 +426,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="  Contact by ..." id="pOt-QZ-Mqi">
+                            <tableViewSection headerTitle="  Contacter par ..." id="pOt-QZ-Mqi">
                                 <cells>
                                     <tableViewCell tag="4246" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="F4P-hE-107">
                                         <rect key="frame" x="0.0" y="55" width="320" height="44"/>
@@ -436,7 +435,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyR-Ow-ISz">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4242" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Téléphone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyR-Ow-ISz">
                                                     <rect key="frame" x="30" y="11" width="241" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="hrn-ii-tk1"/>
@@ -549,7 +548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="  Sort by ..." id="hCG-q4-F8x">
+                            <tableViewSection headerTitle="  Trier par ..." id="hCG-q4-F8x">
                                 <cells>
                                     <tableViewCell tag="4243" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aFg-hU-b4A">
                                         <rect key="frame" x="0.0" y="55" width="320" height="44"/>
@@ -558,7 +557,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hju-uf-lFl">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prénom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hju-uf-lFl">
                                                     <rect key="frame" x="30" y="11" width="239" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9aK-Un-UGG"/>
@@ -582,7 +581,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0j-D3-ezk">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0j-D3-ezk">
                                                     <rect key="frame" x="30" y="11" width="239" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="239" id="HEG-57-otL"/>
@@ -606,7 +605,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYK-YJ-1uy">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surnom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYK-YJ-1uy">
                                                     <rect key="frame" x="30" y="11" width="239" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="K6f-Ps-ogF"/>
@@ -647,7 +646,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="  Sort by ..." id="jO2-pf-Lhc">
+                            <tableViewSection headerTitle="  Trier par ..." id="jO2-pf-Lhc">
                                 <cells>
                                     <tableViewCell tag="4243" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="i4X-Lz-ZJB">
                                         <rect key="frame" x="0.0" y="55" width="320" height="44"/>
@@ -656,7 +655,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name, first name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-fC-3pv">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prénom, Nom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-fC-3pv">
                                                     <rect key="frame" x="30" y="11" width="241" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="241" id="Z1m-TU-D41"/>
@@ -680,7 +679,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name, first name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0t-wu-56V">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom, Prénom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0t-wu-56V">
                                                     <rect key="frame" x="30" y="11" width="241" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="241" id="Unm-Eo-PLc"/>
@@ -749,7 +748,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <gestureRecognizers/>
                             <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                            <state key="normal" title="Favorites">
+                            <state key="normal" title="Favoris">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

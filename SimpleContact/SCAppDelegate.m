@@ -34,11 +34,10 @@
         });
     else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) ;
     else {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Carnet d'addresse"
-                                                         message:@"Vous avez refusé l'accès à votre carnet d'addresse.\
-                                                         Merci de corriger le problème dans l'application Réglages, puis confidentialité."
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"addbook-title", @"RefusedAddBookAccessPopup", @"Addressbook access denied popup title")
+                                                         message:NSLocalizedStringFromTable(@"addbook-refused-msg", @"RefusedAddBookAccessPopup", @"Addressbook access denied popup content")
                                                         delegate:nil
-                                               cancelButtonTitle:@"OK"
+                                               cancelButtonTitle:NSLocalizedStringFromTable(@"addbook-confirm", @"RefusedAddBookAccessPopup", @"Addressbook access denied popup confirmation button (OK)")
                                                otherButtonTitles:nil];
         [alert show];
     }

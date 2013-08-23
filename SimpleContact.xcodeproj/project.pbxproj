@@ -58,7 +58,13 @@
 		9C08273617B8942F00AB6C36 /* unavailable-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08272017B8942F00AB6C36 /* unavailable-overlay.png */; };
 		9C08273717B8942F00AB6C36 /* unknown-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08272117B8942F00AB6C36 /* unknown-user.png */; };
 		9C08273817B8942F00AB6C36 /* validation-tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08272217B8942F00AB6C36 /* validation-tick.png */; };
-		9C08273B17B8945800AB6C36 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C08273917B8945800AB6C36 /* MainStoryboard.storyboard */; };
+		9C249FBE17C7052800A62A76 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FB817C7044A00A62A76 /* MainStoryboard.storyboard */; };
+		9C249FBF17C7052D00A62A76 /* AppSettingsView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FB417C7044A00A62A76 /* AppSettingsView.strings */; };
+		9C249FC117C7053400A62A76 /* RefusedAddBookAccessPopup.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FBA17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */; };
+		9C249FC217C7053600A62A76 /* ReportIssueMailView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FBC17C7044A00A62A76 /* ReportIssueMailView.strings */; };
+		9C249FC317C705C200A62A76 /* AppSettingsView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FA917C7044900A62A76 /* AppSettingsView.strings */; };
+		9C249FC517C705C800A62A76 /* RefusedAddBookAccessPopup.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FAF17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */; };
+		9C249FC617C705CE00A62A76 /* ReportIssueMailView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C249FB117C7044A00A62A76 /* ReportIssueMailView.strings */; };
 		9C345E3617B8960D00618320 /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C345E3117B8960D00618320 /* RMPhoneFormat.m */; };
 		9C345E3717B8960D00618320 /* RNBlurModalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C345E3317B8960D00618320 /* RNBlurModalView.m */; };
 		9C345E3817B8960D00618320 /* UIDevice-Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C345E3517B8960D00618320 /* UIDevice-Hardware.m */; };
@@ -146,7 +152,14 @@
 		9C08272017B8942F00AB6C36 /* unavailable-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unavailable-overlay.png"; path = "SimpleContact/images/unavailable-overlay.png"; sourceTree = SOURCE_ROOT; };
 		9C08272117B8942F00AB6C36 /* unknown-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "unknown-user.png"; path = "SimpleContact/images/unknown-user.png"; sourceTree = SOURCE_ROOT; };
 		9C08272217B8942F00AB6C36 /* validation-tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "validation-tick.png"; path = "SimpleContact/images/validation-tick.png"; sourceTree = SOURCE_ROOT; };
-		9C08273A17B8945800AB6C36 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = SimpleContact/en.lproj/MainStoryboard.storyboard; sourceTree = SOURCE_ROOT; };
+		9C249FAA17C7044900A62A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = AppSettingsView.strings; sourceTree = "<group>"; };
+		9C249FAE17C7044A00A62A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		9C249FB017C7044A00A62A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = RefusedAddBookAccessPopup.strings; sourceTree = "<group>"; };
+		9C249FB217C7044A00A62A76 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ReportIssueMailView.strings; sourceTree = "<group>"; };
+		9C249FB517C7044A00A62A76 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = AppSettingsView.strings; sourceTree = "<group>"; };
+		9C249FB917C7044A00A62A76 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = fr; path = MainStoryboard.storyboard; sourceTree = "<group>"; };
+		9C249FBB17C7044A00A62A76 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = RefusedAddBookAccessPopup.strings; sourceTree = "<group>"; };
+		9C249FBD17C7044A00A62A76 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = ReportIssueMailView.strings; sourceTree = "<group>"; };
 		9C345E3017B8960D00618320 /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMPhoneFormat.h; path = SimpleContact/ressources/RMPhoneFormat.h; sourceTree = SOURCE_ROOT; };
 		9C345E3117B8960D00618320 /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMPhoneFormat.m; path = SimpleContact/ressources/RMPhoneFormat.m; sourceTree = SOURCE_ROOT; };
 		9C345E3217B8960D00618320 /* RNBlurModalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNBlurModalView.h; path = SimpleContact/ressources/RNBlurModalView.h; sourceTree = SOURCE_ROOT; };
@@ -246,6 +259,30 @@
 			);
 			name = "Default conf files";
 			sourceTree = "<group>";
+		};
+		9C249FA817C7044900A62A76 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				9C249FAD17C7044A00A62A76 /* MainStoryboard.storyboard */,
+				9C249FA917C7044900A62A76 /* AppSettingsView.strings */,
+				9C249FAF17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */,
+				9C249FB117C7044A00A62A76 /* ReportIssueMailView.strings */,
+			);
+			name = en.lproj;
+			path = SimpleContact/en.lproj;
+			sourceTree = SOURCE_ROOT;
+		};
+		9C249FB317C7044A00A62A76 /* fr.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				9C249FB817C7044A00A62A76 /* MainStoryboard.storyboard */,
+				9C249FB417C7044A00A62A76 /* AppSettingsView.strings */,
+				9C249FBA17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */,
+				9C249FBC17C7044A00A62A76 /* ReportIssueMailView.strings */,
+			);
+			name = fr.lproj;
+			path = SimpleContact/fr.lproj;
+			sourceTree = SOURCE_ROOT;
 		};
 		9C3591931738237B00764635 /* Modal view */ = {
 			isa = PBXGroup;
@@ -350,7 +387,8 @@
 		9CA6B9D816BAD16D006EAF8D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C08273917B8945800AB6C36 /* MainStoryboard.storyboard */,
+				9C249FA817C7044900A62A76 /* en.lproj */,
+				9C249FB317C7044A00A62A76 /* fr.lproj */,
 				9C0826DC17B8924C00AB6C36 /* SimpleContact-Info.plist */,
 				9CA6B9FB16BADA03006EAF8D /* Utilities */,
 				9CA6B9FA16BAD9EC006EAF8D /* Images */,
@@ -482,6 +520,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 9CA6B9C516BAD16D006EAF8D;
 			productRefGroup = 9CA6B9CF16BAD16D006EAF8D /* Products */;
@@ -504,10 +543,12 @@
 				9C08270017B893E200AB6C36 /* 57x57.png in Resources */,
 				9C08270117B893E200AB6C36 /* 58x58.png in Resources */,
 				9C08270217B893E200AB6C36 /* 80x80.png in Resources */,
+				9C249FBE17C7052800A62A76 /* MainStoryboard.storyboard in Resources */,
 				9C08270317B893E200AB6C36 /* 114x114.png in Resources */,
 				9CF5DFC917C6DB8D00D696E9 /* backbutton.png in Resources */,
 				9C08270417B893E200AB6C36 /* 120x120.png in Resources */,
 				9C08270817B8940700AB6C36 /* Default-568h@2x.png in Resources */,
+				9C249FC317C705C200A62A76 /* AppSettingsView.strings in Resources */,
 				9C08270917B8940700AB6C36 /* Default.png in Resources */,
 				9C08270A17B8940700AB6C36 /* Default@2x.png in Resources */,
 				9C08270C17B8941400AB6C36 /* 1024x1024.png in Resources */,
@@ -517,10 +558,13 @@
 				9C08272717B8942F00AB6C36 /* label-home.png in Resources */,
 				9C08272817B8942F00AB6C36 /* label-mobile.png in Resources */,
 				9C08272917B8942F00AB6C36 /* label-work.png in Resources */,
+				9C249FBF17C7052D00A62A76 /* AppSettingsView.strings in Resources */,
 				9C08272A17B8942F00AB6C36 /* mail-white.png in Resources */,
+				9C249FC217C7053600A62A76 /* ReportIssueMailView.strings in Resources */,
 				9C08272B17B8942F00AB6C36 /* navigationbar-background.png in Resources */,
 				9C08272C17B8942F00AB6C36 /* phone-black.png in Resources */,
 				9C345E3A17B8967600618320 /* mail-black.png in Resources */,
+				9C249FC517C705C800A62A76 /* RefusedAddBookAccessPopup.strings in Resources */,
 				9C08272D17B8942F00AB6C36 /* phone-white.png in Resources */,
 				9C08272E17B8942F00AB6C36 /* settings.png in Resources */,
 				9C08272F17B8942F00AB6C36 /* text-black.png in Resources */,
@@ -529,11 +573,12 @@
 				9C08273217B8942F00AB6C36 /* tutorial-2.png in Resources */,
 				9C08273317B8942F00AB6C36 /* tutorial-3.png in Resources */,
 				9C08273417B8942F00AB6C36 /* tutorial-4.png in Resources */,
+				9C249FC617C705CE00A62A76 /* ReportIssueMailView.strings in Resources */,
 				9C08273517B8942F00AB6C36 /* tutorial-5.png in Resources */,
 				9C08273617B8942F00AB6C36 /* unavailable-overlay.png in Resources */,
 				9C08273717B8942F00AB6C36 /* unknown-user.png in Resources */,
+				9C249FC117C7053400A62A76 /* RefusedAddBookAccessPopup.strings in Resources */,
 				9C08273817B8942F00AB6C36 /* validation-tick.png in Resources */,
-				9C08273B17B8945800AB6C36 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,12 +616,68 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9C08273917B8945800AB6C36 /* MainStoryboard.storyboard */ = {
+		9C249FA917C7044900A62A76 /* AppSettingsView.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9C08273A17B8945800AB6C36 /* en */,
+				9C249FAA17C7044900A62A76 /* en */,
+			);
+			name = AppSettingsView.strings;
+			sourceTree = "<group>";
+		};
+		9C249FAD17C7044A00A62A76 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FAE17C7044A00A62A76 /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		9C249FAF17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FB017C7044A00A62A76 /* en */,
+			);
+			name = RefusedAddBookAccessPopup.strings;
+			sourceTree = "<group>";
+		};
+		9C249FB117C7044A00A62A76 /* ReportIssueMailView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FB217C7044A00A62A76 /* en */,
+			);
+			name = ReportIssueMailView.strings;
+			sourceTree = "<group>";
+		};
+		9C249FB417C7044A00A62A76 /* AppSettingsView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FB517C7044A00A62A76 /* fr */,
+			);
+			name = AppSettingsView.strings;
+			sourceTree = "<group>";
+		};
+		9C249FB817C7044A00A62A76 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FB917C7044A00A62A76 /* fr */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		9C249FBA17C7044A00A62A76 /* RefusedAddBookAccessPopup.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FBB17C7044A00A62A76 /* fr */,
+			);
+			name = RefusedAddBookAccessPopup.strings;
+			sourceTree = "<group>";
+		};
+		9C249FBC17C7044A00A62A76 /* ReportIssueMailView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C249FBD17C7044A00A62A76 /* fr */,
+			);
+			name = ReportIssueMailView.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

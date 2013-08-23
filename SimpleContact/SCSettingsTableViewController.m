@@ -53,7 +53,7 @@ static NSUInteger kLabelViewTag = 4242;
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:21.0f]];
     [label setTextColor:[UIColor whiteColor]];
     [label setBackgroundColor:[UIColor clearColor]];
-    [label setText:@"Préférences"];
+    [label setText:NSLocalizedStringFromTable(@"settings-title", @"AppSettingsView", @"App settings view navigation title")];
     [label setTextAlignment:NSTextAlignmentCenter];
     [[self navigationItem] setTitleView:label];
 
