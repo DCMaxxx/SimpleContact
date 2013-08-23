@@ -43,7 +43,7 @@ static NSUInteger kLabelViewTag = 4242;
 /*----------------------------------------------------------------------------*/
 - (void)viewDidLoad {
     NSString * const ImgValidationTick = @"validation-tick.png";
-    NSString * const ImgTransparentBg = @"backbutton-background.png";
+    NSString * const ImgTransparentBg = @"backbutton.png";
 
     [super viewDidLoad];
 
@@ -63,14 +63,17 @@ static NSUInteger kLabelViewTag = 4242;
     UIBarButtonItem * barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:validationButton];
     [[self navigationItem] setRightBarButtonItem:barButtonItem];
     
-    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
-    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-2.0f, 2.0f) forBarMetrics:UIBarMetricsDefault];
-    UIImage * image = [UIImage imageNamed:ImgTransparentBg];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:image
-                                                      forState:UIControlStateNormal
-                                                    barMetrics:UIBarMetricsDefault];
-    
+    if ([[[self navigationController] viewControllers] count] > 1) {
+        UIButton *myBackButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 12, 21)];
+        [myBackButton setBackgroundImage:[UIImage imageNamed:ImgTransparentBg] forState:UIControlStateNormal];
+        [myBackButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchDown];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:myBackButton];
+    }
+}
+
+
+- (void)goBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -204,11 +207,6 @@ static NSUInteger kLabelViewTag = 4242;
             }
         }
     }
-}
-
-- (void)restoreBackButtonFont {
-    NSDictionary * dic = @{UITextAttributeFont: [UIFont fontWithName:@"Avenir-Light" size:18.0f], UITextAttributeTextColor: [UIColor whiteColor]};
-    [[UIBarButtonItem appearance] setTitleTextAttributes:dic forState:UIControlStateNormal];
 }
 
 @end

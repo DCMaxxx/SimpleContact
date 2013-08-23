@@ -53,7 +53,7 @@
     NSArray *toRecipients = [NSArray arrayWithObject:@"maxime.dechalendar@me.com"];
     [_mailViewController setToRecipients:toRecipients];
     
-    [_mailViewController setSubject:@"Problème avec EasyContact"];
+    [_mailViewController setSubject:@"Problème avec SimpleContact"];
     
     NSString * appV = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     NSString * iOSV = [[UIDevice currentDevice] systemVersion];
@@ -73,13 +73,10 @@
 /*----------------------------------------------------------------------------*/
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
     BOOL hidePopupExists = [_currentController respondsToSelector:@selector(hidePopup)];
-    BOOL restoreBackButtonFontExists = [_currentController respondsToSelector:@selector(restoreBackButtonFont)];
     [_currentController dismissViewControllerAnimated:!hidePopupExists
                                            completion:^{
                                                if (hidePopupExists)
                                                    [_currentController performSelector:@selector(hidePopup)];
-                                               if (restoreBackButtonFontExists)
-                                                   [_currentController performSelector:@selector(restoreBackButtonFont)];
                                            }];
 }
 
@@ -101,6 +98,7 @@
 #pragma mark - Misc private methods
 /*----------------------------------------------------------------------------*/
 - (void)callNumber:(NSString *)number {
+    number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
     number = [number stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString * callUrl = [@"tel://" stringByAppendingString:number];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callUrl]];   

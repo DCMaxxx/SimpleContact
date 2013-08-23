@@ -38,7 +38,6 @@
 		9C08270917B8940700AB6C36 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270617B8940700AB6C36 /* Default.png */; };
 		9C08270A17B8940700AB6C36 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270717B8940700AB6C36 /* Default@2x.png */; };
 		9C08270C17B8941400AB6C36 /* 1024x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270B17B8941400AB6C36 /* 1024x1024.png */; };
-		9C08272317B8942F00AB6C36 /* backbutton-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270D17B8942F00AB6C36 /* backbutton-background.png */; };
 		9C08272417B8942F00AB6C36 /* facetime-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270E17B8942F00AB6C36 /* facetime-black.png */; };
 		9C08272517B8942F00AB6C36 /* facetime-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08270F17B8942F00AB6C36 /* facetime-white.png */; };
 		9C08272617B8942F00AB6C36 /* favorite-flag.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C08271017B8942F00AB6C36 /* favorite-flag.png */; };
@@ -73,6 +72,7 @@
 		9CA6B9F616BAD884006EAF8D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F416BAD884006EAF8D /* AddressBook.framework */; };
 		9CA6B9F716BAD884006EAF8D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */; };
 		9CA8A8F416BD348A0053C1C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */; };
+		9CF5DFC917C6DB8D00D696E9 /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF5DFC817C6DB8D00D696E9 /* backbutton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,7 +128,6 @@
 		9C08270617B8940700AB6C36 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = SimpleContact/images/Default.png; sourceTree = SOURCE_ROOT; };
 		9C08270717B8940700AB6C36 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "SimpleContact/images/Default@2x.png"; sourceTree = SOURCE_ROOT; };
 		9C08270B17B8941400AB6C36 /* 1024x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1024x1024.png; path = SimpleContact/images/1024x1024.png; sourceTree = SOURCE_ROOT; };
-		9C08270D17B8942F00AB6C36 /* backbutton-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "backbutton-background.png"; path = "SimpleContact/images/backbutton-background.png"; sourceTree = SOURCE_ROOT; };
 		9C08270E17B8942F00AB6C36 /* facetime-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-black.png"; path = "SimpleContact/images/facetime-black.png"; sourceTree = SOURCE_ROOT; };
 		9C08270F17B8942F00AB6C36 /* facetime-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "facetime-white.png"; path = "SimpleContact/images/facetime-white.png"; sourceTree = SOURCE_ROOT; };
 		9C08271017B8942F00AB6C36 /* favorite-flag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "favorite-flag.png"; path = "SimpleContact/images/favorite-flag.png"; sourceTree = SOURCE_ROOT; };
@@ -167,6 +166,7 @@
 		9CA6B9F416BAD884006EAF8D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		9CA6B9F516BAD884006EAF8D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		9CA8A8F316BD348A0053C1C5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9CF5DFC817C6DB8D00D696E9 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backbutton.png; path = SimpleContact/images/backbutton.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +220,7 @@
 				9C08271D17B8942F00AB6C36 /* tutorial-3.png */,
 				9C08271E17B8942F00AB6C36 /* tutorial-4.png */,
 				9C08271F17B8942F00AB6C36 /* tutorial-5.png */,
-				9C08270D17B8942F00AB6C36 /* backbutton-background.png */,
+				9CF5DFC817C6DB8D00D696E9 /* backbutton.png */,
 				9C08271517B8942F00AB6C36 /* navigationbar-background.png */,
 				9C08271817B8942F00AB6C36 /* settings.png */,
 				9C08272217B8942F00AB6C36 /* validation-tick.png */,
@@ -356,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				9C08273917B8945800AB6C36 /* MainStoryboard.storyboard */,
+				9C0826DC17B8924C00AB6C36 /* SimpleContact-Info.plist */,
 				9CA6B9FB16BADA03006EAF8D /* Utilities */,
 				9CA6B9FA16BAD9EC006EAF8D /* Images */,
 				9C017A31176F047500A68013 /* Default conf files */,
@@ -410,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				9C0826F717B8936700AB6C36 /* PhoneFormats.dat */,
-				9C0826DC17B8924C00AB6C36 /* SimpleContact-Info.plist */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -510,12 +510,12 @@
 				9C08270117B893E200AB6C36 /* 58x58.png in Resources */,
 				9C08270217B893E200AB6C36 /* 80x80.png in Resources */,
 				9C08270317B893E200AB6C36 /* 114x114.png in Resources */,
+				9CF5DFC917C6DB8D00D696E9 /* backbutton.png in Resources */,
 				9C08270417B893E200AB6C36 /* 120x120.png in Resources */,
 				9C08270817B8940700AB6C36 /* Default-568h@2x.png in Resources */,
 				9C08270917B8940700AB6C36 /* Default.png in Resources */,
 				9C08270A17B8940700AB6C36 /* Default@2x.png in Resources */,
 				9C08270C17B8941400AB6C36 /* 1024x1024.png in Resources */,
-				9C08272317B8942F00AB6C36 /* backbutton-background.png in Resources */,
 				9C08272417B8942F00AB6C36 /* facetime-black.png in Resources */,
 				9C08272517B8942F00AB6C36 /* facetime-white.png in Resources */,
 				9C08272617B8942F00AB6C36 /* favorite-flag.png in Resources */,
@@ -654,7 +654,7 @@
 				INFOPLIST_FILE = "SimpleContact/SimpleContact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SimpleContact;
-				PROVISIONING_PROFILE = "20083289-2C4F-4BA3-88AA-7C2C8C10950C";
+				PROVISIONING_PROFILE = "2588C44B-EC42-4ED9-BBE7-99A135350B84";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
@@ -670,7 +670,7 @@
 				INFOPLIST_FILE = "SimpleContact/SimpleContact-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = SimpleContact;
-				PROVISIONING_PROFILE = "20083289-2C4F-4BA3-88AA-7C2C8C10950C";
+				PROVISIONING_PROFILE = "2588C44B-EC42-4ED9-BBE7-99A135350B84";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
