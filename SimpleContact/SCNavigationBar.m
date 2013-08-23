@@ -16,6 +16,14 @@
 /*----------------------------------------------------------------------------*/
 @implementation SCNavigationBar
 
+/*----------------------------------------------------------------------------*/
+#pragma mark - UIView
+/*----------------------------------------------------------------------------*/
+- (void)drawRect:(CGRect)rect {
+    UIImage * img = [UIImage imageNamed:@"navigationbar-background.png"];
+    [img drawInRect:CGRectMake(0, 0, [self frame].size.width, [self frame].size.height)];
+}
+
 
 /*----------------------------------------------------------------------------*/
 #pragma mark - Misc public methods

@@ -47,6 +47,8 @@ static NSUInteger kLabelViewTag = 4242;
 
     [super viewDidLoad];
 
+    [self.navigationController setValue:[[SCNavigationBar alloc] init] forKeyPath:@"navigationBar"];
+
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
     [label setFont:[UIFont fontWithName:@"Avenir-Light" size:21.0f]];
     [label setTextColor:[UIColor whiteColor]];

@@ -58,6 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [_searchBar setBackgroundImage:[UIImage imageNamed:@"navigationbar-background.png"]];
     [[self tableView] setSectionIndexColor:[UIColor colorWithRed:0 green:0.46 blue:1.0 alpha:1.0]];
     [[self tableView] setSectionIndexTrackingBackgroundColor:[UIColor colorWithWhite:0.93f alpha:0.65f]];
     [[self tableView] setTableHeaderView:_searchBar];
