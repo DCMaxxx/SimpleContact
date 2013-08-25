@@ -44,7 +44,7 @@
 
     
     static NSString * const DicKeyTutorialDisplayed = @"TutorialDisplayed";
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DicKeyTutorialDisplayed]) {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:DicKeyTutorialDisplayed]) {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DicKeyTutorialDisplayed];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController * mainController = (UINavigationController *)[[self window] rootViewController];

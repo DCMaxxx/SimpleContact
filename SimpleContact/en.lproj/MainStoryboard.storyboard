@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.1" systemVersion="12E3067" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="nCH-Oa-G1E">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <scenes>
@@ -219,8 +218,8 @@
                                     <outletCollection property="gestureRecognizers" destination="jaL-fj-4L9" appends="YES" id="sh9-g0-gdE"/>
                                 </connections>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to SimpleContact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
-                                <rect key="frame" x="20" y="20" width="280" height="41"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Welcome to SimpleContact" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eO-Al-yUL">
+                                <rect key="frame" x="0.0" y="20" width="320" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="ETN-qa-Gew"/>
                                 </constraints>
@@ -232,11 +231,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6eO-Al-yUL" firstAttribute="top" secondItem="TqH-bV-P94" secondAttribute="top" constant="20" symbolic="YES" id="C3C-Bu-1n0"/>
-                            <constraint firstAttribute="trailing" secondItem="6eO-Al-yUL" secondAttribute="trailing" constant="20" symbolic="YES" id="DnD-Ei-At2"/>
+                            <constraint firstAttribute="trailing" secondItem="6eO-Al-yUL" secondAttribute="trailing" id="DnD-Ei-At2"/>
                             <constraint firstItem="tgY-Ku-7bm" firstAttribute="centerX" secondItem="dBj-so-dya" secondAttribute="centerX" id="ZD8-AZ-4rx"/>
                             <constraint firstItem="dBj-so-dya" firstAttribute="centerY" secondItem="TqH-bV-P94" secondAttribute="centerY" id="esI-7u-ccl"/>
                             <constraint firstItem="tgY-Ku-7bm" firstAttribute="top" secondItem="dBj-so-dya" secondAttribute="bottom" constant="8" symbolic="YES" id="jWR-oo-w16"/>
-                            <constraint firstItem="6eO-Al-yUL" firstAttribute="leading" secondItem="TqH-bV-P94" secondAttribute="leading" constant="20" symbolic="YES" id="oZI-SN-0IP"/>
+                            <constraint firstItem="6eO-Al-yUL" firstAttribute="leading" secondItem="TqH-bV-P94" secondAttribute="leading" id="oZI-SN-0IP"/>
                             <constraint firstItem="dBj-so-dya" firstAttribute="centerX" secondItem="TqH-bV-P94" secondAttribute="centerX" id="unp-0D-fcR"/>
                         </constraints>
                     </view>
