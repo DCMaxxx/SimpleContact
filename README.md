@@ -1,6 +1,11 @@
 SimpleContact
 =======
 
+Disclamer
+-------
+This was my first iOS application. The code is pretty crappy, but You have to start somewhere, you know.   
+The application will probably never be updated, and there's probably a lot of bugs, and looooaaaadddssss of things I'd do differently.
+
 What is it ?
 -------
 
@@ -18,20 +23,11 @@ But remember, I'm still working on it when I have free time, so stay tuned.
 
 How can I get it ?
 -------
-For now, you'll have to :
-+ Own a Mac
-+ An iDevice on iOS 6.0+ (UICollectionView)
-+ A developper licence (and if you don't, you can try it in the simulator !)
-+ XCode 5 DP5+ (else you can't open the storyboard)
-
-In a few weeks, I plan to post it on the store, under the same name, SimpleContact.
+[Here you go](https://itunes.apple.com/fr/app/simplecontact/id683951051?mt=8)
 
 
 Can I see it ?
 -------
-Well, it's not finished...  
-Alright, alright. Here are some screenshot, but remeber, it might evolve with time !
-
 Here is the default view of the application :  
 ![Main view](https://raw.github.com/DCMaxxx/EasyContact/master/Screenshots/Main%20view.png)
 
@@ -50,9 +46,4 @@ I'll update picture with new features.
 Can I give my opinion ?
 -------
 Of course ! I'd love to here from you.  
-Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar@me.com)
-
-
-To do
--------
-+ Learn how to use NSLocalizedString
+Just contact me on GitHub, on Twitter (@DCMaxxx), or by mail (maxime.dechalendar at me.com)
